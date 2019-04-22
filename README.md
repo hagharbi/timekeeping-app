@@ -4,6 +4,8 @@ A themed memory game built with React!
 
 [Play Now!](https://harry-potter-memory.herokuapp.com/)
 
+![Game Screenshot](/public/images/MemoryGame.png)
+
 ## Instructions
 
 For this game of memory, click on any Harry Potter character to begin. To win, you must click on all 12 unique characters without choosing a previoulsy selected person.
