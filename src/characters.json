@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Harry Potter",
+        "image": "https://cdn.shopify.com/s/files/1/1541/8579/files/Harry-Potter_large.jpg?v=1491388633"
+    },
+    {
+        "id": 2,
+        "name": "Ron Weasley",
+        "image": "https://pbs.twimg.com/profile_images/2553924396/image.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Hermoine Granger",
+        "image": "http://images6.fanpop.com/image/photos/32300000/hermione-hermione-granger-32330610-400-400.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Remus Lupin",
+        "image": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AAwjG4l.img?h=624&w=624&m=6&q=60&o=f&l=f&x=482&y=390"
+    },
+    {
+        "id": 5,
+        "name": "Severus Snape",
+        "image": "http://www1.pictures.zimbio.com/mp/nMyfaeATKn3l.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Albus Dumbledore",
+        "image": "http://i0.wp.com/www.polarimagazine.com/wp-content/uploads/2011/11/Albus-Dumbledore.jpg?fit=370%2C370"
+    },
+    {
+        "id": 7,
+        "name": "Minerva McGonagall",
+        "image": "https://pixel.nymag.com/imgs/daily/vulture/2018/09/06/06-minerva-mcgonagall.w700.h700.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Voldemort",
+        "image": "https://cdn.vox-cdn.com/thumbor/2co_0i63Sj6dTZqDuNQJzwpSYbs=/1400x1400/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/4049256/voldemort.0.png"
+    },
+    {
+        "id": 9,
+        "name": "Peter Pettigrew",
+        "image": "https://qph.fs.quoracdn.net/main-qimg-d72a22d7aacce7b62501b1a59c23fbbb.webp"
+    },
+    {
+        "id": 10,
+        "name": "Draco Malfoy",
+        "image": "https://fsmedia.imgix.net/ac/7d/7c/11/15a6/43ac/aa5e/a21ab531f4b9/draco-malfoy-tom-felton.jpeg?auto=format%2Ccompress&h=1200&w=1200&crop=edges&fit=crop"
+    },
+    {
+        "id": 11,
+        "name": "Neville Longbotton",
+        "image": "https://hips.hearstapps.com/sev.h-cdn.co/assets/16/34/480x480/square-1471874255-1471806721-neville-longbottom.png?resize=480:*"
+    },
+    {
+        "id": 12,
+        "name": "Luna Lovegood",
+        "image": "https://akns-images.eonline.com/eol_images/Entire_Site/2015427/rs_300x300-150527082350-600.Luna-Lovegood-Harry-Potter.jl.052715.jpg?fit=around|700:700&crop=700:700;center,top&output-quality=90"
+    }
+]
