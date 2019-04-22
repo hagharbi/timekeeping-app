@@ -2,7 +2,7 @@
 
 A themed memory game built with React!
 
-[Play Now] (https://harry-potter-memory.herokuapp.com/)
+[Play Now!](https://harry-potter-memory.herokuapp.com/)
 
 ## Instructions
 
