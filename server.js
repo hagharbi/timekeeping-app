@@ -20,5 +20,5 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/timekeeperapp")
 
 // Start the API server
 app.listen(PORT, function() {
-  console.log(`🌎  ==> Server listening on PORT ${PORT}!`);
+  console.log(`🌎  ==> Server is listening on PORT ${PORT}!`);
 });
