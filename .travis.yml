@@ -4,10 +4,9 @@ branches:
   only:
   - master
 cache:
-  directories:
-<<<<<<< HEAD
-    - node_modules
+  directories:    
+  - node_modules
 services:
   - mongodb
 before_script:
-  - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]});
+  - mongo mydb_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]})'
