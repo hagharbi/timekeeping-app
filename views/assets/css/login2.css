@@ -1,0 +1,54 @@
+#jumbotron-login {
+    width: 40vw;
+    margin: 20vh 0 0 30vw;
+    border-radius: 20px;
+    box-shadow: 1px 1px 6px rgba(144, 144, 144, 0.39);
+    background-color: #ffffff;
+  }
+
+  @media only screen and (max-width: 1050px) {
+    #jumbotron-login {
+        width: 60vw;
+        margin: 20vh 0 0 20vw;
+    }
+  }
+
+  @media only screen and (max-width: 650px) {
+    #jumbotron-login {
+        width: 90vw;
+        margin: 20vh 0 0 5vw;
+    }
+  }
+
+  #login-title {
+    text-align: center;
+    margin: 0 0 30px 0;
+  }
+
+  #login-input-un,
+  #login-input-pw {
+    outline: none !important;
+  }
+
+  #login-buttons {
+    text-align: center;
+  }
+
+  #login-button {
+    border-radius: 5px 5px 15px 5px;
+  }
+
+  #login-button:hover {
+    border-radius: 5px;
+  }
+
+  #login-button:active {
+    box-shadow: inset 1px 1px 5px rgb(0, 0, 0);
+  }
+
+  @media only screen and (max-width: 650px) {
+    body {
+      background: linear-gradient(white, white, white, silver);
+      height: 100vh;
+    }
+  }
