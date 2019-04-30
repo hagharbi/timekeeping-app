@@ -1,0 +1,521 @@
+* {    /* global css */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.a {   /* global link action */
+    cursor: grab;
+    color: silver;
+}
+
+.body,
+.html {    /* globl html and body settings */
+    margin: 0;
+    padding: 0;
+}
+
+.body {
+    background: linear-gradient(green, red);
+ }
+
+.a:hover {   /* global link action on hover */
+    cursor: grabbing;
+}
+
+#f_name {   /* full name on top page */
+    font-size: 12vw;
+    opacity: 0.32;
+}
+
+#table {   /* table in about section just below about copy */
+    margin: 4vh 0 3vw 1.5vw;
+    font-size: 15px;
+    color: rgb(139, 139, 139);
+}
+#code-links1{
+    margin: 4px 0 0 20%;
+}
+#code-links{
+    margin: 6px 0 0 40%;
+}
+.th1,
+.th2,
+.th3 {   /* three table components used here for spacing table items apart */
+    letter-spacing: .42vw;
+}
+
+#td,
+.tr {   /* listed items int he table */
+    padding: 0 3vw 0 0;
+}
+
+.tr {   /* table rows */
+    padding: 20px;
+    margin-right: 10px;
+}
+
+#slogan {
+    font-size: 24px!important;
+    text-align: right;
+    opacity: 0.7!important;
+    color: white;
+    text-shadow: 0px 0px transparent;
+}
+
+.parallax-curtain {       /* how I was able to set an opacity to the black divs presented on screen */
+    height: auto;
+    min-height: 900px;
+    background: rgba(0, 0, 0, .92);
+}
+
+.parallax-curtain:hover {   /* to set the opacity to a higher number os the content on the page can be reviewed without conflict */
+    background: rgba(0, 0, 0, .95);
+}
+
+.nav {/* the navigation bar in the header. on 100% scroll it hides itself. i think it is a bootstrap issue but ran out of time to trouble shoot */
+    background: transparent;
+    display: flex;
+    justify-content: space-around;
+}
+
+@media only screen and (max-width: 500px) {   /*  this does noting as of now. The next phase of this site will be mobile optimization.*/
+    #home-link,
+    #portfolio-link,
+    #about-link,
+    #contact-link {
+        font-size: 3vw;
+    }
+}
+
+.form-group { /* container for the contect form */
+    color: rgb(170, 168, 168);
+}
+
+.parallax-curtain { /* allows for the portfolio div to flow left and right without restriction */
+    overflow: auto;
+}
+
+#home-link,
+#portfolio-link,
+#about-link,
+#contact-link {   /* links to each individual seciton of the website */
+    color: darkslategrey;
+    background: transparnet;
+    font-weight: 500;
+}
+
+#home-link:hover,
+#portfolio-link:hover,
+#about-link:hover,
+#contact-link:hover {   /* action on hover to notify the user this is what should be happening */
+    color: grey;
+    font-weight: 500;
+    cursor: grab;
+}
+
+#home-link:active,
+#portfolio-link:active,
+#about-link:active,
+#contact-link:active {   /* what happens when the links in the nav bar are clicked */
+    color: #003131;
+    font-weight: 500;
+    text-decoration-line: underline;
+    cursor: grabbing;
+}
+
+.container {   /* used for the contact form created */
+    justify-content: center;
+    margin-top: 200px;
+}
+#showcase{
+    font-size:2vw;
+    padding: 2vw;
+    font-size: 2vw;
+    /* letter-spaci */
+    font-weight: 100;
+    color: rgb(97, 97, 97);
+    text-align: center;
+    min-width: 200px;
+    position: absolute;
+    margin: -260px 0 0 0;
+}
+#about-me{
+    letter-spacing: 11vw;
+    margin: -400px 0 0 5vw;
+}
+#portfolio-me{
+    letter-spacing: 6.5vw;
+    margin: 0 0 0 0;
+    height: 100vh;
+}
+#contact-me{
+    letter-spacing: 10vw;
+    margin: -30px 0 0 0;
+}
+#showcase:hover{
+    color: rgb(255, 255, 255);
+}
+.sec__title:hover{
+    color: rgb(214, 213, 213);
+}
+.sec__title {   /* the fluo green titles seen at the top of the content sections of the site */
+    padding: 2vw;
+    font-size: 6vw;
+    font-weight: 100;
+
+    color: rgb(255, 255, 255);
+    text-align: center!important;
+    min-width: 4vw;
+    position: absolute;
+    text-shadow: 0 1px #003131,
+        -1px 0 #cdd2d5,
+        -1px 2px #003131,
+        -2px 1px #cdd2d5,
+        -2px 3px #003131,
+        -3px 2px #cdd2d5,
+        -3px 4px #003131,
+        -4px 3px #cdd2d5,
+        -4px 5px #003131,
+        -5px 4px #cdd2d5,
+        -5px 6px #003131,
+        -6px 5px #cdd2d5,
+        -6px 7px #003131,
+        -7px 6px #cdd2d5,
+        -7px 8px #003131,
+        -8px 7px #cdd2d5;
+
+}
+
+#mock-dash {
+background-repeat: none!important;
+width: 500px;
+height: 500px;
+float: left;
+margin: 0 20px 20px 0;
+}
+
+#about-copy {   /* copy describing my currnet professional outline */
+    text-align: justify;
+    text-justify: inter-word;
+    padding: 0vw 2vh;
+    color: wheat;
+    margin-right: 3vw;
+    margin-left: .5vw;
+    float: left;
+}
+
+.responsive {   /* to alow the copy to behave with the flow and form of the screen size */
+    min-width: 30%;
+    width: 30vh;
+    height: auto;
+    float: left;
+    padding: 0 2vw 1vw 0;
+    margin-left:1.5vw;
+    border-top-right-radius: 20px;
+}
+
+#portfolio-exterior-links {   /* links added below the portfolio iframes that go directly to the content */
+    display: flex;
+    justify-content: center;
+    color: rgb(133, 131, 131);
+    text-decoration: none;
+    background-color: black;
+}
+
+.wrapper {   /* used to contain the contents of the about box */
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 2px;
+}
+
+.section {   /* Needed for children to be absolutely positioned relative to the parent. */
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    text-shadow: 5px 5px 7px black;
+}
+
+.parallax::after {   /* sets the rules for the images used in the background of the paralax boxes */
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateZ(-1px) scale(1.5);
+    background-size: 100vh;
+    background-size: 100vw;
+    z-index: -111;
+}
+
+.bg1::after { /* initial background images rules */
+    background: url('../images/mountains.png')no-repeat center center fixed, linear-gradient(black, rgb(82, 82, 82),orange, yellow); 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.bg2::after {
+    
+    background-image: url('../images/teamwork.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    width: cover;
+}
+
+.bg3::after {
+    /* final inspirational background image rules */
+    background-image: url('../images/design-develope-achieve\ 2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    width: cover;
+}
+
+
+.btn {
+    /* submit botton reformatted bootstrap button so it owuld play nice with otther bootstrap com=ntent listed */
+    background-color: rgb(88, 88, 88);
+    border-radius: 15px;
+    box-shadow: inset 3px 3px 5px rgb(255, 255, 255);
+    color: white;
+}
+
+.btn:hover {
+    /* what happens when you scroll over the button */
+    cursor: grab;
+    box-shadow: inset 3px 3px 5px rgb(51, 50, 50);
+    color: rgb(170, 169, 169);
+}
+
+.btn:active {
+    /* what happens to the button once you clikced it and it is activer */
+    box-shadow: inset 2px 2px 5px black;
+    height: 35px;
+    width: 120px;
+    cursor: grabbing;
+    color: white;
+
+}
+/* -----> Scrollling wallpaper for iframes below   <----- */
+
+.scrolling-wrapper {
+    /* how the paralax wrapper bahaves when scrolling <<<left to right>>> */
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    float: left;
+    margin: 0 0 0 ;
+
+}
+
+.card {
+    /* the div cards used to display the curent and existing website projects */
+    display: inline-block;
+    margin: .5vw;
+    flex: 0 0 auto;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.scrolling-wrapper-flexbox {
+    /* allows for horizontal content */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+
+.scrolling-wrapper {
+    /* allows for grabbing fo the content to move it on specific brousers. This is a big achelies in this project as this only works well right now in Chrome and very pourly in firefox. The runner up suprisingly i Safari.  */
+    -webkit-overflow-scrolling: touch;
+
+}
+
+h4 {
+    /* pushes the h4 tags to center. aka the titles of the portfolio cards */
+    text-align: center;
+    color: rgb(107, 107, 107);
+
+}
+
+/* #portfoliolinks, */
+#gh-account,
+#strava,
+#resume,
+#jsfiddle,
+#linkedin,
+#text-messaging{
+    /* links just above footer that direct to my resume, linked in account, and my git hub account. Might add my instagram as it has good traction as well and showcasses many professional modeling shots. */
+max-width: 90px;
+max-height: 90px;
+
+    cursor: grab;
+    float: left;
+    margin: 0 0 0 3vw;
+}
+#text-messaging{
+    margin-left: 10%;
+}
+
+/* on hover to allow the gifs to light up on hover to notify user they are actionalble. */
+#gh-account:hover,
+#strava:hover,
+#resume:hover,
+#jsfiddle:hover,
+#linkedin:hover,
+#text-messaging:hover{
+    -webkit-filter: brightness(150%);
+    cursor: grab;
+}
+
+#gh-account:active,
+#strava:active,
+#resume:active,
+#jsfiddle:active,
+#linkedin:active,
+#text-messaging:active{
+    cursor: grabbing,
+}
+
+.header-copyright {
+    /* utilizes and formatted the window to allow for white space to appear below the opening hero shot to display the copyright. this was done so the page could initially display as a multi page website and not a single page one sheet */
+    text-align: center;
+    position: Fixed;
+    z-index:99999999999;
+}
+
+#header,
+.nav {
+    background-color: rgba(0, 0, 0, 0.822)!important;
+    text-shadow: 1px 1px rgb(0, 0, 0);
+}
+
+/* ++++++++ dynamic pulsing pure css aarows style.css listed below +++++++ */
+/* ++++++++ dynamic pulsing pure css aarows style.css listed below +++++++ */
+/* ++++++++ dynamic pulsing pure css aarows style.css listed below +++++++ */
+/* ++++++++ dynamic pulsing pure css aarows style.css listed below +++++++ */
+/* was unable to get htis to work the way I wanted in the time I had to work on it. the pretty part of it is complete but the dynamic function of it is not functional at this time.  */
+
+#aarow-box {
+    margin: 0 0 0 -100vw;
+}
+
+#arrow-wrapper {
+    /* container for the left and right aarows below the portfolio references.*/
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+
+    margin-left: 85%;
+    position: fixed;
+}
+
+#arrow-wrapper2 {
+    /* this is the same as above but for the second arrow pointing left */
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto;
+
+    margin-left: 15%;
+    position: fixed;
+}
+
+.arrow-border {
+    /* the circle around the aarows */
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border: transparent;
+    /*  this originally displayed a circle around the aarows. it has been removed for effect but left so if chosen to alter later the code will stay intact.   */
+    border-radius: 50%;
+}
+
+.arrow {
+    /* the > right aarow */
+    position: absolute;
+    bottom: 20px;
+    width: 20px;
+    height: 20px;
+    border-top: 3px solid silver;
+    border-right: 3px solid darkslategrey;
+    right: 24px;
+    margin-right: 10%;
+}
+
+.arrow2 {
+    /* the < left aarow */
+    position: absolute;
+    bottom: 20px;
+    width: 20px;
+    height: 20px;
+    border-top: 3px solid silver;
+    border-right: 3px solid darkslategrey;
+    right: 16px;
+}
+
+.right {
+    /* how i am able to call the aarow to face in the direction I want.  */
+    -moz-transform: rotate(40deg);
+    -webkit-transform: rotate(40deg);
+    -o-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
+}
+
+.left {
+    /* same as above the how to for direction. */
+    -moz-transform: rotate(-40deg);
+    -webkit-transform: rotate(-40deg);
+    -o-transform: rotate(-40deg);
+    -ms-transform: rotate(-40deg);
+    transform: rotate(-136deg);
+}
+
+.pulse {
+    /* the function that allows the light to pulse around the circle */
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    margin: 0;
+    animation: pulsate 2s ease-out;
+    animation-iteration-count: infinite;
+    opacity: 0.0;
+    box-shadow: 0 0 1px 2px #ffff;
+    animation-delay: 2s;
+}
+
+@keyframes pulsate {
+    0% {
+        /* when the puse has collapsed */
+        transform: scale(0.9, 0.9);
+        opacity: 0.0;
+    }
+
+    50% {
+        /* when the pulse is returning ro escaping */
+        opacity: 1.0;
+    }
+
+    100% {
+        /* when the pulse is at its full stregnth */
+        transform: scale(1.3, 1.3);
+        opacity: 0;
+    }
+}
+
+#aarow-box {
+    /* container created to set both aarows to a vert specific placement. */
+    margin-top: 750px;
+}
+
