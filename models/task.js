@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
-var MilestoneSchema = new Schema({
+var TaskSchema = new Schema({
     title: {
         type: String,
         trim: true,
@@ -16,20 +16,17 @@ var MilestoneSchema = new Schema({
         type: String,
         trim: true,
     },
-    priority: {
-        type: String,
-        trim: true,
-    },
     notes: {
+        type: Array, 
+        default: undefined
+    },
+    times: {
         type: Array, 
         default: undefined
     },
     dateCreated: {
         type: Date,
         default: Date.now
-    },
-    dueDate: {
-        type: Date
     },
     lastUpdate: {
         type: Date
@@ -40,21 +37,14 @@ var MilestoneSchema = new Schema({
     active: {
         type: Boolean,
         default: true
-    },
-    tasks: [
-        {
-        type: Schema.Types.ObjectId,
-        ref: "Task"
     }
-    ]
 });
 
-MilestoneSchema.methods.lastUpdatedDate = function() {
+TaskSchema.methods.lastUpdatedDate = function() {
     this.lastUpdate = Date.now();
     return this.lastUpdate;
 };
 
+var Task = mongoose.model("Task", TaskSchema);
 
-var Milestone = mongoose.model("Milestone", MilestoneSchema);
-
-module.exports = Milestone;
+module.exports = Task;
