@@ -4,7 +4,7 @@ const statesArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL",
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
-var ClientSchema = new Schema({
+var UserSchema = new Schema({
     firstName: {
         type: String,
         trim: true,
@@ -22,10 +22,16 @@ var ClientSchema = new Schema({
         unique: true,
         match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
     },
-    altEmail: {
+    password: {
         type: String,
         trim: true,
-        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+        required: "Password is Required",
+        validate: [
+        function(input) {
+        return input.length >= 6;
+        },
+        "Password should be longer."
+    ]
     },
     phone: {
         type: String,
@@ -37,29 +43,22 @@ var ClientSchema = new Schema({
             message: '{VALUE} is not a valid phone number!'
         }
     },
-    altPhone: {
+    altEmail: {
         type: String,
         trim: true,
-        validate: {
-            validator: function(v) {
-                return /\d{3}-\d{3}-\d{4}/.test(v);
-            },
-            message: '{VALUE} is not a valid phone number!'
-        }
+        match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
     },
     address: {
         street: String,
         city: String,
         state: {
             type: String,
-            trim: true,
             uppercase: true,
             required: true,
             enum: statesArray
         },
         zip: {
             type: Number,
-            trim: true,
             validate: [
                 function(input) {
                 return input.length = 5;
@@ -70,14 +69,23 @@ var ClientSchema = new Schema({
     },
     category: {
         type: String,
-        trim: true,
+        trim: true
     },
-    title: {
+    photo: {
         type: String
     },
-    notes: {
-        type: Array, 
-        default: undefined
+    title: {
+        type: String,
+        trim: true
+    },
+    description: {
+        type: String,
+        validate: [
+            function(input) {
+            return input.length <= 250;
+            },
+            "Description should be 250 characters or less."
+        ]
     },
     userCreated: {
         type: Date,
@@ -90,10 +98,14 @@ var ClientSchema = new Schema({
         type: Boolean,
         default: true
     },
-    user: [
+    admin: {
+        type: Boolean,
+        default: false
+    },
+    clients: [
         {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "Client"
     }
     ],
     projects: [
@@ -104,11 +116,11 @@ var ClientSchema = new Schema({
     ]
 });
 
-ClientSchema.methods.lastUpdatedDate = function() {
+UserSchema.methods.lastUpdatedDate = function() {
     this.dateUpdated = Date.now();
     return this.dateUpdated;
 };
 
-var Client = mongoose.model("Client", ClientSchema);
+var User = mongoose.model("User", UserSchema);
 
-module.exports = Client;
+module.exports = User;
