@@ -7,6 +7,7 @@ var ProjectSchema = new Schema({
     title: {
         type: String,
         trim: true,
+        required: "Project Name is Required"
     },
     category: {
         type: String,
@@ -24,6 +25,9 @@ var ProjectSchema = new Schema({
         type: Number
     },
     timeEst: {
+        type: Number
+    },
+    timeWorked: {
         type: Number
     },
     notes: {
@@ -66,6 +70,11 @@ var ProjectSchema = new Schema({
 ProjectSchema.methods.lastUpdatedDate = function() {
     this.lastUpdate = Date.now();
     return this.lastUpdate;
+};
+
+ProjectSchema.methods.completionDate = function() {
+    this.completionDate = Date.now();
+    return this.completionDate;
 };
 
 var Project = mongoose.model("Project", ProjectSchema);

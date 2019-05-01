@@ -7,6 +7,7 @@ var TaskSchema = new Schema({
     title: {
         type: String,
         trim: true,
+        required: "Task Name is Required"
     },
     category: {
         type: String,
@@ -44,6 +45,12 @@ TaskSchema.methods.lastUpdatedDate = function() {
     this.lastUpdate = Date.now();
     return this.lastUpdate;
 };
+
+TaskSchema.methods.completionDate = function() {
+    this.completionDate = Date.now();
+    return this.completionDate;
+};
+
 
 var Task = mongoose.model("Task", TaskSchema);
 
