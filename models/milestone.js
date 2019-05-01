@@ -7,6 +7,7 @@ var MilestoneSchema = new Schema({
     title: {
         type: String,
         trim: true,
+        required: "Milestone Name is Required"
     },
     category: {
         type: String,
@@ -54,6 +55,10 @@ MilestoneSchema.methods.lastUpdatedDate = function() {
     return this.lastUpdate;
 };
 
+MilestoneSchema.methods.completionDate = function() {
+    this.completionDate = Date.now();
+    return this.completionDate;
+};
 
 var Milestone = mongoose.model("Milestone", MilestoneSchema);
 
