@@ -35,7 +35,7 @@ class FixedPlugin extends Component {
             <i className="fa fa-cog fa-2x" />
           </div>
           <ul className="dropdown-menu show">
-            <li className="header-title">SIDEBAR BACKGROUND</li>
+            <li className="header-title">COLOR SCHEME</li>
             <li className="adjustments-line">
               <div className="badge-colors text-center">
                 <span
@@ -85,37 +85,7 @@ class FixedPlugin extends Component {
               />{" "}
               <span className="color-label">DARK MODE</span>{" "}
             </li>
-            <li className="button-container">
-              <Button
-                href="https://www.creative-tim.com/product/black-dashboard-react"
-                color="primary"
-                block
-                className="btn-round"
-              >
-                Download Now
-              </Button>
-              <Button
-                color="default"
-                block
-                className="btn-round"
-                outline
-                href="https://demos.creative-tim.com/black-dashboard-react/#/documentation/tutorial"
-              >
-                Documentation
-              </Button>
-            </li>
-            <li className="header-title">Want more components?</li>
-            <li className="button-container">
-              <Button
-                href="https://www.creative-tim.com/product/black-dashboard-pro-react"
-                className="btn-round"
-                disabled
-                block
-                color="danger"
-              >
-                Get pro version
-              </Button>
-            </li>
+            <li></li>
           </ul>
         </div>
       </div>

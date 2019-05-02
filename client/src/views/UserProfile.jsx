@@ -11,6 +11,7 @@ import {
   FormGroup,
   Form,
   Input,
+  CustomInput,
   Row,
   Col
 } from "reactstrap";
@@ -29,43 +30,10 @@ class UserProfile extends React.Component {
                 <CardBody>
                   <Form>
                     <Row>
-                      <Col className="pr-md-1" md="5">
-                        <FormGroup>
-                          <label>Company (disabled)</label>
-                          <Input
-                            defaultValue="Creative Code Inc."
-                            disabled
-                            placeholder="Company"
-                            type="text"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className="px-md-1" md="3">
-                        <FormGroup>
-                          <label>Username</label>
-                          <Input
-                            defaultValue="michael23"
-                            placeholder="Username"
-                            type="text"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className="pl-md-1" md="4">
-                        <FormGroup>
-                          <label htmlFor="exampleInputEmail1">
-                            Email address
-                          </label>
-                          <Input placeholder="mike@email.com" type="email" />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
                       <Col className="pr-md-1" md="6">
                         <FormGroup>
                           <label>First Name</label>
                           <Input
-                            defaultValue="Mike"
-                            placeholder="Company"
                             type="text"
                           />
                         </FormGroup>
@@ -74,8 +42,35 @@ class UserProfile extends React.Component {
                         <FormGroup>
                           <label>Last Name</label>
                           <Input
-                            defaultValue="Andrew"
-                            placeholder="Last Name"
+                            type="text"
+                          />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="pr-md-1" md="4">
+                      <FormGroup>
+                          <label htmlFor="exampleInputEmail1">
+                            Email Address
+                          </label>
+                          <Input placeholder="mike@email.com" type="email" />
+                        </FormGroup>
+                      </Col>
+
+                      <Col className="pl-md-1" md="4">
+                        <FormGroup>
+                          <label htmlFor="exampleInputEmail2">
+                            Alt Email
+                          </label>
+                          <Input placeholder="optional@email.com" type="email" />
+                        </FormGroup>
+                      </Col>
+
+                      <Col className="px-md-1" md="4">
+                        <FormGroup>
+                          <label>Phone Number</label>
+                          <Input
+                            placeholder="###-###-####"
                             type="text"
                           />
                         </FormGroup>
@@ -86,8 +81,7 @@ class UserProfile extends React.Component {
                         <FormGroup>
                           <label>Address</label>
                           <Input
-                            defaultValue="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-                            placeholder="Home Address"
+                            placeholder="123 Main Street"
                             type="text"
                           />
                         </FormGroup>
@@ -98,18 +92,16 @@ class UserProfile extends React.Component {
                         <FormGroup>
                           <label>City</label>
                           <Input
-                            defaultValue="Mike"
-                            placeholder="City"
+                            placeholder="Sunnywood"
                             type="text"
                           />
                         </FormGroup>
                       </Col>
                       <Col className="px-md-1" md="4">
                         <FormGroup>
-                          <label>Country</label>
+                          <label>State</label>
                           <Input
-                            defaultValue="Andrew"
-                            placeholder="Country"
+                            placeholder="CA"
                             type="text"
                           />
                         </FormGroup>
@@ -122,14 +114,43 @@ class UserProfile extends React.Component {
                       </Col>
                     </Row>
                     <Row>
+                    <Col className="pr-md-1" md="6">
+                      <FormGroup>
+                        <label>Title</label>
+                        <Input
+                          placeholder="Graphic and Web Designer"
+                          type="text"
+                        />
+                      </FormGroup>
+                    </Col>
+                    <Col className="pl-md-1" md="6">
+                      <FormGroup>
+                        <label for="exampleSelect">Time Zone</label>
+                        <Input type="select" name="select" id="exampleSelect">
+                          <option className="text-primary">Eastern</option>
+                          <option className="text-primary">Central</option>
+                          <option className="text-primary">Mountain</option>
+                          <option className="text-primary">Pacific</option>
+                        </Input>
+                      </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
                       <Col md="8">
+                      <FormGroup>
+                          <label for="exampleCustomFileBrowser">Photo</label>
+                          <CustomInput type="file" id="exampleCustomFileBrowser" name="customFile" className="text-primary"/>
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md="8">
+                      
                         <FormGroup>
                           <label>About Me</label>
                           <Input
                             cols="80"
-                            defaultValue="Lamborghini Mercy, Your chick she so thirsty, I'm in
-                            that two seat Lambo."
-                            placeholder="Here can be your description"
+                            placeholder="Here you can describe yourself professionally and personally."
                             rows="4"
                             type="textarea"
                           />
@@ -141,6 +162,9 @@ class UserProfile extends React.Component {
                 <CardFooter>
                   <Button className="btn-fill" color="primary" type="submit">
                     Save
+                  </Button>
+                  <Button className="btn float-right" type="submit">
+                    Deactive Account
                   </Button>
                 </CardFooter>
               </Card>
@@ -170,7 +194,7 @@ class UserProfile extends React.Component {
                     Kanye I love Rick Owens’ bed design but the back is...
                   </div>
                 </CardBody>
-                <CardFooter>
+                {/* <CardFooter>
                   <div className="button-container">
                     <Button className="btn-icon btn-round" color="facebook">
                       <i className="fab fa-facebook" />
@@ -182,7 +206,7 @@ class UserProfile extends React.Component {
                       <i className="fab fa-google-plus" />
                     </Button>
                   </div>
-                </CardFooter>
+                </CardFooter> */}
               </Card>
             </Col>
           </Row>
