@@ -1,10 +1,7 @@
 import Dashboard from "views/Dashboard.jsx";
-import Icons from "views/Icons.jsx";
-import Map from "views/Map.jsx";
 import Notifications from "views/Notifications.jsx";
-// import Rtl from "views/Rtl.jsx";
-// import TableList from "views/TableList.jsx";
-// import Typography from "views/Typography.jsx";
+import Clients from "views/Clients.jsx";
+import Projects from "views/Projects.jsx";
 import UserProfile from "views/UserProfile.jsx";
 
 var routes = [
@@ -17,19 +14,19 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/icons",
+    path: "/client",
     name: "CLIENTS",
     rtlName: "الرموز",
     icon: "tim-icons icon-atom",
-    component: Icons,
+    component: Clients,
     layout: "/admin"
   },
   {
-    path: "/map",
+    path: "/project",
     name: "PROJECTS",
     rtlName: "خرائط",
     icon: "tim-icons icon-pin",
-    component: Map,
+    component: Projects,
     layout: "/admin"
   },
   {

@@ -87,6 +87,9 @@ var UserSchema = new Schema({
             "Description should be 250 characters or less."
         ]
     },
+    timeZone: {
+        type: String
+    },
     userCreated: {
         type: Date,
         default: Date.now
