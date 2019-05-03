@@ -54,7 +54,7 @@ var UserSchema = new Schema({
         state: {
             type: String,
             uppercase: true,
-            required: true,
+            required: false,
             enum: statesArray
         },
         zip: {
@@ -124,6 +124,7 @@ UserSchema.methods.lastUpdatedDate = function() {
     return this.dateUpdated;
 };
 
-var User = mongoose.model("User", UserSchema);
+
+var User = mongoose.model("users", UserSchema);
 
 module.exports = User;
