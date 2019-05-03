@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- bootstrap CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- google-fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200i,300,300i,400,400i,500,600,700,800,900"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- Added custom css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+    </script>
+    <title>Sumit</title>
+</head>
+
+<body class="img-responsive">
+
+    <!-- Main Content -->
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <!-- Fixed navbar -->
+        <div id="full-bar">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <span class="navbar-brand" href="#">
+                    <a class="navbar-brand" id="logo" href="index.html">SUMIT</a>
+                </span>
+            </nav>
+        </div>
+
+
+       <div id="logInView">
+           <h3>Log In</h3>
+           <div class="row">
+               <div class="col-lg-3">
+                   <form id="signin" name="signin" method="post" action="signin">
+                       <div class="form-group">
+                           <label for="email">Email</label> 
+                           <input type="email" name="email" class="form-control" id="userName" placeholder="Email"
+                               required>
+                       </div>
+
+                       <div class="form-group">
+                            <label for="password">Password</label> 
+                           <input type="password" name="password" class="form-control" id="userPassword"
+                               placeholder="Password" required>
+                           <div>
+                               <small class="form-text text-muted">
+                                   <a href="/signup" id="forgotPass">Don't have an account? Create one. </a><br>
+                                   <a href="#" id="forgotPass">Forgot Password?</a> 
+                               </small>
+                           </div>
+                       </div>
+                       <button type="submit" class="btn btn-outline-warning" id="logSubmit">Submit</button>
+                   </form>
+               </div>
+           </div>
+       </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+        </footer>
+
+    </div>
+</body>
+
+</html>

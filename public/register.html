@@ -66,33 +66,63 @@
         </div>
 
 
-       <div id="logInView">
-           <h3>Log In</h3>
-           <div class="row">
-               <div class="col-lg-3">
-                   <form id="signin" name="signin" method="post" action="signin">
+       <!-- Create account Form -->
+       <div id="createAccount">
+           <form id="signup" name="signup" method="post" action="/signup">
+               <h3 id="create-acct">Create Account</h3>
+               <div class="row">
+                   <div class="col-lg-2">
                        <div class="form-group">
-                           <label for="email">Email</label> 
-                           <input type="email" name="email" class="form-control" id="userName" placeholder="Email"
-                               required>
+                           <label for="firstName">First Name</label>
+                           <input type="text" name="firstName" class="form-control" id="firstname"
+                               placeholder="First Name" required>
                        </div>
-
+                   </div>
+                   <div class="col-lg-2">
                        <div class="form-group">
-                            <label for="password">Password</label> 
-                           <input type="password" name="password" class="form-control" id="userPassword"
-                               placeholder="Password" required>
-                           <div>
-                               <small class="form-text text-muted">
-                                   <a href="/signup" id="forgotPass">Don't have an account? Create one. </a><br>
-                                   <a href="#" id="forgotPass">Forgot Password?</a> 
-                               </small>
-                           </div>
+                           <label for="lastName">Last Name</label>
+                           <input type="text" name="lastName" class="form-control" id="lastname"
+                               placeholder="Last Name" required>
                        </div>
-                       <button type="submit" class="btn btn-outline-warning" id="logSubmit">Submit</button>
-                   </form>
+                   </div>
                </div>
-           </div>
+               <div class="row">
+                   <div class="col-lg-4">
+                       <form>
+                           <div class="form-group">
+                               <label for="email">Email</label>
+                               <input type="email" name="email" class="form-control" id="email"
+                                   aria-describedby="emailHelp" placeholder="Email" required>
+                               <!-- <small id="emailHelp" class="form-text text-muted">Your email will be set as
+                                   your username.</small> -->
+                           </div>
+
+                           <div class="form-group">
+                               <label for="password">Password</label>
+                               <input type="password" name="password" class="form-control" id="userPassword"
+                                   placeholder="Password" required>
+                           </div>
+                           <hr>
+
+                           <div class="form-group">
+                               <label for="password2">Confirm Password</label>
+                               <input type="password" name="password2" class="form-control" id="userPassword"
+                                   placeholder="Password" required>
+                           </div>
+                           <hr>
+
+                           <button type="submit" class="btn btn-outline-warning" id="newAcctSubmit"
+                               value="Sign Up">Submit</button>
+                       </form>
+                   </div>
+               </div>
+           </form>
        </div>
+
+        <!-- Section 3 - Dashboard Perspective -->
+        <div class="container-fluid">
+
+        </div>
 
         <!-- FOOTER -->
         <footer class="footer">
