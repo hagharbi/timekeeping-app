@@ -9,13 +9,13 @@ router.get("/login", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/login.html"));
 });
 
-router.get("/register", function(req, res) {
+router.get("/signup", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/register.html"));
 });
 
 // If no other routes are hit, send the React app
 router.get("/dashboard", function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/public/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 module.exports = router;

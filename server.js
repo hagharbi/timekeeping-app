@@ -24,7 +24,8 @@ const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
 mongoose
   .connect(
-    db || "mongodb://localhost/timekeeperapp", {
+    //db || 
+    "mongodb://localhost/timekeeperapp", {
       useNewUrlParser: true
     }
   )
