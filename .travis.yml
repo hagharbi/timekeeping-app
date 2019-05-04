@@ -4,7 +4,7 @@ branches:
   only:
   - master
 cache:
-  directories:
-    - node_modules
+  directories:    
+  - node_modules
 services:
   - mongodb
