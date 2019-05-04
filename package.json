@@ -148,6 +148,8 @@
     "pascalcase": "^0.1.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1",
     "path": "^0.12.7",
     "path-dirname": "^1.0.2",
     "path-exists": "^3.0.0",
