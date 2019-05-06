@@ -4,7 +4,7 @@ const db = require("../models");
 module.exports = {
     // findOne
     findById: function(req, res) {
-        db.Book
+        db.User
             .findById(req.params.id)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
@@ -15,7 +15,7 @@ module.exports = {
     //update to make User inactive
     //update to make User admin
 
-};
+
 
 //Client
     //findAll related to one User
@@ -33,6 +33,28 @@ module.exports = {
     //update project info
     //update upon completion
     //update to make project inactive (soft delete)
+
+
+    findByIds: function(req, res) {
+        db.Project
+            .findById(req.params.id)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    createNewProject: function(req, res) {
+        // const newProject = new Project({
+        //     title: req.body.title
+        // });
+        // newProject
+        db.Project
+        .save()
+        .then(function(dbProject) {
+            return db.User.findOneAndUpdate({ _id: req.params.id }, { projects: dbProject._id }, { new: true });
+        })
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+    }
+};
 
 
 //Milestone

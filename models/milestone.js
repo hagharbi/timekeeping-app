@@ -55,7 +55,7 @@ MilestoneSchema.methods.lastUpdatedDate = function() {
     return this.lastUpdate;
 };
 
-MilestoneSchema.methods.completionDate = function() {
+MilestoneSchema.methods.lastCompletionDate = function() {
     this.completionDate = Date.now();
     return this.completionDate;
 };

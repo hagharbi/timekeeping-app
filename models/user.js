@@ -124,7 +124,7 @@ UserSchema.methods.lastUpdatedDate = function() {
     return this.dateUpdated;
 };
 
+let User = mongoose.models.users || mongoose.model("users", UserSchema);
 
-var User = mongoose.model("users", UserSchema);
 
 module.exports = User;

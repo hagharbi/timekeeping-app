@@ -72,7 +72,7 @@ ProjectSchema.methods.lastUpdatedDate = function() {
     return this.lastUpdate;
 };
 
-ProjectSchema.methods.completionDate = function() {
+ProjectSchema.methods.lastCompletionDate = function() {
     this.completionDate = Date.now();
     return this.completionDate;
 };

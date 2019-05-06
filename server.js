@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const passport = require("passport");
 const users = require("./routes/api/users");
+const projects = require("./routes/api/projects");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -27,9 +28,7 @@ const db = require("./config/keys").mongoURI;
 // Connect to MongoDB
 mongoose
   .connect(
-    db || "mongodb://localhost/timekeeperapp", {
-      useNewUrlParser: true
-    }
+    db
   )
   .then(() => console.log("MongoDB successfully connected"))
   .catch(err => console.log(err));
@@ -40,6 +39,7 @@ mongoose
   require("./config/passport")(passport);
   // Routes
   app.use("/api/users", users);
+  app.use("/api/projects", projects);
   
 // Connect to the Mongo DB
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/timekeeperapp")

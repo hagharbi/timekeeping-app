@@ -108,4 +108,13 @@ router.post("/login", (req, res) => {
     });
 });
 
+router.get("/getuser", (req, res) => {
+    User.findOne({
+        email: req.body.email
+    }).then(user => {
+        res.json(user);
+    });
+
+});
+
 module.exports = router;
