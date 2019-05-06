@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-
-import { userActions } from '../_actions';
+import React  from "react";
+import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../actions/authActions";
 
 class RegisterPage extends React.Component {
     constructor(props) {
@@ -13,13 +13,30 @@ class RegisterPage extends React.Component {
                 firstName: '',
                 lastName: '',
                 email: '',
-                password: ''
+                password: '',
+                password2: "",
             },
             submitted: false
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        // If logged in and user navigates to Register page, should redirect them to dashboard
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push("/dashboard");
+        }
+    }
+    
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+    
     }
 
     handleChange(event) {
@@ -42,8 +59,19 @@ class RegisterPage extends React.Component {
         if (user.firstName && user.lastName && user.email && user.password) {
             dispatch(userActions.register(user));
         }
+        const newUser = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password,
+            password2: this.state.password2
+        };
+
+        this.props.registerUser(newUser, this.props.history);
+
     }
 
+
+    
     render() {
         const { registering  } = this.props;
         const { user, submitted } = this.state;
@@ -79,6 +107,13 @@ class RegisterPage extends React.Component {
                             <div className="help-block">Password is required</div>
                         }
                     </div>
+                    <div className={'form-group' + (submitted && !user.password2 ? ' has-error' : '')}>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" className="form-control" name="password2" value={user.password2} onChange={this.handleChange} />
+                        {submitted && !user.password2 &&
+                            <div className="help-block">Confirm Password</div>
+                        }
+                    </div>
                     <div className="form-group">
                         <button className="btn btn-primary">Register</button>
                         {registering && 
@@ -92,12 +127,18 @@ class RegisterPage extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    const { registering } = state.registration;
-    return {
-        registering
-    };
-}
+RegisterPage.propTypes = {
+    registerUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+};
 
-const connectedRegisterPage = connect(mapStateToProps)(RegisterPage);
-export { connectedRegisterPage as RegisterPage };
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+});
+
+export default connect(
+    mapStateToProps,
+    { registerUser }
+)(withRouter(RegisterPage));
