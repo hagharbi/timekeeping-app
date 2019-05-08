@@ -128,6 +128,7 @@
     "nanomatch": "^1.2.13",
     "negotiator": "^0.6.1",
     "nice-try": "^1.0.5",
+    "nodemon": "^1.19.0",
     "nopt": "^1.0.10",
     "normalize-path": "^3.0.0",
     "npm-run-path": "^2.0.2",

@@ -60,6 +60,6 @@ MilestoneSchema.methods.lastCompletionDate = function() {
     return this.completionDate;
 };
 
-var Milestone = mongoose.model("Milestone", MilestoneSchema);
+let Milestone = mongoose.models.milestones || mongoose.model("milestones", MilestoneSchema);
 
 module.exports = Milestone;

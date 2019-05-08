@@ -108,9 +108,11 @@ router.post("/login", (req, res) => {
     });
 });
 
+//access one user's info (used to test associations)
 router.get("/getuser", (req, res) => {
+    let email = req.body.email
     User.findOne({
-        email: req.body.email
+        email
     }).then(user => {
         res.json(user);
     });

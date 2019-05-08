@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const projectsController = require("../../controllers/index.js");
+const projectsController = require("../../controllers/projects.js");
 
-
-router.route("/api/projects/:id")
+router.route("/createprojects")
     .post(projectsController.createNewProject)
+
+router.route("/find/:id")
+    .post(projectsController.findByIds)
 
 module.exports = router;

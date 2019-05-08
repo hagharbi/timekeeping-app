@@ -77,6 +77,6 @@ ProjectSchema.methods.lastCompletionDate = function() {
     return this.completionDate;
 };
 
-var Project = mongoose.model("Project", ProjectSchema);
+let Project = mongoose.models.projects || mongoose.model("projects", ProjectSchema);
 
 module.exports = Project;
