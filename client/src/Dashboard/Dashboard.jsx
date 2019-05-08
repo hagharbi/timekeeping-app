@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h1>Hi {user.firstName}!</h1>
-                <p>Welcome to you rdashboard</p>
+                <p>Welcome to your dashboard</p>
                 <p>
                     <Link to="/login">Logout</Link>
                 </p>

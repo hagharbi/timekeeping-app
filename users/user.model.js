@@ -27,17 +27,17 @@ var UserSchema = new Schema({
         trim: true,
         required: "Password is Required",
         validate: [
-        function(input) {
-        return input.length >= 6;
-        },
-        "Password should be longer."
-    ]
+            function (input) {
+                return input.length >= 6;
+            },
+            "Password should be longer."
+        ]
     },
     phone: {
         type: String,
         trim: true,
         validate: {
-            validator: function(v) {
+            validator: function (v) {
                 return /\d{3}-\d{3}-\d{4}/.test(v);
             },
             message: '{VALUE} is not a valid phone number!'
@@ -60,8 +60,8 @@ var UserSchema = new Schema({
         zip: {
             type: Number,
             validate: [
-                function(input) {
-                return input.length = 5;
+                function (input) {
+                    return input.length = 5;
                 },
                 "Zip code should be 5 digits."
             ]
@@ -81,8 +81,8 @@ var UserSchema = new Schema({
     description: {
         type: String,
         validate: [
-            function(input) {
-            return input.length <= 250;
+            function (input) {
+                return input.length <= 250;
             },
             "Description should be 250 characters or less."
         ]
@@ -105,21 +105,17 @@ var UserSchema = new Schema({
         type: Boolean,
         default: false
     },
-    clients: [
-        {
+    clients: [{
         type: Schema.Types.ObjectId,
         ref: "Client"
-    }
-    ],
-    projects: [
-        {
+    }],
+    projects: [{
         type: Schema.Types.ObjectId,
         ref: "Project"
-    }
-    ]
+    }]
 });
 
-UserSchema.methods.lastUpdatedDate = function() {
+UserSchema.methods.lastUpdatedDate = function () {
     this.dateUpdated = Date.now();
     return this.dateUpdated;
 };
