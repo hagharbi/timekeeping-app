@@ -30,6 +30,7 @@ class Dashboard extends React.Component {
 function mapStateToProps(state) {
     const { users, authentication } = state;
     const { user } = authentication;
+    console.log(user)
     return {
         user,
         users
