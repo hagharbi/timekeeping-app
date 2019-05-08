@@ -1,8 +1,10 @@
-var mongoose = require("mongoose");
+/* var mongoose = require("mongoose");
 const statesArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
+
+delete mongoose.connection.models['User'];
 
 var UserSchema = new Schema({
     firstName: {
@@ -124,11 +126,6 @@ UserSchema.methods.lastUpdatedDate = function() {
     return this.dateUpdated;
 };
 
-let User = mongoose.models.users || mongoose.model("users", UserSchema);
+let user = mongoose.models.users || mongoose.model("User", UserSchema);
 
-<<<<<<< HEAD
-=======
-var User = mongoose.model("User", UserSchema);
->>>>>>> c74a5bb8a2f15006d4833cccfade3faaef2f66b4
-
-module.exports = User;
+module.exports = user; */

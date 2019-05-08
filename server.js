@@ -16,6 +16,21 @@ const jwt = require('./config/jwt');
 const errorHandler = require('./config/error-handler');
 const PORT = process.env.PORT || 4000;
 
+// Database Setup for Prod Env
+// DB Config
+const db = require("./config/db").mongoURI;
+// Connect to MongoDB
+mongoose
+  .connect(
+    db || "mongodb://localhost/timekeeperapp", {
+      useNewUrlParser: true
+    }
+  )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
+
+  
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -31,18 +46,7 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
-// Database Setup for Prod Env
-// DB Config
-const db = require("./config/db").mongoURI;
-// Connect to MongoDB
-mongoose
-  .connect(
-    db || "mongodb://localhost/timekeeperapp", {
-      useNewUrlParser: true
-    }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+
 
 // use JWT auth to secure the api
 app.use(jwt());
