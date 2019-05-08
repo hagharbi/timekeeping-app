@@ -33,6 +33,17 @@ var UserSchema = new Schema({
             "Password should be longer."
         ]
     },
+    hash: {
+        type: String,
+        trim: true,
+        required: "Password is Required",
+        validate: [
+            function (input) {
+                return input.length >= 6;
+            },
+            "Password should be longer."
+        ]
+    },
     phone: {
         type: String,
         trim: true,
