@@ -4,8 +4,6 @@ const statesArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL",
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
-// delete mongoose.connection.models['User'];
-
 var UserSchema = new Schema({
     firstName: {
         type: String,
@@ -134,6 +132,6 @@ UserSchema.methods.lastUpdatedDate = function () {
 };
 
 
-let User = mongoose.models.users || mongoose.model("User", UserSchema);
+var User = mongoose.model("User", UserSchema);
 
 module.exports = User;

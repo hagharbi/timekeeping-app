@@ -1,5 +1,5 @@
 module.exports = {
-    //User: require("./user"),
+    User: require("./user"),
     Client: require("./client"),
     Project: require("./project"),
     Milestone: require("./milestone"),
