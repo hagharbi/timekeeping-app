@@ -1,0 +1,4 @@
+{
+    "connectionString": "mongodb://localhost/timekeeping-app",
+    "secret": "secret"
+}

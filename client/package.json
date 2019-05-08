@@ -10,7 +10,7 @@
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
