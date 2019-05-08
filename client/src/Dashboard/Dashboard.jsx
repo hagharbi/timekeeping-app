@@ -37,5 +37,5 @@ function mapStateToProps(state) {
     };
 }
 
-const connectedHomePage = connect(mapStateToProps)(Dashboard);
-export { connectedHomePage as Dashboard };
+const connectedDashboard = connect(mapStateToProps)(Dashboard);
+export { connectedDashboard as Dashboard };
