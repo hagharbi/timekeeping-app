@@ -46,11 +46,12 @@ TaskSchema.methods.lastUpdatedDate = function() {
     return this.lastUpdate;
 };
 
-TaskSchema.methods.lastCompletionDate = function() {
+TaskSchema.methods.completionDate = function() {
     this.completionDate = Date.now();
     return this.completionDate;
 };
 
-let Task = mongoose.models.tasks || mongoose.model("tasks", TaskSchema);
+
+var Task = mongoose.model("Task", TaskSchema);
 
 module.exports = Task;

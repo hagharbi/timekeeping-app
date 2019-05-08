@@ -72,11 +72,11 @@ ProjectSchema.methods.lastUpdatedDate = function() {
     return this.lastUpdate;
 };
 
-ProjectSchema.methods.lastCompletionDate = function() {
+ProjectSchema.methods.completionDate = function() {
     this.completionDate = Date.now();
     return this.completionDate;
 };
 
-let Project = mongoose.models.projects || mongoose.model("projects", ProjectSchema);
+var Project = mongoose.model("Project", ProjectSchema);
 
 module.exports = Project;

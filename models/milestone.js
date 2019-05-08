@@ -55,11 +55,11 @@ MilestoneSchema.methods.lastUpdatedDate = function() {
     return this.lastUpdate;
 };
 
-MilestoneSchema.methods.lastCompletionDate = function() {
+MilestoneSchema.methods.completionDate = function() {
     this.completionDate = Date.now();
     return this.completionDate;
 };
 
-let Milestone = mongoose.models.milestones || mongoose.model("milestones", MilestoneSchema);
+var Milestone = mongoose.model("Milestone", MilestoneSchema);
 
 module.exports = Milestone;

@@ -109,6 +109,6 @@ ClientSchema.methods.lastUpdatedDate = function() {
     return this.dateUpdated;
 };
 
-let Client = mongoose.models.clients || mongoose.model("clients", ClientSchema);
+var Client = mongoose.model("Client", ClientSchema);
 
 module.exports = Client;
