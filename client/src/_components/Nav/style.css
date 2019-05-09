@@ -1,0 +1,21 @@
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-brand {
+margin: 0 0 0 20vw;
+}
+
+#navbarNav {
+margin: 0 0 0 40vw;
+}
+
+.fa-save {
+color: silver;
+}
+
+#greact-logo {
+width: 25px;
+height: 25px;
+margin: -7px 0 0 0;
+}
