@@ -12,7 +12,6 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  CardText,
   FormGroup,
   Form,
   Input,
@@ -29,11 +28,31 @@ class Profile extends React.Component {
     handleDeleteUser(id) {
         return (e) => this.props.dispatch(userActions.delete(id));
     }
+    
+    constructor(props) {
+      super(props);
+  
+      this.toggleNavbar = this.toggleNavbar.bind(this);
+      this.state = {
+        collapsed: true
+      };
+    }
+  
+    toggleNavbar() {
+      this.setState({
+        collapsed: !this.state.collapsed
+      });
+    }
 
     render() {
         const { user, users } = this.props;
         return (
 
+
+
+        <Col>
+        <div className = "container">
+          <Row>
             <Row>
               <Col>
                 <Card>
@@ -183,7 +202,9 @@ class Profile extends React.Component {
                 </Card>
               </Col>
             </Row>
-                    
+          </Row>
+          </div>
+        </Col>         
         );
     }
 }

@@ -87,7 +87,7 @@ class Dashboard extends React.Component {
                     <Link to="/profile">Profile</Link>
                 </p>
             </div>
-            
+        <div className = "container">
           <Row>
             <Col md="12">
               <Card>
@@ -104,6 +104,7 @@ class Dashboard extends React.Component {
                             </Input>
                         </FormGroup>
                     </Col>
+                    <Col className = "col-md-3 col-lg-5"></Col>
                     <Col sm = "12" md="5" lg="4">
                         <FormGroup>
                             <Label for="searchFunction">Search</Label>
@@ -161,7 +162,7 @@ class Dashboard extends React.Component {
                     </Card>
                   </Col>
                   <Col sm = "12" md="6" lg="4">
-                    <Card>
+                    <Card body outline color="primary">
                         <CardHeader>
                             <Badge>Web Development</Badge>
                             <CardTitle tag="h3"><a href="http://www.npr.com">Build a new home page</a></CardTitle>
@@ -188,8 +189,8 @@ class Dashboard extends React.Component {
               </Card>
             </Col>
           </Row>
+          </div> 
           </Col>
-
         );
     }
 }

@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import { Nav } from '../_components/Nav/Nav';
-import { Footer } from '../_components/Footer'
 import { userActions } from '../_actions';
 
 import {
@@ -97,11 +96,7 @@ class Clients extends React.Component {
         const { user, users } = this.props;
         return (
 
-            
-
-            <Col Col md="12">
-            <Row>
-            
+        <Col>
         <Navbar color="light" light expand="md">
           <NavbarBrand href="/">reactstrap</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
@@ -133,13 +128,13 @@ class Clients extends React.Component {
             </Nav>
           </Collapse>
         </Navbar>
-      </Row>
+          <div className="container">
                 <Row>
-                    <Col md="12">
+                    <Col className = "col-md-12">
                     <Card>
                         <CardHeader>
                         <Row className="justify-content-between">
-                            <Col sm = "12" md="4" lg="3">
+                            <Col className = "col-12 col-md-4 col-lg-3">
                                 <FormGroup>
                                     <Label for="exampleSelect">Select</Label>
                                     <Input type="select" name="select" id="exampleSelect">
@@ -149,8 +144,9 @@ class Clients extends React.Component {
                                     </Input>
                                 </FormGroup>
                             </Col>
-                            <Col sm = "12" md="5" lg="4">
-                                <FormGroup>
+                            <Col className = "col-md-3 col-lg-5"></Col>
+                            <Col className = "col-12 col-md-5 col-lg-4">
+                                <FormGroup className="float-right">
                                     <Label for="searchFunction">Search</Label>
                                     <Input type="text" className="input" onChange={this.handleSearch} />
                                 </FormGroup>
@@ -188,9 +184,9 @@ class Clients extends React.Component {
                         </CardBody>
                     </Card>
                     </Col>
-                </Row>
-            </Col>  
-                    
+                </Row> 
+                </div> 
+                </Col> 
         );
     }
 }
