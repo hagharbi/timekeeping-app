@@ -39,39 +39,42 @@ class Landing extends Component {
               Sumit is an intuitive and simple time management system for independent contractors and freelancers
             </span>
             <br />
-            <Link
-            to="/register"
-              style={{
-                width: "300px",
-                height: "35px",
-                borderRadius: "5px 5px 0px 0px",
-                letterSpacing: "1.5px",
-                backgroundColor: "#777777",
-                fontWeight: "600",
-                color: "#000",
-                textShadow:"2px 2px rgba(0,0,0,0.2)",
-                margin: "20px 0 1px 0"
-              }}
-              className="btn  waves-effect waves-light hoverable accent-3 white-text"
-            >
-              Register
-            </Link><br/>
-            <Link
-              to="/login"
-              style={{
-                marginLeft: "2rem",
-                width: "300px",
-                borderRadius: "0px 0px 12px 5px",
-                letterSpacing: "1.5px",
-                fontWeight: "600",
-                backgroundColor: "rgb(199, 255, 255)",
-                textShadow:"1px 1px rgba(0,0,0,0.1)",
-                margin: "0 0 0 0"
-              }}
-              className="btn waves-effect hoverable black-text"
-            >
-              Log In
-            </Link>
+            <div className="col s6">
+              <Link
+                to="/register"
+                  style={{
+                    width: "140px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    backgroundColor: "#777777",
+                    fontWeight: "600",
+                    color: "#000",
+                    textShadow:"2px 2px rgba(0,0,0,0.2)",
+                    margin: "0 0 0 0"
+                  }}
+                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                >
+                  Register
+              </Link><br/>
+            </div>
+            <div className="col s6">
+              <Link
+                to="/login"
+                style={{
+                  marginLeft: "2rem",
+                  width: "140px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  fontWeight: "600",
+                  backgroundColor: "rgb(199, 255, 255)",
+                  textShadow:"1px 1px rgba(0,0,0,0.1)",
+                  margin: "0 0 0 0"
+                }}
+                className="btn btn-large btn-flat waves-effect hoverable white black-text"
+              >
+                Log In
+              </Link>
+            </div>
             </div>
           </div>
         </div>
