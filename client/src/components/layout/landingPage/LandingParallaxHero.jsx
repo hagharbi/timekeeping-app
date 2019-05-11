@@ -92,23 +92,23 @@ const createParallaxRight = (image, xOffset) => (
 
 const LandingParallaxHero = ({ yOffset }) => (
   <Container >
-  {createParallaxUp(Snowhill0, yOffset, 8)}
-  {createParallaxUp(CloudsUp, yOffset, 10)}
-    {createParallaxDown(Clouds, yOffset, 10)}
-    {createParallaxRight(CloudsOut, yOffset, 22)}
-    {createParallaxUp(Snowhill4, yOffset, 12)}
-    {createParallaxUp(ClockParalax, yOffset, 1)}
-    {createParallaxUp(CommentsParalax, yOffset, 4)}
- 
-    {createParallaxUp(StarsParalax, yOffset, 9)}
-    {createParallaxUp(Snowhill3, yOffset, 11)}
-    {createParallaxUp(CalendarParalax, yOffset, 7)}
-    {createParallaxRight(EnvilopeParalax, yOffset, 9)}
-    {createParallaxUp(Snowhill2, yOffset, 10)}
-    {createParallaxUp(Snowhill2, yOffset, 8)}
-    {createParallaxDown(GearsParalax, yOffset, 4)}
-    {createParallaxUp(Snowhill1, yOffset, 7)}
-    {createParallaxUp(CardOne, yOffset, 7)}
+      { createParallaxUp    (     Snowhill0,       yOffset,  8  )}
+      { createParallaxUp    (     CloudsUp,        yOffset, 10  )}
+      { createParallaxDown  (     Clouds,          yOffset, 10  )}
+      { createParallaxRight (     CloudsOut,       yOffset, 22  )}
+      { createParallaxUp    (     Snowhill4,       yOffset, 12  )}
+      { createParallaxUp    (     ClockParalax,    yOffset,  3  )}
+      { createParallaxUp    (     CommentsParalax, yOffset,  4  )}
+
+      { createParallaxUp    (     StarsParalax,    yOffset,  6  )}
+      { createParallaxUp    (     Snowhill3,       yOffset, 11  )}
+      { createParallaxUp    (     CalendarParalax, yOffset,  7  )}
+      { createParallaxRight (     EnvilopeParalax, yOffset,  6  )}
+      { createParallaxUp    (     Snowhill2,       yOffset, 10  )}
+      { createParallaxUp    (     Snowhill2,       yOffset,  8  )}
+      { createParallaxDown  (     GearsParalax,    yOffset,  4  )}
+      { createParallaxUp    (     Snowhill1,       yOffset,  7  )}
+      { createParallaxUp    (     CardOne,         yOffset,  7  )}
 
 
     <ParallaxFrontLayer>
