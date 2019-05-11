@@ -25,15 +25,16 @@ app.use(routes);
 // Database Setup for Prod Env
 // DB Config
 // const db = require("./config/keys").mongoURI;
-// Connect to MongoDB
-mongoose
-  .connect(
-     "mongodb://localhost/timekeeperapp", {
-      useNewUrlParser: true
-    }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+
+// // Connect to MongoDB
+// mongoose
+//   .connect(
+//     db || "mongodb://localhost/timekeeperapp", {
+//       useNewUrlParser: true
+//     }
+//   )
+//   .then(() => console.log("MongoDB successfully connected"))
+//   .catch(err => console.log(err));
 
 
   // Passport middleware
@@ -44,9 +45,9 @@ mongoose
   app.use("/api/users", users);
   
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/timekeeperapp")
-// .then(() => console.log("MongoDB successfully connected"))
-// .catch(err => console.log(err));
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/timekeeperapp")
+.then(() => console.log("MongoDB successfully connected"))
+.catch(err => console.log(err));
 
 // Start the API server
 app.listen(PORT, function() {
