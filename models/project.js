@@ -64,15 +64,21 @@ var ProjectSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Milestone"
     }
+    ],
+    logs: [
+        {
+        type: Schema.Types.ObjectId,
+        ref: "Log"
+    }
     ]
 });
 
-ProjectSchema.methods.lastUpdatedDate = function() {
+ProjectSchema.methods.updateDate = function() {
     this.lastUpdate = Date.now();
     return this.lastUpdate;
 };
 
-ProjectSchema.methods.completionDate = function() {
+ProjectSchema.methods.completeDate = function() {
     this.completionDate = Date.now();
     return this.completionDate;
 };

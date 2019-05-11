@@ -3,11 +3,11 @@ var mongoose = require("mongoose");
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 
-var TaskSchema = new Schema({
+var LogSchema = new Schema({
     title: {
         type: String,
         trim: true,
-        required: "Task Name is Required"
+        required: "A Title is Required"
     },
     category: {
         type: String,
@@ -32,6 +32,9 @@ var TaskSchema = new Schema({
     lastUpdate: {
         type: Date
     },
+    timeWorked: {
+        type: Number
+    },
     completionDate: {
         type: Date
     },
@@ -41,17 +44,17 @@ var TaskSchema = new Schema({
     }
 });
 
-TaskSchema.methods.lastUpdatedDate = function() {
+LogSchema.methods.updateDate = function() {
     this.lastUpdate = Date.now();
     return this.lastUpdate;
 };
 
-TaskSchema.methods.completionDate = function() {
+LogSchema.methods.completeDate = function() {
     this.completionDate = Date.now();
     return this.completionDate;
 };
 
 
-var Task = mongoose.model("Task", TaskSchema);
+var Log = mongoose.model("Log", LogSchema);
 
-module.exports = Task;
+module.exports = Log;

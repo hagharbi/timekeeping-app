@@ -3,5 +3,5 @@ module.exports = {
     Client: require("./client"),
     Project: require("./project"),
     Milestone: require("./milestone"),
-    Task: require("./task"),
+    Log: require("./log"),
 };  
