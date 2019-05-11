@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-import CloudsUp from "./imagesCode/CloudsUp";
-import CloudsOut from "./imagesCode/CloudsOut";
+
 import Clouds from "./imagesCode/Clouds";
 import Snowhill0 from "./imagesCode/SnowhillLayer0";
 import Snowhill1 from "./imagesCode/SnowhillLayer1";
@@ -16,7 +15,7 @@ import GearsParalax from "./imagesCode/GearsParalax";
 import StarsParalax from "./imagesCode/StarsParalax";
 import ClockParalax from "./imagesCode/ClockParalax";
 import CalendarParalax from "./imagesCode/CalendarParalax.jsx";
-import CardOne from "./imagesCode/CardOne";
+
 
 
 const Container = styled.div`
@@ -92,23 +91,20 @@ const createParallaxRight = (image, xOffset) => (
 
 const LandingParallaxHero = ({ yOffset }) => (
   <Container >
-      { createParallaxUp    (     Snowhill0,       yOffset,  8  )}
-      { createParallaxUp    (     CloudsUp,        yOffset, 10  )}
+      { createParallaxUp    (     CommentsParalax, yOffset,  9  )}
+      { createParallaxUp    (     Snowhill0,       yOffset,  13 )}
       { createParallaxDown  (     Clouds,          yOffset, 10  )}
-      { createParallaxRight (     CloudsOut,       yOffset, 22  )}
       { createParallaxUp    (     Snowhill4,       yOffset, 12  )}
-      { createParallaxUp    (     ClockParalax,    yOffset,  3  )}
-      { createParallaxUp    (     CommentsParalax, yOffset,  4  )}
-
+      { createParallaxUp    (     ClockParalax,    yOffset,  3.6)}
       { createParallaxUp    (     StarsParalax,    yOffset,  6  )}
       { createParallaxUp    (     Snowhill3,       yOffset, 11  )}
       { createParallaxUp    (     CalendarParalax, yOffset,  7  )}
       { createParallaxRight (     EnvilopeParalax, yOffset,  6  )}
       { createParallaxUp    (     Snowhill2,       yOffset, 10  )}
       { createParallaxUp    (     Snowhill2,       yOffset,  8  )}
-      { createParallaxDown  (     GearsParalax,    yOffset,  4  )}
+      { createParallaxDown  (     GearsParalax,    yOffset,  1  )}
       { createParallaxUp    (     Snowhill1,       yOffset,  7  )}
-      { createParallaxUp    (     CardOne,         yOffset,  7  )}
+      
 
 
     <ParallaxFrontLayer>

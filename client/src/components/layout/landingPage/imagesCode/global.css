@@ -49,6 +49,8 @@ a{
 }
 
 #cardOne {
+  position: absolute;
+  z-index: 99999999;
   width: 1250px;
-  margin: 0 0 0 20vw;
+  margin: 60vh 0 0 70vw;
 }

@@ -9,8 +9,14 @@ class Landing extends Component {
     return (
 
       <div id="mainHomeCont"
-      style={{ height: "100vh", width: "100vw", backgroundColor: "green"}} >
+           style= {{
+              height: "100vh",
+              width: "100vw",
+              backgroundColor: "green"
+            }} >
+{/* -----  Inserted paralax code from LandingPageHEro.jsx below in the <paralax/>tag  ----- */}
       <Parallax /> 
+{/* -----  Sets a secondary force absolute width for home page intro.  ----- */}
       <div className="homeBodyContainer" 
       style={{position: "absolute", zIndex: "9", height: "100vh", width: "100%", margin: "0 0 0 0"}} >
       <p style={{margin: "1vw 0 0 1vw"}}>
