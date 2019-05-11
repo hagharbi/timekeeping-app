@@ -1,0 +1,54 @@
+body {
+  /* background: linear-gradient(#66CCCC, #55AEAE, #33AEAE, BLACK); */
+}
+
+
+#clouds {
+  opacity: 0.1;
+}
+
+
+#SchutzParalax {
+  width: 100%;
+  margin: 10vw 0 0 50vw;
+}
+
+#ClockParalax {
+  width: 120%;
+  margin: 12vw 0 0 55vw;
+}
+
+* {
+  max-width: 100vw!important;
+max-height: auto;
+ 
+}
+
+details summary::-webkit-details-marker {
+  display:none!important;
+}
+
+a:focus{
+  outline: transparent!important;
+}
+
+a:active{
+  outline: transparent!important;
+}
+
+a:hover{
+  outline: transparent!important;
+}
+
+a{
+  outline: transparent!important;
+}
+
+#mainHomeCont {
+    background: linear-gradient(rgb(207, 209, 209), rgb(162, 163, 163), rgb(93, 94, 94), BLACK);
+}
+
+#cardOne {
+  width: 1250px;
+  margin: 0 0 0 20vw;
+}

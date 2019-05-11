@@ -1,29 +1,29 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Parallax from "./Parallax";
-
+import "./imagesCode/global.css";
 
 
 class Landing extends Component {
   render() {
     return (
 
-      <div className="container valign-wrapper" 
-      style={{ height: "100vh", width: "110vw", overflow: "none"}} >
+      <div id="mainHomeCont"
+      style={{ height: "100vh", width: "100vw", backgroundColor: "green"}} >
       <Parallax /> 
       <div className="homeBodyContainer" 
-      style={{position: "absolute", zIndex: "9", height: "100vh", width: "100vw", margin: "0 0 0 0", backgroundColor: "transparent"}} >
+      style={{position: "absolute", zIndex: "9", height: "100vh", width: "100%", margin: "0 0 0 0"}} >
       <p style={{margin: "1vw 0 0 1vw"}}>
       <span>
       <i style={{width: "40px", height: "40px", color:"#999999", margin: "15px 20px 0 0"}} className="material-icons medium">av_timer </i> </span> 
-      <span style={{fontSize: "65px", margin: "-10px 0 0 0", color:"#777777", float: "left"}}> sumit</span></p>
+      <span style={{fontSize: "35px", margin: "-10px 0 0 0", color:"white", float: "left"}}> sumit</span></p>
 
-      <div style={{backgroundColor: "#fff", width: "100vw", height: "10px", position: "absolute", zIndex: "9", top:"0", left: "0", right:"0", margin: "0 0 0 0"}} id="brdrTop"></div>
-      <div style={{backgroundColor: "#fff", width: "99.2vw", height: "10px", position: "absolute", zIndex: "8", bottom: "0", left: "0", right:"0", margin: "0 0 0 0.4vw"}} id="brdrBottom">&nbsp;</div>
-      <div style={{backgroundColor: "#fff", width: "10px", height: "200vh", position: "absolute", zIndex: "7", top:"0", bottom: "0", right: "0", margin: "0 0 0 0"}} id="brdrRight">&nbsp;</div>
-      <div style={{backgroundColor: "#fff", width: "10px", height: "200vh", position: "absolute", zIndex: "6", top:"0", bottom: "0", left: "0", margin: "0 0 0 0"}} id="brdrLeft">&nbsp;</div>
+      <div style={{backgroundColor: "#fff", width: "100vw", height: "10px", position: "absolute", zIndex: "9", top:"0", left: "0", right:"0", margin: "0 0 0 0", position: "fixed"}} id="brdrTop">&nbsp;</div>
+      <div style={{backgroundColor: "#fff", width: "99.2vw", height: "10px", position: "absolute", zIndex: "8", bottom: "0", left: "0", right:"0", margin: "0 0 0 0.4vw", position: "fixed"}} id="brdrBottom">&nbsp;</div>
+      <div style={{backgroundColor: "#fff", width: "10px", height: "200vh", position: "absolute", zIndex: "7", top:"0", bottom: "0", right: "0", margin: "0 0 0 0" , position: "fixed"}} id="brdrRight">&nbsp;</div>
+      <div style={{backgroundColor: "#fff", width: "10px", height: "200vh", position: "absolute", zIndex: "6", top:"0", bottom: "0", left: "0", margin: "0 0 0 0" , position: "fixed"}} id="brdrLeft">&nbsp;</div>
         <div className="row">
-          <div className="col s12 ">
+          <div style={{width: "1000vw"}}>
           {/* -------- container for intro text ------- */}
           <div style={{width: "20vw", textAlign: "right", margin: "20vh 0 0 0" }} className="herotext">
             <h4 style={{padding: "5px", color: "#efd387", textShadow:"2px 2px rgba(0,0,0,0.2)"}}>

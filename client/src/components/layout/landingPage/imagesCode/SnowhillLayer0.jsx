@@ -1,8 +1,8 @@
 import React from "react";
-
+import "./global.css";
 const SnowhillLayer0 = props => (
   <svg id="hillZ"
-  viewBox="0 0 1930 1000" {...props}>
+  viewBox="0 0 1928 1000" {...props}>
     <path
       fill="#fff"
       

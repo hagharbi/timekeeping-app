@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-
-
+import CloudsUp from "./imagesCode/CloudsUp";
+import CloudsOut from "./imagesCode/CloudsOut";
 import Clouds from "./imagesCode/Clouds";
 import Snowhill0 from "./imagesCode/SnowhillLayer0";
 import Snowhill1 from "./imagesCode/SnowhillLayer1";
@@ -16,18 +16,17 @@ import GearsParalax from "./imagesCode/GearsParalax";
 import StarsParalax from "./imagesCode/StarsParalax";
 import ClockParalax from "./imagesCode/ClockParalax";
 import CalendarParalax from "./imagesCode/CalendarParalax.jsx";
-
+import CardOne from "./imagesCode/CardOne";
 
 
 const Container = styled.div`
   height: 100vh;
   position: absolute;
-  z-index: "-99999999!important"
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-background-color: green;
+
 `;
 
 const ParallaxLayer = styled.div`
@@ -39,17 +38,17 @@ const ParallaxLayer = styled.div`
 `;
 
 const ParallaxFrontLayer = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index:"-9999999999";
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+width: 100%;
 `;
 
 const TransitionParallaxImage = styled(Snowhill0)`
-margin: -4px 0 0 0;
+max-width: 100%;
+vertical-align: bottom;
 `;
 
 const Content = styled.div`
@@ -57,7 +56,7 @@ const Content = styled.div`
   background-color: #fff;
 `;
 
-const createParallaxLayer = (image, yOffset, multiplicator) => (
+const createParallaxUp = (image, yOffset, multiplicator) => (
   <ParallaxLayer
     style={{
       transform: `translate3d(0, -${(yOffset * multiplicator) / 10}px, 0)`
@@ -67,20 +66,50 @@ const createParallaxLayer = (image, yOffset, multiplicator) => (
   </ParallaxLayer>
 );
 
+const createParallaxDown = (image, yOffset, multiplicator) => (
+  <ParallaxLayer
+    style={{
+      transform: `translate3d(0, +${(yOffset * multiplicator) / 10}px, 0)`
+    }}
+  >
+    {image()}
+  </ParallaxLayer>
+);
+
+
+
+const createParallaxRight = (image, xOffset) => (
+  <ParallaxLayer
+    style={{
+      'transform': 'translate('+ Math.abs(xOffset) +'px, '+ Math.abs(xOffset * 0.10) +'px)'
+  }}
+  >
+    {image()}
+  </ParallaxLayer>
+);
+
+
+
 const LandingParallaxHero = ({ yOffset }) => (
   <Container >
-  {createParallaxLayer(Snowhill0, yOffset, 6)}
-    {createParallaxLayer(Clouds, yOffset, 2 )}
-    {createParallaxLayer(Snowhill4, yOffset, 6)}
-    {createParallaxLayer(Snowhill3, yOffset, 7)}
-    {createParallaxLayer(Snowhill2, yOffset, 8)}
-    {createParallaxLayer(Snowhill1, yOffset, 9)}
-    {createParallaxLayer(EnvilopeParalax, yOffset, 6)}
-    {createParallaxLayer(GearsParalax, yOffset, 10)}
-    {createParallaxLayer(ClockParalax, yOffset, 0)}
-    {createParallaxLayer(CommentsParalax, yOffset, 5)}
-    {createParallaxLayer(CalendarParalax, yOffset, 7)}
-    {createParallaxLayer(StarsParalax, yOffset, 8)}
+  {createParallaxUp(Snowhill0, yOffset, 8)}
+  {createParallaxUp(CloudsUp, yOffset, 10)}
+    {createParallaxDown(Clouds, yOffset, 10)}
+    {createParallaxRight(CloudsOut, yOffset, 22)}
+    {createParallaxUp(Snowhill4, yOffset, 12)}
+    {createParallaxUp(ClockParalax, yOffset, 1)}
+    {createParallaxUp(CommentsParalax, yOffset, 4)}
+ 
+    {createParallaxUp(StarsParalax, yOffset, 9)}
+    {createParallaxUp(Snowhill3, yOffset, 11)}
+    {createParallaxUp(CalendarParalax, yOffset, 7)}
+    {createParallaxRight(EnvilopeParalax, yOffset, 9)}
+    {createParallaxUp(Snowhill2, yOffset, 10)}
+    {createParallaxUp(Snowhill2, yOffset, 8)}
+    {createParallaxDown(GearsParalax, yOffset, 4)}
+    {createParallaxUp(Snowhill1, yOffset, 7)}
+    {createParallaxUp(CardOne, yOffset, 7)}
+
 
     <ParallaxFrontLayer>
     <TransitionParallaxImage
@@ -96,5 +125,7 @@ const LandingParallaxHero = ({ yOffset }) => (
 LandingParallaxHero.propTypes = {
   yOffset: PropTypes.number.isRequired
 };
+
+
 
 export default LandingParallaxHero;
