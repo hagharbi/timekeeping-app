@@ -42,20 +42,20 @@ var MilestoneSchema = new Schema({
         type: Boolean,
         default: true
     },
-    tasks: [
+    logs: [
         {
         type: Schema.Types.ObjectId,
-        ref: "Task"
+        ref: "Log"
     }
     ]
 });
 
-MilestoneSchema.methods.lastUpdatedDate = function() {
+MilestoneSchema.methods.updateDate = function() {
     this.lastUpdate = Date.now();
     return this.lastUpdate;
 };
 
-MilestoneSchema.methods.completionDate = function() {
+MilestoneSchema.methods.completeDate = function() {
     this.completionDate = Date.now();
     return this.completionDate;
 };

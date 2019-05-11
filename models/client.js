@@ -54,7 +54,6 @@ var ClientSchema = new Schema({
             type: String,
             trim: true,
             uppercase: true,
-            required: true,
             enum: statesArray
         },
         zip: {
