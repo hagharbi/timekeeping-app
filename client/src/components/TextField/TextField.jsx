@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 import TextField from '@material-ui/core/TextField';
@@ -25,10 +26,11 @@ const useStyles = makeStyles(theme => ({
 
 function TextFields() {
     const classes = useStyles();
+
     const [values, setValues] = React.useState({
-        firstName: 'Hamza',
-        lastName: 'Agharbi',
-        email: 'hamza@gmail.com',
+        firstName: 'John',
+        lastName: 'Doe',
+        email: 'johnd@gmail.com',
         address: '6256 Greenwich Dr, San Diego, CA 92122',
         phone: '(858)222-4525'
     });
@@ -36,7 +38,7 @@ function TextFields() {
     const handleChange = name => event => {
         setValues({ ...values, [name]: event.target.value });
     };
-
+    
     return (
         <div>
             <div className="row">
