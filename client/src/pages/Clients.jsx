@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
 import CustomPaginationActionsTable from "../components/Table/Table";
+import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 
 class Client extends Component {
 
@@ -42,7 +43,10 @@ class Client extends Component {
       console.log(data)
       return (
         <div>
-          <CustomPaginationActionsTable clients={{ data }}/>
+            <ResponsiveDrawer />
+                <div className="col s6">
+                <CustomPaginationActionsTable clients={{ data }}/>
+                </div> 
         </div>
       );
     }
