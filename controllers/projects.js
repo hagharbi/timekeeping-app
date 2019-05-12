@@ -10,11 +10,17 @@ module.exports = {
     findOne: function(req, res) {
         console.log(req.params.id);
         return Project.findById(req.body.id)
+        .populate({
+            path: 'logs',
+            populate: { path: 'logs' }
+        })
+        .populate({
+            path: 'clients',
+            populate: { path: 'clients' }
+        })
         .then(dbProject => res.json(dbProject))
-        
+        .catch(err => res.status(422).json(err));
     },
-    //findAll related to one User ??
-    //findAll related to one User + one Client ??
 
     // ************** CREATE **********/
 
@@ -28,6 +34,8 @@ module.exports = {
             rate: req.body.rate,
             timeEst: req.body.timeEst,
             dueDate: req.body.dueDate,
+            user: req.body.userId,
+            client: req.body.clientID,
             $push: {notes: req.body.note}
         });
         console.log(newProject);

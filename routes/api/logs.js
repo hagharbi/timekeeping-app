@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const logsController = require("../../controllers/logs");
 
-// GET
+// FIND
 router.route("/findone")
-    .get(logsController.findOneLog);
+    .post(logsController.findOneLog);
 
 // POST
 router.route("/create")
