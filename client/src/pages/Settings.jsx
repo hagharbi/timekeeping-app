@@ -1,133 +1,72 @@
-import React from 'react';
-import classNames from 'classnames';
-import { makeStyles } from '@material-ui/styles';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../actions/authActions";
+import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
-import TextField from '@material-ui/core/TextField';
-
-const useStyles = makeStyles(theme => ({
-    container: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing,
-        marginRight: theme.spacing,
-        width: 200,
-    },
-    dense: {
-        marginTop: 19,
-    },
-    menu: {
-        width: 200,
-    },
-    
-}));
+import TextField from "../components/TextField/TextField";
 
 
-function TextFields() {
-    const classes = useStyles();
-    const [values, setValues] = React.useState({
-        firstName: 'Hamza',
-        lastName: 'Agharbi',
-        email: 'hamza@gmail.com',
-        address: '6256 Greenwich Dr, San Diego, CA 92122',
-        phone: '(858)222-4525'
-    });
+class Settings extends Component {
 
-    const handleChange = name => event => {
-        setValues({ ...values, [name]: event.target.value });
+    constructor() {
+      super();
+      this.state = {
+        errors: {}
+      };
+    };
+  
+    componentDidMount() {
+      const userData = {
+        id: this.props.auth.user.id
+      };
+      //console.log('componentdid', this.props.auth.user.id)
+      this.props.findUserDetails(userData);
+    }
+  
+    componentWillReceiveProps(nextProps) {
+      if (nextProps.errors) {
+        this.setState({
+          errors: nextProps.errors
+        });
+      }
     };
 
-    return (
+    onLogoutClick = e => {
+        e.preventDefault();
+        this.props.logoutUser();
+      };
+
+    render() {
+      const { user } = this.props.auth;
+      const { data } = this.props.userDetails;
+      console.log(user);
+      console.log(data)
+      return (
         <div>
             <ResponsiveDrawer />
-
-                <div className="row">
-                    <div className="col s9" style={{ float: "right"}}>
-                            <h1>Settings</h1>
-                    <form className={classes.container} noValidate autoComplete="off">
-                       <div className="col s6">
-                            <TextField
-                                id="standard-name"
-                                label="First Name"
-                                className={classes.textField}
-                                value={values.firstName}
-                                onChange={handleChange('firstName')}
-                                margin="normal"
-                            />
-                        </div>        
-                        <div className="col s6">
-                            <TextField
-                                id="standard-name"
-                                label="Last Name"
-                                className={classes.textField}
-                                value={values.lastName}
-                                onChange={handleChange('lastName')}
-                                margin="normal"
-                            />
-                        </div>            
-                        <div className="col s6">
-                            <TextField
-                                id="standard-email"
-                                label="Email"
-                                className={classes.textField}
-                                value={values.email}
-                                onChange={handleChange('lastName')}
-                                margin="normal"
-                            />
-                        </div>           
-                        <div className="col s6">
-                            <TextField
-                                id="standard-password-input"
-                                label="Password"
-                                className={classes.textField}
-                                type="password"
-                                autoComplete="current-password"
-                                defaultValue="Default Value"
-                                helperText="Reset by replacing old password"
-                                margin="normal"
-                            />
-                        </div>
-                        <div className="col s6">
-                            <TextField
-                                id="standard-multiline-static"
-                                label="Address"
-                                multiline
-                                rows="4"
-                                value={values.address}
-                                className={classes.textField}
-                                margin="normal"
-                            />
-                        </div>
-                        <div className="col s6">
-                            <TextField
-                                id="standard-helperText"
-                                label="Phone Number"
-                                value={values.phone}
-                                className={classes.textField}
-                                margin="normal"
-                            />
-                        </div>
-                        <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                            <button
-                                style={{
-                                    width: "150px",
-                                    borderRadius: "3px",
-                                    letterSpacing: "1.5px",
-                                    marginTop: "1rem"
-                                }}
-                                type="submit"
-                                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                            >
-                                SAVE
-                            </button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
+                <div className="col s6">
+                <TextField clients={{ data }}/>
+                </div> 
         </div>
-    );
-}
+      );
+    }
+  }
 
-export default TextFields;
+
+  Settings.propTypes = {
+    findUserDetails: PropTypes.func.isRequired,
+    logoutUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    userDetails: PropTypes.object.isRequired
+    };
+
+  const mapStateToProps = state => ({
+    auth: state.auth,
+    userDetails: state.findUser.userDetails
+  });
+  
+  export default connect(
+    mapStateToProps,
+    { logoutUser, findUserDetails }
+  )(Settings);
