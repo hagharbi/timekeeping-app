@@ -11,17 +11,45 @@ module.exports = {
     findOneUser: function(req, res) {
         console.log(req.body);
         return User.findById(req.body.id)
+        .populate({
+            path: 'clients',
+            populate: { path: 'clients' }
+        })
+        .populate({
+            path: 'projects',
+            populate: { path: 'projects' }
+        })
         .then(dbUser => res.json(dbUser))
-        
+        .catch(err => res.status(422).json(err));
     },
 
     //findById for a specific Client
     findOneClient: function(req, res) {
         console.log(req.body);
         return Client.findById(req.body.id)
+        .populate({
+            path: 'projects',
+            populate: { path: 'projects' }
+        })
         .then(dbClient => res.json(dbClient))
-        
+        .catch(err => res.status(422).json(err));
     },
+
+/*     //Example for findById for many clients
+    findManyClients: function(req, res) {
+        console.log(req.body);
+        return Client .find({
+            '_id': { $in: [
+                mongoose.Types.ObjectId('4ed3ede8844f0f351100000c'),
+                mongoose.Types.ObjectId('4ed3f117a844e0471100000d'), 
+                mongoose.Types.ObjectId('4ed3f18132f50c491100000e')
+            ]}
+        }, function(err, docs){
+            if(err) throw(err);
+            res.json(docs )
+        });
+        
+    }, */
 
     //************* CREATE *************** */
 

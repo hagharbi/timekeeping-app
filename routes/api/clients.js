@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const clientsController = require("../../controllers/clients.js");
 
-//***** GET ***** */
+//***** FIND ***** */
 
 router.route("/finduser")
     .post(clientsController.findOneUser)
 
 router.route("/findclient")
-    .get(clientsController.findOneClient)
+    .post(clientsController.findOneClient)
 
 //**** POST ***** */
 

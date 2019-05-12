@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const projectsController = require("../../controllers/projects");
 
-// GET
+// FIND
 router.route("/findone")
-    .get(projectsController.findOne)
+    .post(projectsController.findOne)
 
 // POST
 router.route("/create")
