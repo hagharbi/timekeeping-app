@@ -1,4 +1,6 @@
+
 import React from 'react';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -20,6 +22,7 @@ import AvTimerIcon from '@material-ui/icons/AvTimer'
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import SettingsIcon from '@material-ui/icons/Settings';
 import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew';
 
 const drawerWidth = 240;
@@ -72,38 +75,65 @@ class ResponsiveDrawer extends React.Component {
       <div>
         <div className={classes.toolbar} />
         <Divider />
-        <List>
-          {['Dashboard'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<AvTimerIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <List>
-          {['Projects'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<AssignmentIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <List>
-          {['Clients'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<AssignmentIndIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <List>
-          {['Invoices'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{<AttachMoneyIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        <Link
+          to="/dashboard">
+          <List>
+            {['Dashboard'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>{<AvTimerIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+          </Link>
+
+        <Link
+          to="/projects">
+          <List>
+            {['Projects'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>{<AssignmentIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </Link>
+
+        <Link
+          to="/clients">
+          <List>
+            {['Clients'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>{<AssignmentIndIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </Link>
+
+        <Link
+          to="/invoices">
+          <List>
+            {['Invoices'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>{<AttachMoneyIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </Link>
+
+        <Link
+          to="/settings">
+          <List>
+              {['Settings'].map((text, index) => (
+                  <ListItem button key={text}>
+                    <ListItemIcon>{<SettingsIcon />}</ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItem>
+                ))}
+          </List>
+        </Link>
       </div>
     );
 

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
-import { findUserDetails } from "../../actions/findUserActions";
-import ResponsiveDrawer from "../ResponsiveDrawer/ResponsiveDrawer";
+import { logoutUser } from "../actions/authActions";
+import { findUserDetails } from "../actions/findUserActions";
+import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import Divider from '@material-ui/core/Divider';
 
 class Dashboard extends Component {

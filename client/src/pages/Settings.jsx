@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
-import CustomPaginationActionsTable from "../components/Table/Table";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
+import TextField from "../components/TextField/TextField";
 
-class Client extends Component {
+
+class Settings extends Component {
 
     constructor() {
       super();
@@ -45,14 +46,15 @@ class Client extends Component {
         <div>
             <ResponsiveDrawer />
                 <div className="col s6">
-                <CustomPaginationActionsTable clients={{ data }}/>
+                <TextField clients={{ data }}/>
                 </div> 
         </div>
       );
     }
   }
-  
-  Client.propTypes = {
+
+
+  Settings.propTypes = {
     findUserDetails: PropTypes.func.isRequired,
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
@@ -67,4 +69,4 @@ class Client extends Component {
   export default connect(
     mapStateToProps,
     { logoutUser, findUserDetails }
-  )(Client);
+  )(Settings);
