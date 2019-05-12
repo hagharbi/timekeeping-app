@@ -9,7 +9,7 @@ import Landing from "./components/layout/landingPage/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./components/dashboard/Dashboard.jsx";
 
 // < ----- Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -21,12 +21,12 @@ if (localStorage.jwtToken) {
   // < ----- Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
 
-// < ----- Check for expired token
+  // < ----- Check for expired token
   const currentTime = Date.now() / 1000; // < ----- to get in milliseconds
   if (decoded.exp < currentTime) {
     // < ----- Logout user
     store.dispatch(logoutUser());
-    
+
     // < ----- Redirect to login
     window.location.href = "./login";
   }
@@ -38,7 +38,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-        
+
             <Route exact path="/" component={Landing} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
