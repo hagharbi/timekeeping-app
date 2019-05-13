@@ -6,7 +6,6 @@ import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import TextFields1 from "../components/ClientTextFields/ClientField";
 
-
 class EditClient extends Component {
     constructor() {
         super();

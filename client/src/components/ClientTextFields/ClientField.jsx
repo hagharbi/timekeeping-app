@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
+import { updateClientDetails } from "../../actions/updateClientActions";
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     container: {
@@ -21,12 +22,53 @@ const styles = theme => ({
       marginTop: 19,
     },
     menu: {
-      width: 300,
-    },
+        width: 300,
+      },
+
 });
 
-
 class TextFields1 extends React.Component {
+
+    constructor(){
+        super();
+        this.state = {
+            errors: {}
+          };
+        this.handleSubmit = this.handleSubmit.bind(this);
+      }
+
+    handleSubmit(event) {
+        event.preventDefault()
+        console.log(this.state.client);
+        const clientData = {
+            id: this.state.client._id,
+            firstName: this.state.client.firstName,
+            lastName: this.state.client.lastName,
+            email: this.state.client.email,
+            phone: this.state.client.phone,
+            altEmail: this.state.client.altEmail,
+            altPhone: this.state.client.altPhone,
+            category: this.state.client.category,
+            title: this.state.client.title,
+            note: this.state.client.note,
+        };
+        console.log(clientData)
+        this.props.updateClientDetails(clientData)
+    };
+
+    beginningState(objectFound, event) {
+        this.setState({ client: objectFound });
+        console.log(this.state);
+    }
+
+    handleChange = e => {
+        this.setState({ client: Object.assign(
+            {}, 
+            this.state.client,
+            { [e.target.id]: e.target.value }
+          ),
+        })
+    }
 
     render() {
         const { classes } = this.props;
@@ -51,13 +93,16 @@ class TextFields1 extends React.Component {
 
             const id = path.replace("/clients/", "");
 
-            console.log(id);
-
             var elementPos = data.clients.map(function(x) {return x._id; }).indexOf(id); 
-            
             var objectFound = data.clients[elementPos];
-
+            console.log(this.state.client)
             console.log(objectFound)
+
+            if(!this.state.client) {
+                this.beginningState(objectFound);
+                return null
+            }
+            else {
             
             return (
                 <Grid container spacing={24}>
@@ -66,121 +111,188 @@ class TextFields1 extends React.Component {
                 </Grid>
                 <Grid item sm={7} lg={9}>
                 <h5>Client Settings</h5>
-                    <form className={classes.container} noValidate autoComplete="off">
-
+                    <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
                             required
-                            id="standard-name"
+                            id="firstName"
                             label="First Name"
                             className={classes.textField}
-                            value={data.clients[elementPos].firstName}
+                            value={this.state.client.firstName}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
-
+                        </Grid>
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
                             required
-                            id="standard-name"
+                            id="lastName"
                             label="Last Name"
                             className={classes.textField}
-                            value={data.clients[elementPos].lastName}
+                            value={this.state.client.lastName}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
-
+                        </Grid>
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
                             required
-                            id="standard-required"
+                            id="email"
                             label="Email"
-                            value={data.clients[elementPos].email}
+                            value={this.state.client.email}
                             className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
-
+                        </Grid>
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
-                            id="standard-required"
+                            id="phone"
                             label="Phone"
-                            value={data.clients[elementPos].phone}
+                            value={this.state.client.phone}
                             placeholder="xxx-xxx-xxxx"
                             className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
-
+                        </Grid>
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
-                            id="standard-required"
+                            id="altEmail"
                             label="Alt Email"
-                            value={data.clients[elementPos].altEmail}
+                            value={this.state.client.altEmail}
                             className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />                       
-
+                        </Grid>
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
-                            id="standard-required"
+                            id="altPhone"
                             label="Alt Phone"
-                            value={data.clients[elementPos].altPhone}
+                            value={this.state.client.altPhone}
                             placeholder="xxx-xxx-xxxx"
                             className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
+                        </Grid>
 
-{/*                         <TextField
-                            id="standard-required"
+{/*                     <Grid item xs ={12} sm={6} md={4} lg={3}>
+                        <TextField
+                            id="address.street"
                             label="Street Address"
-                            value={data.clients[elementPos].address.street}
+                            value={this.state.client.address.street}
                             className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
+                        </Grid>
 
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
-                            id="standard-required"
+                            id="address.city"
                             label="City"
-                            value={data.clients[elementPos].address.city}
+                            value={this.state.client.address.city}
                             className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
+                        </Grid>
 
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
-                            id="standard-required"
+                            id="address.state"
                             label="State"
-                            value={data.clients[elementPos].address.state}
+                            value={this.state.client.address.state}
                             className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
+                        </Grid>
 
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
-                            id="standard-required"
+                            id="address.zip"
                             label="Zip Code"
-                            value={data.clients[elementPos].address.zip}
+                            value={this.state.client.address.zip}
                             className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
-                        /> */}
+                        /> 
+                        </Grid>*/}
 
-
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
-                            id="standard-required"
+                            id="category"
                             label="Category"
-                            value={data.clients[elementPos].category}
+                            value={this.state.client.category}
                             className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
+                        </Grid>
 
-                        
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
-                            id="standard-required"
+                            id="title"
                             label="Title"
-                            value={data.clients[elementPos].title}
+                            value={this.state.client.title}
                             className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
+                        </Grid>
+
+                        <TextField
+                            id="note"
+                            label="Notes"
+                            multiline
+                            rows="8"
+                            value={this.state.client.notes}
+                            onChange={this.handleChange}
+                            className={classes.textField}
+                            margin="dense"
+                        />
+                        
+                        <Grid item xs ={12}>
+
+                        <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"margin-top": 15}} onClick={this.handleSubmit}>SUBMIT</Button>
+
+                        </Grid>
 
                     </form>
                     </Grid>
                 </Grid>
             )
-        }
+        }}
     }
 }
 
 TextFields1.propTypes = {
     classes: PropTypes.object.isRequired,
+    updateClientDetails: PropTypes.func.isRequired
 };
-  
-export default withStyles(styles)(TextFields1);
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    userDetails: state.findUser.userDetails
+  });
+
+
+export default connect(
+    mapStateToProps,
+    { updateClientDetails }
+  )(withStyles(styles)(TextFields1))
