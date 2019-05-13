@@ -28,17 +28,6 @@ const styles = theme => ({
 
 class TextFields1 extends React.Component {
 
-    handleChange = name => event => {
-        this.setState({ [name]: event.target.value });
-    };
-
-    state = {
-        name: 'Cat in the Hat2',
-        age: '',
-        multiline: 'Controlled',
-        currency: 'EUR',
-      };
-
     render() {
         const { classes } = this.props;
         const { data } = this.props.clients;
@@ -85,7 +74,6 @@ class TextFields1 extends React.Component {
                             label="First Name"
                             className={classes.textField}
                             value={data.clients[elementPos].firstName}
-                            onChange={this.handleChange('name')}
                             margin="normal"
                         />
 
@@ -95,7 +83,6 @@ class TextFields1 extends React.Component {
                             label="Last Name"
                             className={classes.textField}
                             value={data.clients[elementPos].lastName}
-                            onChange={this.handleChange('name')}
                             margin="normal"
                         />
 
