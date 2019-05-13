@@ -80,7 +80,7 @@ module.exports = {
         .then(function(dbClient) {
 
             // User association
-            return User.findOneAndUpdate({ _id: req.body.id }, { $push: {clients: dbClient._id }}, { new: true }).
+            return User.findOneAndUpdate({ _id: req.body.userId }, { $push: {clients: dbClient._id }}, { new: true }).
             populate({
                 path: 'clients',
                 populate: { path: 'clients' }
@@ -167,7 +167,7 @@ module.exports = {
         
         console.log(updatedUser)
 
-        const query = { _id: req.body.id };
+        const query = { _id: req.body.userId };
 
         console.log(query)
 
