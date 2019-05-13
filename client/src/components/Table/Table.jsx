@@ -95,11 +95,22 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: tru
   TablePaginationActions,
 );
 
-let counter = 0;
-function createData(name, calories, fat) {
-  counter += 1;
-  return { id: counter, name, calories, fat };
-}
+
+                  // =================================================== //
+                  //    Create Data is defined but never used.           //
+                  //    Guessing this will be so it is left and          //
+                  //    simply commented out.                            //
+                  // =================================================== //
+// let counter = 0;  
+// function createData(name, calories, fat) {  
+//   counter += 1; 
+//   return { id: counter, name, calories, fat }; 
+// }
+                  // =================================================== //
+                  //    Create Data is defined but never used.           //
+                  //    Guessing this will be so it is left and          //
+                  //    simply commented out.                            //
+                  // =================================================== //
 
 const styles = theme => ({
   root: {

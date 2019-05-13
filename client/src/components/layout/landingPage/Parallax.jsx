@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import { render } from "react-dom";
+// import { render } from "react-dom"; <----- defined but never used. commented out for now
 import { subscribe } from "subscribe-ui-event";
 import LandingParallaxHero from "./LandingParallaxHero";
 import "modern-normalize";
