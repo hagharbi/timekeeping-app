@@ -40,7 +40,20 @@ class TextFields1 extends React.Component {
     handleSubmit(event) {
         event.preventDefault()
         console.log(this.state.client);
-        this.props.updateClientDetails(this.state.client)
+        const clientData = {
+            id: this.state.client._id,
+            firstName: this.state.client.firstName,
+            lastName: this.state.client.lastName,
+            email: this.state.client.email,
+            phone: this.state.client.phone,
+            altEmail: this.state.client.altEmail,
+            altPhone: this.state.client.altPhone,
+            category: this.state.client.category,
+            title: this.state.client.title,
+            note: this.state.client.note,
+        };
+        console.log(clientData)
+        this.props.updateClientDetails(clientData)
     };
 
     beginningState(objectFound, event) {
@@ -244,7 +257,7 @@ class TextFields1 extends React.Component {
                         </Grid>
 
                         <TextField
-                            id="notes"
+                            id="note"
                             label="Notes"
                             multiline
                             rows="8"
