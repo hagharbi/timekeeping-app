@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+// import PropTypes from 'prop-types'; <----- defined but never used. commented out for now
+// import classNames from 'classnames'; <----- defined but never used. commented out for now
 import { makeStyles } from '@material-ui/styles';
 import TextField from '@material-ui/core/TextField';
 
