@@ -177,7 +177,7 @@ module.exports = {
 
     //update to make User inactive (soft delete)
     removeUser: function(req, res) {
-        const query = { _id: req.body.id };
+        const query = { _id: req.body.userId };
 
         console.log(query)
 
