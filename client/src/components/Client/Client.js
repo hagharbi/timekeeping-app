@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../actions/authActions";
-import { findUserDetails } from "../actions/findUserActions";
-import CustomPaginationActionsTable from "../components/Table/Table";
-import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
+import { logoutUser } from "../../actions/authActions";
+import { findUserDetails } from "../../actions/findUserActions";
+import CustomPaginationActionsTable from "../Table/Table";
 
 class Client extends Component {
 
@@ -19,7 +18,7 @@ class Client extends Component {
       const userData = {
         id: this.props.auth.user.id
       };
-      //console.log('componentdid', this.props.auth.user.id)
+      console.log('componentdid', this.props.auth.user.id)
       this.props.findUserDetails(userData);
     }
   
@@ -31,35 +30,24 @@ class Client extends Component {
       }
     };
 
-    onLogoutClick = e => {
-        e.preventDefault();
-        this.props.logoutUser();
-      };
-
     render() {
       const { user } = this.props.auth;
-      const { data } = this.props.userDetails;
+      // const { data } = this.props.userDetails;
       console.log(user);
-      console.log(data)
+      // console.log(data)
       return (
-        <div >
-            <ResponsiveDrawer />
-            <div>
-                <CustomPaginationActionsTable clients={{ data }}/>
-            </div> 
+        <div>
+          <CustomPaginationActionsTable />
         </div>
-        
       );
     }
   }
   
   Client.propTypes = {
-    findUserDetails: PropTypes.func.isRequired,
-    logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     userDetails: PropTypes.object.isRequired
-    };
-
+  };
+  
   const mapStateToProps = state => ({
     auth: state.auth,
     userDetails: state.findUser.userDetails

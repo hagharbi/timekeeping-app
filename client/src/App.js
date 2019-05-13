@@ -12,6 +12,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard.jsx";
 import Settings from "./pages/Settings";
 import Client from "./pages/Clients";
+import EditClient from "./pages/EditClient";
 import Projects from "./pages/Projects";
 
 // < ----- Check for token to keep user logged in
@@ -49,6 +50,7 @@ class App extends Component {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/settings" component={Settings} />
               <PrivateRoute exact path="/clients" component={Client} />
+              <PrivateRoute exact path="/clients/:id" component={EditClient} />
               <PrivateRoute exact path="/projects" component={Projects} />
               <PrivateRoute exact path="/invoices" component={Client} /> *// switch to invoices components when ready 
             </Switch>
