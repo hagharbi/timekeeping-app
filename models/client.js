@@ -54,11 +54,13 @@ var ClientSchema = new Schema({
             type: String,
             trim: true,
             uppercase: true,
-            enum: statesArray
+            enum: statesArray,
+            default: undefined
         },
         zip: {
             type: Number,
             trim: true,
+            default: undefined,
             validate: [
                 function(input) {
                 return input.length = 5;

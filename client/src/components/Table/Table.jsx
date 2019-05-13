@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
@@ -119,6 +120,11 @@ state = {
     rowsPerPage: 5,
   };
 
+  handleClick = (id, e) => {
+    e.preventDefault();
+    window.location = "/clients/" + id
+}
+
   handleChangePage = (event, page) => {
     this.setState({ page });
   };
@@ -147,7 +153,13 @@ state = {
       data.clients.sort((a, b) => (a.firstName < b.firstName ? -1 : 1));
 
       return (
+        <Grid container spacing={24}>
+        <Grid item sm={1} md={3}>
+          <Paper className={classes.paper}></Paper>
+        </Grid>
+        <Grid item sm={6} lg={9}>
         <Paper className={classes.root}>
+        <h5>Clients</h5>
           <div className={classes.tableWrapper}>
             <Table className={classes.table}>
               <TableHead>
@@ -162,10 +174,10 @@ state = {
                     <TableCell component="th" scope="row">Phone</TableCell>
                     <TableCell component="th" align="right">Projects</TableCell>
                   </TableRow>
-                  </TableHead>
+                </TableHead>
               <TableBody>
                 {data.clients.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(client => (
-                  <TableRow key={client.id}>
+                  <TableRow style={{cursor: 'pointer'}} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
                     <TableCell component="th" scope="row">
                       {client.firstName}
                     </TableCell>
@@ -201,6 +213,8 @@ state = {
             </Table>
           </div>
         </Paper>
+      </Grid>
+      </Grid>
       );
     }
   }
