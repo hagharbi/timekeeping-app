@@ -45,14 +45,14 @@ module.exports = {
         .then(function(dbProject) {
             
             // User association
-            User.findOneAndUpdate({ _id: req.body.id }, { $push: {projects: dbProject._id }}, { new: true }).
+            User.findOneAndUpdate({ _id: req.body.userId }, { $push: {projects: dbProject._id }}, { new: true }).
             populate({
                 path: 'projects',
                 populate: { path: 'projects' }
             });
 
             //Client association
-            return Client.findOneAndUpdate({ email: req.body.email }, { $push: {projects: dbProject._id }}, { new: true }).
+            return Client.findOneAndUpdate({ _id: req.body.clientID }, { $push: {projects: dbProject._id }}, { new: true }).
             populate({
                 path: 'projects',
                 populate: { path: 'projects' }
