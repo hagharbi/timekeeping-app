@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
+import ProjectsList from "../components/ProjectsList/ProjectsList";
 import Divider from '@material-ui/core/Divider';
 
-class Dashboard extends Component {
+class Projects extends Component {
 
     constructor() {
         super();
@@ -43,47 +44,14 @@ class Dashboard extends Component {
         // console.log(data)
         return (
             <>
-                <div>
+                <div style={{
+                    margin: "0 auto 0 2rem",
+                }}>
                     <ResponsiveDrawer />
                     <div className="container">
-                        <h1>DASHBOARD</h1>
-                        <div className="row">
-                            <div className="col s6">
-                                <div className="card">
-                                    <div className="card-header">
-                                        <h6>
-                                            Recent Acitivity
-                    </h6>
-                                    </div>
-                                    <Divider />
-                                    <div className="card-content">
-                                        <ul>
-                                            <li>
-                                                Project 1
-                      </li>
-                                            <li>
-                                                Project 2
-                      </li>
-                                            <li>
-                                                Project 3
-                      </li>
-                                            <li>
-                                                Project 4
-                      </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col s6">
-                                <div className="card">
-                                    <div className="card-header">
-                                        <h6>
-                                            Week Earnings
-                  </h6>
-                                        <Divider />
-                                    </div>
-                                </div>
-                            </div>
+                        <h1>PROJECTS</h1>
+                        <div>
+                            <ProjectsList />
                         </div>
                     </div>
                 </div >
@@ -92,7 +60,7 @@ class Dashboard extends Component {
     }
 }
 
-Dashboard.propTypes = {
+Projects.propTypes = {
     findUserDetails: PropTypes.func.isRequired,
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
@@ -113,4 +81,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     { logoutUser, findUserDetails }
-)(Dashboard);
+)(Projects);
