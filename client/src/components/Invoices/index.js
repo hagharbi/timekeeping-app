@@ -1,10 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import ReactToPrint from "react-to-print";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-import "./components/styles.css";
-
-import Row from "./components/Row";
+import "./styles.css";
+import Row from "./Row/index";
 
 class Invoices extends React.Component {
   constructor(props) {
@@ -51,14 +49,7 @@ class Invoices extends React.Component {
         companyLogo: URL.createObjectURL(file)
       }
     }));
-    //Or this
-    // e.persist();
-    // this.setState(prevState => ({
-    //   text: {
-    //     ...prevState.text,
-    //     companyLogo: URL.createObjectURL(e.target.files[0])
-    //   }
-    // }));
+
   };
 
   //Add default Image
@@ -171,7 +162,7 @@ class Invoices extends React.Component {
                     name="fullName"
                     width="100%"
                     placeholder="Your First and Last Name*"
-                    value={this.state.client.firstName }+{ this.state.client.LastName}
+                    value="First Last Name"
                     onChange={this.handleOnChangeClientData}
                   />
                 </div>

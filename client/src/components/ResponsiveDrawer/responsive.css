@@ -1,0 +1,8 @@
+*{
+    text-decoration: none!important;
+
+}
+
+details summary::-webkit-details-marker {
+    display:none!important;
+  }

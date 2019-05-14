@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "../styles.css";
-
-export default class Row extends Component {
+ class Row extends React.Component {
 
   render() {
     const { item, updateItem, removeItem } = this.props;
@@ -65,3 +64,5 @@ export default class Row extends Component {
     );
   }
 }
+
+export default Row;

@@ -23,6 +23,7 @@ import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import SettingsIcon from '@material-ui/icons/Settings';
 import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew';
+import "./responsive.css";
 
 const drawerWidth = 240;
 
