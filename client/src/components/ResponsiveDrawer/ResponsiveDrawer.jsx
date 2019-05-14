@@ -22,7 +22,8 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import SettingsIcon from '@material-ui/icons/Settings';
-import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 const drawerWidth = 240;
 
@@ -43,7 +44,10 @@ const styles = theme => ({
     },
   },
   menuButton: {
-    marginRight: 20,
+    menuButton: {
+      marginLeft: -12,
+      marginRight: 20,
+    },
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
@@ -141,37 +145,30 @@ class ResponsiveDrawer extends React.Component {
       <div className={classes.root}>
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
-            {/* Toggle Menu Button */}
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerToggle}
-              className={classes.menuButton}
+              <Toolbar>
+                <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+                  <MenuIcon />
+                </IconButton>
+            <Grid
+              justify="space-between" 
+              container
+              spacing={24}
             >
-              <MenuIcon />
-            </IconButton>
-
-            <Typography variant="h6" color="inherit" noWrap>
-              <h5>
-                <strong>
-                  SUMIT  {/* This will be replaced according to the chosen ListItem */}
-                </strong>
-              </h5>
-            </Typography>
-
-            {/* Logout Button */}
-            <IconButton
-              to="/"
-              onClick={this.onLogoutClick}
-              style={{
-                marginRight: "0"
-              }}
-            >
-              <PowerSettingsNew />
-            </IconButton>
-
-          </Toolbar>
+              <Grid item>
+                <Typography variant="h6" color="inherit" className={classes.grow}>
+                  SUMIT
+                </Typography>
+              </Grid>  
+              <Grid item>
+                  <Button
+                    onClick={this.onLogoutClick}
+                    variant="contained" color="secondary" className={classes.button}
+                  >
+                    Logout
+                  </Button>
+              </Grid>
+            </Grid>
+              </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
           {/* The implementation can be swapped with js to avoid SEO duplication of links. */}

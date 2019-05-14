@@ -20,7 +20,8 @@ import AvTimerIcon from '@material-ui/icons/AvTimer'
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew'
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 const drawerWidth = 240;
 
@@ -105,38 +106,30 @@ class MiniDrawer extends React.Component {
         return (
             <div className={classes.root}>
                 <CssBaseline />
-                <AppBar
-                    position="fixed"
-                    className={classNames(classes.appBar, {
-                        [classes.appBarShift]: this.state.open,
-                    })}
-                >
-                    <Toolbar disableGutters={!this.state.open}>
-                        <IconButton
-                            color="inherit"
-                            aria-label="Open drawer"
-                            onClick={this.handleDrawerOpen}
-                            className={classNames(classes.menuButton, {
-                                [classes.hide]: this.state.open,
-                            })}
-                        >
+                <AppBar position="fixed" className={classes.appBar}>
+                    <Toolbar>
+                        <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                             <MenuIcon />
                         </IconButton>
-                        <Typography variant="h6" color="inherit" noWrap>
-
-                            SUMIT  {/* This will be replaced according to the chosen ListItem */}
-
-                        </Typography>
-                        {/* LOGOUT BUTTON NEEDS SOME WORK */}
-                        <IconButton
-                            to="/"
-                            onClick={this.onLogoutClick}
-                            style={{
-                                marginRight: "0"
-                            }}
+                        <Grid
+                            justify="space-between"
+                            container
+                            spacing={24}
                         >
-                            <PowerSettingsNew />
-                        </IconButton>
+                            <Grid item>
+                                <Typography variant="h6" color="inherit" className={classes.grow}>
+                                    SUMIT
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Button
+                                    onClick={this.onLogoutClick}
+                                    variant="contained" color="secondary" className={classes.button}
+                                >
+                                    Logout
+                                </Button>
+                            </Grid>
+                        </Grid>
                     </Toolbar>
                 </AppBar>
                 <Drawer
