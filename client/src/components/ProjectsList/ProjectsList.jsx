@@ -9,6 +9,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import Fab from '@material-ui/core/Fab';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import "./projectlist.css";
 
 const styles = theme => ({
     container: {
@@ -65,7 +66,8 @@ class TextFields extends React.Component {
         return (
             <form
                 style={{
-                    margin: "1rem auto 0 auto",
+                    margin: "0 0 0 18%",
+                    width: "80%",
                 }}>
 
                 <TextField
@@ -95,7 +97,7 @@ class TextFields extends React.Component {
                     className={classes.textField}
                     margin="normal"
                 />
-                <FormControl className={classes.formControl}
+                <FormControl id="projDropdowns" className={classes.formControl}
                     style={{
                         margin: "1rem auto 0 2rem",
                     }}>
@@ -116,7 +118,7 @@ class TextFields extends React.Component {
                     </Select>
                 </FormControl>
 
-                <FormControl className={classes.formControl}
+                <FormControl id="projDropdowns" className={classes.formControl}
                     style={{
                         margin: "1rem auto 0 2rem",
                     }}>

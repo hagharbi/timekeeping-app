@@ -45,6 +45,8 @@
 #invoiceDropdown {
     position: relative;
     z-index: 3;
+    width: 92%;
+    margin: 0 0 0 8%;
 }
 
 /* ------------    E N D     ------------ */
@@ -86,6 +88,10 @@ input {
 .text input:hover {
     border-color: blue;
 
+}
+
+#text-right {
+    margin: 79px 0 0 0;
 }
 
 
@@ -254,6 +260,8 @@ thead th {
     width: 88%;
 }
 
+
+
 .table-container,
 #formMatrix {
     margin: 400px 0 0 0;
@@ -401,3 +409,49 @@ img {
 }
 
 /* ------------    E N D     ------------ */
+
+@media only screen and (max-width: 600px) {
+    .table-container {
+     width: 400px!important;
+     height: auto;
+     margin: 40px 0 0 -70px!important;
+     overflow-x: scroll;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+     #text-right {
+     width: 400px!important;
+     height: auto;
+     left: 0;
+     margin: 650px 0 0 -300px !important;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    #text-left {
+    width: 400px!important;
+
+    margin: 220px 0 0 0;
+   }
+ }
+
+ @media only screen and (max-width: 600px) {
+    .company-info {
+    width: 400px!important;
+
+    margin: 100px 0 0 0;
+   }
+ }
+
+ @media only screen and (max-width: 600px) {
+   * {
+   font-size: 10px;
+   }
+ }
+
+ @media only screen and (max-width: 600px) {
+    .logo-container {
+    margin: 0 0 0 -1px!important;
+    }
+  }

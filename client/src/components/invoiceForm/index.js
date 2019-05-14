@@ -1,7 +1,7 @@
 import React from "react";
 // import ReactDOM from "react-dom";
 import ReactToPrint from "react-to-print";
-import DayPickerInput from "react-day-picker/DayPickerInput";
+
 import Row from "./Row/index";
 import "./styles.css";
 
@@ -174,7 +174,7 @@ class Invoices extends React.Component {
         </div>
           <div className="container" id="mainBopdyInvoice" ref={el => (this.componentRef = el)}>
             <div className="text-container">
-              <div className="text left">
+              <div className="text left" id="text-left">
                 <h2 className="invoice-title" style={{ pointerEvents: "none", color: "#777777" }}>INVOICE
                 </h2>
                 <div className="company-info">
@@ -320,7 +320,7 @@ class Invoices extends React.Component {
                 </div>
               </div>
               {/* Right Starts here*/}
-              <div className="text right">
+              <div className="text right" id="text-right">
             
                 <div className="invoice-container">
                   <div className="invoice-num">

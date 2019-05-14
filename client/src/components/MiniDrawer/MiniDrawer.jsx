@@ -118,7 +118,7 @@ class MiniDrawer extends React.Component {
                         >
                             <Grid item>
                                 <Typography variant="h6" color="inherit" className={classes.grow}>
-                                    SUMIT
+                                    sumit
                                 </Typography>
                             </Grid>
                             <Grid item>
@@ -130,7 +130,9 @@ class MiniDrawer extends React.Component {
                                 </Button>
                             </Grid>
                         </Grid>
+                       
                     </Toolbar>
+                    
                 </AppBar>
                 <Drawer
                     variant="permanent"

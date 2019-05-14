@@ -25,7 +25,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
-const drawerWidth = 240;
+const drawerWidth = 180;
 
 const styles = theme => ({
   root: {

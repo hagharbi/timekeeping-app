@@ -45,6 +45,7 @@ class Dashboard extends Component {
       <>
         <div>
           <ResponsiveDrawer />
+        
           <div className="container">
             <h1>DASHBOARD</h1>
             <div className="row">
