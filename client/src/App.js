@@ -52,7 +52,7 @@ class App extends Component {
               <PrivateRoute exact path="/clients" component={Client} />
               <PrivateRoute exact path="/clients/:id" component={EditClient} />
               <PrivateRoute exact path="/projects" component={Projects} />
-              <PrivateRoute exact path="/invoices" component={Client} /> *// switch to invoices components when ready 
+              <PrivateRoute exact path="/invoices" component={Client} /> *// switch to invoices components when ready
             </Switch>
           </div>
         </Router>
