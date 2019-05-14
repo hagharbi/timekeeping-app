@@ -6,7 +6,7 @@ import "./components/styles.css";
 
 import Row from "./components/Row";
 
-class App extends React.Component {
+class Invoices extends React.Component {
   constructor(props) {
     super(props);
 
@@ -409,4 +409,4 @@ class App extends React.Component {
 }
 
 
-export default App;
+export default Invoices;

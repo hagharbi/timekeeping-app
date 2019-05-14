@@ -5,7 +5,7 @@ import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import ProjectsList from "../components/ProjectsList/ProjectsList";
-import Divider from '@material-ui/core/Divider';
+// import Divider from '@material-ui/core/Divider';  <--- defined but never used,  again! Leave commented out until it is needed
 
 class Projects extends Component {
 
