@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+// import classNames from 'classnames';  <--- defined but never used,  again! Leave commented out until it is needed
 import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
+// import MenuItem from '@material-ui/core/MenuItem';  <--- defined but never used,  again! Leave commented out until it is needed
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -36,15 +36,15 @@ const styles = theme => ({
 
 });
 
-// Set Priority color to change according to the user selection
-let priorityColor = colors => ({
+ // Set Priority color to change according to the user selection  <--- defined but never used,  again! Leave commented out until it is needed
+// let priorityColor = colors => ({
 
-})
+// })
 
-// Set Status field color to change according to the user selection
-let statusColor = colors => ({
+// Set Status field color to change according to the user selection  <--- defined but never used,  again! Leave commented out until it is needed
+// let statusColor = colors => ({
 
-})
+// })
 
 class TextFields extends React.Component {
     state = {
