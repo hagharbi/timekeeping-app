@@ -4,30 +4,30 @@ const clientsController = require("../../controllers/clients.js");
 
 //***** FIND ***** */
 
-router.route(    "/finduser"  )
+router.route("/finduser")
       .post(clientsController.findOneUser);
 
-router.route(  "/findclient"  )
+router.route("/findclient")
     .post(clientsController.findOneClient);
 
 //**** POST ***** */
 
-router.route(      "/create"  )
+router.route("/create")
     .post(clientsController.createClient);
 
-router.route("/updateclient"  )
+router.route("/updateclient")
     .post(clientsController.updateClient);
 
-router.route(  "/updateuser"  )
+router.route("/updateuser")
       .post(clientsController.updateUser);
 
-router.route( "/updatenotes"  )
+router.route("/updatenotes")
         .post(clientsController.addNotes);
 
-router.route("/removeclient"  )
+router.route("/removeclient")
     .post(clientsController.removeClient);
 
-router.route(  "/removeuser"  )
+router.route("/removeuser")
       .post(clientsController.removeUser);
 
 module.exports = router;
