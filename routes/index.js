@@ -13,10 +13,6 @@ router.get("/register", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/register.html"));
 });
 
-router.get("/invoices", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/invoice.html"));
-});
-
 // If no other routes are hit, send the React app
 router.get("/dashboard", function(req, res) {
   res.sendFile(path.join(__dirname, "../client/public/index.html"));
