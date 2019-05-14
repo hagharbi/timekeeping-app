@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
-import TextField from "../components/TextField/TextField";
+import TextField from "../components/SettingsTextField/UserSettingsField";
 
 
 class Settings extends Component {
@@ -39,6 +39,12 @@ class Settings extends Component {
 
     render() {
       const { user } = this.props.auth;
+
+      if (!this.props.userDetails) {
+        return null
+      }
+      else {
+
       const { data } = this.props.userDetails;
       console.log(user);
       console.log(data)
@@ -46,27 +52,27 @@ class Settings extends Component {
         <div>
             <ResponsiveDrawer />
                 <div className="col s6">
-                <TextField clients={{ data }}/>
+                <TextField user={{ data }}/>
                 </div> 
         </div>
       );
     }
   }
+}
 
+Settings.propTypes = {
+  findUserDetails: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  userDetails: PropTypes.object.isRequired
+  };
 
-  Settings.propTypes = {
-    findUserDetails: PropTypes.func.isRequired,
-    logoutUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    userDetails: PropTypes.object.isRequired
-    };
+const mapStateToProps = state => ({
+  auth: state.auth,
+  userDetails: state.findUser.userDetails
+});
 
-  const mapStateToProps = state => ({
-    auth: state.auth,
-    userDetails: state.findUser.userDetails
-  });
-  
-  export default connect(
-    mapStateToProps,
-    { logoutUser, findUserDetails }
-  )(Settings);
+export default connect(
+  mapStateToProps,
+  { logoutUser, findUserDetails }
+)(Settings);

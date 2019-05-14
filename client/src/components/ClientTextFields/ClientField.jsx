@@ -269,7 +269,7 @@ class TextFields1 extends React.Component {
                         
                         <Grid item xs ={12}>
 
-                        <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"margin-top": 15}} onClick={this.handleSubmit}>SUBMIT</Button>
+                        <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15}} onClick={this.handleSubmit}>SUBMIT</Button>
 
                         </Grid>
 
