@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ReactToPrint from "react-to-print";
 import DayPickerInput from "react-day-picker/DayPickerInput";
-import "./components/styles.css";
+// import "./components/styles.css";
 
-import Row from "./components/Row";
+import Row from "./Row/index";
 
 class Invoices extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Invoices extends React.Component {
         { centered: false, id: "tHead5", text: "Total" }
       ],
       items: [],
-      text: {
+      client: {
         companyLogo: null,
         company: "",
         fullName: "",
@@ -171,7 +171,7 @@ class Invoices extends React.Component {
                     name="fullName"
                     width="100%"
                     placeholder="Your First and Last Name*"
-                    value={this.state.client.firstName }+{ this.state.client.LastName}
+                    value={this.state.client.firstName }
                     onChange={this.handleOnChangeClientData}
                   />
                 </div>
@@ -250,7 +250,7 @@ class Invoices extends React.Component {
                     width="100%"
                     name="clientCompany"
                     placeholder="Client's Company"
-                    value={this.state.userX.userXCompany}
+                    value={this.state.client.clientCompany}
                     onChange={this.handleOnChangeUserXData}
                     className="compnay-name"
                   />
@@ -261,7 +261,7 @@ class Invoices extends React.Component {
                     width="100%"
                     name="clientName"
                     placeholder="Client's Name"
-                    value={this.state.userX.userXName}
+                    value={this.state.client.clientName}
                     onChange={this.handleOnChangeUserXData}
                   />
                 </div>
@@ -271,7 +271,7 @@ class Invoices extends React.Component {
                     width="100%"
                     name="cleintAddress"
                     placeholder="Client's Address"
-                    value={this.state.userX.userXAddress}
+                    value={this.state.client.clientAddress}
                     onChange={this.handleOnChangeUserXData}
                   />
                 </div>
@@ -281,7 +281,7 @@ class Invoices extends React.Component {
                     width="100%"
                     name="clientCity"
                     placeholder="City, State ZIP"
-                    value={this.state.userX.userXCity}
+                    value={this.state.client.clientCity}
                     onChange={this.handleOnChangeUserXData}
                   />
                 </div>
@@ -291,7 +291,7 @@ class Invoices extends React.Component {
                     width="100%"
                     name="clientCountry"
                     placeholder="Country"
-                    value={this.state.userX.userXCountry}
+                    value={this.state.client.clientCountry}
                     onChange={this.handleOnChangeUserXData}
                   />
                 </div>
@@ -308,7 +308,7 @@ class Invoices extends React.Component {
                   accept="image/*"
                 />
                 <img
-                  src={this.state.text.companyLogo}
+                  src={this.state.client.companyLogo}
                   crossOrigin="anonymous"
                   alt=""
                   onError={this.addDefaultSrc}
@@ -325,7 +325,7 @@ class Invoices extends React.Component {
                   <input
                     type="text"
                     className=""
-                    value={this.state.invoice.invoiceNum}
+                    value={this.state.client.invoiceNum}
                   />
                 </div>
                 <div className="sc-bZQynM frsoyH">

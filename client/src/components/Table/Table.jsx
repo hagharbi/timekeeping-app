@@ -188,7 +188,7 @@ state = {
                 </TableHead>
               <TableBody>
                 {data.clients.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(client => (
-                  <TableRow style={{cursor: 'pointer'}} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
+                  <TableRow hover style={{cursor: 'pointer'}} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
                     <TableCell component="th" scope="row">
                       {client.firstName}
                     </TableCell>
@@ -208,7 +208,7 @@ state = {
                 <TableRow>
                   <TablePagination
                     rowsPerPageOptions={[5, 10, 25]}
-                    colSpan={3}
+                    colSpan={6}
                     count={data.clients.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
