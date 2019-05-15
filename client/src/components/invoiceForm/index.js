@@ -1,8 +1,8 @@
 import React from "react";
 // import ReactDOM from "react-dom";
 import ReactToPrint from "react-to-print";
-
-import Row from "./Row/index";
+import "./style.css"
+import Row from "./Row";
 
 
 class Invoices extends React.Component {
@@ -146,6 +146,7 @@ class Invoices extends React.Component {
                   alt="print button"
                   className="print-btn"
                   id="print-btn"
+                  style={{backgroundColor: "#555555", color: "white", padding: "14px 10px 8px 10px", position: "fixed", top: "100px", right: "-40px", margin: "200px 0 0 0", borderRadius: "0 0 15px 15px", transform: "rotate(90deg)"}}
                 >
                   Print Invoice!
                 </a>
@@ -153,28 +154,10 @@ class Invoices extends React.Component {
               content={() => this.componentRef}
             />
           </div>
-          <div className="logo-container">
-          <br /> <br />
-            Click to + logo
-            <br />
-              150px
-       
-          <input
-            type="file"
-            className="upload-button"
-            onChange={this.handleFileUpload}
-            accept="image/*"
-          />
-          <img
-            src={this.state.client.companyLogo}
-            crossOrigin="anonymous"
-            alt=""
-            onError={this.addDefaultSrc}
-          />
-        </div>
+        
           <div className="container" id="mainBopdyInvoice" ref={el => (this.componentRef = el)}>
             <div className="text-container">
-              <div className="text left" id="text-left">
+              <div className="text left" id="text-left" style={{position: "absolute", margin: "0 0 0 0", padding: "0 0 0 0"}}>
                 <h2 className="invoice-title" style={{ pointerEvents: "none", color: "#777777" }}>INVOICE
                 </h2>
                 <div className="company-info">
@@ -320,7 +303,7 @@ class Invoices extends React.Component {
                 </div>
               </div>
               {/* Right Starts here*/}
-              <div className="text right" id="text-right">
+              <div className="text right" id="text-right" style={{position: "absolute", margin: "117px 0 0 240px", padding: "0 0 0 0"}}>
             
                 <div className="invoice-container">
                   <div className="invoice-num">
@@ -360,7 +343,9 @@ class Invoices extends React.Component {
               style={{
                 display: "flex",
                 flexDirection: "column",
-              
+                position: "absolute;",
+                margin: "860px 0 0 0",
+                padding: "0 0 200px 0"
               }}
             >
               <table>
@@ -404,21 +389,7 @@ class Invoices extends React.Component {
             </div>
           </div>
         </div>
-        <div className="print-container2">
-        <ReactToPrint
-          trigger={() => (
-            <a
-              href="#"
-              alt="print button"
-              className="print-btn"
-              id="print-btn2"
-            >
-              Print Invoice!
-            </a>
-          )}
-          content={() => this.componentRef}
-        />
-      </div>
+      
       </div>
     );
   }
