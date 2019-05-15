@@ -136,7 +136,9 @@ class Invoices extends React.Component {
 
   render() {
     return (
+     
       <div class="container" id="invoiceContainer">
+      <div style={{position: "fixed", top: "0", bottom: "0", left: "0", height: "100vh", width: "180px"}}>&nbsp;</div>
         <div className="wrapper">
           <div className="print-container">
             <ReactToPrint
@@ -146,7 +148,7 @@ class Invoices extends React.Component {
                   alt="print button"
                   className="print-btn"
                   id="print-btn"
-                  style={{backgroundColor: "#555555", color: "white", padding: "14px 10px 8px 10px", position: "fixed", top: "100px", right: "-40px", margin: "200px 0 0 0", borderRadius: "0 0 15px 15px", transform: "rotate(90deg)"}}
+                  style={{backgroundColor: "#555555", color: "white", padding: "20px 10px 8px 10px", position: "fixed", top: "0px", right: "-40px", margin: "100px 0 0 0", borderRadius: "0 0 15px 15px", transform: "rotate(90deg)"}}
                 >
                   Print Invoice!
                 </a>
