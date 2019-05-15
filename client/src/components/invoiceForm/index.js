@@ -3,7 +3,7 @@ import React from "react";
 import ReactToPrint from "react-to-print";
 
 import Row from "./Row/index";
-import "./styles.css";
+
 
 class Invoices extends React.Component {
   constructor(props) {
