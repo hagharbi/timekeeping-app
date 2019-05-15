@@ -1,120 +1,109 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:200,400,600,800');
 
+/*  <---------------------------------------
+                Index:
+                1. ) Global
+                2. )  General
+                3. ) Text & input
+                4. ) Table & elements
+                5. ) Wrapper
+                6. ) Containers
+                7. ) Image
+                8. ) Button
+                9. )
+                10.)
+                11.)
+                12.)
+---------------------------------------->  */
+/*  ---------------><--------------------  */
+
+/* ============= Global ================== */
+
 * {
-  font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif !important;
+    text-decoration: none !important;
 }
 
-table {
-  position: relative;
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-thead {
-  font-size: 1em;
-  font-weight: 500;
-  text-align: left;
-  color: #33aeae;
-  border-width: 2px;
-  border-style: solid;
-  border-color: #999999;
-}
-thead th {
-  text-align: left;
-  padding: 0.5em 1em;
+/* ------------    E N D     ------------ */
+
+/******************************************/
+
+/* ============== General =============== */
+
+.invoice-title {
+    font-size: 2rem;
+    line-height: 1.3125;
 }
 
-input {
-  width: 100%;
-  font-size: 1em;
-  font-weight: 500;
-  text-align: left;
-  color: rgb(0, 0, 0);
-  background-color: transparent;
-  outline: none;
-  border-width: 1px;
-  border-style: dashed;
-  border-color: transparent;
-  border-image: initial;
-  overflow: visible;
-}
-table input {
-  color: rgb(0, 0, 0);
-}
-.text input {
-  width: 100%;
-  font-size: 0.9em;
-  text-align: left;
-  color: #33aeae;
-  background-color: transparent;
-  outline: none;
-  border-width: 1px;
-  border-style: dashed;
-  border-color: transparent;
-  border-image: initial;
-  overflow: visible;
-}
-.text input.compnay-name {
-  font-size: 1.2em;
-  font-weight: 600;
-}
-.text input:hover {
-  border-color: rgb(123, 220, 181);
-}
-tbody tr {
-  border-bottom: 1px solid rgb(123, 220, 181);
-}
-tbody tr td {
-  position: relative;
-  padding: 1em;
-  overflow: hidden;
-}
-tbody tr td div {
-  width: 100%;
-  display: flex;
-  -webkit-box-pack: start;
-  justify-content: flex-start;
-}
-tbody input {
-  color: rgb(45, 62, 80);
-}
-
-.container {
-    position: relative;
+.company-info {
     display: flex;
     flex-direction: column;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 800px;
-    color: rgb(45, 62, 80);
-    backface-visibility: hidden;
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 0.5em 1.5em -0.5em;
-    border-radius: 10px 10px 30px 10px!important;
-    padding: 3em;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(242, 245, 248);
-    border-image: initial;
-    border-radius: 0.2em;
-    transition: transform 0.5s ease;
+    width: auto;
+    margin: 0px auto;
 }
 
-.text-container {
-    display: flex;
-    width: 100%;
+#invoiceDropdown {
+    position: relative;
+    z-index: 3;
+    width: 92%;
+    margin: 0 0 0 8%;
 }
+
+/* ------------    E N D     ------------ */
+
+/******************************************/
+
+/* ============ Text & Input ============ */
+
+input {
+    width: 100%;
+    font-size: 1em;
+    font-weight: 500;
+    text-align: left;
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    outline: none;
+    overflow: visible;
+}
+
+.text input {
+    width: 100%;
+    font-size: 0.9em;
+    text-align: left;
+    color: blue;
+    background-color: transparent;
+    outline: none;
+    border-width: 1px;
+    border-style: dashed;
+    border-color: transparent;
+    border-image: initial;
+    overflow: visible;
+}
+
+.text input.compnay-name {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.text input:hover {
+    border-color: blue;
+
+}
+
+#text-right {
+    margin: 79px 0 0 0;
+}
+
 
 .text.left {
     width: 100%;
-    height: 24em;
+    height: 10px;
     display: flex;
     -webkit-box-flex: 1;
     flex-grow: 1;
     flex-direction: column;
     -webkit-box-pack: justify;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: normal;
 }
 
@@ -125,20 +114,122 @@ tbody input {
     flex-grow: 1;
     flex-direction: column;
     -webkit-box-pack: justify;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-end;
 }
 
-.invoice-title {
-    font-size: 2rem;
-    line-height: 1.3125;
+#upldTXT {
+    position: absolute;
+    z-index: -1;
 }
 
-.company-info {
+input {
+    max-width: 32vw !important;
+    min-width: 265px;
+}
+
+/* ------------    E N D     ------------ */
+
+/******************************************/
+
+/* ========= Table & elements  ========== */
+
+table input {
+    color: rgb(0, 0, 0);
+}
+
+tbody tr {
+    border-bottom: 1px solid rgb(255, 0, 170);
+}
+
+tbody tr td {
+    position: relative;
+    /* padding: 1em; */
+    overflow: hidden;
+}
+
+tbody tr td div {
+    width: 100%;
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+}
+
+tbody input {
+    color: rgb(45, 62, 80);
+}
+
+table {
+    position: relative;
+    width: 92%;
+    margin: 0 0 0 8%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    /* overflow-x: hidden; */
+}
+
+thead {
+    font-size: 1em;
+    font-weight: 500;
+    text-align: left;
+    color: blue;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #999999;
+}
+
+thead th {
+    text-align: left;
+    padding: 0.5em 1em;
+}
+
+
+/* ------------    E N D     ------------ */
+
+/******************************************/
+
+/* ============== Wapper  =============== */
+
+.wrapper {
+    display: flex;
+    max-width: 80vw !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+    perspective: 500px;
+    background-color: rgba(255, 255, 255, 0);
+    margin: 0px auto;
+    padding: 10px 0px;
+    overflow: hidden;
+}
+
+/* ------------    E N D     ------------ */
+
+/******************************************/
+
+/* =========  All Containers  =========== */
+
+.container {
+    position: relative;
     display: flex;
     flex-direction: column;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
     width: 100%;
-    margin: 0px auto;
+    max-width: 80vw;
+    color: rgb(45, 62, 80);
+    backface-visibility: hidden;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0.5em 1.5em -0.5em;
+    border-radius: 10px 10px 30px 10px !important;
+    padding: 3em;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(242, 245, 248);
+    border-image: initial;
+    border-radius: 0.2em;
+    transition: transform 0.5s ease;
 }
 
 .compnay-input-container {
@@ -148,9 +239,78 @@ tbody input {
     justify-content: flex-start;
 }
 
-tbody {
-    background-color: white;
+.print-container {
+    margin-bottom: 2rem;
+    max-width: 590px;
+    height: auto;
+    width: 100%;
+    text-align: right;
+}
 
+.print-container2 {
+    margin: 10px 0 0 0;
+    max-width: 590px;
+    height: auto;
+    width: 100%;
+    text-align: center;
+}
+
+#invoiceContainer {
+    margin: 0 0 0 10vw;
+    width: 88%;
+}
+
+
+
+.table-container,
+#formMatrix {
+    margin: 400px 0 0 0;
+    max-width: 60vw;
+}
+
+.table-container {
+    max-width: 93% !important;
+    margin: 400px 0 0 5px !important;
+}
+
+.text-container {
+    display: flex;
+    width: 100%;
+}
+
+/* ------------    E N D     ------------ */
+
+/******************************************/
+
+/* ==============  Image  =============== */
+
+img {
+    max-width: 150px!important;
+    max-height: 150px!important;
+       -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);    /* Safari 6.0 - 9.0 */
+}
+
+/* ------------    E N D     ------------ */
+
+/******************************************/
+
+/* ==============  Buttons  ============= */
+
+#print-btn,
+.table-container,
+#removeBtn {
+    cursor: grab;
+}
+
+#removeBtn {
+    cursor: pointer;
+}
+
+#print-btn:active,
+#invoiceDropdown:active,
+#removeBtn:active {
+    cursor: grabbing;
 }
 
 .add-more-btn {
@@ -162,7 +322,7 @@ tbody {
     justify-content: center;
     -webkit-box-align: center;
     align-items: center;
-    background-color: #33aeae;
+    background-color: blue;
     cursor: pointer;
     overflow: hidden;
     transition: max-height 0.3s;
@@ -179,34 +339,49 @@ tbody {
     padding: 0.5em 0px;
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    box-sizing: content-box;
-    width: 100%;
-    perspective: 500px;
-    background-color: rgba(255, 255, 255, 0);
-    margin: 0px auto;
-    padding: 6em 0px;
-    overflow: hidden;
+/* ------------    E N D     ------------ */
+
+/******************************************/
+
+/* ======== print BTN Style =+++====== */
+
+.print-btn,
+#print-btn2 {
+    text-decoration: none;
+    background: blue;
+    color: #ffffff;
+    font-weight: 400;
+    padding: 0.7rem;
+    border-radius: 2px;
 }
 
+.print-btn:hover,
+#print-btn2:hover {
+    box-shadow: 1px 1px 7px #555555 !important;
+}
+
+.print-btn:active,
+#print-btn2:active {
+    box-shadow: 1px 1px #777777 !important;
+}
+
+/* ------------    E N D     ------------ */
+
+/******************************************/
+
+/* ============  Logo Style  ============ */
 .logo-container {
     position: relative;
-    width: 60%;
-    max-width: 60%;
-    display: flex;
-    -moz-box-pack: center;
-    justify-content: center;
-    align-items: center;
-    -moz-box-align: center;
-    margin-left: auto;
-    overflow: hidden;
+  width: 150px!important;
+   max-width: 150px;
+   max-height: 150px;
+   margin: -40px 0 0 300px!important;
     transform: scale(1);
-    transition: transform 0.3s ease 0s;
+    transition: transform 1.3s ease 0s;
     cursor: pointer;
+    text-align: center!important;
+    color: silver;
+
 }
 
 .logo-container::after {
@@ -214,17 +389,12 @@ tbody {
     display: block;
     padding-top: 56.25%;
     cursor: pointer;
+    color: transparent;
 }
 
 .logo-container:hover {
     transform: scale(0.9);
-}
-
-.upload-text {
-    font-size: 1em;
-    font-weight: 600;
-    text-align: center;
-    width: 50%;
+    color: rgb(241, 240, 240);
 }
 
 .logo-container .upload-button {
@@ -238,54 +408,50 @@ tbody {
     position: absolute;
 }
 
-.download-container {
-    margin-bottom: 2rem;
-    max-width: 890px;
-    width: 100%;
-    text-align: right;
-}
+/* ------------    E N D     ------------ */
 
-.download-btn {
-    text-decoration: none;
-    background: #33aeae;
-    color: #fff;
-    font-weight: 600;
-    padding: 0.7rem;
-    border-radius: 4px;
-}
+@media only screen and (max-width: 600px) {
+    .table-container {
+     width: 400px!important;
+     height: auto;
+     margin: 40px 0 0 -70px!important;
+     overflow-x: scroll;
+    }
+  }
 
+  @media only screen and (max-width: 600px) {
+     #text-right {
+     width: 400px!important;
+     height: auto;
+     left: 0;
+     margin: 650px 0 0 -300px !important;
+    }
+  }
 
-img {
-    max-width: 150px;
-    max-height: 150px;
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
-}
+  @media only screen and (max-width: 600px) {
+    #text-left {
+    width: 400px!important;
 
+    margin: 220px 0 0 0;
+   }
+ }
 
-#invoiceDropdown {
-position: relative;
-z-index: 3;
-}
+ @media only screen and (max-width: 600px) {
+    .company-info {
+    width: 400px!important;
 
-#upldTXT {
-position: absolute;
-z-index: -1;
-}
+    margin: 100px 0 0 0;
+   }
+ }
 
-#download-btn,
-.table-container,
-#removeBtn {
-    cursor: grab;
-}
+ @media only screen and (max-width: 600px) {
+   * {
+   font-size: 10px;
+   }
+ }
 
-#removeBtn {
-    cursor: pointer;
-}
-
-#download-btn:active,
-#invoiceDropdown:active,
-#removeBtn:active {
-    cursor: grabbing;
-}
-
+ @media only screen and (max-width: 600px) {
+    .logo-container {
+    margin: 0 0 0 -1px!important;
+    }
+  }
