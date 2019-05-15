@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../donotremove.css";
+// import "../donotremove.css";
 
 export default class Row extends Component {
 
