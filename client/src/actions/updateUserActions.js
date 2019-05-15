@@ -8,7 +8,7 @@ import {
 
 export const updateUserDetails = (userData) => dispatch => {
     axios
-        .post("/api/users/updateuser", userData)
+        .post("/api/clients/updateuser", userData)
         .then(function (res) {
             console.log(res)
             dispatch({
