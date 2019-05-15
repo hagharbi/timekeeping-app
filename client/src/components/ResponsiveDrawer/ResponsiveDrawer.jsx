@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -71,6 +73,11 @@ class ResponsiveDrawer extends React.Component {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
+  onLogoutClick = e => {
+    e.preventDefault();
+    this.props.logoutUser();
+  };
+  
   render() {
     const { classes, theme } = this.props;
 
@@ -212,6 +219,15 @@ ResponsiveDrawer.propTypes = {
   // You won't need it on your project.
   container: PropTypes.object,
   theme: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(withStyles(styles, { withTheme: true })(ResponsiveDrawer));
