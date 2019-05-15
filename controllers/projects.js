@@ -8,7 +8,6 @@ module.exports = {
 
     //findById for a specific Project
     findOne: function(req, res) {
-        console.log(req.params.id);
         return Project.findById(req.body.id)
         .populate({
             path: 'logs',

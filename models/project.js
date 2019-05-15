@@ -32,7 +32,7 @@ var ProjectSchema = new Schema({
     },
     notes: {
         type: Array, 
-        default: undefined
+        default: [""]
     },
     dateCreated: {
         type: Date,
