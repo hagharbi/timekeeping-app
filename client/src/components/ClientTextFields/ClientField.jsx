@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 
 const styles = theme => ({
     container: {
@@ -23,8 +24,7 @@ const styles = theme => ({
     },
     menu: {
         width: 300,
-      },
-
+    },
 });
 
 class TextFields1 extends React.Component {
@@ -49,7 +49,7 @@ class TextFields1 extends React.Component {
             altEmail: this.state.client.altEmail,
             altPhone: this.state.client.altPhone,
             category: this.state.client.category,
-            title: this.state.client.title,
+            company: this.state.client.company,
             note: this.state.client.note,
         };
         console.log(clientData)
@@ -110,32 +110,25 @@ class TextFields1 extends React.Component {
                     <Paper className={classes.paper}></Paper>
                 </Grid>
                 <Grid item sm={7} lg={9}>
-                <h5>Client Settings</h5>
+                <h4>Client Settings</h4>
                     <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
-                        <Grid item xs ={12} sm={6} md={4} lg={3}>
-                        <TextField
-                            required
-                            id="firstName"
-                            label="First Name"
-                            className={classes.textField}
-                            value={this.state.client.firstName}
-                            onChange={this.handleChange}
-                            InputProps={{ disableUnderline: true, }}
-                            margin="normal"
-                        />
+
+                        <Grid item xs={12} style={{"margin-top": "40px"}}>
+                            <h6>Basic Info</h6>
                         </Grid>
                         <Grid item xs ={12} sm={6} md={4} lg={3}>
-                        <TextField
-                            required
-                            id="lastName"
-                            label="Last Name"
-                            className={classes.textField}
-                            value={this.state.client.lastName}
-                            onChange={this.handleChange}
-                            InputProps={{ disableUnderline: true, }}
-                            margin="normal"
-                        />
+                            <TextField
+                                required
+                                id="company"
+                                label="Company"
+                                value={this.state.client.company}
+                                className={classes.textField}
+                                onChange={this.handleChange}
+                                InputProps={{ disableUnderline: true, }}
+                                margin="normal"
+                            />
                         </Grid>
+
                         <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
                             required
@@ -148,6 +141,7 @@ class TextFields1 extends React.Component {
                             margin="normal"
                         />
                         </Grid>
+
                         <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
                             id="phone"
@@ -160,31 +154,39 @@ class TextFields1 extends React.Component {
                             margin="normal"
                         />
                         </Grid>
+
+                        <Grid item xs={12} style={{"margin-top": "40px"}}>
+                            <h6>POC Info</h6>
+                        </Grid>
+
                         <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
-                            id="altEmail"
-                            label="Alt Email"
-                            value={this.state.client.altEmail}
+                            id="firstName"
+                            label="First Name"
                             className={classes.textField}
+                            value={this.state.client.firstName}
                             onChange={this.handleChange}
                             InputProps={{ disableUnderline: true, }}
                             margin="normal"
-                        />                       
+                        />
                         </Grid>
                         <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
-                            id="altPhone"
-                            label="Alt Phone"
-                            value={this.state.client.altPhone}
-                            placeholder="xxx-xxx-xxxx"
+                            id="lastName"
+                            label="Last Name"
                             className={classes.textField}
+                            value={this.state.client.lastName}
                             onChange={this.handleChange}
                             InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         />
                         </Grid>
 
-{/*                     <Grid item xs ={12} sm={6} md={4} lg={3}>
+                        <Grid item xs={12} style={{"margin-top": "40px"}}>
+                            <h6>Address</h6>
+                        </Grid>
+
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
                             id="address.street"
                             label="Street Address"
@@ -208,7 +210,7 @@ class TextFields1 extends React.Component {
                         />
                         </Grid>
 
-                        <Grid item xs ={12} sm={6} md={4} lg={3}>
+                        <Grid item xs ={12} sm={6} md={3} lg={3}>
                         <TextField
                             id="address.state"
                             label="State"
@@ -220,7 +222,7 @@ class TextFields1 extends React.Component {
                         />
                         </Grid>
 
-                        <Grid item xs ={12} sm={6} md={4} lg={3}>
+                        <Grid item xs ={12} sm={6} md={2} lg={3}>
                         <TextField
                             id="address.zip"
                             label="Zip Code"
@@ -230,7 +232,36 @@ class TextFields1 extends React.Component {
                             InputProps={{ disableUnderline: true, }}
                             margin="normal"
                         /> 
-                        </Grid>*/}
+                        </Grid>
+
+                        <Grid item xs={12} style={{"margin-top": "40px"}}>
+                            <h6>Additional Info</h6>
+                        </Grid>
+
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
+                        <TextField
+                            id="altEmail"
+                            label="Alt Email"
+                            value={this.state.client.altEmail}
+                            className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
+                            margin="normal"
+                        />                       
+                        </Grid>
+
+                        <Grid item xs ={12} sm={6} md={4} lg={3}>
+                        <TextField
+                            id="altPhone"
+                            label="Alt Phone"
+                            value={this.state.client.altPhone}
+                            placeholder="xxx-xxx-xxxx"
+                            className={classes.textField}
+                            onChange={this.handleChange}
+                            InputProps={{ disableUnderline: true, }}
+                            margin="normal"
+                        />
+                        </Grid>
 
                         <Grid item xs ={12} sm={6} md={4} lg={3}>
                         <TextField
@@ -244,18 +275,7 @@ class TextFields1 extends React.Component {
                         />
                         </Grid>
 
-                        <Grid item xs ={12} sm={6} md={4} lg={3}>
-                        <TextField
-                            id="title"
-                            label="Title"
-                            value={this.state.client.title}
-                            className={classes.textField}
-                            onChange={this.handleChange}
-                            InputProps={{ disableUnderline: true, }}
-                            margin="normal"
-                        />
-                        </Grid>
-
+                        <Grid item xs ={12}>
                         <TextField
                             id="note"
                             label="Notes"
@@ -266,8 +286,9 @@ class TextFields1 extends React.Component {
                             className={classes.textField}
                             margin="dense"
                         />
+                        </Grid>
                         
-                        <Grid item xs ={12}>
+                        <Grid item xs ={12} style={{"margin-top": "30px"}}>
 
                         <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15}} onClick={this.handleSubmit}>SUBMIT</Button>
 

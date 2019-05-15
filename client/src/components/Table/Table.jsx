@@ -176,10 +176,7 @@ state = {
               <TableHead>
                   <TableRow>
                     <TableCell component="th" scope="row">
-                      First Name
-                    </TableCell>
-                    <TableCell component="th" scope="row">
-                      Last Name
+                      Company
                     </TableCell>
                     <TableCell component="th" scope="row">Email</TableCell>
                     <TableCell component="th" scope="row">Phone</TableCell>
@@ -190,9 +187,8 @@ state = {
                 {data.clients.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(client => (
                   <TableRow hover style={{cursor: 'pointer'}} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
                     <TableCell component="th" scope="row">
-                      {client.firstName}
+                      {client.company}
                     </TableCell>
-                    <TableCell component="th" scope="row">{client.lastName}</TableCell>
                     <TableCell component="th" scope="row">{client.email}</TableCell>
                     <TableCell component="th" scope="row"> {client.phone}</TableCell>
                     <TableCell align="right">{client.projects.length}</TableCell>

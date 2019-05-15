@@ -21,6 +21,14 @@ var LogSchema = new Schema({
         type: Array, 
         default: undefined
     },
+    timeStart: {
+        type: String,
+        trim: true,
+    },
+    timeEnd: {
+        type: String,
+        trim: true,
+    },
     times: {
         type: Array, 
         default: undefined
