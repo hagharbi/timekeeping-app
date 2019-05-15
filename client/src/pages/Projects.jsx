@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
-import ProjectsList2 from "../components/ProjectsList/ProjectsList2";
+import ProjectTable from "../components/ProjectTable/ProjectTable";
 // import Divider from '@material-ui/core/Divider';  <--- defined but never used,  again! Leave commented out until it is needed
 
 class Projects extends Component {
@@ -39,7 +39,7 @@ class Projects extends Component {
 
     render() {
         const { user } = this.props.auth;
-        // const { data } = this.props.userDetails;
+        const { data } = this.props.userDetails;
         console.log(user);
         // console.log(data)
         return (
@@ -48,12 +48,11 @@ class Projects extends Component {
                     margin: "0 auto 0 2rem",
                 }}>
                     <ResponsiveDrawer />
-                    <div className="container">
-                        <h1>PROJECTS</h1>
-                        <div>
-                            <ProjectsList2 />
-                        </div>
+
+                    <div>
+                        <ProjectTable projects={{ data }}/>
                     </div>
+                    
                 </div >
             </>
         );
