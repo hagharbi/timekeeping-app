@@ -195,6 +195,7 @@ state = {
                       <TableCell component="th" scope="row" style={{cursor: 'pointer'}} onClick={(e) => this.handleClick(projects.client, e)}>
                         {projects.client}
                       </TableCell>
+                      <TableCell component="th" scope="row">{projects.dueDate}</TableCell>
                       <TableCell component="th" scope="row">
                         <FormControl variant="outlined" className={classes.formControl}>
                             <Select
@@ -234,7 +235,6 @@ state = {
                             </Select>
                         </FormControl>
                       </TableCell>
-                      <TableCell component="th" scope="row">{projects.dueDate}</TableCell>
                       <TableCell component="th" scope="row">      
                         <Button variant="contained" color="primary" className={classes.button}
                         key={projects._id} onClick={(e) => this.handleClick(projects._id, e)}>
