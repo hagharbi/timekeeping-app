@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 import Parallax from "./Parallax";
 import "./imagesCode/global.css";
 
-
 class Landing extends Component {
   render() {
     return (
 
       <div id="mainHomeCont"
            style= {{
-              height: "100vh",
+              height: "120vh",
               width: "100vw",
               backgroundColor: "green"
             }} >
 {/* -----  Inserted paralax code from LandingPageHEro.jsx below in the <paralax/>tag  ----- */}
       <Parallax /> 
+    
 {/* -----  Sets a secondary force absolute width for home page intro.  ----- */}
       <div className="homeBodyContainer" 
       style={{position: "absolute", zIndex: "9", height: "100vh", width: "100%", margin: "0 0 0 0"}} >
@@ -23,49 +23,54 @@ class Landing extends Component {
   
       <span style={{fontSize: "35px", margin: "-10px 0 0 0", color:"white", float: "left"}}> sumit</span></p>
 
-      {/* <div style={{backgroundColor: "#fff", width: "100vw", height: "10px", position: "absolute", zIndex: "9", top:"0", left: "0", right:"0", margin: "0 0 0 0", position: "fixed"}} id="brdrTop">&nbsp;</div>
-      <div style={{backgroundColor: "#fff", width: "99.2vw", height: "10px", position: "absolute", zIndex: "8", bottom: "0", left: "0", right:"0", margin: "0 0 0 0.4vw", position: "fixed"}} id="brdrBottom">&nbsp;</div>
-      <div style={{backgroundColor: "#fff", width: "10px", height: "200vh", position: "absolute", zIndex: "7", top:"0", bottom: "0", right: "0", margin: "0 0 0 0" , position: "fixed"}} id="brdrRight">&nbsp;</div>
-      <div style={{backgroundColor: "#fff", width: "10px", height: "200vh", position: "absolute", zIndex: "6", top:"0", bottom: "0", left: "0", margin: "0 0 0 0" , position: "fixed"}} id="brdrLeft">&nbsp;</div> */}
+
         <div className="row">
           <div style={{width: "1000vw"}}>
           {/* -------- container for intro text ------- */}
-          <div style={{width: "40vw", textAlign: "right", margin: "30vh 20vh 0 0" }} className="herotext">
+          <div style={{width: "40vw", textAlign: "left", margin: "20vh 0 0 60px" }} className="herotext">
             <h4 style={{padding: "5px", color: "#efd387", textShadow:"2px 2px rgba(0,0,0,0.2)"}}>
-              <span style={{fontWeight: "800"}}>Focus on your craft.</span><br/><span style={{color: "#efd387", opacity:"0.8", textShadow:"2px 2px rgba(0,0,0,0.2)"}}>We deliver the rest.</span>
+              <span style={{fontWeight: "800", top: "0", left: "0",  margin: " 20vh 0 0 90px ", position: "absolute", textShadow: "2px 2px rgba(0, 0, 0, 0.1)"}}>Focus on your craft.</span><br/><span style={{color: "#efd387", opacity:"0.99", textShadow:"2px 2px rgba(0,0,0,0.1)", top: "0", left: "0", position: "absolute",  margin: " 25vh 0 0 90px"}}>We deliver the rest.</span>
             </h4>
-            <span style={{textShadow:"2px 2px rgba(0,0,0,0.2)", position:"sticky"}} className="flow-text grey-text white-text">
+            <span style={{textShadow:"2px 2px rgba(0,0,0,0.1)", position:"absolute", top:"0", left: "0", width: "400px", margin: "32vh 0 0 90px"}} className="flow-text grey-text white-text">
               Sumit is an intuitive and simple time management system for independent contractors and freelancers
             </span>
             <br />
-            <div className="col s6">
+            <div className="col s6" id="ReBtn">
               <Link
                 to="/register"
                   style={{
-                    width: "140px",
+                    width: "14vw",
                     letterSpacing: "1.5px",
-                    backgroundColor: "#777777",
+
                     fontWeight: "600",
                     color: "#000",
-                    margin: "10px -100px 0 0"
+                    position: "absolute",
+                    margin: "56vh 0 0 90px",
+                    left: "0",
+                    top: "0"
+
                   }}
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-med waves-effect waves-light black hoverable accent-3 teal-text"
                 >
                   Register
               </Link><br/>
             </div>
-            <div className="col s6">
+            <div className="col s6" id="liBtn">
               <Link
                 to="/login"
                 style={{
                   marginLeft: "2rem",
-                  width: "140px",
+                  width: "14vw",
                   letterSpacing: "1.5px",
                   fontWeight: "600",
+                  position: "absolute",
                   backgroundColor: "rgb(199, 255, 255)",
-                  margin: "10px 0 0 0"
+                  margin: "50vh 0 0 90px",
+                  left: "0",
+                  top: "0",
+                  backgroundColor: "#33aeae"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable white black-text"
+                className="btn btn-med waves-effect waves-light  hoverable teal black-text"
               >
                 Log In
               </Link>
@@ -74,7 +79,14 @@ class Landing extends Component {
           </div>
         </div>
 
+        <img src={ require('./imagesCode/cardOne.png') } style={{margin: "40vw 0 0 10vw", position: "absolute", zIndex: "99"}} alt="CardOne"/>
+        <img src={ require('./imagesCode/cardTwo.png')} style={{margin: "40vw 0 0 40vw", position: "absolute", zIndex: "99"}} alt="CardTwo" />
+        <img src={ require ('./imagesCode/CardThree.png')} style={{margin: "40vw 0 0 70vw", position: "absolute", zIndex: "99"}} alt="CardTwo" />
+
+
+
         </div>
+
 
       </div>
    

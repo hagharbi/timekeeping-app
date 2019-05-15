@@ -3,10 +3,29 @@ body {
 }
 
 
+
 #clouds {
-  opacity: 0.1;
+  margin: 0 0 0 0;
+  filter: blur(5px);
+  opacity: 0.2;
+  animation: drift 25s 1s linear infinite backwards;
 }
 
+#CloudsUp {
+filter: blur(5px);
+  opacity: 1;
+  animation: driftTwo 40s 1s linear infinite backwards;
+}
+
+@keyframes drift {
+from{transform: translateX(-255px);}
+to {transform: translateX(1350px);}
+}
+
+@keyframes driftTwo {
+  from{transform: translateX(-255px);}
+  to {transform: translateX(1350px);}
+  }
 
 #SchutzParalax {
   width: 100%;
@@ -45,12 +64,14 @@ a{
 }
 
 #mainHomeCont {
-    background: linear-gradient(rgb(157, 197, 241), rgb(96, 139, 180), rgb(6, 63, 117), BLACK);
+    background: linear-gradient(#55cccc, #55aeae, black);
 }
 
-#cardOne {
-  position: absolute;
-  z-index: 99999999;
-  width: 1250px;
-  margin: 60vh 0 0 70vw;
+.static {
+  position:absolute;
+  background: white;
+}
+
+.static:hover {
+  opacity:0!important;
 }
