@@ -2,6 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
+//Table
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,7 +13,16 @@ import TableCell from '@material-ui/core/TableCell';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+
+//FormControl
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+
+//Icons
 import IconButton from '@material-ui/core/IconButton';
 import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
@@ -108,7 +121,7 @@ const styles = theme => ({
   },
 });
 
-class CustomPaginationActionsTable extends React.Component {
+class ProjectTable extends React.Component {
 state = {
     page: 0,
     rowsPerPage: 5,
@@ -116,8 +129,12 @@ state = {
 
   handleClick = (id, e) => {
     e.preventDefault();
-    window.location = "/clients/" + id
-}
+    window.location = "/projects/" + id
+  };
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
 
   handleChangePage = (event, page) => {
     this.setState({ page });
@@ -132,7 +149,7 @@ state = {
     const { rowsPerPage, page } = this.state;
     
 
-    const { data } = this.props.clients;
+    const { data } = this.props.projects;
 
     if (!data) {
       console.log(null)
@@ -153,31 +170,77 @@ state = {
           </Grid>
           <Grid item sm={6} lg={9}>
           <Paper className={classes.root}>
-          <h5>Clients</h5>
+          <h5>Projects</h5>
             <div className={classes.tableWrapper}>
               <Table className={classes.table}>
                 <TableHead>
                     <TableRow>
-                      <TableCell component="th" scope="row">
-                        Company
-                      </TableCell>
-                      <TableCell component="th" scope="row">Email</TableCell>
-                      <TableCell component="th" scope="row">Phone</TableCell>
-                      <TableCell component="th" align="right">Projects</TableCell>
+                      <TableCell component="th" scope="row">Title</TableCell>
+                      <TableCell component="th" scope="row">Client</TableCell>
+                      <TableCell component="th" scope="row">Due Date</TableCell>
+                      <TableCell component="th" scope="row">Priority</TableCell>
+                      <TableCell component="th" scope="row">Status</TableCell>
+                      <TableCell component="th" scope="row">Timer</TableCell>
                     </TableRow>
                   </TableHead>
                 <TableBody>
-                  {data.clients
-                  .filter(client => {return client.active === true})
+                  {data.projects
+                  .filter(projects => {return projects.active === true})
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map(client => (
-                    <TableRow hover style={{cursor: 'pointer'}} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
-                      <TableCell component="th" scope="row">
-                        {client.company}
+                  .map(projects => (
+                    <TableRow key={projects._id}>
+                      <TableCell component="th" scope="row" style={{cursor: 'pointer'}} onClick={(e) => this.handleClick(projects._id, e)}>
+                        {projects.title}
                       </TableCell>
-                      <TableCell component="th" scope="row">{client.email}</TableCell>
-                      <TableCell component="th" scope="row"> {client.phone}</TableCell>
-                      <TableCell align="right">{client.projects.length}</TableCell>
+                      <TableCell component="th" scope="row" style={{cursor: 'pointer'}} onClick={(e) => this.handleClick(projects.client, e)}>
+                        {projects.client}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        <FormControl variant="outlined" className={classes.formControl}>
+                            <Select
+                                value={projects.status}
+                                onChange={this.handleChange}
+                                input={
+                                <OutlinedInput
+                                    labelWidth={this.state.labelWidth}
+                                    name="status"
+                                    id="outlined-age-simple"
+                                />
+                                }
+                            >
+                                <MenuItem value={"pending"}>pending</MenuItem>
+                                <MenuItem value={"in progress"}>in progress</MenuItem>
+                                <MenuItem value={"completed"}>completed</MenuItem>
+                                <MenuItem value={"inactive"}>inactive</MenuItem>
+                            </Select>
+                        </FormControl>
+                      </TableCell>
+                      <TableCell component="th" scope="row"> {projects.priority}
+                        <FormControl variant="outlined" className={classes.formControl}>
+                            <Select
+                                value={projects.priority}
+                                onChange={this.handleChange}
+                                input={
+                                <OutlinedInput
+                                    labelWidth={this.state.labelWidth}
+                                    name="status"
+                                    id="outlined-age-simple"
+                                />
+                                }
+                            >
+                                <MenuItem value={"low"}>low</MenuItem>
+                                <MenuItem value={"medium"}>medium</MenuItem>
+                                <MenuItem value={"high"}>high</MenuItem>
+                            </Select>
+                        </FormControl>
+                      </TableCell>
+                      <TableCell component="th" scope="row">{projects.dueDate}</TableCell>
+                      <TableCell component="th" scope="row">      
+                        <Button variant="contained" color="primary" className={classes.button}
+                        key={projects._id} onClick={(e) => this.handleClick(projects._id, e)}>
+                            START
+                        </Button>
+                      </TableCell>
                     </TableRow>
                   ))}
                   {emptyRows > 0 && (
@@ -191,8 +254,8 @@ state = {
                     <TablePagination
                       rowsPerPageOptions={[5, 10, 25]}
                       colSpan={6}
-                      count={data.clients
-                        .filter(client => {return client.active === true}).length}
+                      count={data.projects
+                        .filter(project => {return project.active === true}).length}
                       rowsPerPage={rowsPerPage}
                       page={page}
                       SelectProps={{
@@ -214,8 +277,8 @@ state = {
   }
 }
 
-CustomPaginationActionsTable.propTypes = {
+ProjectTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CustomPaginationActionsTable);
+export default withStyles(styles)(ProjectTable);

@@ -7,13 +7,11 @@ var Schema = mongoose.Schema;
 var ClientSchema = new Schema({
     firstName: {
         type: String,
-        trim: true,
-        required: "First Name is Required"
+        trim: true
     },
     lastName: {
         type: String,
-        trim: true,
-        required: "Last Name is Required"
+        trim: true
     },
     email: {
         type: String,
@@ -30,55 +28,45 @@ var ClientSchema = new Schema({
     phone: {
         type: String,
         trim: true,
-        validate: {
-            validator: function(v) {
-                return /\d{3}-\d{3}-\d{4}/.test(v);
-            },
-            message: '{VALUE} is not a valid phone number!'
-        }
     },
     altPhone: {
         type: String,
         trim: true,
-        validate: {
-            validator: function(v) {
-                return /\d{3}-\d{3}-\d{4}/.test(v);
-            },
-            message: '{VALUE} is not a valid phone number!'
-        }
     },
     address: {
-        street: String,
-        city: String,
+        street: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        city: {
+            type: String,
+            trim: true,
+            default: "",
+        },
         state: {
             type: String,
             trim: true,
             uppercase: true,
-            enum: statesArray,
-            default: undefined
+            default: ""
         },
         zip: {
             type: Number,
             trim: true,
             default: undefined,
-            validate: [
-                function(input) {
-                return input.length = 5;
-                },
-                "Zip code should be 5 digits."
-            ]
         }
     },
     category: {
         type: String,
         trim: true,
     },
-    title: {
-        type: String
+    company: {
+        type: String,
+        required: "Company is Required",
     },
     notes: {
         type: Array, 
-        default: undefined
+        default: [""]
     },
     userCreated: {
         type: Date,

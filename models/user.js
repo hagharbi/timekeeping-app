@@ -39,17 +39,15 @@ var UserSchema = new Schema({
     phone: {
         type: String,
         trim: true,
-        validate: {
-            validator: function(v) {
-                return /\d{3}-\d{3}-\d{4}/.test(v);
-            },
-            message: '{VALUE} is not a valid phone number!'
-        }
     },
     altEmail: {
         type: String,
         trim: true,
         match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+    },
+    altPhone: {
+        type: String,
+        trim: true,
     },
     address: {
         street: String,
@@ -58,16 +56,10 @@ var UserSchema = new Schema({
             type: String,
             uppercase: true,
             required: false,
-            enum: statesArray
+            default: ""
         },
         zip: {
             type: Number,
-            validate: [
-                function(input) {
-                return input.length = 5;
-                },
-                "Zip code should be 5 digits."
-            ]
         }
     },
     category: {

@@ -31,6 +31,7 @@ module.exports = {
             title: req.body.title,
             category: req.body.category,
             status: req.body.status,
+            timeStart: req.body.timeStart,
             $push: {notes: req.body.note}
         });
 
@@ -59,6 +60,7 @@ module.exports = {
             title: req.body.title,
             category: req.body.category,
             status: req.body.status,
+            timeStart: req.body.timeStart,
             $push: {notes: req.body.note}
         };
         

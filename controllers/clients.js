@@ -58,19 +58,19 @@ module.exports = {
         const newClient = new Client({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
+            company: req.body.company,
             email: req.body.email,
             altEmail: req.body.altEmail,
             phone: req.body.phone,
             altPhone: req.body.altPhone,
             category: req.body.category,
-            title: req.body.title,
             address: {
                 street: req.body.street,
                 city: req.body.city,
                 state: req.body.state,
                 zip: req.body.zip
             },
-            $push: {notes: req.body.note},
+            $push: {notes: req.body.notes},
             $push: {user: req.body.id}
         });
         console.log(newClient);
@@ -102,14 +102,14 @@ module.exports = {
             phone: req.body.phone,
             altPhone: req.body.altPhone,
             category: req.body.category,
-            title: req.body.title,
+            company: req.body.company,
             address: {
                 street: req.body.street,
                 city: req.body.city,
                 state: req.body.state,
                 zip: req.body.zip
             },
-            $push: {notes: req.body.note}
+            $push: {notes: req.body.notes}
         };
         
         console.log(updatedClient)
@@ -128,7 +128,7 @@ module.exports = {
 
         console.log(query)
 
-        Client.findOneAndUpdate(query, {$push: {notes: req.body.note}})
+        Client.findOneAndUpdate(query, {$push: {notes: req.body.notes}})
         .catch(err => res.status(422).json(err));
     },
 
