@@ -77,7 +77,7 @@ class ResponsiveDrawer extends React.Component {
     e.preventDefault();
     this.props.logoutUser();
   };
-  
+
   render() {
     const { classes, theme } = this.props;
 
@@ -95,7 +95,7 @@ class ResponsiveDrawer extends React.Component {
               </ListItem>
             ))}
           </List>
-          </Link>
+        </Link>
 
         <Link
           to="/projects">
@@ -133,16 +133,16 @@ class ResponsiveDrawer extends React.Component {
           </List>
         </Link>
 
-        
+
         <Link
           to="/settings">
           <List>
-              {['Settings'].map((text, index) => (
-                  <ListItem button key={text}>
-                    <ListItemIcon>{<SettingsIcon />}</ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                ))}
+            {['Settings'].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>{<SettingsIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
           </List>
         </Link>
       </div>
@@ -152,12 +152,16 @@ class ResponsiveDrawer extends React.Component {
       <div className={classes.root}>
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
-              <Toolbar>
-                <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                  <MenuIcon />
-                </IconButton>
+          <Toolbar>
+            <IconButton color="inherit"
+              aria-label="Open drawer"
+              onClick={this.handleDrawerToggle}
+              className={classes.menuButton}
+            >
+              <MenuIcon />
+            </IconButton>
             <Grid
-              justify="space-between" 
+              justify="space-between"
               container
               spacing={24}
             >
@@ -165,17 +169,17 @@ class ResponsiveDrawer extends React.Component {
                 <Typography variant="h6" color="inherit" className={classes.grow}>
                   SUMIT
                 </Typography>
-              </Grid>  
+              </Grid>
               <Grid item>
-                  <Button
-                    onClick={this.onLogoutClick}
-                    variant="contained" color="secondary" className={classes.button}
-                  >
-                    Logout
+                <Button
+                  onClick={this.onLogoutClick}
+                  variant="contained" color="secondary" className={classes.button}
+                >
+                  Logout
                   </Button>
               </Grid>
             </Grid>
-              </Toolbar>
+          </Toolbar>
         </AppBar>
         <nav className={classes.drawer}>
           {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
