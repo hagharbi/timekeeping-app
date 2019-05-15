@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
-import { findUserDetails } from "../../actions/findUserActions";
-import ResponsiveDrawer from "../ResponsiveDrawer/ResponsiveDrawer";
+import { logoutUser } from "../actions/authActions";
+import { findUserDetails } from "../actions/findUserActions";
+import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import Divider from '@material-ui/core/Divider';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 class Dashboard extends Component {
 
@@ -38,14 +40,19 @@ class Dashboard extends Component {
 
   render() {
     const { user } = this.props.auth;
-    // const { data } = this.props.userDetails;
-    console.log(user);
-    // console.log(data)
-    return (
-      <>
+
+    if (!this.props.userDetails) {
+      return null
+    }
+    else {
+
+      const { data } = this.props.userDetails;
+      console.log(user);
+      console.log(data)
+      return (
         <div>
           <ResponsiveDrawer />
-        
+
           <div className="container">
             <h1>DASHBOARD</h1>
             <div className="row">
@@ -88,8 +95,8 @@ class Dashboard extends Component {
             </div>
           </div>
         </div >
-      </>
-    );
+      );
+    }
   }
 }
 
@@ -104,12 +111,6 @@ const mapStateToProps = state => ({
   auth: state.auth,
   userDetails: state.findUser.userDetails
 });
-
-/* const mapDispatchToProps = dispatch => {
-  return {
-    findUserDetails: findUserDetails // you should send your action like this
-  };
-}; */
 
 export default connect(
   mapStateToProps,

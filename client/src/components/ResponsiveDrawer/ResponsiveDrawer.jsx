@@ -26,6 +26,8 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const drawerWidth = 180;
 
@@ -39,12 +41,20 @@ const styles = theme => ({
       flexShrink: 0,
     },
   },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
+  },
   appBar: {
     marginLeft: drawerWidth,
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
   },
+
   menuButton: {
     menuButton: {
       marginLeft: -12,
@@ -54,7 +64,6 @@ const styles = theme => ({
       display: 'none',
     },
   },
-  toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
   },
@@ -62,7 +71,22 @@ const styles = theme => ({
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
   },
+  contentShift: {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  },
 });
+
+const StyledIcon = withStyles({
+  root: {
+    marginRight: 0,
+    color: "#037F8C",
+  },
+
+})(ListItemIcon);
 
 class ResponsiveDrawer extends React.Component {
   state = {
@@ -71,6 +95,10 @@ class ResponsiveDrawer extends React.Component {
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+  };
+
+  handleDrawerClose = () => {
+    this.setState({ mobileOpen: false });
   };
 
   onLogoutClick = e => {
@@ -84,13 +112,18 @@ class ResponsiveDrawer extends React.Component {
     const drawer = (
       <div>
         <div className={classes.toolbar} />
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={this.handleDrawerClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          </IconButton>
+        </div>
         <Divider />
         <Link
           to="/dashboard">
           <List>
             {['Dashboard'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon>{<AvTimerIcon />}</ListItemIcon>
+                <StyledIcon>{<AvTimerIcon />}</StyledIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
@@ -102,7 +135,7 @@ class ResponsiveDrawer extends React.Component {
           <List>
             {['Projects'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon>{<AssignmentIcon />}</ListItemIcon>
+                <StyledIcon>{<AssignmentIcon />}</StyledIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
@@ -114,7 +147,7 @@ class ResponsiveDrawer extends React.Component {
           <List>
             {['Clients'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon>{<AssignmentIndIcon />}</ListItemIcon>
+                <StyledIcon>{<AssignmentIndIcon />}</StyledIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
@@ -126,7 +159,7 @@ class ResponsiveDrawer extends React.Component {
           <List>
             {['Invoices'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon>{<AttachMoneyIcon />}</ListItemIcon>
+                <StyledIcon>{<AttachMoneyIcon />}</StyledIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
@@ -139,7 +172,7 @@ class ResponsiveDrawer extends React.Component {
           <List>
             {['Settings'].map((text, index) => (
               <ListItem button key={text}>
-                <ListItemIcon>{<SettingsIcon />}</ListItemIcon>
+                <StyledIcon>{<SettingsIcon />}</StyledIcon>
                 <ListItemText primary={text} />
               </ListItem>
             ))}
@@ -166,8 +199,8 @@ class ResponsiveDrawer extends React.Component {
               spacing={24}
             >
               <Grid item>
-                <Typography variant="h6" color="inherit" className={classes.grow}>
-                  SUMIT
+                <Typography variant="h5" color="inherit" className={classes.grow}>
+                  <strong>SUMIT</strong>
                 </Typography>
               </Grid>
               <Grid item>

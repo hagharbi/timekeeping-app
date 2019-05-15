@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles.css";
+import "../donotremove.css";
 
 export default class Row extends Component {
 
@@ -45,17 +45,17 @@ export default class Row extends Component {
           </div>
         </td>
         <td>
-        <div>
-          <input
-            type="text"
-            min="0"
-            name="Total"
-            value={item.rate * item.hours}
-            placeholder="$0.00"
-            onChange={e => updateItem(e, item.id)}
-          />
-        </div>
-      </td>
+          <div>
+            <input
+              type="text"
+              min="0"
+              name="Total"
+              value={item.rate * item.hours}
+              placeholder="$0.00"
+              onChange={e => updateItem(e, item.id)}
+            />
+          </div>
+        </td>
         <td>
           <div>
             <button onClick={() => removeItem(item.id)} id="removeBtn">x</button>
