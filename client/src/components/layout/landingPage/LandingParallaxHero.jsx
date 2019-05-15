@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-
+import CloudsUp from "./imagesCode/CloudsUp";
 import Clouds from "./imagesCode/Clouds";
 import Snowhill0 from "./imagesCode/SnowhillLayer0";
 import Snowhill1 from "./imagesCode/SnowhillLayer1";
@@ -91,9 +91,11 @@ const createParallaxRight = (image, xOffset) => (
 
 const LandingParallaxHero = ({ yOffset }) => (
   <Container >
+
       { createParallaxUp    (     CommentsParalax, yOffset,  9  )}
       { createParallaxUp    (     Snowhill0,       yOffset,  13 )}
-      { createParallaxDown  (     Clouds,          yOffset, 10  )}
+      { createParallaxDown  (     CloudsUp,        yOffset,  0  )}
+      { createParallaxDown  (     Clouds,          yOffset,  0  )}
       { createParallaxUp    (     Snowhill4,       yOffset, 12  )}
       { createParallaxUp    (     ClockParalax,    yOffset,  3.6)}
       { createParallaxUp    (     StarsParalax,    yOffset,  6  )}
