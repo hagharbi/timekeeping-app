@@ -51,7 +51,13 @@ class TextFields1 extends React.Component {
             altPhone: this.state.client.altPhone,
             category: this.state.client.category,
             company: this.state.client.company,
-            note: this.state.client.note,
+            notes: this.state.client.notes,
+            address: {
+                street: this.state.client.address.street,
+                city: this.state.client.address.city,
+                state: this.state.client.address.state,
+                zip: this.state.client.address.zip,
+            }
         };
         console.log(clientData);
         this.props.updateClientDetails(clientData);
@@ -80,6 +86,7 @@ class TextFields1 extends React.Component {
             { [e.target.id]: e.target.value }
           ),
         })
+        console.log(this.state.client)
     }
 
     render() {
@@ -289,7 +296,7 @@ class TextFields1 extends React.Component {
 
                         <Grid item xs ={12}>
                         <TextField
-                            id="note"
+                            id="notes"
                             label="Notes"
                             multiline
                             rows="8"

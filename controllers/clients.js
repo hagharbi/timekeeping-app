@@ -70,7 +70,7 @@ module.exports = {
                 state: req.body.state,
                 zip: req.body.zip
             },
-            $push: {notes: req.body.note},
+            $push: {notes: req.body.notes},
             $push: {user: req.body.id}
         });
         console.log(newClient);
@@ -109,7 +109,7 @@ module.exports = {
                 state: req.body.state,
                 zip: req.body.zip
             },
-            $push: {notes: req.body.note}
+            $push: {notes: req.body.notes}
         };
         
         console.log(updatedClient)
@@ -128,7 +128,7 @@ module.exports = {
 
         console.log(query)
 
-        Client.findOneAndUpdate(query, {$push: {notes: req.body.note}})
+        Client.findOneAndUpdate(query, {$push: {notes: req.body.notes}})
         .catch(err => res.status(422).json(err));
     },
 

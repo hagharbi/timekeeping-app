@@ -34,8 +34,16 @@ var ClientSchema = new Schema({
         trim: true,
     },
     address: {
-        street: String,
-        city: String,
+        street: {
+            type: String,
+            trim: true,
+            default: "",
+        },
+        city: {
+            type: String,
+            trim: true,
+            default: "",
+        },
         state: {
             type: String,
             trim: true,
@@ -58,7 +66,7 @@ var ClientSchema = new Schema({
     },
     notes: {
         type: Array, 
-        default: undefined
+        default: [""]
     },
     userCreated: {
         type: Date,
