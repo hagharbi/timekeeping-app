@@ -95,23 +95,6 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: tru
   TablePaginationActions,
 );
 
-
-                  // =================================================== //
-                  //    Create Data is defined but never used.           //
-                  //    Guessing this will be so it is left and          //
-                  //    simply commented out.                            //
-                  // =================================================== //
-// let counter = 0;  
-// function createData(name, calories, fat) {  
-//   counter += 1; 
-//   return { id: counter, name, calories, fat }; 
-// }
-                  // =================================================== //
-                  //    Create Data is defined but never used.           //
-                  //    Guessing this will be so it is left and          //
-                  //    simply commented out.                            //
-                  // =================================================== //
-
 const styles = theme => ({
   root: {
     width: '100%',
@@ -165,62 +148,66 @@ state = {
 
       return (
         <Grid container spacing={24}>
-        <Grid item sm={1} md={3}>
-          <Paper className={classes.paper}></Paper>
-        </Grid>
-        <Grid item sm={6} lg={9}>
-        <Paper className={classes.root}>
-        <h5>Clients</h5>
-          <div className={classes.tableWrapper}>
-            <Table className={classes.table}>
-              <TableHead>
+          <Grid item sm={1} md={3}>
+            <Paper className={classes.paper}></Paper>
+          </Grid>
+          <Grid item sm={6} lg={9}>
+          <Paper className={classes.root}>
+          <h5>Clients</h5>
+            <div className={classes.tableWrapper}>
+              <Table className={classes.table}>
+                <TableHead>
+                    <TableRow>
+                      <TableCell component="th" scope="row">
+                        Company
+                      </TableCell>
+                      <TableCell component="th" scope="row">Email</TableCell>
+                      <TableCell component="th" scope="row">Phone</TableCell>
+                      <TableCell component="th" align="right">Projects</TableCell>
+                    </TableRow>
+                  </TableHead>
+                <TableBody>
+                  {data.clients
+                  .filter(client => {return client.active === true})
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map(client => (
+                    <TableRow hover style={{cursor: 'pointer'}} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
+                      <TableCell component="th" scope="row">
+                        {client.company}
+                      </TableCell>
+                      <TableCell component="th" scope="row">{client.email}</TableCell>
+                      <TableCell component="th" scope="row"> {client.phone}</TableCell>
+                      <TableCell align="right">{client.projects.length}</TableCell>
+                    </TableRow>
+                  ))}
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 48 * emptyRows }}>
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                  )}
+                </TableBody>
+                <TableFooter>
                   <TableRow>
-                    <TableCell component="th" scope="row">
-                      Company
-                    </TableCell>
-                    <TableCell component="th" scope="row">Email</TableCell>
-                    <TableCell component="th" scope="row">Phone</TableCell>
-                    <TableCell component="th" align="right">Projects</TableCell>
+                    <TablePagination
+                      rowsPerPageOptions={[5, 10, 25]}
+                      colSpan={6}
+                      count={data.clients
+                        .filter(client => {return client.active === true}).length}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      SelectProps={{
+                        native: true,
+                      }}
+                      onChangePage={this.handleChangePage}
+                      onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                      ActionsComponent={TablePaginationActionsWrapped}
+                    />
                   </TableRow>
-                </TableHead>
-              <TableBody>
-                {data.clients.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(client => (
-                  <TableRow hover style={{cursor: 'pointer'}} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
-                    <TableCell component="th" scope="row">
-                      {client.company}
-                    </TableCell>
-                    <TableCell component="th" scope="row">{client.email}</TableCell>
-                    <TableCell component="th" scope="row"> {client.phone}</TableCell>
-                    <TableCell align="right">{client.projects.length}</TableCell>
-                  </TableRow>
-                ))}
-                {emptyRows > 0 && (
-                  <TableRow style={{ height: 48 * emptyRows }}>
-                    <TableCell colSpan={6} />
-                  </TableRow>
-                )}
-              </TableBody>
-              <TableFooter>
-                <TableRow>
-                  <TablePagination
-                    rowsPerPageOptions={[5, 10, 25]}
-                    colSpan={6}
-                    count={data.clients.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    SelectProps={{
-                      native: true,
-                    }}
-                    onChangePage={this.handleChangePage}
-                    onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                    ActionsComponent={TablePaginationActionsWrapped}
-                  />
-                </TableRow>
-              </TableFooter>
-            </Table>
-          </div>
-        </Paper>
-      </Grid>
+                </TableFooter>
+              </Table>
+            </div>
+          </Paper>
+        </Grid>
       </Grid>
       );
     }

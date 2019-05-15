@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 import { updateClientDetails } from "../../actions/updateClientActions";
+import { removeClientDetails } from "../../actions/removeClientActions";
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
 
 const styles = theme => ({
     container: {
@@ -35,10 +35,11 @@ class TextFields1 extends React.Component {
             errors: {}
           };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.archiveClient = this.archiveClient.bind(this);
       }
 
     handleSubmit(event) {
-        event.preventDefault()
+        event.preventDefault();
         console.log(this.state.client);
         const clientData = {
             id: this.state.client._id,
@@ -52,9 +53,20 @@ class TextFields1 extends React.Component {
             company: this.state.client.company,
             note: this.state.client.note,
         };
-        console.log(clientData)
-        this.props.updateClientDetails(clientData)
+        console.log(clientData);
+        this.props.updateClientDetails(clientData);
+        
     };
+
+    archiveClient(event) {
+        event.preventDefault()
+        console.log(this.state)
+        const clientData = {
+            id: this.state.client._id
+        };
+        this.props.removeClientDetails(clientData);
+        window.location.href = '/clients'
+    }
 
     beginningState(objectFound, event) {
         this.setState({ client: objectFound });
@@ -288,9 +300,15 @@ class TextFields1 extends React.Component {
                         />
                         </Grid>
                         
-                        <Grid item xs ={12} style={{"margin-top": "30px"}}>
+                        <Grid item xs ={6} sm={9} style={{"margin-top": "30px"}}>
 
-                        <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15}} onClick={this.handleSubmit}>SUBMIT</Button>
+                        <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15}} onClick={this.handleSubmit}>SAVE</Button>
+
+                        </Grid>
+
+                        <Grid item xs ={6} sm={3} style={{"margin-top": "30px"}}>
+
+                        <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, align: "right"}} onClick={this.archiveClient}>ARCHIVE</Button>
 
                         </Grid>
 
@@ -304,7 +322,8 @@ class TextFields1 extends React.Component {
 
 TextFields1.propTypes = {
     classes: PropTypes.object.isRequired,
-    updateClientDetails: PropTypes.func.isRequired
+    updateClientDetails: PropTypes.func.isRequired,
+    removeClientDetails: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -315,5 +334,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { updateClientDetails }
+    { updateClientDetails, removeClientDetails }
   )(withStyles(styles)(TextFields1))
