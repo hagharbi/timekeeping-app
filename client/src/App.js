@@ -9,7 +9,7 @@ import Landing from "./components/layout/landingPage/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard.jsx";
+import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 import Client from "./pages/Clients";
 import EditClient from "./pages/EditClient";
