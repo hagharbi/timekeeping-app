@@ -165,7 +165,7 @@ class CustomPaginationActionsTable extends React.Component {
                 </Grid>
                 <Grid item>
                   <Link
-                    to="/clients/newclient">
+                    to="/newclient">
                     <Button
                       // onClick={}
                       variant="contained" color="inherit" className={classes.button}
