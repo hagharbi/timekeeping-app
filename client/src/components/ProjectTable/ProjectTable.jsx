@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
 
 //Table
 import Table from '@material-ui/core/Table';
@@ -199,8 +200,28 @@ state = {
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item sm={6} lg={9}>
-          <Paper className={classes.root}>
-          <h5>Projects</h5>
+            <Paper className={classes.root}>
+              <Grid
+                justify="space-between"
+                container
+                spacing={24}
+              >
+                <Grid item>
+                  <h5>Clients</h5>
+                </Grid>
+                <Grid item>
+                  <Link
+                    to="/newproject">
+                    <Button
+                      // onClick={}
+                      variant="contained" color="inherit" className={classes.button}
+                      style={{ marginTop: "12.5px" }}
+                    >
+                      + New Project
+                      </Button>
+                  </Link>
+                </Grid>
+              </Grid>
             <div className={classes.tableWrapper}>
               <Table className={classes.table}>
                 <TableHead>

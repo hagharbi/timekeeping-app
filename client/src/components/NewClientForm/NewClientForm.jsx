@@ -40,7 +40,7 @@ class NewClientFields extends React.Component {
         event.preventDefault();
 
         const clientData = {
-            userId: this.state.client._id,
+            userId: this.state.client.userId,
             firstName: this.state.client.firstName,
             lastName: this.state.client.lastName,
             email: this.state.client.email,
@@ -62,10 +62,10 @@ class NewClientFields extends React.Component {
 
     };
     
-    beginningState() {
+    beginningState(id) {
         this.setState({ client: 
             {
-                userId: "",
+                userId: id,
                 firstName: "",
                 lastName: "",
                 email: "",
@@ -108,7 +108,7 @@ class NewClientFields extends React.Component {
         else {
             console.log(data)
             if (!this.state.client) {
-                this.beginningState();
+                this.beginningState(data._id);
                 return null
             }
             else {
