@@ -31,22 +31,6 @@ class NewClientFields extends React.Component {
     constructor() {
         super();
         this.state = {
-            userId: "",
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            altEmail: "",
-            altPhone: "",
-            category: "",
-            company: "",
-            notes: "",
-            address: {
-                street: "",
-                city: "",
-                state: "",
-                zip: "",
-            },
             errors: {}
         };
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -78,25 +62,43 @@ class NewClientFields extends React.Component {
 
     };
     
-    // beginningState(objectFound, event) {
-    //     this.setState({ clientData: objectFound });
-    //     console.log(this.state);
-    // }
+    beginningState() {
+        this.setState({ client: 
+            {
+                userId: "",
+                firstName: "",
+                lastName: "",
+                email: "",
+                phone: "",
+                altEmail: "",
+                altPhone: "",
+                category: "",
+                company: "",
+                notes: [""],
+                address: {
+                    street: "",
+                    city: "",
+                    state: "",
+                }
+            }
+        });
+        console.log(this.state);
+    }
 
     handleChange = e => {
         this.setState({
-            clientData: Object.assign(
+            client: Object.assign(
                 {},
-                this.state.clientData,
+                this.state.client,
                 { [e.target.id]: e.target.value }
             ),
         })
-        console.log(this.state.clientData)
+        console.log(this.state.client)
     }
 
     render() {
         const { classes } = this.props;
-        const { data } = this.props.clients.clientData;
+        const { data } = this.props.user;
 
         if (!data) {
             console.log(null)
@@ -104,10 +106,9 @@ class NewClientFields extends React.Component {
         }
 
         else {
-            var objectFound = data;
-
-            if (!this.state.clientData) {
-                this.beginningState(objectFound);
+            console.log(data)
+            if (!this.state.client) {
+                this.beginningState();
                 return null
             }
             else {

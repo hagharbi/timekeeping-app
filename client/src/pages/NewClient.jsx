@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
+import { findUserDetails } from "../actions/findUserActions";
 import { createClientDetails } from "../actions/createClientActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import NewClientFields from "../components/NewClientForm/NewClientForm";
@@ -47,15 +48,21 @@ class NewClient extends Component {
             const { data } = this.props.userDetails;
             console.log(user);
             console.log(data)
-            return (
-                <div >
-                    <ResponsiveDrawer />
-                    <div>
-                        <NewClientFields clients={{ data }}/>
-                    </div>
-                </div>
 
-            );
+            if (!data) {
+                return null
+            }
+            else {
+                return (
+                    <div >
+                        <ResponsiveDrawer />
+                        <div>
+                            <NewClientFields user={{ data }}/>
+                        </div>
+                    </div>
+
+                );
+            }
         }
     }
 }
@@ -65,7 +72,8 @@ NewClient.propTypes = {
     createClientDetails: PropTypes.func.isRequired,
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    userDetails: PropTypes.object.isRequired
+    userDetails: PropTypes.object.isRequired,
+    findUserDetails: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -75,5 +83,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { logoutUser, createClientDetails }
+    { logoutUser, createClientDetails, findUserDetails }
 )(NewClient);
