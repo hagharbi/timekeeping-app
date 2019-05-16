@@ -35,6 +35,9 @@ const styles = theme => ({
   root: {
     display: 'flex',
   },
+  darkColor: {
+    color: theme.palette.primary.dark // or theme.palette.primary.main
+  },
   drawer: {
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
@@ -83,7 +86,7 @@ const styles = theme => ({
 const StyledIcon = withStyles({
   root: {
     marginRight: 0,
-    color: "#037F8C",
+    color: "#666",
   },
 
 })(ListItemIcon);
@@ -119,9 +122,9 @@ class ResponsiveDrawer extends React.Component {
       <div>
         <div className={classes.toolbar} />
         <div className={classes.drawerHeader}>
-          <IconButton onClick={this.handleDrawerClose}>
+          {/* <IconButton onClick={this.handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
+          </IconButton> */}
         </div>
         <Divider />
         <Link
@@ -172,7 +175,6 @@ class ResponsiveDrawer extends React.Component {
           </List>
         </Link>
 
-
         <Link
           to="/settings">
           <List>
@@ -191,7 +193,7 @@ class ResponsiveDrawer extends React.Component {
       <div className={classes.root}>
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
+          <Toolbar className={classes.toolBar}>
             <IconButton color="inherit"
               aria-label="Open drawer"
               onClick={this.handleDrawerToggle}
@@ -211,6 +213,7 @@ class ResponsiveDrawer extends React.Component {
               </Grid>
               <Grid item>
                 <Button
+                  // style={{ backgroundColor: '#fff' }}
                   onClick={this.onLogoutClick}
                   variant="contained" color="secondary" className={classes.button}
                 >
@@ -248,9 +251,9 @@ class ResponsiveDrawer extends React.Component {
             </Drawer>
           </Hidden>
         </nav>
-        <main className={classes.content}>
+        {/* <main className={classes.content}>
           <div className={classes.toolbar} />
-        </main>
+        </main> */}
       </div>
     );
   }

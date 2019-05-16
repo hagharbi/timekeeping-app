@@ -61,9 +61,11 @@ class NewClientFields extends React.Component {
         this.props.createClientDetails(clientData);
 
     };
+
     
     beginningState(id) {
         this.setState({ client: 
+
             {
                 userId: id,
                 firstName: "",
@@ -113,200 +115,201 @@ class NewClientFields extends React.Component {
             }
             else {
 
-            return (
-                <Grid container spacing={24}>
-                    <Grid item xs={1} sm={5} md={3}>
-                        <Paper className={classes.paper}></Paper>
+                return (
+                    <Grid container spacing={24}>
+                        <Grid item xs={2} sm={4} md={3} lg={2}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item xs={10} sm={8} md={9} lg={10}>
+                            <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>New Client</strong></h5>
+                            <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
+
+                                <Grid item xs={12} >
+                                    <h6>Basic Info</h6>
+                                </Grid>
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        required
+                                        id="company"
+                                        label="Company"
+                                        value={this.state.client.company}
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        required
+                                        id="email"
+                                        label="Email"
+                                        value={this.state.client.email}
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        id="phone"
+                                        label="Phone"
+                                        value={this.state.client.phone}
+                                        placeholder="xxx-xxx-xxxx"
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} style={{ "margin-top": "1rem" }}>
+                                    <h6>POC Info</h6>
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        id="firstName"
+                                        label="First Name"
+                                        className={classes.textField}
+                                        value={this.state.client.firstName}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        id="lastName"
+                                        label="Last Name"
+                                        className={classes.textField}
+                                        value={this.state.client.lastName}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} style={{ "margin-top": "1rem" }}>
+                                    <h6>Address</h6>
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        id="address.street"
+                                        label="Street Address"
+                                        value={this.state.client.address.street}
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        id="address.city"
+                                        label="City"
+                                        value={this.state.client.address.city}
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={3} lg={3}>
+                                    <TextField
+                                        id="address.state"
+                                        label="State"
+                                        value={this.state.client.address.state}
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={2} lg={3}>
+                                    <TextField
+                                        id="address.zip"
+                                        label="Zip Code"
+                                        value={this.state.client.address.zip}
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} style={{ "margin-top": "1rem" }}>
+                                    <h6>Additional Info</h6>
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        id="altEmail"
+                                        label="Alt Email"
+                                        value={this.state.client.altEmail}
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        id="altPhone"
+                                        label="Alt Phone"
+                                        value={this.state.client.altPhone}
+                                        placeholder="xxx-xxx-xxxx"
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        id="category"
+                                        label="Category"
+                                        value={this.state.client.category}
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+                                <Grid item xs={12} sm={6} md={4} lg={12}>
+                                    <TextField
+                                        id="notes"
+                                        label="Notes"
+                                        multiline
+                                        rows="8"
+                                        value={this.state.client.notes}
+                                        onChange={this.handleChange}
+                                        className={classes.textField}
+                                        margin="dense"
+                                    />
+                                </Grid>
+                                <Grid item xs={6} sm={9} style={{ "margin-top": "30px" }}>
+
+                                    <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} style={{ "marginTop": 15 }} onClick={this.handleSubmit}>SAVE</Button>
+
+                                </Grid>
+
+                            </form>
+                        </Grid>
                     </Grid>
-                    <Grid item sm={7} lg={9}>
-                        <h4>New Client</h4>
-                        <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
-
-                            <Grid item xs={12} style={{ "margin-top": "40px" }}>
-                                <h6>Basic Info</h6>
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <TextField
-                                    required
-                                    id="company"
-                                    label="Company"
-                                    value={this.state.client.company}
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <TextField
-                                    required
-                                    id="email"
-                                    label="Email"
-                                    value={this.state.client.email}
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <TextField
-                                    id="phone"
-                                    label="Phone"
-                                    value={this.state.client.phone}
-                                    placeholder="xxx-xxx-xxxx"
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} style={{ "margin-top": "40px" }}>
-                                <h6>POC Info</h6>
-                            </Grid>
-
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <TextField
-                                    id="firstName"
-                                    label="First Name"
-                                    className={classes.textField}
-                                    value={this.state.client.firstName}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <TextField
-                                    id="lastName"
-                                    label="Last Name"
-                                    className={classes.textField}
-                                    value={this.state.client.lastName}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} style={{ "margin-top": "40px" }}>
-                                <h6>Address</h6>
-                            </Grid>
-
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <TextField
-                                    id="address.street"
-                                    label="Street Address"
-                                    value={this.state.client.address.street}
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <TextField
-                                    id="address.city"
-                                    label="City"
-                                    value={this.state.client.address.city}
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} sm={6} md={3} lg={3}>
-                                <TextField
-                                    id="address.state"
-                                    label="State"
-                                    value={this.state.client.address.state}
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} sm={6} md={2} lg={3}>
-                                <TextField
-                                    id="address.zip"
-                                    label="Zip Code"
-                                    value={this.state.client.address.zip}
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} style={{ "margin-top": "40px" }}>
-                                <h6>Additional Info</h6>
-                            </Grid>
-
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <TextField
-                                    id="altEmail"
-                                    label="Alt Email"
-                                    value={this.state.client.altEmail}
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <TextField
-                                    id="altPhone"
-                                    label="Alt Phone"
-                                    value={this.state.client.altPhone}
-                                    placeholder="xxx-xxx-xxxx"
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12} sm={6} md={4} lg={3}>
-                                <TextField
-                                    id="category"
-                                    label="Category"
-                                    value={this.state.client.category}
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </Grid>
-
-                            <Grid item xs={12}>
-                                <TextField
-                                    id="notes"
-                                    label="Notes"
-                                    multiline
-                                    rows="8"
-                                    value={this.state.client.notes}
-                                    onChange={this.handleChange}
-                                    className={classes.textField}
-                                    margin="dense"
-                                />
-                            </Grid>
-                            <Grid item xs={6} sm={9} style={{ "margin-top": "30px" }}>
-
-                                <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15 }} onClick={this.handleSubmit}>SAVE</Button>
-
-                            </Grid>
-
-                        </form>
-                    </Grid>
-                </Grid>
-            )
-        }}
+                )
+            }
+        }
     }
 }
 
