@@ -33,11 +33,11 @@ const styles = theme => ({
         minWidth: 275,
         backgroundColor: '#F5f5f5',
     },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
+    // bullet: {
+    //     display: 'inline-block',
+    //     margin: '0 2px',
+    //     transform: 'scale(0.8)',
+    // },
 
     title: {
         fontSize: 14,
@@ -99,12 +99,12 @@ class Dash extends React.Component {
 
                 return (
                     <Grid container spacing={24}>
-                        <Grid item xs={1} sm={5} md={3}>
+                        <Grid item xs={2} sm={4} md={3} lg={2}>
                             <Paper className={classes.paper}></Paper>
                         </Grid>
-                        <Grid item sm={7} lg={8}>
-                            <h5 style={{ margin: '3rem auto 2rem 0' }}><strong>Dashboard</strong></h5>
-                            <Grid item sm={7} lg={8}>
+                        <Grid item xs={9} sm={7} md={8} lg={9}>
+                            <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Dashboard</strong></h5>
+                            <Grid item sm={7} lg={10}>
                                 <Card className={classes.card}>
                                     <CardHeader
                                         title="RECENT ACTIVITIES"

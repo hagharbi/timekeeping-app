@@ -99,14 +99,21 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: tru
 
 const styles = theme => ({
   root: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 3,
+    width: 'flex',
+    flexWrap: 'wrap',
+    // marginTop: theme.spacing.unit * 3,
   },
   table: {
     minWidth: 500,
   },
   tableWrapper: {
     overflowX: 'auto',
+  },
+  dense: {
+    marginTop: 19,
+  },
+  menu: {
+    width: 300,
   },
 });
 
@@ -150,10 +157,10 @@ class CustomPaginationActionsTable extends React.Component {
 
       return (
         <Grid container spacing={24}>
-          <Grid item sm={1} md={3}>
+          <Grid item xs={2} sm={4} md={3} lg={2}>
             <Paper className={classes.paper}></Paper>
           </Grid>
-          <Grid item sm={6} lg={9}>
+          <Grid item xs={10} sm={8} md={9} lg={9}>
             <Paper className={classes.root}>
               <Grid
                 justify="space-between"
@@ -161,15 +168,15 @@ class CustomPaginationActionsTable extends React.Component {
                 spacing={24}
               >
                 <Grid item>
-                  <h5>Clients</h5>
+                  <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Clients</strong></h5>
                 </Grid>
                 <Grid item>
                   <Link
                     to="/newclient">
                     <Button
                       // onClick={}
-                      variant="contained" color="inherit" className={classes.button}
-                      style={{ marginTop: "12.5px" }}
+                      variant="contained" color="secondary" className={classes.button}
+                      style={{ marginTop: "3rem" }}
                     >
                       + New Client
                       </Button>
@@ -180,12 +187,12 @@ class CustomPaginationActionsTable extends React.Component {
                 <Table className={classes.table}>
                   <TableHead>
                     <TableRow>
-                      <TableCell component="th" scope="row">
+                      <TableCell variant="h5" component="th" scope="row">
                         Company
                       </TableCell>
-                      <TableCell component="th" scope="row">Email</TableCell>
-                      <TableCell component="th" scope="row">Phone</TableCell>
-                      <TableCell component="th" align="right">Projects</TableCell>
+                      <TableCell variant="h5" component="th" scope="row">Email</TableCell>
+                      <TableCell variant="h5" component="th" scope="row">Phone</TableCell>
+                      <TableCell variant="h5" component="th" align="right">Projects</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -194,11 +201,11 @@ class CustomPaginationActionsTable extends React.Component {
                       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                       .map(client => (
                         <TableRow hover style={{ cursor: 'pointer' }} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
-                          <TableCell component="th" scope="row">
+                          <TableCell variant="h5" component="th" scope="row">
                             {client.company}
                           </TableCell>
-                          <TableCell component="th" scope="row">{client.email}</TableCell>
-                          <TableCell component="th" scope="row"> {client.phone}</TableCell>
+                          <TableCell variant="h5" component="th" scope="row">{client.email}</TableCell>
+                          <TableCell variant="h5" component="th" scope="row"> {client.phone}</TableCell>
                           <TableCell align="right">{client.projects.length}</TableCell>
                         </TableRow>
                       ))}

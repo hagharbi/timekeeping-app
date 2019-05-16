@@ -108,8 +108,9 @@ const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: tru
 
 const styles = theme => ({
   root: {
-    width: '100%',
-    marginTop: theme.spacing.unit * 3,
+    width: 'flex',
+    flexWrap: 'wrap',
+    // marginTop: theme.spacing.unit * 3,
   },
   table: {
     minWidth: 500,
@@ -117,10 +118,16 @@ const styles = theme => ({
   tableWrapper: {
     overflowX: 'auto',
   },
+  dense: {
+    marginTop: 19,
+  },
+  menu: {
+    width: 300,
+  },
 });
 
 class ProjectTable extends React.Component {
-state = {
+  state = {
     page: 0,
     rowsPerPage: 5,
   };
@@ -146,8 +153,9 @@ state = {
   };
 
   handleChangeDropdown = e => {
-    this.setState({ project: Object.assign(
-        {}, 
+    this.setState({
+      project: Object.assign(
+        {},
         this.state.project,
         { [e.target.name]: e.target.value }
       ),
@@ -166,7 +174,7 @@ state = {
   render() {
     const { classes } = this.props;
     const { rowsPerPage, page } = this.state;
-    
+
 
     const { data } = this.props.projects;
 
@@ -184,8 +192,8 @@ state = {
 
       function findCompanyName(clientID) {
         let company;
-        data.clients.map(function(client){
-          if(client._id === clientID) {
+        data.clients.map(function (client) {
+          if (client._id === clientID) {
             return company = client.company
           }
           return company
@@ -195,113 +203,113 @@ state = {
 
       return (
         <Grid container spacing={24}>
-          <Grid item sm={1} md={3}>
+          <Grid item xs={2} sm={4} md={3} lg={2}>
             <Paper className={classes.paper}></Paper>
           </Grid>
-          <Grid item sm={6} lg={9}>
-          <Paper className={classes.root}>
-          <h5>Projects</h5>
-            <div className={classes.tableWrapper}>
-              <Table className={classes.table}>
-                <TableHead>
+          <Grid item xs={10} sm={8} md={9} lg={9}>
+            <Paper className={classes.root}>
+              <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Projects</strong></h5>
+              <div className={classes.tableWrapper}>
+                <Table className={classes.table}>
+                  <TableHead>
                     <TableRow>
-                      <TableCell component="th" scope="row">Title</TableCell>
-                      <TableCell component="th" scope="row">Client</TableCell>
-                      <TableCell component="th" scope="row">Due Date</TableCell>
-                      <TableCell component="th" scope="row">Priority</TableCell>
-                      <TableCell component="th" scope="row">Status</TableCell>
-                      <TableCell component="th" scope="row">Timer</TableCell>
+                      <TableCell variant="h5" component="th" scope="row">Title</TableCell>
+                      <TableCell variant="h5" component="th" scope="row">Client</TableCell>
+                      <TableCell variant="h5" component="th" scope="row">Due Date</TableCell>
+                      <TableCell variant="h5" component="th" scope="row">Priority</TableCell>
+                      <TableCell variant="h5" component="th" scope="row">Status</TableCell>
+                      <TableCell variant="h5" component="th" scope="row">Timer</TableCell>
                     </TableRow>
                   </TableHead>
-                <TableBody>
-                  {data.projects
-                  .filter(projects => {return projects.active === true})
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map(projects => (
-                    <TableRow key={projects._id}>
-                      <TableCell component="th" scope="row" style={{cursor: 'pointer'}} onClick={(e) => this.handleClick(projects._id, e)}>
-                        {projects.title}
-                      </TableCell>
-                      <TableCell component="th" scope="row" style={{cursor: 'pointer'}} onClick={(e) => this.handleClickClient(projects.client, e)}>
-                        {findCompanyName(projects.client)}
-                      </TableCell>
-                      <TableCell component="th" scope="row">{projects.dueDate}</TableCell>
-                      <TableCell component="th" scope="row">
-                        <FormControl variant="outlined" className={classes.formControl}>
-                            <Select
+                  <TableBody>
+                    {data.projects
+                      .filter(projects => { return projects.active === true })
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map(projects => (
+                        <TableRow key={projects._id}>
+                          <TableCell variant="p" component="th" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClick(projects._id, e)}>
+                            {projects.title}
+                          </TableCell>
+                          <TableCell variant="p" component="th" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClickClient(projects.client, e)}>
+                            {findCompanyName(projects.client)}
+                          </TableCell>
+                          <TableCell variant="p" component="th" scope="row">{projects.dueDate}</TableCell>
+                          <TableCell variant="p" component="th" scope="row">
+                            <FormControl variant="outlined" className={classes.formControl}>
+                              <Select
                                 value={projects.status}
                                 onChange={this.handleChangeDropdown}
                                 name="status"
                                 input={
-                                <OutlinedInput
+                                  <OutlinedInput
                                     name="status"
                                     id="outlined-age-simple"
-                                />
+                                  />
                                 }
-                            >
-                                <MenuItem value={"inactive"}>inactive</MenuItem>                   
+                              >
+                                <MenuItem value={"inactive"}>inactive</MenuItem>
                                 <MenuItem value={"pending"}>pending</MenuItem>
                                 <MenuItem value={"in progress"}>in progress</MenuItem>
                                 <MenuItem value={"completed"}>completed</MenuItem>
-                            </Select>
-                        </FormControl>
-                      </TableCell>
-                      <TableCell component="th" scope="row"> 
-                        <FormControl variant="outlined" className={classes.formControl}>
-                            <Select
+                              </Select>
+                            </FormControl>
+                          </TableCell>
+                          <TableCell variant="p" component="th" scope="row">
+                            <FormControl variant="outlined" className={classes.formControl}>
+                              <Select
                                 value={projects.priority}
                                 onChange={this.handleChangeDropdown}
                                 name="priority"
                                 input={
-                                <OutlinedInput
+                                  <OutlinedInput
                                     name="priority"
                                     id="outlined-age-simple"
-                                />
+                                  />
                                 }
-                            >
+                              >
                                 <MenuItem value={"low"}>low</MenuItem>
                                 <MenuItem value={"medium"}>medium</MenuItem>
                                 <MenuItem value={"high"}>high</MenuItem>
-                            </Select>
-                        </FormControl>
-                      </TableCell>
-                      <TableCell component="th" scope="row">      
-                        <Button variant="contained" color="primary" className={classes.button}
-                        key={projects._id} onClick={(e) => this.handleClick(projects._id, e)}>
-                            START
+                              </Select>
+                            </FormControl>
+                          </TableCell>
+                          <TableCell variant="p" component="th" scope="row">
+                            <Button variant="contained" color="primary" className={classes.button}
+                              key={projects._id} onClick={(e) => this.handleClick(projects._id, e)}>
+                              START
                         </Button>
-                      </TableCell>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    {emptyRows > 0 && (
+                      <TableRow style={{ height: 48 * emptyRows }}>
+                        <TableCell colSpan={6} />
+                      </TableRow>
+                    )}
+                  </TableBody>
+                  <TableFooter>
+                    <TableRow>
+                      <TablePagination
+                        rowsPerPageOptions={[5, 10, 25]}
+                        colSpan={6}
+                        count={data.projects
+                          .filter(project => { return project.active === true }).length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        SelectProps={{
+                          native: true,
+                        }}
+                        onChangePage={this.handleChangePage}
+                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                        ActionsComponent={TablePaginationActionsWrapped}
+                      />
                     </TableRow>
-                  ))}
-                  {emptyRows > 0 && (
-                    <TableRow style={{ height: 48 * emptyRows }}>
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )}
-                </TableBody>
-                <TableFooter>
-                  <TableRow>
-                    <TablePagination
-                      rowsPerPageOptions={[5, 10, 25]}
-                      colSpan={6}
-                      count={data.projects
-                        .filter(project => {return project.active === true}).length}
-                      rowsPerPage={rowsPerPage}
-                      page={page}
-                      SelectProps={{
-                        native: true,
-                      }}
-                      onChangePage={this.handleChangePage}
-                      onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                      ActionsComponent={TablePaginationActionsWrapped}
-                    />
-                  </TableRow>
-                </TableFooter>
-              </Table>
-            </div>
-          </Paper>
+                  </TableFooter>
+                </Table>
+              </div>
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
       );
     }
   }

@@ -4,56 +4,56 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
+import Grid from '@material-ui/core/Grid';
 import TextField from "../components/SettingsTextField/UserSettingsField";
-
 
 class Settings extends Component {
 
-    constructor() {
-      super();
-      this.state = {
-        errors: {}
-      };
+  constructor() {
+    super();
+    this.state = {
+      errors: {}
     };
-  
-    componentDidMount() {
-      const userData = {
-        id: this.props.auth.user.id
-      };
-      //console.log('componentdid', this.props.auth.user.id)
-      this.props.findUserDetails(userData);
+  };
+
+  componentDidMount() {
+    const userData = {
+      id: this.props.auth.user.id
+    };
+    //console.log('componentdid', this.props.auth.user.id)
+    this.props.findUserDetails(userData);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
     }
-  
-    componentWillReceiveProps(nextProps) {
-      if (nextProps.errors) {
-        this.setState({
-          errors: nextProps.errors
-        });
-      }
-    };
+  };
 
-    onLogoutClick = e => {
-        e.preventDefault();
-        this.props.logoutUser();
-      };
+  onLogoutClick = e => {
+    e.preventDefault();
+    this.props.logoutUser();
+  };
 
-    render() {
-      const { user } = this.props.auth;
+  render() {
+    const { user } = this.props.auth;
 
-      if (!this.props.userDetails) {
-        return null
-      }
-      else {
+    if (!this.props.userDetails) {
+      return null
+    }
+    else {
 
       const { data } = this.props.userDetails;
       console.log(user);
       console.log(data)
       return (
         <div>
-            <ResponsiveDrawer />
-                <div className="col s6">
-                <TextField user={{ data }}/>
-                </div> 
+          <ResponsiveDrawer />
+          <Grid>
+            <TextField user={{ data }} />
+          </Grid>
         </div>
       );
     }
@@ -65,7 +65,7 @@ Settings.propTypes = {
   logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   userDetails: PropTypes.object.isRequired
-  };
+};
 
 const mapStateToProps = state => ({
   auth: state.auth,

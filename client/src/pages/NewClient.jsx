@@ -6,6 +6,7 @@ import { findUserDetails } from "../actions/findUserActions";
 import { createClientDetails } from "../actions/createClientActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import NewClientFields from "../components/NewClientForm/NewClientForm";
+import Grid from '@material-ui/core/Grid';
 
 class NewClient extends Component {
     constructor() {
@@ -56,9 +57,9 @@ class NewClient extends Component {
                 return (
                     <div >
                         <ResponsiveDrawer />
-                        <div>
-                            <NewClientFields user={{ data }}/>
-                        </div>
+                        <Grid>
+                            <NewClientFields user={{ data }} />
+                        </Grid>
                     </div>
 
                 );
