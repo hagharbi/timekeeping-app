@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
@@ -8,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 const styles = theme => ({
     container: {
@@ -129,10 +131,24 @@ class TextFields1 extends React.Component {
                   <Paper className={classes.paper}></Paper>
                 </Grid>
                 <Grid item xs={10} sm={8} md={9} lg={9}>
-                    <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Client Settings</strong></h5>
+                    {/* <Paper className={classes.root}> */}
+                        <Grid
+                            justify="space-between"
+                            container
+                            spacing={24}
+                        >
+                            <Grid item>
+                                <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Client Settings</strong></h5>
+                            </Grid>
+                            <Grid item style={{ marginTop: "2.5rem"}}> 
+                                <Link to="/clients" >
+                                    < KeyboardBackspaceIcon style={{ paddingTop:"12.5px", color: "gray" }} /> Back to All Clients
+                                </Link>
+                            </Grid>
+                        </Grid>
                     <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
-                        <Grid item xs={12} style={{"margin-top": "40px"}}>
+                        <Grid item xs={12} style={{"marginTop": "40px"}}>
                             <h6>Basic Info</h6>
                         </Grid>
                         <Grid item xs ={12} sm={6} md={4} lg={3}>
@@ -174,7 +190,7 @@ class TextFields1 extends React.Component {
                         />
                         </Grid>
 
-                        <Grid item xs={12} style={{"margin-top": "40px"}}>
+                        <Grid item xs={12} style={{"marginTop": "40px"}}>
                             <h6>POC Info</h6>
                         </Grid>
 
@@ -201,7 +217,7 @@ class TextFields1 extends React.Component {
                         />
                         </Grid>
 
-                        <Grid item xs={12} style={{"margin-top": "40px"}}>
+                        <Grid item xs={12} style={{"marginTop": "40px"}}>
                             <h6>Address</h6>
                         </Grid>
 
@@ -253,7 +269,7 @@ class TextFields1 extends React.Component {
                         /> 
                         </Grid>
 
-                        <Grid item xs={12} style={{"margin-top": "40px"}}>
+                        <Grid item xs={12} style={{"marginTop": "40px"}}>
                             <h6>Additional Info</h6>
                         </Grid>
 
@@ -307,19 +323,20 @@ class TextFields1 extends React.Component {
                         />
                         </Grid>
                         
-                        <Grid item xs ={6} sm={9} style={{"margin-top": "30px"}}>
+                        <Grid item xs ={6} sm={9} style={{"marginTop": "30px"}}>
 
                             <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15}} onClick={this.handleSubmit}>SAVE</Button>
 
                         </Grid>
 
-                        <Grid item xs ={6} sm={3} style={{"margin-top": "30px"}}>
+                        <Grid item xs ={6} sm={3} style={{"marginTop": "30px"}}>
 
                             <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, align: "right"}} onClick={this.archiveClient}>ARCHIVE</Button>
 
                         </Grid>
 
                     </form>
+                    {/* </Paper> */}
                     </Grid>
                 </Grid>
             )

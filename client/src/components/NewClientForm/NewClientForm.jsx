@@ -166,7 +166,7 @@ class NewClientFields extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} style={{ "margin-top": "1rem" }}>
+                                <Grid item xs={12} style={{ "marginTop": "1rem" }}>
                                     <h6>POC Info</h6>
                                 </Grid>
 
@@ -193,7 +193,7 @@ class NewClientFields extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} style={{ "margin-top": "1rem" }}>
+                                <Grid item xs={12} style={{ "marginTop": "1rem" }}>
                                     <h6>Address</h6>
                                 </Grid>
 
@@ -245,7 +245,7 @@ class NewClientFields extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} style={{ "margin-top": "1rem" }}>
+                                <Grid item xs={12} style={{ "marginTop": "1rem" }}>
                                     <h6>Additional Info</h6>
                                 </Grid>
 
@@ -298,7 +298,7 @@ class NewClientFields extends React.Component {
                                         margin="dense"
                                     />
                                 </Grid>
-                                <Grid item xs={6} sm={9} style={{ "margin-top": "30px" }}>
+                                <Grid item xs={6} sm={9} style={{ "marginTop": "30px" }}>
 
                                     <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} style={{ "marginTop": 15 }} onClick={this.handleSubmit}>SAVE</Button>
 
