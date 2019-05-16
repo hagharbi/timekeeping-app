@@ -16,11 +16,9 @@ import TableRow from '@material-ui/core/TableRow';
 
 //FormControl
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-
 
 //Icons
 import IconButton from '@material-ui/core/IconButton';
@@ -127,13 +125,34 @@ state = {
     rowsPerPage: 5,
   };
 
+
+  beginningState(objectFound, event) {
+    this.setState({ project: objectFound });
+    console.log(this.state);
+  };
+
   handleClick = (id, e) => {
     e.preventDefault();
     window.location = "/projects/" + id
   };
 
+  handleClickClient = (id, e) => {
+    e.preventDefault();
+    window.location = "/clients/" + id
+  };
+
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleChangeDropdown = e => {
+    this.setState({ project: Object.assign(
+        {}, 
+        this.state.project,
+        { [e.target.name]: e.target.value }
+      ),
+    })
+    console.log(this.state.project)
   };
 
   handleChangePage = (event, page) => {
@@ -161,7 +180,18 @@ state = {
 
       const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.clients.length - page * rowsPerPage);
 
-      data.clients.sort((a, b) => (a.firstName < b.firstName ? -1 : 1));
+      data.projects.sort((a, b) => (a.title < b.title ? -1 : 1));
+
+      function findCompanyName(clientID) {
+        let company;
+        data.clients.map(function(client){
+          if(client._id === clientID) {
+            return company = client.company
+          }
+          return company
+        });
+        return company
+      };
 
       return (
         <Grid container spacing={24}>
@@ -192,39 +222,39 @@ state = {
                       <TableCell component="th" scope="row" style={{cursor: 'pointer'}} onClick={(e) => this.handleClick(projects._id, e)}>
                         {projects.title}
                       </TableCell>
-                      <TableCell component="th" scope="row" style={{cursor: 'pointer'}} onClick={(e) => this.handleClick(projects.client, e)}>
-                        {projects.client}
+                      <TableCell component="th" scope="row" style={{cursor: 'pointer'}} onClick={(e) => this.handleClickClient(projects.client, e)}>
+                        {findCompanyName(projects.client)}
                       </TableCell>
                       <TableCell component="th" scope="row">{projects.dueDate}</TableCell>
                       <TableCell component="th" scope="row">
                         <FormControl variant="outlined" className={classes.formControl}>
                             <Select
                                 value={projects.status}
-                                onChange={this.handleChange}
+                                onChange={this.handleChangeDropdown}
+                                name="status"
                                 input={
                                 <OutlinedInput
-                                    labelWidth={this.state.labelWidth}
                                     name="status"
                                     id="outlined-age-simple"
                                 />
                                 }
                             >
+                                <MenuItem value={"inactive"}>inactive</MenuItem>                   
                                 <MenuItem value={"pending"}>pending</MenuItem>
                                 <MenuItem value={"in progress"}>in progress</MenuItem>
                                 <MenuItem value={"completed"}>completed</MenuItem>
-                                <MenuItem value={"inactive"}>inactive</MenuItem>
                             </Select>
                         </FormControl>
                       </TableCell>
-                      <TableCell component="th" scope="row"> {projects.priority}
+                      <TableCell component="th" scope="row"> 
                         <FormControl variant="outlined" className={classes.formControl}>
                             <Select
                                 value={projects.priority}
-                                onChange={this.handleChange}
+                                onChange={this.handleChangeDropdown}
+                                name="priority"
                                 input={
                                 <OutlinedInput
-                                    labelWidth={this.state.labelWidth}
-                                    name="status"
+                                    name="priority"
                                     id="outlined-age-simple"
                                 />
                                 }
