@@ -127,24 +127,11 @@ class TextFields1 extends React.Component {
             
             return (
                 <Grid container spacing={24}>
-                 <Grid item xs ={1} sm={5} md={3}>
-                    <Paper className={classes.paper}></Paper>
+                <Grid item xs={2} sm={4} md={3} lg={2}>
+                  <Paper className={classes.paper}></Paper>
                 </Grid>
-                <Grid item sm={7} lg={9}>
-                    <Grid
-                        justify="space-between"
-                        container
-                        spacing={-10}
-                    >
-                    <Grid item>
-                        <h5>Client Profile</h5>
-                    </Grid>
-                    <Grid item>
-                        <Link to="/clients" style= {{marginTop: "12px", color: "gray"}} className="btn-flat waves-effect">
-                            < KeyboardBackspaceIcon style={{paddingTop: "12px"}}  / > Back to All Clients
-                        </Link>
-                    </Grid>
-                </Grid>
+                <Grid item xs={10} sm={8} md={9} lg={9}>
+                    <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Client Settings</strong></h5>
                     <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
                         <Grid item xs={12} style={{"margin-top": "40px"}}>
@@ -324,13 +311,13 @@ class TextFields1 extends React.Component {
                         
                         <Grid item xs ={6} sm={9} style={{"margin-top": "30px"}}>
 
-                        <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15}} onClick={this.handleSubmit}>SAVE</Button>
+                            <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15}} onClick={this.handleSubmit}>SAVE</Button>
 
                         </Grid>
 
                         <Grid item xs ={6} sm={3} style={{"margin-top": "30px"}}>
 
-                        <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, align: "right"}} onClick={this.archiveClient}>ARCHIVE</Button>
+                            <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, align: "right"}} onClick={this.archiveClient}>ARCHIVE</Button>
 
                         </Grid>
 

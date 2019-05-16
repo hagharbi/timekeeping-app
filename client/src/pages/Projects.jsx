@@ -5,6 +5,7 @@ import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import ProjectTable from "../components/ProjectTable/ProjectTable";
+import Grid from '@material-ui/core/Grid';
 // import Divider from '@material-ui/core/Divider';  <--- defined but never used,  again! Leave commented out until it is needed
 
 class Projects extends Component {
@@ -43,18 +44,12 @@ class Projects extends Component {
         console.log(user);
         // console.log(data)
         return (
-            <>
-                <div style={{
-                    margin: "0 auto 0 2rem",
-                }}>
-                    <ResponsiveDrawer />
-
-                    <div>
-                        <ProjectTable projects={{ data }}/>
-                    </div>
-                    
-                </div >
-            </>
+            <div>
+                <ResponsiveDrawer />
+                <Grid>
+                    <ProjectTable projects={{ data }} />
+                </Grid>
+            </div >
         );
     }
 }
