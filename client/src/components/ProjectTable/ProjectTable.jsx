@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
 
 //Table
 import Table from '@material-ui/core/Table';
@@ -201,6 +202,7 @@ class ProjectTable extends React.Component {
         return company
       };
 
+
       return (
         <Grid container spacing={24}>
           <Grid item xs={2} sm={4} md={3} lg={2}>
@@ -208,7 +210,27 @@ class ProjectTable extends React.Component {
           </Grid>
           <Grid item xs={10} sm={8} md={9} lg={9}>
             <Paper className={classes.root}>
-              <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Projects</strong></h5>
+              <Grid
+                justify="space-between"
+                container
+                spacing={24}
+              >
+                <Grid item>
+                  <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Projects</strong></h5>
+                </Grid>
+                <Grid item>
+                  <Link
+                    to="/newclient">
+                    <Button
+                      // onClick={}
+                      variant="contained" color="secondary" className={classes.button}
+                      style={{ marginTop: "3rem" }}
+                    >
+                      + New Project
+                      </Button>
+                  </Link>
+                </Grid>
+              </Grid>
               <div className={classes.tableWrapper}>
                 <Table className={classes.table}>
                   <TableHead>

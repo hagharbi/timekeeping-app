@@ -71,7 +71,7 @@ module.exports = {
                 zip: req.body.zip
             },
             $push: {notes: req.body.notes},
-            $push: {user: req.body.id}
+            user: req.body.userId
         });
         console.log(newClient);
 
