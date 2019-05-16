@@ -111,7 +111,7 @@ const styles = theme => ({
 });
 
 class CustomPaginationActionsTable extends React.Component {
-state = {
+  state = {
     page: 0,
     rowsPerPage: 5,
   };
@@ -119,7 +119,7 @@ state = {
   handleClick = (id, e) => {
     e.preventDefault();
     window.location = "/clients/" + id
-}
+  }
 
   handleChangePage = (event, page) => {
     this.setState({ page });
@@ -132,7 +132,7 @@ state = {
   render() {
     const { classes } = this.props;
     const { rowsPerPage, page } = this.state;
-    
+
 
     const { data } = this.props.clients;
 
@@ -146,7 +146,7 @@ state = {
 
       const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.clients.length - page * rowsPerPage);
 
-      data.clients.sort((a, b) => (a.firstName < b.firstName ? -1 : 1));
+      data.clients.sort((a, b) => (a.projects.length > b.projects.length ? -1 : 1));
 
       return (
         <Grid container spacing={24}>
@@ -154,31 +154,31 @@ state = {
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item sm={6} lg={9}>
-          <Paper className={classes.root}>
-            <Grid
-              justify="space-between"
-              container
-              spacing={24}
-            >
-              <Grid item>
-                <h5>Clients</h5>
-              </Grid>
-              <Grid item>
-                <Link
-                to="/clients/newclient">
+            <Paper className={classes.root}>
+              <Grid
+                justify="space-between"
+                container
+                spacing={24}
+              >
+                <Grid item>
+                  <h5>Clients</h5>
+                </Grid>
+                <Grid item>
+                  <Link
+                    to="/clients/newclient">
                     <Button
                       // onClick={}
                       variant="contained" color="inherit" className={classes.button}
-                      style={{marginTop:"12.5px"}}
+                      style={{ marginTop: "12.5px" }}
                     >
                       + New Client
                       </Button>
-                </Link>
+                  </Link>
+                </Grid>
               </Grid>
-          </Grid>
-            <div className={classes.tableWrapper}>
-              <Table className={classes.table}>
-                <TableHead>
+              <div className={classes.tableWrapper}>
+                <Table className={classes.table}>
+                  <TableHead>
                     <TableRow>
                       <TableCell component="th" scope="row">
                         Company
@@ -188,49 +188,49 @@ state = {
                       <TableCell component="th" align="right">Projects</TableCell>
                     </TableRow>
                   </TableHead>
-                <TableBody>
-                  {data.clients
-                  .filter(client => {return client.active === true})
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map(client => (
-                    <TableRow hover style={{cursor: 'pointer'}} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
-                      <TableCell component="th" scope="row">
-                        {client.company}
-                      </TableCell>
-                      <TableCell component="th" scope="row">{client.email}</TableCell>
-                      <TableCell component="th" scope="row"> {client.phone}</TableCell>
-                      <TableCell align="right">{client.projects.length}</TableCell>
+                  <TableBody>
+                    {data.clients
+                      .filter(client => { return client.active === true })
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map(client => (
+                        <TableRow hover style={{ cursor: 'pointer' }} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
+                          <TableCell component="th" scope="row">
+                            {client.company}
+                          </TableCell>
+                          <TableCell component="th" scope="row">{client.email}</TableCell>
+                          <TableCell component="th" scope="row"> {client.phone}</TableCell>
+                          <TableCell align="right">{client.projects.length}</TableCell>
+                        </TableRow>
+                      ))}
+                    {emptyRows > 0 && (
+                      <TableRow style={{ height: 48 * emptyRows }}>
+                        <TableCell colSpan={6} />
+                      </TableRow>
+                    )}
+                  </TableBody>
+                  <TableFooter>
+                    <TableRow>
+                      <TablePagination
+                        rowsPerPageOptions={[5, 10, 25]}
+                        colSpan={6}
+                        count={data.clients
+                          .filter(client => { return client.active === true }).length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        SelectProps={{
+                          native: true,
+                        }}
+                        onChangePage={this.handleChangePage}
+                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                        ActionsComponent={TablePaginationActionsWrapped}
+                      />
                     </TableRow>
-                  ))}
-                  {emptyRows > 0 && (
-                    <TableRow style={{ height: 48 * emptyRows }}>
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )}
-                </TableBody>
-                <TableFooter>
-                  <TableRow>
-                    <TablePagination
-                      rowsPerPageOptions={[5, 10, 25]}
-                      colSpan={6}
-                      count={data.clients
-                        .filter(client => {return client.active === true}).length}
-                      rowsPerPage={rowsPerPage}
-                      page={page}
-                      SelectProps={{
-                        native: true,
-                      }}
-                      onChangePage={this.handleChangePage}
-                      onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                      ActionsComponent={TablePaginationActionsWrapped}
-                    />
-                  </TableRow>
-                </TableFooter>
-              </Table>
-            </div>
-          </Paper>
+                  </TableFooter>
+                </Table>
+              </div>
+            </Paper>
+          </Grid>
         </Grid>
-      </Grid>
       );
     }
   }
