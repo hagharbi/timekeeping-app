@@ -54,7 +54,7 @@ class App extends Component {
               <PrivateRoute exact path="/settings" component={Settings} />
               <PrivateRoute exact path="/clients" component={Client} />
               <PrivateRoute exact path="/clients/:id" component={EditClient} />
-              <PrivateRoute exact path="/clients/newclient" component={NewClient} />
+              <PrivateRoute exact path="/newclient" component={NewClient} />
               <PrivateRoute exact path="/projects" component={Projects} />
               <PrivateRoute exact path="/invoices" component={Invoice} /> *// switch to invoices components 
               when ready
