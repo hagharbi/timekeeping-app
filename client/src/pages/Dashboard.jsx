@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import DashboardComp from "../components/DashboardComp/DashboardComp";
 
 class Dashboard extends Component {
 
@@ -52,47 +50,8 @@ class Dashboard extends Component {
       return (
         <div>
           <ResponsiveDrawer />
-
-          <div className="container">
-            <h1>DASHBOARD</h1>
-            <div className="row">
-              <div className="col s6">
-                <div className="card">
-                  <div className="card-header">
-                    <h6>
-                      Recent Acitivity
-                    </h6>
-                  </div>
-                  <Divider />
-                  <div className="card-content">
-                    <ul>
-                      <li>
-                        Project 1
-                      </li>
-                      <li>
-                        Project 2
-                      </li>
-                      <li>
-                        Project 3
-                      </li>
-                      <li>
-                        Project 4
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="col s6">
-                <div className="card">
-                  <div className="card-header">
-                    <h6>
-                      Week Earnings
-                  </h6>
-                    <Divider />
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div className="col s6">
+            <DashboardComp user={{ data }} />
           </div>
         </div >
       );
