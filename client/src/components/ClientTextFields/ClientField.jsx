@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
@@ -8,6 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 
 const styles = theme => ({
     container: {
@@ -129,7 +131,20 @@ class TextFields1 extends React.Component {
                     <Paper className={classes.paper}></Paper>
                 </Grid>
                 <Grid item sm={7} lg={9}>
-                <h4>Client Settings</h4>
+                    <Grid
+                        justify="space-between"
+                        container
+                        spacing={-10}
+                    >
+                    <Grid item>
+                        <h5>Client Profile</h5>
+                    </Grid>
+                    <Grid item>
+                        <Link to="/clients" style= {{marginTop: "12px", color: "gray"}} className="btn-flat waves-effect">
+                            < KeyboardBackspaceIcon style={{paddingTop: "12px"}}  / > Back to All Clients
+                        </Link>
+                    </Grid>
+                </Grid>
                     <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
                         <Grid item xs={12} style={{"margin-top": "40px"}}>
