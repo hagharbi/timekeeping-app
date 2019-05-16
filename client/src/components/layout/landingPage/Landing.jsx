@@ -64,7 +64,6 @@ class Landing extends Component {
                   letterSpacing: "1.5px",
                   fontWeight: "600",
                   position: "absolute",
-                  backgroundColor: "rgb(199, 255, 255)",
                   margin: "50vh 0 0 90px",
                   left: "0",
                   top: "0",
@@ -78,14 +77,20 @@ class Landing extends Component {
             </div>
           </div>
         </div>
-
-        <img src={ require('./imagesCode/cardOne.png') } style={{margin: "40vw 0 0 10vw", position: "absolute", zIndex: "99"}} alt="CardOne"/>
-        <img src={ require('./imagesCode/cardTwo.png')} style={{margin: "40vw 0 0 40vw", position: "absolute", zIndex: "99"}} alt="CardTwo" />
-        <img src={ require ('./imagesCode/CardThree.png')} style={{margin: "40vw 0 0 70vw", position: "absolute", zIndex: "99"}} alt="CardTwo" />
-
+        <img src={ require('./imagesCode/cardOne.png') } style={{margin: "40vw 0 0 10vw", position: "absolute", zIndex: "99", width: "25vw"}} alt="CardOne" id="ctaElements" />
+        <img src={ require('./imagesCode/cardTwo.png')} style={{margin: "40vw 0 0 40vw", position: "absolute", zIndex: "99", width: "25vw"}} alt="CardTwo" id="ctaElements" />
+        <img src={ require ('./imagesCode/CardThree.png')} style={{margin: "40vw 0 0 70vw", position: "absolute", zIndex: "99", width: "25vw"}} alt="CardTwo" id="ctaElements" />
 
 
         </div>
+        <p style={{margin: "80vw 0 0 10vw", position: "absolute", zIndex: "99", width: "86vw", color: "#555555", letterSpacing: "1px"}}>
+            intuitive invoice management, tracking, producing, reporting and 
+            client management matrix designed; to gtive, you; the user, the 
+            tools you need to get the job done in time and on budget so you 
+            can spend more time doing what you want. Instead of spending time 
+            doing the things you dont. sumit professional client management 
+            systems is
+        </p>
 
 
       </div>
