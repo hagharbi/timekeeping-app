@@ -26,8 +26,8 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';  <----- Called but never used [[___JRS___]]
+// import ChevronRightIcon from '@material-ui/icons/ChevronRight';   <----- Called but never used [[___JRS___]]
 
 const drawerWidth = 180;
 

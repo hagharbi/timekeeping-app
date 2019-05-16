@@ -7,8 +7,8 @@ import Paper from '@material-ui/core/Paper';
 // import classnames from 'classnames';
 import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+// import CardContent from '@material-ui/core/CardContent'; <----- called but never used JRS
+// import Typography from '@material-ui/core/Typography';  <----- called but never used JRS
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 
@@ -80,7 +80,7 @@ class Dash extends React.Component {
     render() {
         const { classes } = this.props;
         const { data } = this.props.user;
-        const bull = <span className={classes.bullet}>•</span>;
+        // const bull = <span className={classes.bullet}>•</span>; <----- called but never used ___JRS___
 
 
         if (!data) {

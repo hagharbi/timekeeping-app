@@ -144,7 +144,8 @@ class Invoices extends React.Component {
             <ReactToPrint
               trigger={() => (
                 <a
-                  href="#"
+                  href="#top"
+                  onClick={ReactToPrint}
                   alt="print button"
                   className="print-btn"
                   id="print-btn"
