@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -15,6 +16,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import Button from '@material-ui/core/Button';
 
 const actionsStyles = theme => ({
   root: {
@@ -153,7 +155,27 @@ state = {
           </Grid>
           <Grid item sm={6} lg={9}>
           <Paper className={classes.root}>
-          <h5>Clients</h5>
+            <Grid
+              justify="space-between"
+              container
+              spacing={24}
+            >
+              <Grid item>
+                <h5>Clients</h5>
+              </Grid>
+              <Grid item>
+                <Link
+                to="/clients/newclient">
+                    <Button
+                      // onClick={}
+                      variant="contained" color="inherit" className={classes.button}
+                      style={{marginTop:"12.5px"}}
+                    >
+                      + New Client
+                      </Button>
+                </Link>
+              </Grid>
+          </Grid>
             <div className={classes.tableWrapper}>
               <Table className={classes.table}>
                 <TableHead>
