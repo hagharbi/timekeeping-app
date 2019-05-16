@@ -93,6 +93,12 @@ class ResponsiveDrawer extends React.Component {
     mobileOpen: false,
   };
 
+  // connect = (store => {
+  //   return {
+  //     menu: store.menu
+  //   };
+  // })
+
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
