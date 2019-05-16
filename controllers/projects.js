@@ -32,10 +32,11 @@ module.exports = {
             priority: req.body.priority,
             rate: req.body.rate,
             timeEst: req.body.timeEst,
-            dueDate: req.body.dueDate,
+            $setOnInsert: { 
+                dueDate: new Date(req.body.dueDate) },
             user: req.body.userId,
             client: req.body.clientID,
-            $push: {notes: req.body.note}
+            $push: {notes: req.body.notes}
         });
         console.log(newProject);
 
@@ -43,15 +44,15 @@ module.exports = {
         .save()
         .then(function(dbProject) {
             
-            // User association
-            User.findOneAndUpdate({ _id: req.body.userId }, { $push: {projects: dbProject._id }}, { new: true }).
+            //Client association
+             Client.findOneAndUpdate({ _id: req.body.clientID }, { $push: {projects: dbProject._id }}, { new: true }).
             populate({
                 path: 'projects',
                 populate: { path: 'projects' }
             });
 
-            //Client association
-            return Client.findOneAndUpdate({ _id: req.body.clientID }, { $push: {projects: dbProject._id }}, { new: true }).
+            // User association
+            return User.findOneAndUpdate({ _id: req.body.userId }, { $push: {projects: dbProject._id }}, { new: true }).
             populate({
                 path: 'projects',
                 populate: { path: 'projects' }

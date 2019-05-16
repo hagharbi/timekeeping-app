@@ -144,7 +144,7 @@ state = {
 
       const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.clients.length - page * rowsPerPage);
 
-      data.clients.sort((a, b) => (a.firstName < b.firstName ? -1 : 1));
+      data.clients.sort((a, b) => (a.projects.length > b.projects.length ? -1 : 1));
 
       return (
         <Grid container spacing={24}>
