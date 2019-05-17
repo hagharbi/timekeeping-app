@@ -1,3 +1,4 @@
+
 #promo_display-container {
     width: 100vw;
     height: 400px;
@@ -7,12 +8,13 @@
     background-color: white;
 }
 
+
 #promo_desktop {
     background-color: #555555;
-    height: 30vh;
-    width: 40vw;
+    height: 20vh;
+    width: 25vw;
     position: absolute;
-margin: 30vh 0 0 15vw;
+margin: 30vh 0 0 5vw;
 padding: 0 0 0 0;
 z-index: 1;
 top: 0;
@@ -29,10 +31,10 @@ transform: skew(0deg, -25deg);
 
 #promo_laptop {
     background-color: pink;
-    height: 25vh;
-    width: 25vw;
+    height: 15vh;
+    width: 15vw;
     position: absolute;
-margin: 30vh 0 0 55vw;
+margin: 28vh 0 0 28vw;
 padding: 0 0 0 0;
 z-index: 2;
 top: 0;
@@ -49,16 +51,14 @@ transform: skew(0deg, -25deg);
 }
 
 #promo_tablet {
-    height: 17vh;
-    width: 24vw;
+    height: 10vh;
+    width: 14vw;
     position: absolute;
-margin: 68vh 0 0 22.6vw;
+margin: 54.6vh 0 0 9.8vw;
 padding: 0 0 0 0;
 z-index: 3;
 top: 0;
 left: 0;
-
-
     -moz-transform: skew(0deg, -25deg);
     -webkit-transform: skew(0deg, -25deg);
     -o-transform: skew(0deg, -25deg);
@@ -67,10 +67,10 @@ left: 0;
 }
 
 #promo_smartPhone {
-    height: 23vh;
-    width: 7vw;
+    height: 15vh;
+    width: 4vw;
     position: absolute;
-margin: 46vh 0 0 50vw;
+margin: 40vh 0 0 25vw;
 padding: 0 0 0 0;
 z-index: 4;
 top: 0;
@@ -97,3 +97,51 @@ margin: 26vh 0 0 30vw;
     -ms-transform: skew(0deg, 0deg);
     transform: skew(0deg, -0deg);
 }
+
+
+/* #cardOne {
+    animation-name: slide;
+    animation-duration: 5s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-direction: alternate-reverse;
+    } */
+
+    
+    #cardThree {
+        animation-name: slide;
+        animation-duration: 5s;
+        animation-timing-function: ease-in;
+        animation-fill-mode: forwards;
+        animation-direction: alternate-reverse;
+        animation-delay:1s; 
+        }
+    
+
+        #cardOne {
+            animation-name: slide;
+            animation-duration: 5.5s;
+            animation-timing-function: ease-in;
+            animation-fill-mode: forwards;
+            animation-direction: alternate-reverse;
+            animation-delay:1.5s; 
+            }
+
+            #cardTwo {
+                animation-name: slide;
+                animation-duration: 4.5s;
+                animation-timing-function: ease-in;
+                animation-fill-mode: forwards;
+                animation-direction: alternate-reverse;
+                animation-delay:3s; 
+                }
+
+    @keyframes slide {
+        from {transform: translateX(0);}
+        to {transform: translateX(70vw);}
+    }
+
+    @keyframes slide2 {
+        from {transform: translateX(70vw);}
+        to {transform: translateX(0);}
+    }

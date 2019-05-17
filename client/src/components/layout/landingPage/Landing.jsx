@@ -77,25 +77,29 @@ class Landing extends Component {
             </div>
           </div>
         </div>
-        <img src={ require('./imagesCode/cardOne.png') } style={{margin: "40vw 0 0 10vw", position: "absolute", zIndex: "99", width: "25vw"}} alt="CardOne" id="ctaElements" />
-        <img src={ require('./imagesCode/cardTwo.png')} style={{margin: "40vw 0 0 40vw", position: "absolute", zIndex: "99", width: "25vw"}} alt="CardTwo" id="ctaElements" />
-        <img src={ require ('./imagesCode/CardThree.png')} style={{margin: "40vw 0 0 70vw", position: "absolute", zIndex: "99", width: "25vw"}} alt="CardTwo" id="ctaElements" />
+        <img src={ require('./imagesCode/cardOne.png') } style={{margin: "40vw 0 0 10vw", position: "absolute", zIndex: "99", width: "15vw"}} alt="CardOne" id="cardOne" />
+        <img src={ require('./imagesCode/cardTwo.png')} style={{margin: "40vw 0 0 40vw", position: "absolute", zIndex: "99", width: "15vw"}} alt="CardTwo" id="cardTwo" />
+        <img src={ require ('./imagesCode/CardThree.png')} style={{margin: "40vw 0 0 70vw", position: "absolute", zIndex: "99", width: "15vw"}} alt="CardTwo" id="cardThree" />
 
 
         </div>
-        <p style={{margin: "80vw 0 0 10vw", position: "absolute", zIndex: "99", width: "86vw", color: "#555555", letterSpacing: "1px", backgroundColor: "#fff"}}>
+        <div style={{margin: "80vw 0 0 10vw", position: "absolute", zIndex: "99", width: "40vw", color: "#555555", letterSpacing: "1px", backgroundColor: "#fff"}}>
+           
+                <p style={{position: "absolute:", zIndex: "100"}} >
             intuitive invoice management, tracking, producing, reporting and 
             client management matrix designed; to gtive, you; the user, the 
             tools you need to get the job done in time and on budget so you 
             can spend more time doing what you want. Instead of spending time 
             doing the things you dont. sumit professional client management 
             systems is...
+            </p>
+            
             <div id="promo_display-container">
     
-      <img id="promo_desktop" alt="desktop monitor representation of site page" src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
-      <img id="promo_laptop" alt="#" src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
-      <img id="promo_tablet" alt="tablet screen representation of site page" src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
-      <img id="promo_smartPhone" alt="smart phone screen representation of site page" src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
+      <img id="promo_desktop" className="promo-images" alt="desktop monitor representation of site page" src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
+    <div id="promo_laptop" className="promo-images"></div>
+      <img id="promo_tablet" className="promo-images" alt="tablet screen representation of site page" src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
+      <img id="promo_smartPhone" className="promo-images" alt="smart phone screen representation of site page" src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
   
 
 
@@ -105,7 +109,7 @@ class Landing extends Component {
       <br/>
       <p style={{textAlign: "center", position: "fixed", bottom: "0", left: "0", transform: "rotate(90deg)", margin: " 0 0 60px -50px", color: "silver"}}>© 2019 | sumit</p>
     </div>
-        </p>
+        </div>
 
 
       </div>
