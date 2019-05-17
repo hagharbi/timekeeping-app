@@ -16,7 +16,6 @@ const styles = theme => ({
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
-        marginTop: ".5rem",
         width: 300,
     },
     dense: {
@@ -25,7 +24,6 @@ const styles = theme => ({
     menu: {
         width: 300,
     },
-
 });
 
 class NewClientFields extends React.Component {
@@ -64,10 +62,9 @@ class NewClientFields extends React.Component {
 
     };
 
-
+    
     beginningState(id) {
-        this.setState({
-            client:
+        this.setState({ client: 
 
             {
                 userId: id,
@@ -127,7 +124,7 @@ class NewClientFields extends React.Component {
                             <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>New Client</strong></h5>
                             <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
-                                <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
+                                <Grid item xs={12} >
                                     <h6>Basic Info</h6>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -169,8 +166,8 @@ class NewClientFields extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
-                                    <h6>Point of Contact</h6>
+                                <Grid item xs={12} style={{ "marginTop": "1rem" }}>
+                                    <h6>POC Info</h6>
                                 </Grid>
 
                                 <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -196,7 +193,7 @@ class NewClientFields extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
+                                <Grid item xs={12} style={{ "marginTop": "1rem" }}>
                                     <h6>Address</h6>
                                 </Grid>
 
@@ -248,7 +245,7 @@ class NewClientFields extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
+                                <Grid item xs={12} style={{ "marginTop": "1rem" }}>
                                     <h6>Additional Info</h6>
                                 </Grid>
 
@@ -301,9 +298,9 @@ class NewClientFields extends React.Component {
                                         margin="dense"
                                     />
                                 </Grid>
-                                <Grid item xs={6} sm={9} style={{ "marginTop": "3rem", "marginLeft": 8 }}>
+                                <Grid item xs={6} sm={9} style={{ "marginTop": "30px" }}>
 
-                                    <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
+                                    <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} style={{ "marginTop": 15 }} onClick={this.handleSubmit}>SAVE</Button>
 
                                 </Grid>
 
