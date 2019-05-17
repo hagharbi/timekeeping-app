@@ -220,7 +220,7 @@ class ProjectTable extends React.Component {
                 </Grid>
                 <Grid item>
                   <Link
-                    to="/newclient">
+                    to="/newproject">
                     <Button
                       // onClick={}
                       variant="contained" color="secondary" className={classes.button}

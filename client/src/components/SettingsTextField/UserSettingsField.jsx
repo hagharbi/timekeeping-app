@@ -23,6 +23,7 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         width: 300,
+        marginTop: "1rem",
     },
     dense: {
         marginTop: 19,
@@ -103,7 +104,7 @@ class TextFields extends React.Component {
                         <Grid item xs={2} sm={4} md={3} lg={2}>
                             <Paper className={classes.paper}></Paper>
                         </Grid>
-                        <Grid item xs={10} sm={8} md={9} lg={10}>
+                        <Grid item xs={10} sm={8} md={9} lg={8}>
                             <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>User Settings</strong></h5>
                             <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
@@ -282,10 +283,9 @@ class TextFields extends React.Component {
                                         margin="dense"
                                     />
                                 </Grid>
-                                <Grid item xs={6} sm={9} style={{ "marginTop": "30px" }}>
-
-                                    <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} style={{ "marginTop": 15 }} onClick={this.handleSubmit}>SAVE</Button>
-
+        
+                                <Grid item xs={12} style={{ marginTop: "3rem", "marginLeft": 8 }}>
+                                    <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleSubmit}>Update</Button>
                                 </Grid>
 
                             </form>

@@ -61,7 +61,6 @@ class NewClient extends Component {
                             <NewClientFields user={{ data }} />
                         </Grid>
                     </div>
-
                 );
             }
         }
