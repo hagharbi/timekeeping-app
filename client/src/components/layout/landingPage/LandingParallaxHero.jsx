@@ -104,7 +104,7 @@ const LandingParallaxHero = ({ yOffset }) => (
       { createParallaxRight (     EnvilopeParalax, yOffset,  6  )}
       { createParallaxUp    (     Snowhill2,       yOffset, 10  )}
       { createParallaxUp    (     Snowhill2,       yOffset,  8  )}
-      { createParallaxDown  (     GearsParalax,    yOffset,  1  )}
+      { createParallaxDown  (     GearsParalax,    yOffset,  0  )}
       { createParallaxUp    (     Snowhill1,       yOffset,  7  )}
       
 

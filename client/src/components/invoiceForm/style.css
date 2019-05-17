@@ -53,42 +53,100 @@ input {
     padding: 0.5em 0px;
 }
 
+#text-left {
+  margin: 100px 0 0 18vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  Width: 60vw;
+}
+
+
+#text-right {
+  margin: 00px 0 0 0vw;
+  position: absolute;
+  top: 760px;
+  left: -3vw;
+  Width: 60vw;
+}
+
+.table-container {
+  margin: 0 0 200px 0vw;
+  position: absolute;
+  top: 1220px;
+  left: 17.5vw;
+  Width: 60vw;
+}
 
 /* ------------    E N D     ------------ */
-
-@media only screen and (max-width: 600px) {
+/* 
+@media only screen and (max-width: 1080px) {
     .table-container {
      width: 400px!important;
      height: auto;
-     margin: 1250px 0 0 0px!important;
+     margin: 1250px 0 0 180px!important;
      overflow-x: scroll;
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1080px) {
      #text-right {
      width: 400px!important;
      height: auto;
      left: 0;
-     margin: 950px 0 0 55px !important;
+     margin: 900px 0 0 340px !important;
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1080px) {
     #text-left {
     width: 400px!important;
 
-    margin: 200px 0 0 0;
+    margin: 0px 0 0 210px!important;
    }
  }
 
- @media only screen and (max-width: 600px) {
+ @media only screen and (max-width: 1080px) {
     .company-info {
     width: 400px!important;
 
     margin: 100px 0 0 0;
    }
  }
+
+ @media only screen and (max-width: 600px) {
+  .table-container {
+   width: 400px!important;
+   height: auto;
+   margin: 1200px 0 0 0px!important;
+   overflow-x: scroll;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+   #text-right {
+   width: 400px!important;
+   height: auto;
+   left: -100px;
+   margin: 900px 0 0 150px !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #text-left {
+  width: 400px!important;
+
+  margin: 0px 0 0 0px!important;
+ }
+}
+
+@media only screen and (max-width: 600px) {
+  .company-info {
+  width: 400px!important;
+
+  margin: 100px 0 0 0;
+ }
+}
 
  @media only screen and (max-width: 600px) {
    * {
@@ -109,5 +167,5 @@ input {
     background-color: #222222 !important;
     margin: 180px 0 0 0;
     }
-  }
+  } */
 

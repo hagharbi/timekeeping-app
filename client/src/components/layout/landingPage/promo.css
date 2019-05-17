@@ -1,0 +1,99 @@
+#promo_display-container {
+    width: 100vw;
+    height: 400px;
+    position: relative;
+    bottom: 0;
+    margin: 0 0 200px 0;
+    background-color: white;
+}
+
+#promo_desktop {
+    background-color: #555555;
+    height: 30vh;
+    width: 40vw;
+    position: absolute;
+margin: 30vh 0 0 15vw;
+padding: 0 0 0 0;
+z-index: 1;
+top: 0;
+left: 0;
+box-shadow: -70px -66px 8px rgba(0, 0, 0, 0.335);
+
+    -moz-transform: skew(0deg, -25deg);
+-webkit-transform: skew(0deg, -25deg);
+-o-transform: skew(0deg, -25deg);
+-ms-transform: skew(0deg, -25deg);
+transform: skew(0deg, -25deg);
+
+}
+
+#promo_laptop {
+    background-color: pink;
+    height: 25vh;
+    width: 25vw;
+    position: absolute;
+margin: 30vh 0 0 55vw;
+padding: 0 0 0 0;
+z-index: 2;
+top: 0;
+left: 0;
+filter: drop-shadow(-37px -2px 2px rgba(0, 0, 0, 0.3));
+overflow: hidden;
+
+    -moz-transform: skew(0deg, -25deg);
+-webkit-transform: skew(0deg, -25deg);
+-o-transform: skew(0deg, -25deg);
+-ms-transform: skew(0deg, -25deg);
+transform: skew(0deg, -25deg);
+
+}
+
+#promo_tablet {
+    height: 17vh;
+    width: 24vw;
+    position: absolute;
+margin: 68vh 0 0 22.6vw;
+padding: 0 0 0 0;
+z-index: 3;
+top: 0;
+left: 0;
+
+
+    -moz-transform: skew(0deg, -25deg);
+    -webkit-transform: skew(0deg, -25deg);
+    -o-transform: skew(0deg, -25deg);
+    -ms-transform: skew(0deg, -25deg);
+    transform: skew(50deg, -25deg);
+}
+
+#promo_smartPhone {
+    height: 23vh;
+    width: 7vw;
+    position: absolute;
+margin: 46vh 0 0 50vw;
+padding: 0 0 0 0;
+z-index: 4;
+top: 0;
+left: 0;
+    -moz-transform: skew(0deg, -25deg);
+    -webkit-transform: skew(0deg, -25deg);
+    -o-transform: skew(0deg, -25deg);
+    -ms-transform: skew(0deg, -25deg);
+    transform: skew(0deg, -25deg);
+}
+
+#promo_phone-shadow {
+    width: 6vw;
+    height: 4vh;
+    position: absolute;
+    border-radius: 5px;
+    z-index: 3;
+    top: 0;
+left: 0;
+margin: 26vh 0 0 30vw;
+    -moz-transform: skew(0deg, 0deg);
+    -webkit-transform: skew(0deg, 0deg);
+    -o-transform: skew(0deg, 0deg);
+    -ms-transform: skew(0deg, 0deg);
+    transform: skew(0deg, -0deg);
+}
