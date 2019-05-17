@@ -13,7 +13,7 @@ const GearsParalax = props => (
         />
         <path
         fill="#999999"
-        opacity={0.64}
+        opacity={1}
         stroke="#696969"
         strokeWidth={2}
         strokeLinecap="round"
