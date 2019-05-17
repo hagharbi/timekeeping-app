@@ -136,9 +136,9 @@ class Invoices extends React.Component {
 
   render() {
     return (
-     
+
       <div class="container" id="invoiceContainer">
-      <div style={{position: "fixed", top: "0", bottom: "0", left: "0", height: "100vh", width: "180px"}}>&nbsp;</div>
+        <div style={{ position: "fixed", top: "0", bottom: "0", left: "0", height: "100vh", width: "180px" }}>&nbsp;</div>
         <div className="wrapper">
           <div className="print-container">
             <ReactToPrint
@@ -149,7 +149,7 @@ class Invoices extends React.Component {
                   alt="print button"
                   className="print-btn"
                   id="print-btn"
-                  style={{backgroundColor: "#555555", color: "white", padding: "20px 10px 8px 10px", position: "fixed", top: "0px", right: "-40px", margin: "100px 0 0 0", borderRadius: "0 0 15px 15px", transform: "rotate(90deg)"}}
+                  style={{ backgroundColor: "#555555", color: "white", padding: "20px 10px 8px 10px", position: "fixed", top: "0px", right: "-40px", margin: "100px 0 0 0", borderRadius: "0 0 15px 15px", transform: "rotate(90deg)" }}
                 >
                   Print Invoice!
                 </a>
@@ -157,12 +157,12 @@ class Invoices extends React.Component {
               content={() => this.componentRef}
             />
           </div>
-        
+
           <div className="container" id="mainBopdyInvoice" ref={el => (this.componentRef = el)}>
             <div className="text-container">
-              <div className="text left" id="text-left" style={{position: "absolute", margin: "0 0 0 0", padding: "0 0 0 0"}}>
-                <h2 className="invoice-title" style={{ pointerEvents: "none", color: "#777777" }}>INVOICE
-                </h2>
+              <div className="text left" id="text-left" style={{ position: "absolute", margin: "0 0 0 0", padding: "0 0 0 0" }}>
+                <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Invoice</strong></h5>
+
                 <div className="company-info">
                   <div className="company-input-container">
                     <input
@@ -306,8 +306,8 @@ class Invoices extends React.Component {
                 </div>
               </div>
               {/* Right Starts here*/}
-              <div className="text right" id="text-right" style={{position: "absolute", margin: "117px 0 0 240px", padding: "0 0 0 0"}}>
-            
+              <div className="text right" id="text-right" style={{ position: "absolute", margin: "117px 0 0 240px", padding: "0 0 0 0" }}>
+
                 <div className="invoice-container">
                   <div className="invoice-num">
                     <input
@@ -325,13 +325,13 @@ class Invoices extends React.Component {
                   <div className="invoice-date">
                     <input className="" type="text" value="Invoice Date:" />
                     <div>
-                    <input type="date"></input>
+                      <input type="date"></input>
                     </div>
                   </div>
                   <div className="due-date">
                     <input className="" type="text" value="Due Date:" />
                     <div>
-<input type="date"></input>
+                      <input type="date"></input>
                     </div>
                   </div>
                 </div>
@@ -339,7 +339,7 @@ class Invoices extends React.Component {
             </div>
 
             <div id="pagebreakDown">&nbsp;</div>
-            <br/>
+            <br />
             <div
               className="table-container"
               id="formMatrix"
@@ -392,7 +392,7 @@ class Invoices extends React.Component {
             </div>
           </div>
         </div>
-      
+
       </div>
     );
   }
