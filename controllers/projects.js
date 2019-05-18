@@ -39,13 +39,13 @@ module.exports = {
 
     //Create new Project + associate to one User and one Client
     createProject: function(req, res) {
-        var formattedDate = moment(req.body.user.dueDate, 'YYYY-MM-DD').format('MM-DD-YYYY')
+        // var formattedDate = moment(req.body.user.dueDate, 'YYYY-MM-DD').format('MM-DD-YYYY')
         const newProject = new Project({
             title: req.body.title,
             category: req.body.category,
             status: req.body.status,
             priority: req.body.priority,
-            dueDate: formattedDate,
+            // dueDate: formattedDate,
             rate: req.body.rate,
             timeEst: req.body.timeEst,
             user: req.body.userId,
