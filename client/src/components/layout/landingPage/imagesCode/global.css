@@ -67,11 +67,85 @@ a{
     background: linear-gradient(#55cccc, #55aeae, black);
 }
 
-.static {
+button > .static {
   position:absolute;
   background: white;
 }
 
-.static:hover {
+button > .static:hover {
   opacity:0!important;
 }
+
+#logoutbutton-in:hover {
+opacity: 0!important;
+}
+
+#logoutbutton-out:hover {
+  opacity: 1!important;
+  }
+
+@media only screen and (max-width: 650px) {
+  #dashboard_h1 {
+   margin: 6vw 4vw 6vw 1.3vw!important;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  #user-settings_h1 {
+   margin: 0 0 0 5vw!important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #user-settings_h1 {
+   margin: 0 0 0 5vw!important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #settings-grid {
+   margin: 0 0 0 5vw!important;
+  }
+}
+
+
+@media print {
+  #table_invoice {page-break-before: always;}
+}
+
+
+
+@media only screen and (max-width: 650px) {
+  #projects_container {
+   width: 300px!important;
+  }
+}
+
+/*
+
+@media only screen and (max-width: 600px) {
+  # {
+   margin: 0 0 0 5vw!important;
+  }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  # {
+   margin: 0 0 0 5vw!important;
+  }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  # {
+   margin: 0 0 0 5vw!important;
+  }
+} */
+
+
+
+
+/*  */

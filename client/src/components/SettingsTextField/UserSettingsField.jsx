@@ -13,7 +13,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-
+import '../layout/landingPage/imagesCode/global.css';
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -100,12 +100,12 @@ class TextFields extends React.Component {
             else {
 
                 return (
-                    <Grid container spacing={24}>
+                    <Grid container spacing={24} id="settings-grid">
                         <Grid item xs={2} sm={4} md={3} lg={2}>
                             <Paper className={classes.paper}></Paper>
                         </Grid>
                         <Grid item xs={10} sm={8} md={9} lg={8}>
-                            <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>User Settings</strong></h5>
+                            <h5 style={{ margin: '3rem auto 2rem -2rem', color: '#555555' }}><strong id="user-settings_h1">User Settings</strong></h5>
                             <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
                                 <Grid item xs={12} >

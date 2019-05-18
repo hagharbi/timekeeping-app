@@ -163,15 +163,15 @@ class Invoices extends React.Component {
                   className="print-btn"
                   id="print-btn"
                   style={{
-                    backgroundColor: "#555555",
-                              color: "white", 
+                    backgroundColor: "#555555"           ,
+                              color: "white"             , 
                             padding: "20px 10px 8px 10px", 
-                           position: "fixed",
-                                top: "0px",
-                              right: "-40px",
-                             margin: "100px 0 0 0", 
-                       borderRadius: "0 0 15px 5px",
-                          transform: "rotate(90deg)",
+                           position: "fixed"             ,
+                                top: "0px"               ,
+                              right: "-40px"             ,
+                             margin: "100px 0 0 0"       , 
+                       borderRadius: "0 0 15px 5px"      ,
+                          transform: "rotate(90deg)"     ,
                               width: "auto"
                           }}
                 >
@@ -376,7 +376,8 @@ class Invoices extends React.Component {
               
               }}
             >
-              <table>
+
+              <table id="table_invoice">
                 <thead>
                   <tr>
                     {this.state.headings.map(heading => (

@@ -26,6 +26,7 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import "../layout/landingPage/imagesCode/global.css";
 // import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';  <----- Called but never used [[___JRS___]]
 // import ChevronRightIcon from '@material-ui/icons/ChevronRight';   <----- Called but never used [[___JRS___]]
 
@@ -212,13 +213,14 @@ class ResponsiveDrawer extends React.Component {
                 </Typography>
               </Grid>
               <Grid item>
-                <Button
+                <Button style={{padding: "5px 5px 5px 5px"}}
                   // style={{ backgroundColor: '#fff' }}
                   onClick={this.onLogoutClick}
                   variant="contained" color="secondary" className={classes.button}
-                >
-                  Logout
-                  </Button>
+                >&nbsp;
+                <img id="logoutbutton-in" src={ require ( '../layout/landingPage/imagesCode/baseline-lock_open-24px.svg' )} style={{ padding: "2px 0 0 0", position: "absolute", opacity:"1" }} alt="unlocked-icon"  />
+                <img id="logoutbutton-out" src={ require ( '../layout/landingPage/imagesCode/baseline-lock-24px.svg' )} style={{ padding: "2px 0 0 0", position: "absolute", opacity:"0" }} alt="locked-icon" />
+                </Button>
               </Grid>
             </Grid>
           </Toolbar>
