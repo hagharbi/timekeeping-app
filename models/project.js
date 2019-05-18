@@ -47,6 +47,10 @@ var ProjectSchema = new Schema({
     completionDate: {
         type: Date
     },
+    activeLog: {
+        type: Boolean,
+        default: false
+    },
     active: {
         type: Boolean,
         default: true

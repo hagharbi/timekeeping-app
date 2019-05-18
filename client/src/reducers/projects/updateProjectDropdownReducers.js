@@ -1,30 +1,30 @@
 import {
-    FIND_PROJECT_LOADING,
-    FIND_PROJECT_DETAILS,
+    UPDATE_PROJECTDROPS_DETAILS,
+    PROJECTDROPS_EDIT_LOADING,
     GET_ERRORS
 } from "../../actions/types";
 
 const initialState = {
-    projectDetails: {},
+    editDropdowns: {},
     loading: false
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case FIND_PROJECT_DETAILS:
+        case UPDATE_PROJECTDROPS_DETAILS:
             return {
                 ...state,
-                projectDetails: action.payload,
+                editDropdowns: action.payload,
             };
-        case FIND_PROJECT_LOADING:
+        case PROJECTDROPS_EDIT_LOADING:
             return {
                 ...state,
-                projectDetails: action.payload,
+                editDropdowns: action.payload,
                 loading: true
             };
         case GET_ERRORS:
             return action.payload;
         default:
             return state;
-    };
+    }
 };

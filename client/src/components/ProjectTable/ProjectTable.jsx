@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from "react-redux";
+import { updateProjectDropdowns } from "../../actions/projects/updateProjectDropdowns";
+import { createLogDetails } from "../../actions/logs/createLogActions";
+import { removeLogDetails } from "../../actions/logs/removeLogActions";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -20,6 +24,14 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import TextField from '@material-ui/core/TextField';
+
+//Dialog
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 //Icons
 import IconButton from '@material-ui/core/IconButton';
@@ -131,12 +143,11 @@ class ProjectTable extends React.Component {
   state = {
     page: 0,
     rowsPerPage: 5,
-  };
-
-
-  beginningState(objectFound, event) {
-    this.setState({ project: objectFound });
-    console.log(this.state);
+    open: false,
+    log: {
+      title: "",
+      id: ""
+    }
   };
 
   handleClick = (id, e) => {
@@ -149,20 +160,76 @@ class ProjectTable extends React.Component {
     window.location = "/clients/" + id
   };
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  changePriority = e => {
+    console.log(e.target)
+
+    const projectData = {
+      type: "priority",
+      priority: e.target.value,
+      id: e.target.name,
+    }
+
+    this.props.updateProjectDropdowns(projectData);
   };
 
-  handleChangeDropdown = e => {
-    this.setState({
-      project: Object.assign(
-        {},
-        this.state.project,
-        { [e.target.name]: e.target.value }
+  changeStatus = e => {
+    console.log(e.target)
+
+    const projectData = {
+      type: "status",
+      status: e.target.value,
+      id: e.target.name,
+    }
+
+    this.props.updateProjectDropdowns(projectData);
+  };
+
+  changeDueDate = e => {
+    console.log(e.target)
+
+    const projectData = {
+      type: "dueDate",
+      dueDate: e.target.value,
+      id: e.target.name,
+    }
+
+    this.props.updateProjectDropdowns(projectData);
+  };
+
+  handleClickOpen = () => {
+    this.setState({ open: true });
+};
+
+  handleClose = () => {
+      this.setState({ open: false });
+  };
+
+  handleChange = e => {
+    this.setState({ log: Object.assign(
+        {}, 
+        this.state.log,
+        { title: e.target.value,
+          id: e.target.name }
       ),
     })
-    console.log(this.state.project)
+    console.log(e.target.name)
+    console.log(e.target.value)
+    console.log(this.state.log)
+};
+
+  startLog = (event) => {
+    event.preventDefault();
+
+    const logData = {
+        title: this.state.log.title,
+        id: this.state.log.id,
+    };
+    console.log(logData);
+
+    this.props.createLogDetails(logData)
+    this.setState({ open: false });
   };
+
 
   handleChangePage = (event, page) => {
     this.setState({ page });
@@ -176,8 +243,8 @@ class ProjectTable extends React.Component {
     const { classes } = this.props;
     const { rowsPerPage, page } = this.state;
 
-
     const { data } = this.props.projects;
+    const { user } = this.props.user;
 
     if (!data) {
       console.log(null)
@@ -185,23 +252,13 @@ class ProjectTable extends React.Component {
     }
 
     else {
-      console.log(data.clients)
+      console.log(data)
+      console.log(user.id);
+      const sortedData = data
+      .sort((a, b) => (a.title < b.title ? -1 : 1))
+      .filter(project => { return project.active === true && project.user === user.id })
 
-      const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.clients.length - page * rowsPerPage);
-
-      data.projects.sort((a, b) => (a.title < b.title ? -1 : 1));
-
-      function findCompanyName(clientID) {
-        let company;
-        data.clients.map(function (client) {
-          if (client._id === clientID) {
-            return company = client.company
-          }
-          return company
-        });
-        return company
-      };
-
+      const emptyRows = rowsPerPage - Math.min(rowsPerPage, sortedData.length - page * rowsPerPage);
 
       return (
         <Grid container spacing={24}>
@@ -244,28 +301,26 @@ class ProjectTable extends React.Component {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {data.projects
-                      .filter(projects => { return projects.active === true })
+                    {sortedData
                       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                       .map(projects => (
                         <TableRow key={projects._id}>
                           <TableCell variant="p" component="th" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClick(projects._id, e)}>
                             {projects.title}
                           </TableCell>
-                          <TableCell variant="p" component="th" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClickClient(projects.client, e)}>
-                            {findCompanyName(projects.client)}
+                          <TableCell variant="p" component="th" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClickClient(projects.client._id, e)}>
+                            {projects.client.company}
                           </TableCell>
                           <TableCell variant="p" component="th" scope="row">{projects.dueDate}</TableCell>
                           <TableCell variant="p" component="th" scope="row">
                             <FormControl variant="outlined" className={classes.formControl}>
                               <Select
                                 value={projects.status}
-                                onChange={this.handleChangeDropdown}
-                                name="status"
+                                onChange={this.changeStatus}
+                                name={projects._id}
                                 input={
                                   <OutlinedInput
-                                    name="status"
-                                    id="outlined-age-simple"
+                                    name={projects._id}
                                   />
                                 }
                               >
@@ -280,12 +335,11 @@ class ProjectTable extends React.Component {
                             <FormControl variant="outlined" className={classes.formControl}>
                               <Select
                                 value={projects.priority}
-                                onChange={this.handleChangeDropdown}
-                                name="priority"
+                                onChange={this.changePriority}
+                                name={projects._id}
                                 input={
                                   <OutlinedInput
-                                    name="priority"
-                                    id="outlined-age-simple"
+                                    name={projects._id}
                                   />
                                 }
                               >
@@ -296,10 +350,39 @@ class ProjectTable extends React.Component {
                             </FormControl>
                           </TableCell>
                           <TableCell variant="p" component="th" scope="row">
-                            <Button variant="contained" color="primary" className={classes.button}
-                              key={projects._id} onClick={(e) => this.handleClick(projects._id, e)}>
-                              START
-                        </Button>
+                        <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={this.handleClickOpen}>
+                           Start
+                            </Button>
+                            <Dialog
+                            open={this.state.open}
+                            onClose={this.handleClose}
+                            aria-labelledby="form-dialog-title"
+                            >
+                            <DialogTitle id="form-dialog-title">Ready, set ...</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                To start timer, tell your client what you're doing
+                                </DialogContentText>
+                                <TextField
+                                    required
+                                    name={projects._id}
+                                    label="Client Note"
+                                    value= {this.state.log.title}
+                                    className={classes.textField}
+                                    onChange={this.handleChange}
+                                    InputProps={{ disableUnderline: true, }}
+                                    margin="normal"
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={this.handleClose} color="primary">
+                                Cancel
+                                </Button>
+                                <Button variant="contained" onClick={this.startLog} color="primary">
+                                Go!
+                                </Button>
+                            </DialogActions>
+                            </Dialog>
                           </TableCell>
                         </TableRow>
                       ))}
@@ -314,8 +397,7 @@ class ProjectTable extends React.Component {
                       <TablePagination
                         rowsPerPageOptions={[5, 10, 25]}
                         colSpan={6}
-                        count={data.projects
-                          .filter(project => { return project.active === true }).length}
+                        count={sortedData.length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         SelectProps={{
@@ -339,6 +421,15 @@ class ProjectTable extends React.Component {
 
 ProjectTable.propTypes = {
   classes: PropTypes.object.isRequired,
+  updateProjectDropdowns: PropTypes.func.isRequired,
+  createLogDetails: PropTypes.func.isRequired,
+  removeLogDetails: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(ProjectTable);
+const mapStateToProps = state => ({
+  auth: state.auth,
+  allProjectDetails: state.findAllProjects.allProjectDetails,
+});
+
+export default connect(mapStateToProps,
+  { updateProjectDropdowns, createLogDetails, removeLogDetails }) (withStyles(styles)(ProjectTable));

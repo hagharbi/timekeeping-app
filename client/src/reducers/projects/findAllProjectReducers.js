@@ -1,30 +1,30 @@
 import {
-    FIND_PROJECT_LOADING,
-    FIND_PROJECT_DETAILS,
+    FINDALL_PROJECT_LOADING,
+    FINDALL_PROJECT_DETAILS,
     GET_ERRORS
 } from "../../actions/types";
 
 const initialState = {
-    projectDetails: {},
+    allProjectDetails: {},
     loading: false
 };
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case FIND_PROJECT_DETAILS:
+        case FINDALL_PROJECT_DETAILS:
             return {
                 ...state,
-                projectDetails: action.payload,
+                allProjectDetails: action.payload,
             };
-        case FIND_PROJECT_LOADING:
+        case FINDALL_PROJECT_LOADING:
             return {
                 ...state,
-                projectDetails: action.payload,
+                allProjectDetails: action.payload,
                 loading: true
             };
         case GET_ERRORS:
             return action.payload;
         default:
             return state;
-    };
+    }
 };
