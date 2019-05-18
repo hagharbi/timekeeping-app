@@ -51,7 +51,6 @@
     "fragment-cache": "^0.2.1",
     "fresh": "^0.5.2",
     "from": "^0.1.7",
-    "fsevents": "^1.2.8",
     "get-caller-file": "^1.0.3",
     "get-value": "^2.0.6",
     "glob-parent": "^3.1.0",
@@ -260,6 +259,9 @@
     "util-deprecate": "^1.0.2",
     "utils-merge": "^1.0.1",
     "validator": "^10.11.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^1.2.8"
   },
   "devDependencies": {
     "css-loader": "^2.1.1"
