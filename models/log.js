@@ -46,11 +46,11 @@ var LogSchema = new Schema({
     completionDate: {
         type: Date
     },
-    counting: {
+    active: {
         type: Boolean,
         default: true
     },
-    active: {
+    counting: {
         type: Boolean,
         default: true
     }

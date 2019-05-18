@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { connect } from "react-redux";
 import { updateProjectDropdowns } from "../../actions/projects/updateProjectDropdowns";
 import { createLogDetails } from "../../actions/logs/createLogActions";
-import { removeLogDetails } from "../../actions/logs/removeLogActions";
+import { updateLogDetails } from "../../actions/logs/updateLogActions";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -183,7 +183,6 @@ class ProjectTable extends React.Component {
     }
 
     this.props.updateProjectDropdowns(projectData);
-
     window.location ="/projects"
   };
 
@@ -236,7 +235,23 @@ class ProjectTable extends React.Component {
 
     this.props.createLogDetails(logData)
     this.setState({ open: false });
+    window.location ="/projects"
   };
+
+  handleStop = (project) => {
+    console.log(project._id)
+    var log = project.logs.filter(log => { return log.counting === true })
+    console.log(log)
+    console.log(log[0]._id)
+
+    const logData = {
+      projectId: project._id,
+      id: log[0]._id
+    };
+
+    this.props.updateLogDetails(logData)
+    // window.location ="/projects"
+  }
 
 
   handleChangePage = (event, page) => {
@@ -360,7 +375,7 @@ class ProjectTable extends React.Component {
                           <TableCell variant="p" component="th" scope="row">
                         {
                           projects.activeLog ?
-                          <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleClickStop(projects._id)}>Stop</Button>  :
+                          <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleStop(projects)}>Stop</Button>  :
                           <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleClickOpen(projects._id)}>Start</Button>
                         
                         }
@@ -434,7 +449,7 @@ ProjectTable.propTypes = {
   classes: PropTypes.object.isRequired,
   updateProjectDropdowns: PropTypes.func.isRequired,
   createLogDetails: PropTypes.func.isRequired,
-  removeLogDetails: PropTypes.func.isRequired,
+  updateLogDetails: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -443,4 +458,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps,
-  { updateProjectDropdowns, createLogDetails, removeLogDetails }) (withStyles(styles)(ProjectTable));
+  { updateProjectDropdowns, createLogDetails, updateLogDetails }) (withStyles(styles)(ProjectTable));
