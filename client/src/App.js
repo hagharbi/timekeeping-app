@@ -17,6 +17,7 @@ import NewClient from "./pages/NewClient";
 import Projects from "./pages/Projects";
 import Invoice from "./pages/Invoice";
 import EditProjects from "./pages/editProjects";
+import NewProjects from "./pages/newProjects";
 
 // < ----- Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -59,6 +60,7 @@ class App extends Component {
               <PrivateRoute exact path="/invoices" component={Invoice} /> *// switch to invoices components 
               when ready
               <PrivateRoute exact path="/projects/:id" component={EditProjects} />
+              <PrivateRoute exact path="/newproject" component={NewProjects} />
             </Switch>
           </div>
         </Router>

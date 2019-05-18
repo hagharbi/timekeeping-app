@@ -84,8 +84,7 @@ class TextFields2 extends React.Component {
         };
 
         this.props.updateProjectDetails(projectData);
-        console.log(projectData);
-
+        window.location.href = '/projects'
     };
 
     archiveClient(event) {

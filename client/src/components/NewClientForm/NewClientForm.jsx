@@ -61,7 +61,7 @@ class NewClientFields extends React.Component {
         };
         console.log(clientData);
         this.props.createClientDetails(clientData);
-
+        window.location.href = '/clients'
     };
 
 
