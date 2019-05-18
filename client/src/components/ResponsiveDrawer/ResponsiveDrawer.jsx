@@ -213,13 +213,13 @@ class ResponsiveDrawer extends React.Component {
                 </Typography>
               </Grid>
               <Grid item>
-                <Button style={{padding: "5px 5px 5px 5px"}}
+                <Button style={{ padding: "5px 5px 5px 5px", boxShadow: "0 0 0 0 " }}
                   // style={{ backgroundColor: '#fff' }}
                   onClick={this.onLogoutClick}
-                  variant="contained" color="secondary" className={classes.button}
+                  variant="contained" color="primary" className={classes.button}
                 >&nbsp;
-                <img id="logoutbutton-in" src={ require ( '../layout/landingPage/imagesCode/baseline-lock_open-24px.svg' )} style={{ padding: "2px 0 0 0", position: "absolute", opacity:"1" }} alt="unlocked-icon"  />
-                <img id="logoutbutton-out" src={ require ( '../layout/landingPage/imagesCode/baseline-lock-24px.svg' )} style={{ padding: "2px 0 0 0", position: "absolute", opacity:"0" }} alt="locked-icon" />
+                <img id="logoutbutton-in" src={require('../layout/landingPage/imagesCode/baseline-lock_open-24px.svg')} style={{ padding: "2px 0 0 0", position: "absolute", opacity: "1" }} alt="unlocked-icon" />
+                  <img id="logoutbutton-out" src={require('../layout/landingPage/imagesCode/baseline-lock-24px.svg')} style={{ padding: "2px 0 0 0", position: "absolute", opacity: "0" }} alt="locked-icon" />
                 </Button>
               </Grid>
             </Grid>

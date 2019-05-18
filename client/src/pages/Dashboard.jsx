@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
-import DashboardComp from "../components/DashboardComp/DashboardComp";
+import DashboardComp from "../components/DashboardComp/DashboardComp.jsx";
 import "../components/layout/landingPage/imagesCode/global.css";
 
 class Dashboard extends Component {
