@@ -333,7 +333,7 @@ class TextFields1 extends React.Component {
                                     <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
 
                                 </Grid>
-                              
+                                
                                 <Grid item xs={6} sm={3} style={{ "marginTop": "30px" }}>
                                     <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, align: "right" }} onClick={this.archiveClient}>ARCHIVE</Button>
                                 </Grid>
