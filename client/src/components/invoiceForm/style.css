@@ -79,93 +79,61 @@ input {
 }
 
 /* ------------    E N D     ------------ */
-/* 
+
 @media only screen and (max-width: 1080px) {
-    .table-container {
+    #text-left {
      width: 400px!important;
      height: auto;
-     margin: 1250px 0 0 180px!important;
+     margin: 34vw 0 0 32vw!important;
+     overflow-x: scroll;
+    }
+  }
+
+
+
+  @media only screen and (max-width: 1080px) {
+    #text-right {
+     width: 400px!important;
+     height: auto;
+     margin: 34vw 0 0 35.5vw!important;
      overflow-x: scroll;
     }
   }
 
   @media only screen and (max-width: 1080px) {
-     #text-right {
+    .table-container {
      width: 400px!important;
      height: auto;
-     left: 0;
-     margin: 900px 0 0 340px !important;
+     margin: 13vw 0 10vh 15vw!important;
+     overflow-x: scroll;
     }
   }
 
-  @media only screen and (max-width: 1080px) {
+  @media only screen and (max-width: 600px) {
     #text-left {
-    width: 400px!important;
-
-    margin: 0px 0 0 210px!important;
-   }
- }
-
- @media only screen and (max-width: 1080px) {
-    .company-info {
-    width: 400px!important;
-
-    margin: 100px 0 0 0;
-   }
- }
-
- @media only screen and (max-width: 600px) {
-  .table-container {
-   width: 400px!important;
-   height: auto;
-   margin: 1200px 0 0 0px!important;
-   overflow-x: scroll;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-   #text-right {
-   width: 400px!important;
-   height: auto;
-   left: -100px;
-   margin: 900px 0 0 150px !important;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  #text-left {
-  width: 400px!important;
-
-  margin: 0px 0 0 0px!important;
- }
-}
-
-@media only screen and (max-width: 600px) {
-  .company-info {
-  width: 400px!important;
-
-  margin: 100px 0 0 0;
- }
-}
-
- @media only screen and (max-width: 600px) {
-   * {
-   font-size: 10px;
-   }
- }
-
-
- @media only screen and (max-width: 600px) {
-    #print-btn {
-    background-color: #222222 !important;
-    margin: 180px 0 0 0;
+     width: 400px!important;
+     height: auto;
+     margin: 34vw 0 0 16vw!important;
+     overflow-x: scroll;
     }
   }
 
- @media only screen and (max-width: 600px) {
-    #print-btn {
-    background-color: #222222 !important;
-    margin: 180px 0 0 0;
+  @media only screen and (max-width: 600px) {
+    #text-right {
+     width: 400px!important;
+     height: auto;
+     margin: 34vw 0 0 18vw!important;
+     overflow-x: scroll;
     }
-  } */
+  }
 
+  @media only screen and (max-width: 600px) {
+    .table-container {
+     width: 400px!important;
+     height: auto;
+     margin: 16vw 0 10vh -4vw!important;
+     overflow-x: scroll;
+    }
+  }
+
+ 

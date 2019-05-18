@@ -11,7 +11,7 @@ import Card from '@material-ui/core/Card';
 // import Typography from '@material-ui/core/Typography';  <----- called but never used JRS
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-
+import '../layout/landingPage/imagesCode/global.css';
 // import Avatar from '@material-ui/core/Avatar';
 // import IconButton from '@material-ui/core/IconButton';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -103,7 +103,7 @@ class Dash extends React.Component {
                             <Paper className={classes.paper}></Paper>
                         </Grid>
                         <Grid item xs={9} sm={7} md={8} lg={9}>
-                            <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Dashboard</strong></h5>
+                            <h5 style={{ margin: '3rem auto 2rem -2rem', color: '#555555'}} id="dashboard_h1"><strong>Dashboard</strong></h5>
                             <Grid item sm={7} lg={10}>
                                 <Card className={classes.card}>
                                     <CardHeader

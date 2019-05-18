@@ -12,10 +12,6 @@ code {
     monospace;
 }
 
-* {
-  box-shadow: none!important;
-}
-
 .card-header {
   padding: .5rem;
 }

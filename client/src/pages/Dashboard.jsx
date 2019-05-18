@@ -5,6 +5,7 @@ import { logoutUser } from "../actions/authActions";
 import { findUserDetails } from "../actions/findUserActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import DashboardComp from "../components/DashboardComp/DashboardComp";
+import "../components/layout/landingPage/imagesCode/global.css";
 
 class Dashboard extends Component {
 
@@ -49,7 +50,7 @@ class Dashboard extends Component {
       console.log(data)
       return (
         <div>
-          <ResponsiveDrawer />
+          <ResponsiveDrawer id="projects_container" />
           <div className="col s6">
             <DashboardComp user={{ data }} />
           </div>
