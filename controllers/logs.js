@@ -38,7 +38,7 @@ module.exports = {
         .then(function(dbLog) {
 
             // Project association
-            return Project.findOneAndUpdate({ _id: req.body.id }, { $push: {logs: dbLog._id}}, { new: true }).
+            return Project.findOneAndUpdate({ _id: req.body.id }, { $push: {logs: dbLog._id}, $set: { activeLog: true}}, { new: true }).
             populate({
                 path: 'logs',
                 populate: { path: 'logs' }
@@ -53,34 +53,25 @@ module.exports = {
 
     updateLog: function(req, res) {
         const updatedLog = {
-            title: req.body.title,
-            category: req.body.category,
-            status: req.body.status,
-            timeStart: req.body.timeStart,
             counting: false,
             lastUpdate: Date.now,
-            $push: {notes: req.body.note}
         };
         
-        console.log(updatedLog)
+        console.log("counting is false " + updatedLog);
 
         const query = { _id: req.body.id };
 
-        console.log(query)
+        console.log(query);
 
-        Log.findOneAndUpdate(query, { $set: updatedLog})
-        .then(function(dbLog) {
-
-            // Project association
-            return Project.findOneAndUpdate({ _id: req.body.projectId }, { $set: {activeLog: false}}, { new: true }).
-            populate({
-                path: 'logs',
-                populate: { path: 'logs' }
-            });
-            
-        })
-        .then(dbModel => res.json(dbModel))
+        Log.findOneAndUpdate(query, { $set: {updatedLog} }, { new: true })
         .catch(err => res.status(422).json(err));
+
+        console.log("does one work?")
+
+        Project.findOneAndUpdate({ _id: req.body.projectId }, { $set: {activeLog: false}}, { new: true })
+        .catch(err => res.status(422).json(err));
+
+        console.log("Does this work?");
     },
 
     //update to add notes (add completion ???)
