@@ -84,7 +84,7 @@ class Landing extends Component {
 
 
         </div>
-        <p style={{margin: "70vw 0 0 10vw", position: "absolute", zIndex: "99", width: "86vw", color: "#555555", letterSpacing: "1px", backgroundColor: "#fff"}}>
+        <div style={{margin: "70vw 0 0 10vw", position: "absolute", zIndex: "99", width: "86vw", color: "#555555", letterSpacing: "1px", backgroundColor: "#fff"}}>
             intuitive invoice management,  tracking, producing, reporting and 
             client management matrix designed;  to gtive, you; the user,  the 
             tools you need to get the job done in time and   on budget so you 
@@ -97,16 +97,10 @@ class Landing extends Component {
       <div id="promo_laptop"     alt="laptop-refference"                           ></div>
       <img id="promo_tablet"     alt="tablet screen representation of site page"      src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
       <img id="promo_smartPhone" alt="smart phone screen representation of site page" src={ require('./imagesCode/mobile-view-gif.gif') } />
-  
-
-
-
-
-
       <br/>
       <p style={{textAlign: "center", position: "fixed", bottom: "0", left: "0", transform: "rotate(90deg)", margin: " 0 0 60px -50px", color: "silver"}}>© 2019 | sumit</p>
     </div>
-        </p>
+        </div>
 
 
       </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 const Clouds = props => (
   <svg id="clouds"  
-  viewBox="0 0 1920 1000" {...props}>
+  viewBox="0 0 2220 1800" {...props}>
     <g fill="#ECEFF4" 
     stroke="#3B4252" 
     opacity="1"
