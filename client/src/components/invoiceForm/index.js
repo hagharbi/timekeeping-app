@@ -5,6 +5,7 @@ import "./style.css"
 import Row from "./Row";
 
 
+
 class Invoices extends React.Component {
   constructor(props) {
     super(props);
@@ -134,11 +135,23 @@ class Invoices extends React.Component {
     }));
   };
 
+
+
+
   render() {
     return (
      
       <div class="container" id="invoiceContainer">
-      <div style={{position: "fixed", top: "0", bottom: "0", left: "0", height: "100vh", width: "180px"}}>&nbsp;</div>
+      <div style={{
+            position: "fixed", 
+                 top: "0", 
+              bottom: "0", 
+                left: "0", 
+              height: "100vh"
+            }}>
+              &nbsp;
+        </div>
+
         <div className="wrapper">
           <div className="print-container">
             <ReactToPrint
@@ -149,7 +162,18 @@ class Invoices extends React.Component {
                   alt="print button"
                   className="print-btn"
                   id="print-btn"
-                  style={{backgroundColor: "#555555", color: "white", padding: "20px 10px 8px 10px", position: "fixed", top: "0px", right: "-40px", margin: "100px 0 0 0", borderRadius: "0 0 15px 15px", transform: "rotate(90deg)"}}
+                  style={{
+                    backgroundColor: "#555555",
+                              color: "white", 
+                            padding: "20px 10px 8px 10px", 
+                           position: "fixed",
+                                top: "0px",
+                              right: "-40px",
+                             margin: "100px 0 0 0", 
+                       borderRadius: "0 0 15px 5px",
+                          transform: "rotate(90deg)",
+                              width: "auto"
+                          }}
                 >
                   Print Invoice!
                 </a>
@@ -158,10 +182,10 @@ class Invoices extends React.Component {
             />
           </div>
         
-          <div className="container" id="mainBopdyInvoice" ref={el => (this.componentRef = el)}>
+          <div className="container" id="mainBodyInvoice" ref={el => (this.componentRef = el)}>
             <div className="text-container">
-              <div className="text left" id="text-left" style={{position: "absolute", margin: "0 0 0 0", padding: "0 0 0 0"}}>
-                <h2 className="invoice-title" style={{ pointerEvents: "none", color: "#777777" }}>INVOICE
+              <div className="text left" id="text-left" >
+                <h2 className="invoice-title" style={{ pointerEvents: "none", color: "#777777", margin: "0 0 0 0"}}>INVOICE
                 </h2>
                 <div className="company-info">
                   <div className="company-input-container">
@@ -182,6 +206,8 @@ class Invoices extends React.Component {
                       width="100%"
                       placeholder="Your First and Last Name*"
                       value={this.state.client.firstName}
+
+                      
                       onChange={this.handleOnChangeClientData}
                     />
                   </div>
@@ -347,8 +373,7 @@ class Invoices extends React.Component {
                 display: "flex",
                 flexDirection: "column",
                 position: "absolute;",
-                margin: "860px 0 0 0",
-                padding: "0 0 200px 0"
+              
               }}
             >
               <table>
