@@ -29,10 +29,6 @@ module.exports = {
     createLog: function(req, res) {
         const newLog = new Log({
             title: req.body.title,
-            category: req.body.category,
-            status: req.body.status,
-            timeStart: req.body.timeStart,
-            $push: {notes: req.body.note}
         });
 
         console.log(newLog);
@@ -42,14 +38,14 @@ module.exports = {
         .then(function(dbLog) {
 
             // Project association
-            return Project.findOneAndUpdate({ _id: req.body.id }, { $push: {logs: dbLog._id }}, { new: true }).
+            return Project.findOneAndUpdate({ _id: req.body.id }, { $push: {logs: dbLog._id}}, { new: true }).
             populate({
                 path: 'logs',
                 populate: { path: 'logs' }
-            });
+            })
             
         })
-        .then(dbModel => res.json(dbModel))
+        .then(result => console.log(result))
         .catch(err => res.status(422).json(err));
     },
 
@@ -61,6 +57,8 @@ module.exports = {
             category: req.body.category,
             status: req.body.status,
             timeStart: req.body.timeStart,
+            counting: false,
+            lastUpdate: Date.now,
             $push: {notes: req.body.note}
         };
         
@@ -71,6 +69,17 @@ module.exports = {
         console.log(query)
 
         Log.findOneAndUpdate(query, { $set: updatedLog})
+        .then(function(dbLog) {
+
+            // Project association
+            return Project.findOneAndUpdate({ _id: req.body.projectId }, { $set: {activeLog: false}}, { new: true }).
+            populate({
+                path: 'logs',
+                populate: { path: 'logs' }
+            });
+            
+        })
+        .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
 

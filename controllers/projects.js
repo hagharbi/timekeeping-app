@@ -14,8 +14,22 @@ module.exports = {
             populate: { path: 'logs' }
         })
         .populate({
-            path: 'clients',
-            populate: { path: 'clients' }
+            path: 'client',
+            populate: { path: 'client' }
+        })
+        .then(dbProject => res.json(dbProject))
+        .catch(err => res.status(422).json(err));
+    },
+
+    findByUser: function(req, res) {
+        return Project.find({user: req.body.id})
+        .populate({
+            path: 'logs',
+            populate: { path: 'logs' }
+        })
+        .populate({
+            path: 'client',
+            populate: { path: 'client' }
         })
         .then(dbProject => res.json(dbProject))
         .catch(err => res.status(422).json(err));
@@ -25,11 +39,13 @@ module.exports = {
 
     //Create new Project + associate to one User and one Client
     createProject: function(req, res) {
+        var formattedDate = moment(req.body.user.dueDate, 'YYYY-MM-DD').format('MM-DD-YYYY')
         const newProject = new Project({
             title: req.body.title,
             category: req.body.category,
             status: req.body.status,
             priority: req.body.priority,
+            dueDate: formattedDate,
             rate: req.body.rate,
             timeEst: req.body.timeEst,
             user: req.body.userId,
@@ -70,6 +86,35 @@ module.exports = {
             dueDate: req.body.dueDate,
             $push: {notes: req.body.note}
         };
+        
+        console.log(updatedProject)
+
+        const query = { _id: req.body.id };
+
+        console.log(query)
+
+        Project.findOneAndUpdate(query, { $set: updatedProject})
+        .catch(err => res.status(422).json(err));
+    },
+
+    updateDropdowns: function(req, res) {
+
+        if (req.body.type == "priority") {
+            var updatedProject = {
+                priority: req.body.priority,
+            };
+        }
+        else if (req.body.type == "status") {
+            var updatedProject = {
+                status: req.body.status,
+            };
+        }
+
+        else if (req.body.type == "dueDate") {
+            var updatedProject = {
+                dueDate: req.body.dueDate,
+            };
+        }
         
         console.log(updatedProject)
 

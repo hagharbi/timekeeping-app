@@ -4,16 +4,25 @@ const projectsController = require("../../controllers/projects");
 
 // FIND
 router.route("/findone")
-    .post(projectsController.findOne)
+    .post(projectsController.findOne);
+
+router.route("/findbyuser")
+    .post(projectsController.findByUser);
 
 // POST
 router.route("/create")
-    .post(projectsController.createProject)
+    .post(projectsController.createProject);
 
 router.route("/update")
-    .post(projectsController.updateProject)
+    .post(projectsController.updateProject);
+
+router.route("/updatedropdowns")
+    .post(projectsController.updateDropdowns);
+
+router.route("/updatenotes")
+    .post(projectsController.updateNotes);
 
 router.route("/remove")
-    .post(projectsController.removeProject)
+    .post(projectsController.removeProject);
 
 module.exports = router;

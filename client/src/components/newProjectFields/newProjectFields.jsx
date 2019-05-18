@@ -357,14 +357,18 @@ class NewProjectFields extends React.Component {
                             <h6>Time + Rate</h6>
                         </Grid>
 
-                        <Grid item xs ={12} sm={6} md={6} lg={3}>
+                        <Grid item xs ={12} sm={4} md={3} lg={3}>
                         <TextField
                             id="dueDate"
                             label="Due Date"
+                            type="date"
                             className={classes.textField}
                             value={this.state.project.dueDate}
                             onChange={this.handleChange}
                             InputProps={{ disableUnderline: true, }}
+                            InputLabelProps={{
+                                shrink: true
+                             }}
                             margin="normal"
                         />
                         </Grid>
@@ -404,7 +408,7 @@ class NewProjectFields extends React.Component {
                             label="Notes"
                             multiline
                             rows="8"
-                            value={this.state.project.notes}
+                            value={this.state.project.notes[1]}
                             onChange={this.handleChange}
                             className={classes.textFieldLarge}
                             margin="dense"
