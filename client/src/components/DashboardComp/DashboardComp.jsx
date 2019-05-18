@@ -9,9 +9,11 @@ import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
 // import CardContent from '@material-ui/core/CardContent'; <----- called but never used JRS
 // import Typography from '@material-ui/core/Typography';  <----- called but never used JRS
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
+// import CardHeader from '@material-ui/core/CardHeader';
+// import CardMedia from '@material-ui/core/CardMedia';
 import '../layout/landingPage/imagesCode/global.css';
+import Highcharts from "highcharts/highstock";
+import HighchartsReact from "highcharts-react-official";
 // import Avatar from '@material-ui/core/Avatar';
 // import IconButton from '@material-ui/core/IconButton';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
@@ -79,7 +81,16 @@ class Dash extends React.Component {
 
     render() {
         const { classes } = this.props;
+
         const { data } = this.props.user;
+            const options = {
+        title: {
+            text: "My stock chart"
+        },
+        series: [{
+            data: [1, 2, 1, 4, 3, 6, 7, 3, 8, 6, 9]
+        }]
+    };
         // const bull = <span className={classes.bullet}>•</span>; <----- called but never used ___JRS___
 
 
@@ -105,16 +116,16 @@ class Dash extends React.Component {
                         <Grid item xs={9} sm={7} md={8} lg={9}>
                             <h5 style={{ margin: '3rem auto 2rem -2rem', color: '#555555'}} id="dashboard_h1"><strong>Dashboard</strong></h5>
                             <Grid item sm={7} lg={10}>
-                                <Card className={classes.card}>
-                                    <CardHeader
-                                        title="RECENT ACTIVITIES"
-                                    />
-                                    <CardMedia
-                                        className={classes.media}
-                                        image="HighCharts"
-                                        title="Activity"
-                                    />
-                                </Card>
+                                <HighchartsReact highcharts={
+                                    Highcharts
+                                }
+                                    constructorType={
+                                        "stockChart"
+                                    }
+                                    options={
+                                        options
+                                    }
+                                /> 
                             </Grid>
                         </Grid>
                     </Grid>
