@@ -143,7 +143,7 @@ class ProjectTable extends React.Component {
   state = {
     page: 0,
     rowsPerPage: 5,
-    open: false,
+    open: null,
     log: {
       title: "",
       id: ""
@@ -170,6 +170,7 @@ class ProjectTable extends React.Component {
     }
 
     this.props.updateProjectDropdowns(projectData);
+    window.location ="/projects"
   };
 
   changeStatus = e => {
@@ -182,6 +183,8 @@ class ProjectTable extends React.Component {
     }
 
     this.props.updateProjectDropdowns(projectData);
+
+    window.location ="/projects"
   };
 
   changeDueDate = e => {
@@ -194,14 +197,19 @@ class ProjectTable extends React.Component {
     }
 
     this.props.updateProjectDropdowns(projectData);
+    window.location ="/projects"
   };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
+  handleClickOpen = (id) => {
+    this.setState({ open: id });
 };
 
   handleClose = () => {
-      this.setState({ open: false });
+      this.setState({ open: null });
+  };
+
+  handleClickStop = () => {
+    this.setState({ running: null });
   };
 
   handleChange = e => {
@@ -266,7 +274,7 @@ class ProjectTable extends React.Component {
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item xs={10} sm={8} md={9} lg={9}>
-            <Paper className={classes.root}>
+            {/* <Paper className={classes.root}> */}
               <Grid
                 justify="space-between"
                 container
@@ -350,11 +358,14 @@ class ProjectTable extends React.Component {
                             </FormControl>
                           </TableCell>
                           <TableCell variant="p" component="th" scope="row">
-                        <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={this.handleClickOpen}>
-                           Start
-                            </Button>
+                        {
+                          projects.activeLog ?
+                          <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleClickStop(projects._id)}>Stop</Button>  :
+                          <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleClickOpen(projects._id)}>Start</Button>
+                        
+                        }
                             <Dialog
-                            open={this.state.open}
+                            open={this.state.open == projects._id}
                             onClose={this.handleClose}
                             aria-labelledby="form-dialog-title"
                             >
@@ -411,7 +422,7 @@ class ProjectTable extends React.Component {
                   </TableFooter>
                 </Table>
               </div>
-            </Paper>
+            {/* </Paper> */}
           </Grid>
         </Grid>
       );

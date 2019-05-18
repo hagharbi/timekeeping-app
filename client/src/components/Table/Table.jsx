@@ -161,7 +161,7 @@ class CustomPaginationActionsTable extends React.Component {
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item xs={10} sm={8} md={9} lg={9}>
-            <Paper className={classes.root}>
+            {/* <Paper className={classes.root}> */}
               <Grid
                 justify="space-between"
                 container
@@ -235,7 +235,7 @@ class CustomPaginationActionsTable extends React.Component {
                   </TableFooter>
                 </Table>
               </div>
-            </Paper>
+            {/* </Paper> */}
           </Grid>
         </Grid>
       );
