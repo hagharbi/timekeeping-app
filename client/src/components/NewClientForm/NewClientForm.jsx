@@ -124,7 +124,7 @@ class NewClientFields extends React.Component {
                             <Paper className={classes.paper}></Paper>
                         </Grid>
                         <Grid item xs={10} sm={8} md={9} lg={10}>
-                            <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>New Client</strong></h5>
+                            <h5 style={{ margin: '3rem auto 2rem 0rem' }}><strong>New Client</strong></h5>
                             <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
                                 <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>

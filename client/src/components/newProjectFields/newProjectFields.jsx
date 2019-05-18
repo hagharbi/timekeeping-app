@@ -24,6 +24,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+// <----- Media Queries
+import "./newprojects.css";
 
 const styles = theme => ({
     container: {
@@ -211,8 +213,8 @@ class NewProjectFields extends React.Component {
                     <Paper className={classes.paper}></Paper>
                 </Grid>
                 <Grid item sm={7} lg={9}>
-                <h4>New Project</h4>
-                    <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
+                <h4 id="newProjects_title">New Project</h4>
+                    <form id="newProjects_form" className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
                         <Grid item xs ={12} sm={12} md={4} lg={3}>
                             <TextField
@@ -306,7 +308,7 @@ class NewProjectFields extends React.Component {
                         </Grid>
 
                         <Grid item xs ={12} sm={12} md={3} lg={3}>
-                            <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
+                            <Button variant="contained" color="primary" id="newProjects_newClient-btn" onClick={this.handleClickOpen}>
                             + New Client
                             </Button>
                             <Dialog
@@ -402,7 +404,7 @@ class NewProjectFields extends React.Component {
                             <h6>Notes</h6>
                         </Grid>
 
-                        <Grid item xs ={12}>
+                        <Grid item xs ={12} id="newProject_notes-cont">
                         <TextField
                             id="notes"
                             label="Notes"

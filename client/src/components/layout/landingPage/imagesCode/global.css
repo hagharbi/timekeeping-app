@@ -7,13 +7,13 @@ body {
 #clouds {
   margin: 0 0 0 0;
   filter: blur(6px);
-  opacity: 0.7;
+  opacity: 0.5;
   scale: 2;
   animation: drift 25s 1s linear infinite backwards;
 }
 
 #CloudsUp {
-filter: blur(1px);
+filter: blur(3px);
   opacity: 1;
   animation: driftTwo 40s 1s linear infinite forwards;
 }
