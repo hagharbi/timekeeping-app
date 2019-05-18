@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
 
-import { updateProjectDetails } from "../../actions/projects/updateProjectActions";
-import { removeProjectDetails } from "../../actions/projects/removeProjectActions";
+import { createProjectDetails } from "../../actions/projects/createProjectActions";
+import { createClientDetails } from "../../actions/createClientActions";
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -16,6 +16,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
+
+//Dialog
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 
 const styles = theme => ({
@@ -49,27 +56,42 @@ const styles = theme => ({
         minWidth: 120,
         marginTop: 20
       },
+      formControlLarge: {
+        margin: theme.spacing.unit,
+        width: 300,
+        marginTop: 20
+      },
       selectEmpty: {
         marginTop: theme.spacing.unit * 2,
       },
 });
 
-class TextFields2 extends React.Component {
+class NewProjectFields extends React.Component {
 
     constructor(){
         super();
         this.state = {
-            errors: {}
+            errors: {},
+            open: false,
           };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.archiveClient = this.archiveClient.bind(this);
+        this.cancelClient = this.cancelClient.bind(this);
+        this.handleClientSubmit = this.handleClientSubmit.bind(this);
       };
+
+    handleClickOpen = () => {
+        this.setState({ open: true });
+    };
+
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
 
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state.project);
         const projectData = {
-            id: this.state.project._id,
             title: this.state.project.title,
             status: this.state.project.status,
             priority: this.state.project.priority,
@@ -77,27 +99,55 @@ class TextFields2 extends React.Component {
             timeEst: this.state.project.timeEst,
             dueDate: this.state.project.dueDate,
             category: this.state.project.category,
-            notes: this.state.project.notes
+            notes: this.state.project.notes,
+            userId: this.state.project.userId,
+            clientID: this.state.project.clientID
         };
 
-        this.props.updateProjectDetails(projectData);
+        this.props.createProjectDetails(projectData);
         console.log(projectData);
         window.location.href = '/projects'
     };
 
-    archiveClient(event) {
-        event.preventDefault()
-        console.log(this.state)
-        const projectData = {
-            id: this.state.project._id
+    handleClientSubmit(event) {
+        event.preventDefault();
+
+        const clientData = {
+            userId: this.state.client.userId,
+            email: this.state.client.email,
+            company: this.state.client.company,
         };
-        console.log(projectData)
-        this.props.removeProjectDetails(projectData);
+        console.log(clientData);
+
+        this.props.createClientDetails(clientData);
+        this.setState({ open: false });
+    };
+
+    cancelClient(event) {
+        event.preventDefault()
         window.location.href = '/projects'
     };
 
-    beginningState(objectFound, event) {
-        this.setState({ project: objectFound });
+    beginningState(userId, event) {
+        this.setState({ project:{
+            id: "",
+            title: "",
+            status: "pending",
+            priority: "low",
+            rate: 0,
+            timeEst: 1,
+            dueDate: "",
+            category: "",
+            notes: "",
+            userId: userId,
+            clientID: ""
+        },
+        client: {
+            userId: userId,
+            company: "",
+            email: ""
+        }
+        });
         console.log(this.state);
     };
 
@@ -112,6 +162,19 @@ class TextFields2 extends React.Component {
         console.log(e.target.name)
         console.log(e.target.value)
         console.log(this.state.project)
+    };
+
+    handleClientChange = e => {
+        this.setState({ client: Object.assign(
+            {}, 
+            this.state.client,
+            { [e.target.id]: e.target.value }
+          ),
+        })
+        console.log(e.target.id)
+        console.log(e.target.name)
+        console.log(e.target.value)
+        console.log(this.state.client)
     };
 
     handleChangeDropdown = e => {
@@ -134,24 +197,10 @@ class TextFields2 extends React.Component {
         }
 
         else {
-            var a = document.createElement('a');
-            a.href = window.location.href;
-            
-            var path;
-           ['pathname'].forEach(function(k) {
-                console.log(k+':', a[k]);
-                console.log(a[k])
-                path = a[k]
-                return path
-            });
-
-            const id = path.replace("/projects/", "");
-
-            var elementPos = data.projects.map(function(x) {return x._id; }).indexOf(id); 
-            var objectFound = data.projects[elementPos];
 
             if(!this.state.project) {
-                this.beginningState(objectFound);
+                console.log(data.clients);                
+                this.beginningState(data._id);
                 return null
             }
             else {
@@ -162,7 +211,7 @@ class TextFields2 extends React.Component {
                     <Paper className={classes.paper}></Paper>
                 </Grid>
                 <Grid item sm={7} lg={9}>
-                <h4>Edit Project</h4>
+                <h4>New Project</h4>
                     <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
                         <Grid item xs ={12} sm={12} md={4} lg={3}>
@@ -217,14 +266,91 @@ class TextFields2 extends React.Component {
                                 />
                                 }
                             >
-                                <MenuItem value="">
-                                <em>None</em>
-                                </MenuItem>
                                 <MenuItem value={"low"}>low</MenuItem>
                                 <MenuItem value={"medium"}>medium</MenuItem>
                                 <MenuItem value={"high"}>high</MenuItem>
                             </Select>
                             </FormControl>
+                        </Grid>
+
+                        <Grid item xs={12} style={{"marginTop": "40px"}}>
+                            <h6>Client</h6>
+                        </Grid>
+
+                        <Grid item xs ={12} sm={12} md={6} lg={6}>
+                        <FormControl className={classes.formControlLarge}>
+                            <Select
+                                value={this.state.project.clientID}
+                                onChange={this.handleChangeDropdown}
+                                name="clientID"
+                                input={
+                                <Input
+                                    labelWidth={this.state.labelWidth}
+                                    name="clientID"
+                                    //id="outlined-age-simple"
+                                />
+                                }
+                            >
+                                <MenuItem value="">
+                                <em>None</em>
+                                </MenuItem>
+                                {data.clients
+                                    .filter(clients => { return clients.active === true })
+                                    .sort((a, b) => (a.company < b.company ? -1 : 1))
+                                    .map(clients => (
+                                        <MenuItem value={clients._id}>{clients.company}</MenuItem>
+                                    ))
+                                }
+                            </Select>
+                            </FormControl>
+                        </Grid>
+
+                        <Grid item xs ={12} sm={12} md={3} lg={3}>
+                            <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
+                            + New Client
+                            </Button>
+                            <Dialog
+                            open={this.state.open}
+                            onClose={this.handleClose}
+                            aria-labelledby="form-dialog-title"
+                            >
+                            <DialogTitle id="form-dialog-title">Create New Client</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                To make a project for a new client, please enter their information and then select your client from the dropdown.
+                                </DialogContentText>
+                                <TextField
+                                    required
+                                    id="company"
+                                    label="Company"
+                                    value={this.state.client.company}
+                                    className={classes.textField}
+                                    onChange={this.handleClientChange}
+                                    InputProps={{ disableUnderline: true, }}
+                                    margin="normal"
+                                />
+                                <TextField
+                                    required
+                                    id="email"
+                                    label="Email"
+                                    value={this.state.client.email}
+                                    className={classes.textField}
+                                    onChange={this.handleClientChange}
+                                    InputProps={{ disableUnderline: true, }}
+                                    margin="normal"
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={this.handleClose} color="primary">
+                                Cancel
+                                </Button>
+                                <Button onClick={this.handleClientSubmit} color="primary">
+                                Save
+                                </Button>
+                            </DialogActions>
+                            </Dialog>
+                        
+                        
                         </Grid>
 
                         <Grid item xs={12} style={{"marginTop": "40px"}}>
@@ -242,11 +368,12 @@ class TextFields2 extends React.Component {
                             margin="normal"
                         />
                         </Grid>
-                        <Grid item xs ={12} sm={3} md={2} lg={2}>
+                        <Grid item xs ={6} sm={3} md={2} lg={2}>
                         <TextField
                             id="timeEst"
                             label="Time Estimate"
                             className={classes.textFieldSmall}
+                            type="number"
                             value={this.state.project.timeEst}
                             onChange={this.handleChange}
                             InputProps={{ disableUnderline: true, }}
@@ -254,11 +381,12 @@ class TextFields2 extends React.Component {
                         />
                         </Grid>
 
-                        <Grid item xs ={12} sm={3} md={2} lg={2}>
+                        <Grid item xs ={6} sm={3} md={2} lg={2}>
                         <TextField
                             id="rate"
                             label="Rate"
                             className={classes.textFieldSmall}
+                            type="number"
                             value={this.state.project.rate}
                             onChange={this.handleChange}
                             InputProps={{ disableUnderline: true, }}
@@ -291,7 +419,7 @@ class TextFields2 extends React.Component {
 
                         <Grid item xs ={6} sm={3} style={{"marginTop": "30px"}}>
 
-                        <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, align: "right"}} onClick={this.archiveClient}>ARCHIVE</Button>
+                        <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, align: "right"}} onClick={this.cancelClient}>CANCEL</Button>
 
                         </Grid>
 
@@ -303,10 +431,10 @@ class TextFields2 extends React.Component {
     }
 }
 
-TextFields2.propTypes = {
+NewProjectFields.propTypes = {
     classes: PropTypes.object.isRequired,
-    removeProjectDetails: PropTypes.func.isRequired,
-    updateProjectDetails: PropTypes.func.isRequired,
+    createProjectDetails: PropTypes.func.isRequired,
+    createClientDetails: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -317,5 +445,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { updateProjectDetails, removeProjectDetails }
-)(withStyles(styles)(TextFields2))
+    { createProjectDetails, createClientDetails }
+)(withStyles(styles)(NewProjectFields))

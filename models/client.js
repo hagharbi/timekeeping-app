@@ -83,8 +83,7 @@ var ClientSchema = new Schema({
         {
         type: Schema.Types.ObjectId,
         ref: "User"
-    }
-    ],
+    }],
     projects: [
         {
         type: Schema.Types.ObjectId,
