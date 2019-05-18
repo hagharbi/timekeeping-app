@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #444444;
 }
 
 code {
@@ -14,4 +15,17 @@ code {
 
 .card-header {
   padding: .5rem;
+}
+
+h5 {
+  margin: 3rem auto 2rem 0;
+}
+
+#th {
+  background-color: #eef5fa;
+  font-size: 17px;
+}
+
+#td {
+  font-size: 15px;
 }
