@@ -18,7 +18,7 @@ class Client extends Component {
       const userData = {
         id: this.props.auth.user.id
       };
-      console.log('componentdid', this.props.auth.user.id)
+      // console.log('componentdid', this.props.auth.user.id)
       this.props.findUserDetails(userData);
     }
   
