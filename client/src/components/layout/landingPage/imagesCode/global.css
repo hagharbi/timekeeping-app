@@ -30,7 +30,7 @@ to {transform: translateX(1350px);}
 
 #SchutzParalax {
   width: 100vw!important;
-  margin: 10vw 0 0 50vw;
+  margin: 10vw 0 1px 50vw;
   overflow: hidden!important;
 }
 
