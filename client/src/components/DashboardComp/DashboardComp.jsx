@@ -83,14 +83,15 @@ class Dash extends React.Component {
         const { classes } = this.props;
 
         const { data } = this.props.user;
-            const options = {
-        title: {
-            text: "My stock chart"
-        },
-        series: [{
-            data: [1, 2, 1, 4, 3, 6, 7, 3, 8, 6, 9]
-        }]
-    };
+        const options = {
+            title: {
+                text: "Recent Activity",
+                align: "left",
+            },
+            series: [{
+                data: [1, 2, 1, 4, 3, 6, 7, 3, 8, 6, 9]
+            }]
+        };
         // const bull = <span className={classes.bullet}>•</span>; <----- called but never used ___JRS___
 
 
@@ -114,7 +115,7 @@ class Dash extends React.Component {
                             <Paper className={classes.paper}></Paper>
                         </Grid>
                         <Grid item xs={9} sm={7} md={8} lg={9}>
-                            <h5 style={{ margin: '3rem auto 2rem -2rem', color: '#555555'}} id="dashboard_h1"><strong>Dashboard</strong></h5>
+                            <h4><strong>Dashboard</strong></h4>
                             <Grid item sm={7} lg={10}>
                                 <HighchartsReact highcharts={
                                     Highcharts
@@ -125,7 +126,7 @@ class Dash extends React.Component {
                                     options={
                                         options
                                     }
-                                /> 
+                                />
                             </Grid>
                         </Grid>
                     </Grid>

@@ -168,14 +168,14 @@ class CustomPaginationActionsTable extends React.Component {
               spacing={24}
             >
               <Grid item>
-                <h5><strong>Clients</strong></h5>
+                <h4><strong>Clients</strong></h4>
               </Grid>
               <Grid item>
                 <Link
                   to="/newclient">
                   <Button
                     // onClick={}
-                    variant="contained" color="secondary" className={classes.button}
+                    variant="contained" color="primary" className={classes.button}
                     style={{ marginTop: "3rem" }}
                   >
                     + New Client
@@ -187,12 +187,12 @@ class CustomPaginationActionsTable extends React.Component {
               <Table className={classes.table}>
                 <TableHead id="th">
                   <TableRow>
-                    <TableCell variant="h5" component="th" scope="row">
+                    <TableCell variant="headline" component="th" scope="row">
                       Company
                       </TableCell>
-                    <TableCell variant="h5" component="th" scope="row">Email</TableCell>
-                    <TableCell variant="h5" component="th" scope="row">Phone</TableCell>
-                    <TableCell variant="h5" component="th" align="right">Projects</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Email</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Phone</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Projects</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -201,12 +201,12 @@ class CustomPaginationActionsTable extends React.Component {
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map(client => (
                       <TableRow hover style={{ cursor: 'pointer' }} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
-                        <TableCell id="td" component="th" scope="row">
+                        <TableCell variant="body1" scope="row">
                           {client.company}
                         </TableCell>
-                        <TableCell id="td" component="th" scope="row">{client.email}</TableCell>
-                        <TableCell id="td" component="th" scope="row"> {client.phone}</TableCell>
-                        <TableCell id="td" align="right">{client.projects.length}</TableCell>
+                        <TableCell variant="body1" scope="row">{client.email}</TableCell>
+                        <TableCell variant="body1" scope="row"> {client.phone}</TableCell>
+                        <TableCell variant="body1" scope="row">{client.projects.length}</TableCell>
                       </TableRow>
                     ))}
                   {emptyRows > 0 && (
