@@ -164,7 +164,7 @@ class TextFields extends React.Component {
                                 </Grid>
 
                                 <Grid item xs={12} style={{ "marginTop": "1rem" }}>
-                                    <h6>POC Info</h6>
+                                    <h6>Address</h6>
                                 </Grid>
 
                                 <Grid item xs={12} sm={6} md={4} lg={3}>

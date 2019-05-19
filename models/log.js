@@ -53,8 +53,10 @@ var LogSchema = new Schema({
     counting: {
         type: Boolean,
         default: true
-    }
-});
+    }},
+    {
+        timestamps: true
+    });
 
 LogSchema.methods.updateDate = function() {
     this.lastUpdate = Date.now();
