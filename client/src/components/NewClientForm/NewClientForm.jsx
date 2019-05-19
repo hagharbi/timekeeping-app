@@ -136,7 +136,9 @@ class NewClientFields extends React.Component {
                         </Grid>
 
                         <Grid item xs={10} sm={8} md={9} lg={10}>
-                            <h4><strong>New Client</strong></h4>
+
+                            <h5 style={{ margin: '3rem auto 2rem 0rem' }}><strong>New Client</strong></h5>
+
                             <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
                                 <Grid item xs={12}>

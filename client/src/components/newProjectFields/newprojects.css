@@ -1,0 +1,47 @@
+@media only screen and (max-width: 650px) {
+    #newProjects_title {
+      margin: 0 0 0 200px;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    #newProjects_title {
+      margin: 0 0 0 100px;
+    }
+  }
+
+  @media only screen and (max-width: 650px) {
+    #newProjects_form {
+      margin: 0 0 0 200px;
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    #newProjects_form {
+      margin: 0 0 0 100px;
+    }
+  }
+
+
+  @media only screen and (max-width: 650px) {
+    #newProjects_newClient-btn {
+        margin: 20px 0 0 100px;
+    }
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    #newProjects_newClient-btn {
+        margin: 20px 0 0 100px;
+    }
+  }
+
+
+  /*  */
+
+
+  /* @media only screen and (max-width: 650px) {
+    #dueDate {
+      width: 100px
+    }
+  } */

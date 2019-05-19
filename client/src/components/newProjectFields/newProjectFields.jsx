@@ -24,6 +24,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+// <----- Media Queries
+import "./newprojects.css";
 
 const styles = theme => ({
     container: {
@@ -225,6 +227,8 @@ class NewProjectFields extends React.Component {
                         <Grid item xs={1} sm={4} md={3} lg={2}>
                             <Paper className={classes.paper}></Paper>
                         </Grid>
+
+
                         <Grid item sm={7} lg={9}>
                             <h4><strong>New Project</strong></h4>
                             <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
@@ -261,10 +265,11 @@ class NewProjectFields extends React.Component {
                                     </FormControl>
                                 </Grid>
 
-                                <Grid item xs={6} sm={4} md={3} lg={3}>
-                                    <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-                                        + New Client
-                            </Button>
+                                <Grid item xs={12} sm={12} md={3} lg={3}>
+                                    <Button variant="contained" color="primary" id="newProjects_newClient-btn" onClick={this.handleClickOpen}>
+                                        + New Client 
+                                    </Button>
+
                                     <Dialog
                                         open={this.state.open}
                                         onClose={this.handleClose}
@@ -274,7 +279,7 @@ class NewProjectFields extends React.Component {
                                         <DialogContent>
                                             <DialogContentText>
                                                 Prior to create a project, please enter the client information then select it from the dropdown
-                                            </DialogContentText>
+                                                </DialogContentText>
                                             <TextField
                                                 required
                                                 id="company"
@@ -299,7 +304,7 @@ class NewProjectFields extends React.Component {
                                         <DialogActions>
                                             <Button onClick={this.handleClose} color="primary">
                                                 Cancel
-                                            </Button>
+                                                </Button>
                                             <Button variant="contained" onClick={this.handleClientSubmit} color="primary">
                                                 Save
                                             </Button>
@@ -376,21 +381,22 @@ class NewProjectFields extends React.Component {
                                     <h6>Time + Rate</h6>
                                 </Grid>
 
-                                {/*                         <Grid item xs ={12} sm={4} md={3} lg={3}>
-                        <TextField
-                            id="dueDate"
-                            label="Due Date"
-                            type="date"
-                            className={classes.textField}
-                            value={this.state.project.dueDate}
-                            onChange={this.handleChange}
-                            InputProps={{ disableUnderline: true, }}
-                            InputLabelProps={{
-                                shrink: true
-                             }}
-                            margin="normal"
-                        />
-                        </Grid> */}
+                            {/* <Grid item xs ={12} sm={4} md={3} lg={3}>
+                                <TextField
+                                    id="dueDate"
+                                    label="Due Date"
+                                    type="date"
+                                    className={classes.textField}
+                                    value={this.state.project.dueDate}
+                                    onChange={this.handleChange}
+                                    InputProps={{ disableUnderline: true, }}
+                                    InputLabelProps={{
+                                        shrink: true
+                                        }}
+                                    margin="normal"
+                                />
+                                </Grid> */}
+
                                 <Grid item xs={6} sm={3} md={2} lg={2}>
                                     <TextField
                                         id="timeEst"
@@ -417,21 +423,21 @@ class NewProjectFields extends React.Component {
                                     />
                                 </Grid>
 
-                                {/*                         <Grid item xs={12} style={{"marginTop": "40px"}}>
-                            <h6>Notes</h6>
-                        </Grid>
+                                {/*  <Grid item xs={12} style={{"marginTop": "40px"}}>
+                                        <h6>Notes</h6>
+                                </Grid>
 
-                        <Grid item xs ={12}>
-                        <TextField
-                            id="notes"
-                            multiline
-                            rows="8"
-                            value={this.state.project.notes}
-                            onChange={this.handleChange}
-                            className={classes.textFieldLarge}
-                            margin="dense"
-                        />
-                        </Grid> */}
+                                <Grid item xs ={12} id="newProject_notes-cont">
+                                <TextField
+                                    id="notes"
+                                    multiline
+                                    rows="8"
+                                    value={this.state.project.notes}
+                                    onChange={this.handleChange}
+                                    className={classes.textFieldLarge}
+                                    margin="dense"
+                                />
+                                </Grid> */}
 
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "3rem", "marginLeft": 8 }}>
 
@@ -443,26 +449,27 @@ class NewProjectFields extends React.Component {
 
                             </form>
                         </Grid>
+                        
                     </Grid>
                 )
             }
         }
     }
 }
-
+                    
 NewProjectFields.propTypes = {
     classes: PropTypes.object.isRequired,
     createProjectDetails: PropTypes.func.isRequired,
     createClientDetails: PropTypes.func.isRequired
 };
-
+                                
 const mapStateToProps = state => ({
     auth: state.auth,
     userDetails: state.findUser.userDetails
 });
-
-
+                                
+                                
 export default connect(
     mapStateToProps,
-    { createProjectDetails, createClientDetails }
+    {createProjectDetails, createClientDetails }
 )(withStyles(styles)(NewProjectFields))
