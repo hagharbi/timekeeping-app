@@ -29,6 +29,50 @@
 
 }
 
+#promo_desktop2 {
+  background-color: #33aeae;
+  height: 30vh;
+  min-width: 240px;
+  min-height: 170px;
+  border-radius: 8px;
+  position: absolute;
+  margin: 30vh 0 0 7vw;
+  opacity: 0;
+  padding: 0 0 0 0;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  filter: drop-shadow(-40px -40px 6px rgba(0, 0, 0, 0.1));
+      -moz-transform: skew(0deg, -25deg);
+      -webkit-transform: skew(0deg, -25deg);
+      -o-transform: skew(0deg, -25deg);
+      -ms-transform: skew(0deg, -25deg);
+  transform: skew(0deg, -25deg);
+
+}
+
+#promo_desktop3 {
+  background-color: #33aeae;
+  height: 30vh;
+  min-width: 240px;
+  min-height: 170px;
+  border-radius: 8px;
+  position: absolute;
+  margin: 30vh 0 0 7vw;
+  opacity: 0;
+  padding: 0 0 0 0;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  filter: drop-shadow(-40px -40px 6px rgba(0, 0, 0, 0.1));
+      -moz-transform: skew(0deg, -25deg);
+      -webkit-transform: skew(0deg, -25deg);
+      -o-transform: skew(0deg, -25deg);
+      -ms-transform: skew(0deg, -25deg);
+  transform: skew(0deg, -25deg);
+
+}
+
 #promo_laptop {
     background-color: pink;
     height: 25vh;
@@ -104,74 +148,7 @@
     transform: skew(0deg, -0deg);
 }
 
+#hero-mobile-break {
+  color: silver!important;
+}
 
-@media only screen and (max-width: 650px) {
-    #promo_tablet,
-    #promo_smartPhone,
-    #promo_laptop {
-     opacity: 0;
-    }
-  }
-
-
-
-  @media only screen and (max-width: 650px) {
-    #promo_desktop {
-        -moz-transform: skew(0deg, 20deg);
-        -webkit-transform: skew(0deg, 20deg);
-        -o-transform: skew(0deg, 20deg);
-        -ms-transform: skew(0deg, 20deg);
-    transform: skew(0deg, 20deg);
-    filter: drop-shadow(45px -20px 2px rgba(0, 0, 0, 0.3));
-     }
-   }
-
-
-   @media only screen and (max-width: 650px) {
-    #focus-on {
-           margin: 21vw 0 0 1vw!important;
-           width: 58vw!important;
-
-         }
-       }
-
-       @media only screen and (max-width: 650px) {
-        #we-deliver {
-               margin: 27vw 0 0 1vw!important;
-               width: 50vw!important;
-    
-             }
-           }
-
-
-
-           @media only screen and (max-width: 650px) {
-            #sumit-is {
-                margin: 6vw 0 0 1vw!important;
-                color: #ebebeb!important;
-                width: 50vw!important;
-                text-shadow: 2px 2px rgba(0,0,0,0.1);
-                 }
-               }
-
-               @media only screen and (max-width: 650px) {
-                #ReBtn {
-                       margin: 35vw 0 0 1vw!important;
-                       width: 260px!important;
-                       border-radius: 2px 2px 2px 2px!important;
-                     }
-                   }
-
-                   @media only screen and (max-width: 650px) {
-                    #liBtn {
-                           margin: 44vw 0 0 1vw!important;
-                           width: 260px!important;
-                           border-radius: 2px 2px 2px 2px!important;
-                         }
-                       }
-/* 
-  @media only screen and (max-width: 650px) {
-#ReBtn {
-       border-radius: 50vw;
-     }
-   } */

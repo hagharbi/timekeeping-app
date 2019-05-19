@@ -400,7 +400,7 @@ class ProjectTable extends React.Component {
                         
                         }
                             <Dialog
-                            open={this.state.open == projects._id}
+                            open={this.state.open === projects._id}
                             onClose={this.handleClose}
                             aria-labelledby="form-dialog-title"
                             >
