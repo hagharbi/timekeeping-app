@@ -27,57 +27,62 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 const styles = theme => ({
     container: {
-      display: 'flex',
-      flexWrap: 'wrap',
+        display: 'flex',
+        flexWrap: 'wrap',
     },
     textFieldSmall: {
-      marginLeft: theme.spacing.unit,
-      marginRight: theme.spacing.unit,
-      width: 150,
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 150,
+        marginTop: ".5rem",
     },
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         width: 300,
-      },
-      textFieldLarge: {
+        marginTop: ".5rem",
+    },
+    textFieldLarge: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         width: 400,
-      },
+        marginTop: ".5rem",
+    },
     dense: {
-      marginTop: 19,
+        marginTop: 19,
     },
     menu: {
         width: 300,
     },
     formControl: {
         margin: theme.spacing.unit,
-        minWidth: 120,
-        marginTop: 20
-      },
-      formControlLarge: {
+        minWidth: 150,
+        marginTop: ".5rem",
+
+    },
+    formControlLarge: {
         margin: theme.spacing.unit,
         width: 300,
-        marginTop: 20
-      },
-      selectEmpty: {
+        marginTop: ".5rem",
+
+    },
+    selectEmpty: {
         marginTop: theme.spacing.unit * 2,
-      },
+    },
 });
 
 class NewProjectFields extends React.Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
             errors: {},
             open: false,
-          };
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.cancelClient = this.cancelClient.bind(this);
         this.handleClientSubmit = this.handleClientSubmit.bind(this);
-      };
+    };
 
     handleClickOpen = () => {
         this.setState({ open: true });
@@ -106,7 +111,7 @@ class NewProjectFields extends React.Component {
 
         this.props.createProjectDetails(projectData);
         console.log(projectData);
-        window.location.href = '/project'
+        window.location.href = '/projects'
     };
 
     handleClientSubmit(event) {
@@ -121,12 +126,12 @@ class NewProjectFields extends React.Component {
 
         this.props.createClientDetails(clientData);
         this.setState({ open: false });
-        window.location ="/projects"
+        window.location = "/newproject"
     };
 
     cancelClient(event) {
         event.preventDefault()
-        window.location.href = '/newprojects'
+        window.location.href = '/newproject'
     };
 
     cancelProject = (event) => {
@@ -135,34 +140,36 @@ class NewProjectFields extends React.Component {
     }
 
     beginningState(userId, event) {
-        this.setState({ project:{
-            id: "",
-            title: "",
-            status: "pending",
-            priority: "low",
-            rate: 0,
-            timeEst: 1,
-            dueDate: "",
-            category: "",
-            notes: "",
-            userId: userId,
-            clientID: ""
-        },
-        client: {
-            userId: userId,
-            company: "",
-            email: ""
-        }
+        this.setState({
+            project: {
+                id: "",
+                title: "",
+                status: "pending",
+                priority: "low",
+                rate: 0,
+                timeEst: 1,
+                dueDate: "",
+                category: "",
+                notes: "",
+                userId: userId,
+                clientID: ""
+            },
+            client: {
+                userId: userId,
+                company: "",
+                email: ""
+            }
         });
         console.log(this.state);
     };
 
     handleChange = e => {
-        this.setState({ project: Object.assign(
-            {}, 
-            this.state.project,
-            { [e.target.id]: e.target.value }
-          ),
+        this.setState({
+            project: Object.assign(
+                {},
+                this.state.project,
+                { [e.target.id]: e.target.value }
+            ),
         })
         console.log(e.target.id)
         console.log(e.target.name)
@@ -171,11 +178,12 @@ class NewProjectFields extends React.Component {
     };
 
     handleClientChange = e => {
-        this.setState({ client: Object.assign(
-            {}, 
-            this.state.client,
-            { [e.target.id]: e.target.value }
-          ),
+        this.setState({
+            client: Object.assign(
+                {},
+                this.state.client,
+                { [e.target.id]: e.target.value }
+            ),
         })
         console.log(e.target.id)
         console.log(e.target.name)
@@ -184,11 +192,12 @@ class NewProjectFields extends React.Component {
     };
 
     handleChangeDropdown = e => {
-        this.setState({ project: Object.assign(
-            {}, 
-            this.state.project,
-            { [e.target.name]: e.target.value }
-          ),
+        this.setState({
+            project: Object.assign(
+                {},
+                this.state.project,
+                { [e.target.name]: e.target.value }
+            ),
         })
         console.log(this.state.project)
     };
@@ -204,170 +213,170 @@ class NewProjectFields extends React.Component {
 
         else {
 
-            if(!this.state.project) {
-                console.log(data.clients);                
+            if (!this.state.project) {
+                console.log(data.clients);
                 this.beginningState(data._id);
                 return null
             }
             else {
-            
-            return (
-                <Grid container spacing={24}>
-                 <Grid item xs ={1} sm={5} md={3}>
-                    <Paper className={classes.paper}></Paper>
-                </Grid>
-                <Grid item sm={7} lg={9}>
-                <h4>New Project</h4>
-                    <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
-                    <Grid item xs={12} style={{"marginTop": "40px"}}>
-                            <h6>Is this project for an existing client?</h6>
+                return (
+                    <Grid container spacing={24}>
+                        <Grid item xs={1} sm={4} md={3} lg={2}>
+                            <Paper className={classes.paper}></Paper>
                         </Grid>
+                        <Grid item sm={7} lg={9}>
+                            <h4><strong>New Project</strong></h4>
+                            <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
-                        <Grid item xs ={6} sm={4} md={4} lg={4}>
-                        <FormControl className={classes.formControlLarge}>
-                            <Select
-                                value={this.state.project.clientID}
-                                onChange={this.handleChangeDropdown}
-                                name="clientID"
-                                input={
-                                <Input
-                                    labelWidth={this.state.labelWidth}
-                                    name="clientID"
-                                    //id="outlined-age-simple"
-                                />
-                                }
-                            >
-                                <MenuItem value="">
-                                <em>None</em>
-                                </MenuItem>
-                                {data.clients
-                                    .filter(clients => { return clients.active === true })
-                                    .sort((a, b) => (a.company < b.company ? -1 : 1))
-                                    .map(clients => (
-                                        <MenuItem value={clients._id}>{clients.company}</MenuItem>
-                                    ))
-                                }
-                            </Select>
-                            </FormControl>
-                        </Grid>
+                                <Grid item xs={12}>
+                                    <h6>Is this project for an existing client?</h6>
+                                </Grid>
 
-                        <Grid item xs ={6} sm={4} md={3} lg={3}>
-                            <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-                            + New Client
+                                <Grid item xs={6} sm={4} md={4} lg={4}>
+                                    <FormControl className={classes.formControlLarge}>
+                                        <Select
+                                            value={this.state.project.clientID}
+                                            onChange={this.handleChangeDropdown}
+                                            name="clientID"
+                                            input={
+                                                <Input
+                                                    labelWidth={this.state.labelWidth}
+                                                    name="clientID"
+                                                //id="outlined-age-simple"
+                                                />
+                                            }
+                                        >
+                                            <MenuItem value="">
+                                                <em>None</em>
+                                            </MenuItem>
+                                            {data.clients
+                                                .filter(clients => { return clients.active === true })
+                                                .sort((a, b) => (a.company < b.company ? -1 : 1))
+                                                .map(clients => (
+                                                    <MenuItem value={clients._id}>{clients.company}</MenuItem>
+                                                ))
+                                            }
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+
+                                <Grid item xs={6} sm={4} md={3} lg={3}>
+                                    <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
+                                        + New Client
                             </Button>
-                            <Dialog
-                            open={this.state.open}
-                            onClose={this.handleClose}
-                            aria-labelledby="form-dialog-title"
-                            >
-                            <DialogTitle id="form-dialog-title">Create New Client</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText>
-                                To make a project for a new client, please enter their information and then select your client from the dropdown.
-                                </DialogContentText>
-                                <TextField
-                                    required
-                                    id="company"
-                                    label="Company"
-                                    value={this.state.client.company}
-                                    className={classes.textField}
-                                    onChange={this.handleClientChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                                <TextField
-                                    required
-                                    id="email"
-                                    label="Email"
-                                    value={this.state.client.email}
-                                    className={classes.textField}
-                                    onChange={this.handleClientChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={this.handleClose} color="primary">
-                                Cancel
-                                </Button>
-                                <Button onClick={this.handleClientSubmit} color="primary">
-                                Save
-                                </Button>
-                            </DialogActions>
-                            </Dialog>
-                        </Grid>
+                                    <Dialog
+                                        open={this.state.open}
+                                        onClose={this.handleClose}
+                                        aria-labelledby="form-dialog-title"
+                                    >
+                                        <DialogTitle id="form-dialog-title">Create New Client</DialogTitle>
+                                        <DialogContent>
+                                            <DialogContentText>
+                                                Prior to create a project, please enter the client information then select it from the dropdown
+                                            </DialogContentText>
+                                            <TextField
+                                                required
+                                                id="company"
+                                                label="Company"
+                                                value={this.state.client.company}
+                                                className={classes.textField}
+                                                onChange={this.handleClientChange}
+                                                InputProps={{ disableUnderline: true, }}
+                                                margin="normal"
+                                            />
+                                            <TextField
+                                                required
+                                                id="email"
+                                                label="Email"
+                                                value={this.state.client.email}
+                                                className={classes.textField}
+                                                onChange={this.handleClientChange}
+                                                InputProps={{ disableUnderline: true, }}
+                                                margin="normal"
+                                            />
+                                        </DialogContent>
+                                        <DialogActions>
+                                            <Button onClick={this.handleClose} color="primary">
+                                                Cancel
+                                            </Button>
+                                            <Button variant="contained" onClick={this.handleClientSubmit} color="primary">
+                                                Save
+                                            </Button>
+                                        </DialogActions>
+                                    </Dialog>
+                                </Grid>
 
-                        <Grid item xs={12} style={{"marginTop": "40px"}}>
-                            <h6>Project Details</h6>
-                        </Grid>
+                                <Grid item xs={12} >
+                                    <h6>Project Details</h6>
+                                </Grid>
 
-                        <Grid item xs ={12} sm={12} md={4} lg={3}>
-                            <TextField
-                                required
-                                id="title"
-                                label="Title"
-                                value={this.state.project.title}
-                                className={classes.textField}
-                                onChange={this.handleChange}
-                                InputProps={{ disableUnderline: true, }}
-                                margin="normal"
-                            />
-                        </Grid>
+                                <Grid item xs={12} sm={12} md={4} lg={3}>
+                                    <TextField
+                                        required
+                                        id="title"
+                                        label="Title"
+                                        value={this.state.project.title}
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
 
-                        <Grid item xs ={6} sm={6} md={3} lg={2}>
+                                <Grid item xs={6} sm={6} md={3} lg={2}>
 
-                        <FormControl className={classes.formControl}>
-                            <Select
-                                value={this.state.project.status}
-                                onChange={this.handleChangeDropdown}
-                                style={{"marginTop": "26px"}}
-                                name="status"
-                                input={
-                                <Input
-                                    labelWidth={this.state.labelWidth}
-                                    name="status"
-                                    //id="outlined-age-simple"
-                                />
-                                }
-                            >
-                                <MenuItem value="inactive">
-                                inactive
-                                </MenuItem>
-                                <MenuItem value="pending">pending</MenuItem>
-                                <MenuItem value={"in progress"}>in progress</MenuItem>
-                                <MenuItem value={"completed"}>completed</MenuItem>
-                            </Select>
-                            </FormControl>
-                        </Grid>
+                                    <FormControl className={classes.formControl}>
+                                        <Select
+                                            value={this.state.project.status}
+                                            onChange={this.handleChangeDropdown}
+                                            style={{ "marginTop": "32px" }}
+                                            name="status"
+                                            input={
+                                                <Input
+                                                    labelWidth={this.state.labelWidth}
+                                                    name="status"
+                                                //id="outlined-age-simple"
+                                                />
+                                            }
+                                        >
+                                            <MenuItem value="inactive">
+                                                inactive
+                                            </MenuItem>
+                                            <MenuItem value="pending">pending</MenuItem>
+                                            <MenuItem value={"in progress"}>in progress</MenuItem>
+                                            <MenuItem value={"completed"}>completed</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
 
-                        <Grid item xs ={6} sm={6} md={3} lg={2}>
-                        <FormControl className={classes.formControl}>
-                            <Select
-                                value={this.state.project.priority}
-                                onChange={this.handleChangeDropdown}
-                                name="priority"
-                                style={{"marginTop": "26px"}}
-                                input={
-                                <Input
-                                    labelWidth={this.state.labelWidth}
-                                    name="priority"
-                                    //id="outlined-age-simple"
-                                />
-                                }
-                            >
-                                <MenuItem value={"low"}>low</MenuItem>
-                                <MenuItem value={"medium"}>medium</MenuItem>
-                                <MenuItem value={"high"}>high</MenuItem>
-                            </Select>
-                            </FormControl>
-                        </Grid>
+                                <Grid item xs={6} sm={6} md={3} lg={2}>
+                                    <FormControl className={classes.formControl}>
+                                        <Select
+                                            value={this.state.project.priority}
+                                            onChange={this.handleChangeDropdown}
+                                            name="priority"
+                                            style={{ "marginTop": "32px" }}
+                                            input={
+                                                <Input
+                                                    labelWidth={this.state.labelWidth}
+                                                    name="priority"
+                                                //id="outlined-age-simple"
+                                                />
+                                            }
+                                        >
+                                            <MenuItem value={"low"}>low</MenuItem>
+                                            <MenuItem value={"medium"}>medium</MenuItem>
+                                            <MenuItem value={"high"}>high</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
 
-                        <Grid item xs={12} style={{"marginTop": "40px"}}>
-                            <h6>Time + Rate</h6>
-                        </Grid>
+                                <Grid item xs={12}>
+                                    <h6>Time + Rate</h6>
+                                </Grid>
 
-{/*                         <Grid item xs ={12} sm={4} md={3} lg={3}>
+                                {/*                         <Grid item xs ={12} sm={4} md={3} lg={3}>
                         <TextField
                             id="dueDate"
                             label="Due Date"
@@ -382,33 +391,33 @@ class NewProjectFields extends React.Component {
                             margin="normal"
                         />
                         </Grid> */}
-                        <Grid item xs ={6} sm={3} md={2} lg={2}>
-                        <TextField
-                            id="timeEst"
-                            label="Estimated Hours"
-                            className={classes.textFieldSmall}
-                            type="number"
-                            value={this.state.project.timeEst}
-                            onChange={this.handleChange}
-                            InputProps={{ disableUnderline: true, }}
-                            margin="normal"
-                        />
-                        </Grid>
+                                <Grid item xs={6} sm={3} md={2} lg={2}>
+                                    <TextField
+                                        id="timeEst"
+                                        label="Estimated Hours"
+                                        className={classes.textFieldSmall}
+                                        type="number"
+                                        value={this.state.project.timeEst}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
 
-                        <Grid item xs ={6} sm={3} md={2} lg={2}>
-                        <TextField
-                            id="rate"
-                            label="Hourly Rate"
-                            className={classes.textFieldSmall}
-                            type="number"
-                            value={this.state.project.rate}
-                            onChange={this.handleChange}
-                            InputProps={{ disableUnderline: true, }}
-                            margin="normal"
-                        />
-                        </Grid>
+                                <Grid item xs={6} sm={3} md={2} lg={2}>
+                                    <TextField
+                                        id="rate"
+                                        label="Hourly Rate"
+                                        className={classes.textFieldSmall}
+                                        type="number"
+                                        value={this.state.project.rate}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
 
-{/*                         <Grid item xs={12} style={{"marginTop": "40px"}}>
+                                {/*                         <Grid item xs={12} style={{"marginTop": "40px"}}>
                             <h6>Notes</h6>
                         </Grid>
 
@@ -423,20 +432,21 @@ class NewProjectFields extends React.Component {
                             margin="dense"
                         />
                         </Grid> */}
-                        
-                        <Grid item xs ={6} sm={9} style={{"marginTop": "30px"}}>
 
-                        <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15}} onClick={this.handleSubmit}>SAVE</Button>
+                                <Grid item xs={6} sm={9} style={{ "marginTop": "3rem", "marginLeft": 8 }}>
 
-                        <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, "marginLeft": 15}} onClick={this.cancelProject}>CANCEL</Button>
+                                    <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
 
+                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginLeft": 15 }} onClick={this.cancelProject}>CANCEL</Button>
+
+                                </Grid>
+
+                            </form>
                         </Grid>
-
-                    </form>
                     </Grid>
-                </Grid>
-            )
-        }}
+                )
+            }
+        }
     }
 }
 

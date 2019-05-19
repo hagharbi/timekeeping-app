@@ -1,5 +1,5 @@
-* {
-overflow: none!important;
+body {
+  /* background: linear-gradient(#66CCCC, #55AEAE, #33AEAE, BLACK); */
 }
 
 
@@ -73,8 +73,6 @@ button > .static {
   position:absolute;
   background: white;
 }
-
-
 
 button > .static:hover {
   opacity:0!important;

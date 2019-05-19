@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-// import classnames from 'classnames';  <----- called but never used JRS
-// import Card from '@material-ui/core/Card';  <----- called but never used JRS
+// import classnames from 'classnames';
+import Card from '@material-ui/core/Card';
 // import CardActions from '@material-ui/core/CardActions';
 // import CardContent from '@material-ui/core/CardContent'; <----- called but never used JRS
 // import Typography from '@material-ui/core/Typography';  <----- called but never used JRS
-// import CardHeader from '@material-ui/core/CardHeader';  <----- called but never used JRS
-// import CardMedia from '@material-ui/core/CardMedia';  <----- called but never used JRS
+// import CardHeader from '@material-ui/core/CardHeader';
+// import CardMedia from '@material-ui/core/CardMedia';
 import '../layout/landingPage/imagesCode/global.css';
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-// import Avatar from '@material-ui/core/Avatar';  <----- called but never used JRS
-// import IconButton from '@material-ui/core/IconButton';  <----- called but never used JRS
-// import MoreVertIcon from '@material-ui/icons/MoreVert';  <----- called but never used JRS
+// import Avatar from '@material-ui/core/Avatar';
+// import IconButton from '@material-ui/core/IconButton';
+// import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const styles = theme => ({
     container: {
@@ -83,14 +83,15 @@ class Dash extends React.Component {
         const { classes } = this.props;
 
         const { data } = this.props.user;
-            const options = {
-        title: {
-            text: "My stock chart"
-        },
-        series: [{
-            data: [1, 2, 1, 4, 3, 6, 7, 3, 8, 6, 9]
-        }]
-    };
+        const options = {
+            title: {
+                text: "Recent Activity",
+                align: "left",
+            },
+            series: [{
+                data: [1, 2, 1, 4, 3, 6, 7, 3, 8, 6, 9]
+            }]
+        };
         // const bull = <span className={classes.bullet}>•</span>; <----- called but never used ___JRS___
 
 
@@ -114,7 +115,7 @@ class Dash extends React.Component {
                             <Paper className={classes.paper}></Paper>
                         </Grid>
                         <Grid item xs={9} sm={7} md={8} lg={9}>
-                            <h5 style={{ margin: '3rem auto 2rem -2rem', color: '#555555'}} id="dashboard_h1"><strong>Dashboard</strong></h5>
+                            <h4><strong>Dashboard</strong></h4>
                             <Grid item sm={7} lg={10}>
                                 <HighchartsReact highcharts={
                                     Highcharts
@@ -125,7 +126,7 @@ class Dash extends React.Component {
                                     options={
                                         options
                                     }
-                                /> 
+                                />
                             </Grid>
                         </Grid>
                     </Grid>
