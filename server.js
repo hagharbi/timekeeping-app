@@ -19,7 +19,12 @@ app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/build")));
+  // Set static folder
+  app.use(express.static("client/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
 }
 // Add routes
 app.use(routes);
@@ -32,17 +37,17 @@ app.use("/api/logs", logs);
 
 // Database Setup for Prod Env
 // DB Config
-// const db = require("./config/keys").mongoURI;
+const db = require("./config/keys").mongoURI;
 
-// // // Connect to MongoDB
-// mongoose
-//   .connect(
-//     db || "mongodb://localhost/timekeeperapp", {
-//       useNewUrlParser: true
-//     }
-//   )
-//   .then(() => console.log("MongoDB successfully connected"))
-//   .catch(err => console.log(err));
+// // Connect to MongoDB
+mongoose
+  .connect(
+    db || "mongodb://localhost/timekeeperapp", {
+      useNewUrlParser: true
+    }
+  )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
 
 
 // Passport middleware
