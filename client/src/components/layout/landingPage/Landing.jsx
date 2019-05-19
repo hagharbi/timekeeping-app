@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 import Parallax from "./Parallax";
 import "./imagesCode/global.css";
 import "./promo.css";
-import "../../media_quieries/sixfifty.css";
-import "../../media_quieries/sevenfifties.css";
-
 class Landing extends Component {
   render() {
     return (
@@ -14,7 +11,6 @@ class Landing extends Component {
            style= {{
               height: "120vh",
               width: "100vw",
-              overflow: "none",
               backgroundColor: "#fff"
             }} >
 {/* -----  Inserted paralax code from LandingPageHEro.jsx below in the <paralax/>tag  ----- */}
@@ -22,7 +18,7 @@ class Landing extends Component {
     
 {/* -----  Sets a secondary force absolute width for home page intro.  ----- */}
       <div className="homeBodyContainer" 
-      style={{position: "absolute", zIndex: "9", height: "100vh", width: "100vw", margin: "0 0 0 0"}} >
+      style={{position: "absolute", zIndex: "9", height: "100vh", width: "100%", margin: "0 0 0 0"}} >
       <p style={{margin: "1vw 0 0 1vw"}}>
   
       <span style={{fontSize: "35px", margin: "-10px 0 0 0", color:"white", float: "left"}}> sumit</span></p>
@@ -88,30 +84,21 @@ class Landing extends Component {
 
 
         </div>
-        <div id="promo-copy" style={{margin: "70vw 0 0 10vw", position: "absolute", zIndex: "99", width: "86vw", color: "#555555", letterSpacing: "1px", backgroundColor: "#fff"}}>
-        <hr id="hero-mobile-break" style={{color: "#999999"}}/>  
-        <br/>
+        <div style={{margin: "70vw 0 0 10vw", position: "absolute", zIndex: "99", width: "86vw", color: "#555555", letterSpacing: "1px", backgroundColor: "#fff"}}>
             intuitive invoice management,  tracking, producing, reporting and 
             client management matrix designed;  to gtive, you; the user,  the 
             tools you need to get the job done in time and   on budget so you 
             can spend more time doing what you want. Instead of spending time 
             doing the things you dont.   sumit professional client management 
             systems is...
-            <br/>
-            <br/>
-            <hr id="hero-mobile-break" style={{color: "#999999"}}/>  
             <div id="promo_display-container">
-
-            <div id="promo_desktop2"    alt="desktop monitor representation of site page" ></div>
-            <div id="promo_desktop3"    alt="desktop monitor representation of site page" ></div>
-
-
+    
       <div id="promo_desktop"    alt="desktop monitor representation of site page" ></div>
       <div id="promo_laptop"     alt="laptop-refference"                           ></div>
       <img id="promo_tablet"     alt="tablet screen representation of site page"      src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
       <img id="promo_smartPhone" alt="smart phone screen representation of site page" src={ require('./imagesCode/mobile-view-gif.gif') } />
       <br/>
-      <p id="cprt" style={{textAlign: "center", position: "fixed", bottom: "0", left: "0", transform: "rotate(90deg)", margin: " 0 0 60px -50px", color: "silver"}}>© 2019 | sumit</p>
+      <p style={{textAlign: "center", position: "fixed", bottom: "0", left: "0", transform: "rotate(90deg)", margin: " 0 0 60px -50px", color: "silver"}}>© 2019 | sumit</p>
     </div>
         </div>
 
