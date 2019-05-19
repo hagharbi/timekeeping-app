@@ -300,7 +300,7 @@ class NewClientFields extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} sm={6} md={4} lg={12}>
+{/*                                 <Grid item xs={12} sm={6} md={4} lg={12}>
                                     <TextField
                                         id="notes"
                                         label="Notes"
@@ -311,12 +311,13 @@ class NewClientFields extends React.Component {
                                         className={classes.textField}
                                         margin="dense"
                                     />
-                                </Grid>
+                                </Grid> */}
+                                
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "3rem", "marginLeft": 8 }}>
 
-                                    <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
+                                    <Button variant="contained" type="submit" size="medium" color="primary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
 
-                                    <Button style={{ "marginLeft": 15 }} variant="outlined" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleCancel}>CANCEL</Button>
+                                    <Button style={{ "marginLeft": 15 }} variant="outlined" type="submit" size="medium" color="primary" className={classes.margin} onClick={this.handleCancel}>CANCEL</Button>
 
                                 </Grid>
 

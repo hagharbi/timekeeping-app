@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
-
 import { updateProjectDetails } from "../../actions/projects/updateProjectActions";
 import { removeProjectDetails } from "../../actions/projects/removeProjectActions";
+import { removeLogDetails } from "../../actions/logs/removeLogActions";
+import Moment from 'react-moment';
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -37,6 +38,7 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import RemoveCircleOutline from '@material-ui/icons/RemoveCircleOutline';
 
 const actionsStyles = theme => ({
     root: {
@@ -209,7 +211,7 @@ class TextFields2 extends React.Component {
         };
 
         this.props.updateProjectDetails(projectData);
-        window.location.href = '/projects'
+        window.location.href = '/projects';
     };
 
     archiveClient(event) {
@@ -220,11 +222,16 @@ class TextFields2 extends React.Component {
         };
         console.log(projectData)
         this.props.removeProjectDetails(projectData);
-        window.location.href = '/projects'
+        window.location.href = '/projects';
     };
 
+    archiveLog = (id) => {
+        console.log(id);
+        this.props.removeLogDetails({id: id});
+        document.location.reload();
+    }
+
     beginningState(objectFound, event) {
-        objectFound.value = objectFound.timeEst * objectFound.rate
         this.setState({ project: objectFound });
         console.log(this.state);
     };
@@ -291,8 +298,8 @@ class TextFields2 extends React.Component {
 
             const id = path.replace("/projects/", "");
 
-            var elementPos = data.projects.map(function (x) { return x._id; }).indexOf(id);
-            var objectFound = data.projects[elementPos];
+            var elementPos = data.map(function (x) { return x._id; }).indexOf(id);
+            var objectFound = data[elementPos];
 
             if (!this.state.project) {
                 this.beginningState(objectFound);
@@ -300,7 +307,11 @@ class TextFields2 extends React.Component {
             }
             else {
 
-                const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.clients.length - page * rowsPerPage);
+                console.log(this.state.project.logs
+                    .filter(log => { return log.active === true  && log.counting === false}).length)
+
+                const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.state.project.logs
+                    .filter(log => { return log.active === true  && log.counting === false}).length - page * rowsPerPage);
 
                 return (
 
@@ -308,12 +319,12 @@ class TextFields2 extends React.Component {
                     <AppBar position="static">
                     <Tabs value={value} onChange={this.handleChangeTabs}>
                         <Tab label="Item One" />
-                        <Tab label="Edit Project" />
                         <Tab label="View Logs" />
+                        <Tab label="Edit" />
                     </Tabs>
                     </AppBar>
                     {value === 0 && <TabContainer></TabContainer>}
-                    {value === 1 && <TabContainer>
+                    {value === 2 && <TabContainer>
                     <Grid container spacing={24}>
                         <Grid item xs={1} sm={5} md={3}>
                             <Paper className={classes.paper}></Paper>
@@ -427,7 +438,7 @@ class TextFields2 extends React.Component {
                                 </Tooltip>
                                 </Grid>
 
-                                <Grid item xs={12} style={{ "marginTop": "40px" }}>
+{/*                                 <Grid item xs={12} style={{ "marginTop": "40px" }}>
                                     <h6>Notes</h6>
                                 </Grid>
 
@@ -441,17 +452,13 @@ class TextFields2 extends React.Component {
                                         className={classes.textFieldLarge}
                                         margin="dense"
                                     />
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "30px" }}>
 
                                     <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15 }} onClick={this.handleSubmit}>SAVE</Button>
 
-                                </Grid>
-
-                                <Grid item xs={6} sm={3} style={{ "marginTop": "30px" }}>
-
-                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, align: "right" }} onClick={this.archiveClient}>ARCHIVE</Button>
+                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, "marginLeft": 15 }} onClick={this.archiveClient}>ARCHIVE</Button>
 
                                 </Grid>
 
@@ -459,7 +466,7 @@ class TextFields2 extends React.Component {
                         </Grid>
                     </Grid>
                     </TabContainer>}
-                    {value === 2 && <TabContainer>
+                    {value === 1 && <TabContainer>
                         <Grid container spacing={24}>
                         <Grid item xs={1} sm={5} md={3}>
                             <Paper className={classes.paper}></Paper>
@@ -469,24 +476,30 @@ class TextFields2 extends React.Component {
                                     <TableHead id="th">
                                     <TableRow>
                                         <TableCell variant="h5" component="th" scope="row">
-                                        Note
+                                        Client Note
                                         </TableCell>
-                                        <TableCell variant="h5" component="th" scope="row">Start</TableCell>
-                                        <TableCell variant="h5" component="th" scope="row">Stop</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Start Date</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Start Time</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Stop Date</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Stop Time</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Remove</TableCell>
                                     </TableRow>
                                     </TableHead>
                                     <TableBody>
                                     {this.state.project.logs
-                                        .filter(log => { return log.active === true })
-                                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                        .filter(log => { return log.active === true && log.counting === false})
+                                        .slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage)
                                         .map(log => (
-                                        <TableRow hover style={{ cursor: 'pointer' }} key={log._id}>
+                                        <TableRow key={log._id}>
                                             <TableCell id="td" component="th" scope="row">
                                             {log.title}
                                             </TableCell>
-                                            <TableCell id="td" component="th" scope="row">{log.createdAt}</TableCell>
-                                            <TableCell id="td" component="th" scope="row"> {log.updatedAt}</TableCell>
-                                        </TableRow>
+                                            <TableCell id="td" component="th" scope="row"><Moment format="MM/DD/YYYY">{log.createdAt}</Moment></TableCell>
+                                            <TableCell id="td" component="th" scope="row"><Moment format="HH:mm">{log.createdAt}</Moment></TableCell>
+                                            <TableCell id="td" component="th" scope="row"><Moment format="MM/DD/YYYY">{log.updatedAt}</Moment></TableCell>
+                                            <TableCell id="td" component="th" scope="row"><Moment format="HH:mm">{log.updatedAt}</Moment></TableCell>
+                                            <TableCell id="td" component="th" scope="row"><Button variant="outlined" type="submit" color="primary" className={classes.margin} onClick={() => this.archiveLog(log._id)}><RemoveCircleOutline /></Button></TableCell>
+                                        </TableRow> 
                                         ))}
                                     {emptyRows > 0 && (
                                         <TableRow style={{ height: 48 * emptyRows }}>
@@ -500,9 +513,9 @@ class TextFields2 extends React.Component {
                                         rowsPerPageOptions={[5, 10, 25]}
                                         colSpan={6}
                                         count={this.state.project.logs
-                                            .filter(log => { return log.active === true }).length}
-                                        rowsPerPage={rowsPerPage}
-                                        page={page}
+                                            .filter(log => { return log.active === true  && log.counting === false}).length}
+                                        rowsPerPage={this.state.rowsPerPage}
+                                        page={this.state.page}
                                         SelectProps={{
                                             native: true,
                                         }}
@@ -528,6 +541,7 @@ TextFields2.propTypes = {
     classes: PropTypes.object.isRequired,
     removeProjectDetails: PropTypes.func.isRequired,
     updateProjectDetails: PropTypes.func.isRequired,
+    removeLogDetails: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -538,5 +552,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { updateProjectDetails, removeProjectDetails }
+    { updateProjectDetails, removeProjectDetails, removeLogDetails }
 )(withStyles(styles)(TextFields2))

@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
+import Moment from 'react-moment';
 
 //Table
 import Table from '@material-ui/core/Table';
@@ -18,8 +19,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import Chip from '@material-ui/core/Chip';
-import Avatar from '@material-ui/core/Avatar';
 
 //FormControl
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -41,7 +40,6 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
-import ScheduleIcon from '@material-ui/icons/Schedule';
 import TimerIcon from '@material-ui/icons/Timer';
 import TimerOffIcon from '@material-ui/icons/TimerOff';
 
@@ -269,8 +267,14 @@ class ProjectTable extends React.Component {
     };
 
     window.location ="/projects"
-  }
+  };
 
+  formatCounter(logs) {
+
+    console.log(logs);
+    var activeLog = logs.filter(log => { return log.counting === true})
+    return activeLog.dateCreated
+  };
 
   handleChangePage = (event, page) => {
     this.setState({ page });
@@ -335,9 +339,8 @@ class ProjectTable extends React.Component {
                     <TableRow>
                       <TableCell variant="h5" component="th" scope="row">Title</TableCell>
                       <TableCell variant="h5" component="th" scope="row">Client</TableCell>
-                      <TableCell variant="h5" component="th" scope="row">Time Est.</TableCell>
-                      <TableCell variant="h5" component="th" scope="row">Priority</TableCell>
                       <TableCell variant="h5" component="th" scope="row">Status</TableCell>
+                      <TableCell variant="h5" component="th" scope="row">Priority</TableCell>
                       <TableCell variant="h5" component="th" scope="row">Timer</TableCell>
                     </TableRow>
                   </TableHead>
@@ -351,13 +354,6 @@ class ProjectTable extends React.Component {
                           </TableCell>
                           <TableCell variant="p" component="th" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClickClient(projects.client._id, e)}>
                             {projects.client.company}
-                          </TableCell>
-                          <TableCell variant="p" component="th" scope="row">
-                            <Chip avatar={
-                              <Avatar>
-                                <ScheduleIcon />
-                              </Avatar>
-                            }label={projects.timeEst} className={classes.chip} variant="outlined" />
                           </TableCell>
                           <TableCell variant="p" component="th" scope="row">
                             <FormControl variant="outlined" className={classes.formControl}>
@@ -399,7 +395,7 @@ class ProjectTable extends React.Component {
                           <TableCell variant="p" component="th" scope="row">
                         {
                           projects.activeLog ?
-                          <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleStop(projects)}><TimerOffIcon /> Stop</Button>  :
+                          <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleStop(projects)}><TimerOffIcon /> Started: <Moment date = {this.formatCounter(projects.logs)} format="HH:mm"></Moment></Button>  :
                           <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleClickOpen(projects._id)}><TimerIcon /> Start</Button>
                         
                         }
