@@ -106,7 +106,7 @@ class NewProjectFields extends React.Component {
 
         this.props.createProjectDetails(projectData);
         console.log(projectData);
-        window.location.href = '/projects'
+        window.location.href = '/project'
     };
 
     handleClientSubmit(event) {
@@ -121,12 +121,18 @@ class NewProjectFields extends React.Component {
 
         this.props.createClientDetails(clientData);
         this.setState({ open: false });
+        window.location ="/projects"
     };
 
     cancelClient(event) {
         event.preventDefault()
-        window.location.href = '/projects'
+        window.location.href = '/newprojects'
     };
+
+    cancelProject = (event) => {
+        event.preventDefault();
+        window.location.href = '/projects'
+    }
 
     beginningState(userId, event) {
         this.setState({ project:{
@@ -214,70 +220,11 @@ class NewProjectFields extends React.Component {
                 <h4>New Project</h4>
                     <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
-                        <Grid item xs ={12} sm={12} md={4} lg={3}>
-                            <TextField
-                                required
-                                id="title"
-                                label="Title"
-                                value={this.state.project.title}
-                                className={classes.textField}
-                                onChange={this.handleChange}
-                                InputProps={{ disableUnderline: true, }}
-                                margin="normal"
-                            />
+                    <Grid item xs={12} style={{"marginTop": "40px"}}>
+                            <h6>Is this project for an existing client?</h6>
                         </Grid>
 
-                        <Grid item xs ={6} sm={6} md={3} lg={2}>
-
-                        <FormControl className={classes.formControl}>
-                            <Select
-                                value={this.state.project.status}
-                                onChange={this.handleChangeDropdown}
-                                name="status"
-                                input={
-                                <Input
-                                    labelWidth={this.state.labelWidth}
-                                    name="status"
-                                    //id="outlined-age-simple"
-                                />
-                                }
-                            >
-                                <MenuItem value="inactive">
-                                inactive
-                                </MenuItem>
-                                <MenuItem value="pending">pending</MenuItem>
-                                <MenuItem value={"in progress"}>in progress</MenuItem>
-                                <MenuItem value={"completed"}>completed</MenuItem>
-                            </Select>
-                            </FormControl>
-                        </Grid>
-
-                        <Grid item xs ={6} sm={6} md={3} lg={2}>
-                        <FormControl className={classes.formControl}>
-                            <Select
-                                value={this.state.project.priority}
-                                onChange={this.handleChangeDropdown}
-                                name="priority"
-                                input={
-                                <Input
-                                    labelWidth={this.state.labelWidth}
-                                    name="priority"
-                                    //id="outlined-age-simple"
-                                />
-                                }
-                            >
-                                <MenuItem value={"low"}>low</MenuItem>
-                                <MenuItem value={"medium"}>medium</MenuItem>
-                                <MenuItem value={"high"}>high</MenuItem>
-                            </Select>
-                            </FormControl>
-                        </Grid>
-
-                        <Grid item xs={12} style={{"marginTop": "40px"}}>
-                            <h6>Client</h6>
-                        </Grid>
-
-                        <Grid item xs ={12} sm={12} md={6} lg={6}>
+                        <Grid item xs ={6} sm={4} md={4} lg={4}>
                         <FormControl className={classes.formControlLarge}>
                             <Select
                                 value={this.state.project.clientID}
@@ -305,7 +252,7 @@ class NewProjectFields extends React.Component {
                             </FormControl>
                         </Grid>
 
-                        <Grid item xs ={12} sm={12} md={3} lg={3}>
+                        <Grid item xs ={6} sm={4} md={3} lg={3}>
                             <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
                             + New Client
                             </Button>
@@ -349,15 +296,78 @@ class NewProjectFields extends React.Component {
                                 </Button>
                             </DialogActions>
                             </Dialog>
-                        
-                        
+                        </Grid>
+
+                        <Grid item xs={12} style={{"marginTop": "40px"}}>
+                            <h6>Project Details</h6>
+                        </Grid>
+
+                        <Grid item xs ={12} sm={12} md={4} lg={3}>
+                            <TextField
+                                required
+                                id="title"
+                                label="Title"
+                                value={this.state.project.title}
+                                className={classes.textField}
+                                onChange={this.handleChange}
+                                InputProps={{ disableUnderline: true, }}
+                                margin="normal"
+                            />
+                        </Grid>
+
+                        <Grid item xs ={6} sm={6} md={3} lg={2}>
+
+                        <FormControl className={classes.formControl}>
+                            <Select
+                                value={this.state.project.status}
+                                onChange={this.handleChangeDropdown}
+                                style={{"marginTop": "26px"}}
+                                name="status"
+                                input={
+                                <Input
+                                    labelWidth={this.state.labelWidth}
+                                    name="status"
+                                    //id="outlined-age-simple"
+                                />
+                                }
+                            >
+                                <MenuItem value="inactive">
+                                inactive
+                                </MenuItem>
+                                <MenuItem value="pending">pending</MenuItem>
+                                <MenuItem value={"in progress"}>in progress</MenuItem>
+                                <MenuItem value={"completed"}>completed</MenuItem>
+                            </Select>
+                            </FormControl>
+                        </Grid>
+
+                        <Grid item xs ={6} sm={6} md={3} lg={2}>
+                        <FormControl className={classes.formControl}>
+                            <Select
+                                value={this.state.project.priority}
+                                onChange={this.handleChangeDropdown}
+                                name="priority"
+                                style={{"marginTop": "26px"}}
+                                input={
+                                <Input
+                                    labelWidth={this.state.labelWidth}
+                                    name="priority"
+                                    //id="outlined-age-simple"
+                                />
+                                }
+                            >
+                                <MenuItem value={"low"}>low</MenuItem>
+                                <MenuItem value={"medium"}>medium</MenuItem>
+                                <MenuItem value={"high"}>high</MenuItem>
+                            </Select>
+                            </FormControl>
                         </Grid>
 
                         <Grid item xs={12} style={{"marginTop": "40px"}}>
                             <h6>Time + Rate</h6>
                         </Grid>
 
-                        <Grid item xs ={12} sm={4} md={3} lg={3}>
+{/*                         <Grid item xs ={12} sm={4} md={3} lg={3}>
                         <TextField
                             id="dueDate"
                             label="Due Date"
@@ -371,11 +381,11 @@ class NewProjectFields extends React.Component {
                              }}
                             margin="normal"
                         />
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs ={6} sm={3} md={2} lg={2}>
                         <TextField
                             id="timeEst"
-                            label="Time Estimate"
+                            label="Estimated Hours"
                             className={classes.textFieldSmall}
                             type="number"
                             value={this.state.project.timeEst}
@@ -388,7 +398,7 @@ class NewProjectFields extends React.Component {
                         <Grid item xs ={6} sm={3} md={2} lg={2}>
                         <TextField
                             id="rate"
-                            label="Rate"
+                            label="Hourly Rate"
                             className={classes.textFieldSmall}
                             type="number"
                             value={this.state.project.rate}
@@ -405,10 +415,9 @@ class NewProjectFields extends React.Component {
                         <Grid item xs ={12}>
                         <TextField
                             id="notes"
-                            label="Notes"
                             multiline
                             rows="8"
-                            value={this.state.project.notes[1]}
+                            value={this.state.project.notes}
                             onChange={this.handleChange}
                             className={classes.textFieldLarge}
                             margin="dense"
@@ -423,7 +432,7 @@ class NewProjectFields extends React.Component {
 
                         <Grid item xs ={6} sm={3} style={{"marginTop": "30px"}}>
 
-                        <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, align: "right"}} onClick={this.cancelClient}>CANCEL</Button>
+                        <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, align: "right"}} onClick={this.cancelProject}>CANCEL</Button>
 
                         </Grid>
 
