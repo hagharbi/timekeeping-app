@@ -272,8 +272,7 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-prebuild": "npm i -f",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=FALSE npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
