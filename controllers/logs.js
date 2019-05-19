@@ -52,23 +52,17 @@ module.exports = {
     //************** UPDATE ************ */
 
     updateLog: function(req, res) {
-        const updatedLog = {
-            counting: false,
-            lastUpdate: Date.now,
-        };
-        
-        console.log("counting is false " + updatedLog);
-
         const query = { _id: req.body.id };
 
         console.log(query);
 
-        Log.findOneAndUpdate(query, { $set: {updatedLog} }, { new: true })
-        .catch(err => res.status(422).json(err));
-
-        console.log("does one work?")
-
-        Project.findOneAndUpdate({ _id: req.body.projectId }, { $set: {activeLog: false}}, { new: true })
+        Log.findOneAndUpdate(query, { $set: {counting: false} }, { new: true })
+        .then(function(dbLog) {
+            return Project.findOneAndUpdate({ _id: req.body.projectId }, { $set: {activeLog: false}}, { new: true })
+        })
+        .then(function(dbLog1) {
+            console.log(dbLog1)
+        })
         .catch(err => res.status(422).json(err));
 
         console.log("Does this work?");

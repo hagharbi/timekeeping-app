@@ -19,6 +19,12 @@ const styles = theme => ({
         marginTop: ".5rem",
         width: 300,
     },
+    textFieldLong: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        marginTop: ".5rem",
+        width: 500,
+    },
     dense: {
         marginTop: 19,
     },
@@ -61,6 +67,11 @@ class NewClientFields extends React.Component {
         };
         console.log(clientData);
         this.props.createClientDetails(clientData);
+        window.location.href = '/clients'
+    };
+
+    handleCancel = (event) => {
+        event.preventDefault();
         window.location.href = '/clients'
     };
 
@@ -304,6 +315,8 @@ class NewClientFields extends React.Component {
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "3rem", "marginLeft": 8 }}>
 
                                     <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
+
+                                    <Button style={{ "marginLeft": 15 }} variant="outlined" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleCancel}>CANCEL</Button>
 
                                 </Grid>
 

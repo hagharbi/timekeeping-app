@@ -18,6 +18,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import Chip from '@material-ui/core/Chip';
+import Avatar from '@material-ui/core/Avatar';
 
 //FormControl
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -39,6 +41,9 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import ScheduleIcon from '@material-ui/icons/Schedule';
+import TimerIcon from '@material-ui/icons/Timer';
+import TimerOffIcon from '@material-ui/icons/TimerOff';
 
 const actionsStyles = theme => ({
   root: {
@@ -135,6 +140,11 @@ const styles = theme => ({
     marginTop: 19,
   },
   menu: {
+    width: 350,
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
     width: 300,
   },
 });
@@ -240,9 +250,15 @@ class ProjectTable extends React.Component {
 
   handleStop = (project) => {
     console.log(project._id)
-    var log = project.logs.filter(log => { return log.counting === true })
-    console.log(log)
-    console.log(log[0]._id)
+
+    if(project.activeLog === false) {
+      return
+    }
+    else {
+      var log = project.logs.filter(log => { return log.counting === true })
+      console.log(log)
+      console.log(log[0]._id)
+    
 
     const logData = {
       projectId: project._id,
@@ -250,7 +266,9 @@ class ProjectTable extends React.Component {
     };
 
     this.props.updateLogDetails(logData)
-    // window.location ="/projects"
+    };
+
+    window.location ="/projects"
   }
 
 
@@ -317,7 +335,7 @@ class ProjectTable extends React.Component {
                     <TableRow>
                       <TableCell variant="h5" component="th" scope="row">Title</TableCell>
                       <TableCell variant="h5" component="th" scope="row">Client</TableCell>
-                      <TableCell variant="h5" component="th" scope="row">Due Date</TableCell>
+                      <TableCell variant="h5" component="th" scope="row">Time Est.</TableCell>
                       <TableCell variant="h5" component="th" scope="row">Priority</TableCell>
                       <TableCell variant="h5" component="th" scope="row">Status</TableCell>
                       <TableCell variant="h5" component="th" scope="row">Timer</TableCell>
@@ -334,7 +352,13 @@ class ProjectTable extends React.Component {
                           <TableCell variant="p" component="th" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClickClient(projects.client._id, e)}>
                             {projects.client.company}
                           </TableCell>
-                          <TableCell variant="p" component="th" scope="row">{projects.dueDate}</TableCell>
+                          <TableCell variant="p" component="th" scope="row">
+                            <Chip avatar={
+                              <Avatar>
+                                <ScheduleIcon />
+                              </Avatar>
+                            }label={projects.timeEst} className={classes.chip} variant="outlined" />
+                          </TableCell>
                           <TableCell variant="p" component="th" scope="row">
                             <FormControl variant="outlined" className={classes.formControl}>
                               <Select
@@ -375,8 +399,8 @@ class ProjectTable extends React.Component {
                           <TableCell variant="p" component="th" scope="row">
                         {
                           projects.activeLog ?
-                          <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleStop(projects)}>Stop</Button>  :
-                          <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleClickOpen(projects._id)}>Start</Button>
+                          <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleStop(projects)}><TimerOffIcon /> Stop</Button>  :
+                          <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={() => this.handleClickOpen(projects._id)}><TimerIcon /> Start</Button>
                         
                         }
                             <Dialog
@@ -387,7 +411,7 @@ class ProjectTable extends React.Component {
                             <DialogTitle id="form-dialog-title">Ready, set ...</DialogTitle>
                             <DialogContent>
                                 <DialogContentText>
-                                To start timer, tell your client what you're doing
+                                To start the timer, tell your client what you are working on.
                                 </DialogContentText>
                                 <TextField
                                     required
