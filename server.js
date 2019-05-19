@@ -37,7 +37,7 @@ app.use("/api/logs", logs);
 
 // Database Setup for Prod Env
 // DB Config
-const db = require("./config/keys").mongoURI;
+const db = process.env.mongoURI;
 
 // // Connect to MongoDB
 mongoose
