@@ -1,0 +1,110 @@
+/* Landing page 601 - 750 media quieries */
+
+
+@media only screen and (max-width: 750px) {
+
+    #promo_tablet,
+    #promo_smartPhone,
+    #promo_laptop,
+    #promo_desktop {
+        opacity: 0;
+    }
+}
+
+
+
+@media only screen and (max-width: 750px) {
+    #promo_desktop2 {
+        margin: 52vh 0 0 4vw;
+        -moz-transform: skew(0deg, 20deg);
+        -webkit-transform: skew(0deg, 20deg);
+        -o-transform: skew(0deg, 20deg);
+        -ms-transform: skew(0deg, 20deg);
+        transform: skew(0deg, 20deg);
+        filter: drop-shadow(45px -20px 2px rgba(0, 0, 0, 0.3));
+        max-width: 60% !important;
+        opacity: 1 !important;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #promo_desktop3 {
+        margin: 9vh 0 0 14vw;
+        -moz-transform: skew(0deg, -20deg);
+        -webkit-transform: skew(0deg, -20deg);
+        -o-transform: skew(0deg, -20deg);
+        -ms-transform: skew(0deg, -20deg);
+        transform: skew(0deg, -20deg);
+        filter: drop-shadow(-45px -20px 2px rgba(0, 0, 0, 0.3));
+        max-width: 60% !important;
+        opacity: 1 !important;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #focus-on {
+        margin: 45vh 0 0 10vw !important;
+        width: 90vw !important;
+        color: #666 !important;
+
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #we-deliver {
+        margin: 50vh 0 0 10vw !important;
+        width: 90vw !important;
+        color: #666 !important;
+    }
+}
+
+
+@media only screen and (max-width: 750px) {
+    #sumit-is {
+        margin: 560px 5vw 0 10vw !important;
+        opacity: 0;
+        width: 80vw !important;
+        text-align: justify !important;
+        color: #000 !important;
+
+    }
+}
+
+
+@media only screen and (max-width: 750px) {
+
+    #promo-copy {
+        margin: 90vh 0 0 7vw !important;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #ReBtn {
+        margin: 66vh 0 0 5vw !important;
+        width: 90vw !important;
+        border-radius: 2px 2px 2px 2px !important;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #liBtn {
+        margin: 57vh 0 0 5vw !important;
+        width: 90vw !important;
+        border-radius: 2px 2px 2px 2px !important;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    #cprt {
+       margin: 0 0 100px -50px!important; 
+    }
+}
+
+/* landing-page end */
+
+/* 
+      @media only screen and (max-width: 750px) {
+    #cprt {
+           border-radius: 50vw;
+         }
+       } */

@@ -1,5 +1,5 @@
-body {
-  /* background: linear-gradient(#66CCCC, #55AEAE, #33AEAE, BLACK); */
+* {
+overflow: none!important;
 }
 
 
@@ -29,8 +29,9 @@ to {transform: translateX(1350px);}
   }
 
 #SchutzParalax {
-  width: 100%;
+  width: 100vw!important;
   margin: 10vw 0 0 50vw;
+  overflow: hidden!important;
 }
 
 #ClockParalax {
@@ -72,6 +73,8 @@ button > .static {
   position:absolute;
   background: white;
 }
+
+
 
 button > .static:hover {
   opacity:0!important;

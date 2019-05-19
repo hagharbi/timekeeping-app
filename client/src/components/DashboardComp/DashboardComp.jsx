@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-// import classnames from 'classnames';
-import Card from '@material-ui/core/Card';
+// import classnames from 'classnames';  <----- called but never used JRS
+// import Card from '@material-ui/core/Card';  <----- called but never used JRS
 // import CardActions from '@material-ui/core/CardActions';
 // import CardContent from '@material-ui/core/CardContent'; <----- called but never used JRS
 // import Typography from '@material-ui/core/Typography';  <----- called but never used JRS
-// import CardHeader from '@material-ui/core/CardHeader';
-// import CardMedia from '@material-ui/core/CardMedia';
+// import CardHeader from '@material-ui/core/CardHeader';  <----- called but never used JRS
+// import CardMedia from '@material-ui/core/CardMedia';  <----- called but never used JRS
 import '../layout/landingPage/imagesCode/global.css';
 import Highcharts from "highcharts/highstock";
 import HighchartsReact from "highcharts-react-official";
-// import Avatar from '@material-ui/core/Avatar';
-// import IconButton from '@material-ui/core/IconButton';
-// import MoreVertIcon from '@material-ui/icons/MoreVert';
+// import Avatar from '@material-ui/core/Avatar';  <----- called but never used JRS
+// import IconButton from '@material-ui/core/IconButton';  <----- called but never used JRS
+// import MoreVertIcon from '@material-ui/icons/MoreVert';  <----- called but never used JRS
 
 const styles = theme => ({
     container: {

@@ -335,7 +335,7 @@ class ProjectTable extends React.Component {
                       </Button>
                 </Link>
               </Grid>
-            </Grid>
+
             <div className={classes.tableWrapper}>
               <Table className={classes.table}>
                 <TableHead id="th">
