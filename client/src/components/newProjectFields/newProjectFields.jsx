@@ -408,7 +408,7 @@ class NewProjectFields extends React.Component {
                         />
                         </Grid>
 
-                        <Grid item xs={12} style={{"marginTop": "40px"}}>
+{/*                         <Grid item xs={12} style={{"marginTop": "40px"}}>
                             <h6>Notes</h6>
                         </Grid>
 
@@ -422,17 +422,13 @@ class NewProjectFields extends React.Component {
                             className={classes.textFieldLarge}
                             margin="dense"
                         />
-                        </Grid>
+                        </Grid> */}
                         
                         <Grid item xs ={6} sm={9} style={{"marginTop": "30px"}}>
 
                         <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15}} onClick={this.handleSubmit}>SAVE</Button>
 
-                        </Grid>
-
-                        <Grid item xs ={6} sm={3} style={{"marginTop": "30px"}}>
-
-                        <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, align: "right"}} onClick={this.cancelProject}>CANCEL</Button>
+                        <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{"marginTop": 15, "marginLeft": 15}} onClick={this.cancelProject}>CANCEL</Button>
 
                         </Grid>
 

@@ -314,7 +314,7 @@ class TextFields1 extends React.Component {
                                         margin="normal"
                                     />
                                 </Grid>
-
+{/* 
                                 <Grid item xs={12}>
                                     <TextField
                                         id="notes"
@@ -326,16 +326,14 @@ class TextFields1 extends React.Component {
                                         className={classes.textField}
                                         margin="dense"
                                     />
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "3rem", "marginLeft": 8 }}>
 
-                                    <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
+                                    <Button variant="contained" type="submit" size="large" color="primary"style={{ "marginTop": 15}} className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
 
-                                </Grid>
-                                
-                                <Grid item xs={6} sm={3} style={{ "marginTop": "30px" }}>
-                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, align: "right" }} onClick={this.archiveClient}>ARCHIVE</Button>
+                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, "marginLeft": 15 }} onClick={this.archiveClient}>ARCHIVE</Button>
+
                                 </Grid>
 
                             </form>
