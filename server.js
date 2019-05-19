@@ -34,7 +34,7 @@ app.use("/api/logs", logs);
 // DB Config
 // const db = require("./config/keys").mongoURI;
 
-// // Connect to MongoDB
+// // // Connect to MongoDB
 // mongoose
 //   .connect(
 //     db || "mongodb://localhost/timekeeperapp", {
@@ -50,7 +50,7 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
   
-// Connect to the Mongo DB
+// // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/timekeeperapp")
 .then(() => console.log("MongoDB successfully connected"))
 .catch(err => console.log(err));

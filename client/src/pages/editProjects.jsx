@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
-import { findUserDetails } from "../actions/findUserActions";
+import { findAllProjectDetails } from "../actions/projects/findAllProjectActions";
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import TextFields2 from "../components/editProjectFields/editProjectFields";
 
@@ -19,7 +19,7 @@ class EditProjects extends Component {
           id: this.props.auth.user.id
         };
         //console.log('componentdid', this.props.auth.user.id)
-        this.props.findUserDetails(userData);
+        this.props.findAllProjectDetails(userData);
       }
     
       componentWillReceiveProps(nextProps) {
@@ -39,12 +39,12 @@ class EditProjects extends Component {
         const { user } = this.props.auth;
         
         
-        if(!this.props.userDetails) {
+        if(!this.props.allProjectDetails) {
           return null
         }
         else {
 
-          const { data } = this.props.userDetails;
+          const { data } = this.props.allProjectDetails;
         console.log(user);
         console.log(data)
           return (
@@ -62,18 +62,20 @@ class EditProjects extends Component {
 
 
 EditProjects.propTypes = {
-    findUserDetails: PropTypes.func.isRequired,
+    findAllProjectDetails: PropTypes.func.isRequired,
     logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    userDetails: PropTypes.object.isRequired
+    allProjectDetails: PropTypes.object.isRequired,
     };
 
   const mapStateToProps = state => ({
     auth: state.auth,
-    userDetails: state.findUser.userDetails
+    userDetails: state.findUser.userDetails,
+    findAllProjects: state.findAllProjects,
+    allProjectDetails: state.findAllProjects.allProjectDetails,
   });
   
   export default connect(
     mapStateToProps,
-    { logoutUser, findUserDetails }
+    { logoutUser, findAllProjectDetails }
   )(EditProjects);

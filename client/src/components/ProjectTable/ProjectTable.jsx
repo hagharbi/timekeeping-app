@@ -4,11 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import { connect } from "react-redux";
 import { updateProjectDropdowns } from "../../actions/projects/updateProjectDropdowns";
 import { createLogDetails } from "../../actions/logs/createLogActions";
-import { removeLogDetails } from "../../actions/logs/removeLogActions";
+import { updateLogDetails } from "../../actions/logs/updateLogActions";
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
+import Moment from 'react-moment';
 
 //Table
 import Table from '@material-ui/core/Table';
@@ -20,7 +21,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 
 //FormControl
-import OutlinedInput from '@material-ui/core/OutlinedInput';
+import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -39,6 +40,8 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import TimerIcon from '@material-ui/icons/Timer';
+import TimerOffIcon from '@material-ui/icons/TimerOff';
 
 const actionsStyles = theme => ({
   root: {
@@ -135,6 +138,11 @@ const styles = theme => ({
     marginTop: 19,
   },
   menu: {
+    width: 350,
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
     width: 300,
   },
 });
@@ -143,7 +151,7 @@ class ProjectTable extends React.Component {
   state = {
     page: 0,
     rowsPerPage: 5,
-    open: false,
+    open: null,
     log: {
       title: "",
       id: ""
@@ -170,6 +178,7 @@ class ProjectTable extends React.Component {
     }
 
     this.props.updateProjectDropdowns(projectData);
+    window.location = "/projects"
   };
 
   changeStatus = e => {
@@ -182,6 +191,7 @@ class ProjectTable extends React.Component {
     }
 
     this.props.updateProjectDropdowns(projectData);
+    window.location = "/projects"
   };
 
   changeDueDate = e => {
@@ -194,42 +204,80 @@ class ProjectTable extends React.Component {
     }
 
     this.props.updateProjectDropdowns(projectData);
+    window.location = "/projects"
   };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-};
+  handleClickOpen = (id) => {
+    this.setState({ open: id });
+  };
 
   handleClose = () => {
-      this.setState({ open: false });
+    this.setState({ open: null });
+  };
+
+  handleClickStop = () => {
+    this.setState({ running: null });
   };
 
   handleChange = e => {
-    this.setState({ log: Object.assign(
-        {}, 
+    this.setState({
+      log: Object.assign(
+        {},
         this.state.log,
-        { title: e.target.value,
-          id: e.target.name }
+        {
+          title: e.target.value,
+          id: e.target.name
+        }
       ),
     })
     console.log(e.target.name)
     console.log(e.target.value)
     console.log(this.state.log)
-};
+  };
 
   startLog = (event) => {
     event.preventDefault();
 
     const logData = {
-        title: this.state.log.title,
-        id: this.state.log.id,
+      title: this.state.log.title,
+      id: this.state.log.id,
     };
     console.log(logData);
 
     this.props.createLogDetails(logData)
     this.setState({ open: false });
+    window.location = "/projects"
   };
 
+  handleStop = (project) => {
+    console.log(project._id)
+
+    if (project.activeLog === false) {
+      return
+    }
+    else {
+      var log = project.logs.filter(log => { return log.counting === true })
+      console.log(log)
+      console.log(log[0]._id)
+
+
+      const logData = {
+        projectId: project._id,
+        id: log[0]._id
+      };
+
+      this.props.updateLogDetails(logData)
+    };
+
+    window.location = "/projects"
+  };
+
+  formatCounter(logs) {
+
+    console.log(logs);
+    var activeLog = logs.filter(log => { return log.counting === true })
+    return activeLog.dateCreated
+  };
 
   handleChangePage = (event, page) => {
     this.setState({ page });
@@ -255,8 +303,8 @@ class ProjectTable extends React.Component {
       console.log(data)
       console.log(user.id);
       const sortedData = data
-      .sort((a, b) => (a.title < b.title ? -1 : 1))
-      .filter(project => { return project.active === true && project.user === user.id })
+        .sort((a, b) => (a.title < b.title ? -1 : 1))
+        .filter(project => { return project.active === true && project.user === user.id })
 
       const emptyRows = rowsPerPage - Math.min(rowsPerPage, sortedData.length - page * rowsPerPage);
 
@@ -266,152 +314,150 @@ class ProjectTable extends React.Component {
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item xs={10} sm={8} md={9} lg={9}>
-            <Paper className={classes.root}>
-              <Grid
-                justify="space-between"
-                container
-                spacing={24}
-              >
-                <Grid item>
-                  <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Projects</strong></h5>
-                </Grid>
-                <Grid item>
-                  <Link
-                    to="/newproject">
-                    <Button
-                      // onClick={}
-                      variant="contained" color="secondary" className={classes.button}
-                      style={{ marginTop: "3rem" }}
-                    >
-                      + New Project
-                      </Button>
-                  </Link>
-                </Grid>
+            {/* <Paper className={classes.root}> */}
+            <Grid
+              justify="space-between"
+              container
+              spacing={24}
+            >
+              <Grid item>
+                <h4><strong>Projects</strong></h4>
               </Grid>
-              <div className={classes.tableWrapper}>
-                <Table className={classes.table}>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell variant="h5" component="th" scope="row">Title</TableCell>
-                      <TableCell variant="h5" component="th" scope="row">Client</TableCell>
-                      <TableCell variant="h5" component="th" scope="row">Due Date</TableCell>
-                      <TableCell variant="h5" component="th" scope="row">Priority</TableCell>
-                      <TableCell variant="h5" component="th" scope="row">Status</TableCell>
-                      <TableCell variant="h5" component="th" scope="row">Timer</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {sortedData
-                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                      .map(projects => (
-                        <TableRow key={projects._id}>
-                          <TableCell variant="p" component="th" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClick(projects._id, e)}>
-                            {projects.title}
-                          </TableCell>
-                          <TableCell variant="p" component="th" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClickClient(projects.client._id, e)}>
-                            {projects.client.company}
-                          </TableCell>
-                          <TableCell variant="p" component="th" scope="row">{projects.dueDate}</TableCell>
-                          <TableCell variant="p" component="th" scope="row">
-                            <FormControl variant="outlined" className={classes.formControl}>
-                              <Select
-                                value={projects.status}
-                                onChange={this.changeStatus}
-                                name={projects._id}
-                                input={
-                                  <OutlinedInput
-                                    name={projects._id}
-                                  />
-                                }
-                              >
-                                <MenuItem value={"inactive"}>inactive</MenuItem>
-                                <MenuItem value={"pending"}>pending</MenuItem>
-                                <MenuItem value={"in progress"}>in progress</MenuItem>
-                                <MenuItem value={"completed"}>completed</MenuItem>
-                              </Select>
-                            </FormControl>
-                          </TableCell>
-                          <TableCell variant="p" component="th" scope="row">
-                            <FormControl variant="outlined" className={classes.formControl}>
-                              <Select
-                                value={projects.priority}
-                                onChange={this.changePriority}
-                                name={projects._id}
-                                input={
-                                  <OutlinedInput
-                                    name={projects._id}
-                                  />
-                                }
-                              >
-                                <MenuItem value={"low"}>low</MenuItem>
-                                <MenuItem value={"medium"}>medium</MenuItem>
-                                <MenuItem value={"high"}>high</MenuItem>
-                              </Select>
-                            </FormControl>
-                          </TableCell>
-                          <TableCell variant="p" component="th" scope="row">
-                        <Button variant="contained" color="primary" className={classes.button} key={projects._id} onClick={this.handleClickOpen}>
-                           Start
-                            </Button>
-                            <Dialog
-                            open={this.state.open}
+              <Grid item>
+                <Link
+                  to="/newproject">
+                  <Button
+                    // onClick={}
+                    variant="contained" color="primary" className={classes.button}
+                    style={{ marginTop: "3rem" }}
+                  >
+                    + New Project
+                      </Button>
+                </Link>
+              </Grid>
+            </Grid>
+            <div className={classes.tableWrapper}>
+              <Table className={classes.table}>
+                <TableHead id="th">
+                  <TableRow>
+                    <TableCell variant="headline" component="th" scope="row">Title</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Client</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Status</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Priority</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Timer</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {sortedData
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map(projects => (
+                      <TableRow key={projects._id}>
+                        <TableCell variant="body1" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClick(projects._id, e)}>
+                          {projects.title}
+                        </TableCell>
+                        <TableCell variant="body1" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClickClient(projects.client._id, e)}>
+                          {projects.client.company}
+                        </TableCell>
+                        <TableCell variant="body1" scope="row">
+                          <FormControl variant="outlined" className={classes.formControl}>
+                            <Select
+                              value={projects.status}
+                              onChange={this.changeStatus}
+                              name={projects._id}
+                              input={
+                                <Input
+                                  name={projects._id}
+                                />
+                              }
+                            >
+                              <MenuItem value={"inactive"}>inactive</MenuItem>
+                              <MenuItem value={"pending"}>pending</MenuItem>
+                              <MenuItem value={"in progress"}>in progress</MenuItem>
+                              <MenuItem value={"completed"}>completed</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </TableCell>
+                        <TableCell variant="body1" scope="row">
+                          <FormControl variant="outlined" className={classes.formControl}>
+                            <Select
+                              value={projects.priority}
+                              onChange={this.changePriority}
+                              name={projects._id}
+                              input={
+                                <Input
+                                  name={projects._id}
+                                />
+                              }
+                            >
+                              <MenuItem value={"low"}>low</MenuItem>
+                              <MenuItem value={"medium"}>medium</MenuItem>
+                              <MenuItem value={"high"}>high</MenuItem>
+                            </Select>
+                          </FormControl>
+                        </TableCell>
+                        <TableCell variant="p" component="th" scope="row">
+                          {
+                            projects.activeLog ?
+                              <Button variant="contained" color="secondary" className={classes.button} key={projects._id} onClick={() => this.handleStop(projects)}><TimerOffIcon /> Started: <Moment date={this.formatCounter(projects.logs)} format="HH:mm"></Moment></Button> :
+                              <Button variant="contained" color="secondary" className={classes.button} key={projects._id} onClick={() => this.handleClickOpen(projects._id)}><TimerIcon /> Start</Button>
+
+                          }
+                          <Dialog
+                            open={this.state.open == projects._id}
                             onClose={this.handleClose}
                             aria-labelledby="form-dialog-title"
-                            >
-                            <DialogTitle id="form-dialog-title">Ready, set ...</DialogTitle>
+                          >
+                            <DialogTitle id="form-dialog-title">Before you start</DialogTitle>
                             <DialogContent>
-                                <DialogContentText>
-                                To start timer, tell your client what you're doing
-                                </DialogContentText>
-                                <TextField
-                                    required
-                                    name={projects._id}
-                                    label="Client Note"
-                                    value= {this.state.log.title}
-                                    className={classes.textField}
-                                    onChange={this.handleChange}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
+                              <TextField
+                                required
+                                name={projects._id}
+                                label="Add a Task"
+                                value={this.state.log.title}
+                                className={classes.textField}
+                                onChange={this.handleChange}
+                                InputProps={{ disableUnderline: true, }}
+                                margin="normal"
+                              />
                             </DialogContent>
                             <DialogActions>
-                                <Button onClick={this.handleClose} color="primary">
+                              <Button onClick={this.handleClose} color="primary">
                                 Cancel
                                 </Button>
-                                <Button variant="contained" onClick={this.startLog} color="primary">
+                              <Button variant="contained" onClick={this.startLog} color="primary">
                                 Go!
                                 </Button>
                             </DialogActions>
-                            </Dialog>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    {emptyRows > 0 && (
-                      <TableRow style={{ height: 48 * emptyRows }}>
-                        <TableCell colSpan={6} />
+                          </Dialog>
+                        </TableCell>
                       </TableRow>
-                    )}
-                  </TableBody>
-                  <TableFooter>
-                    <TableRow>
-                      <TablePagination
-                        rowsPerPageOptions={[5, 10, 25]}
-                        colSpan={6}
-                        count={sortedData.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        SelectProps={{
-                          native: true,
-                        }}
-                        onChangePage={this.handleChangePage}
-                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                        ActionsComponent={TablePaginationActionsWrapped}
-                      />
+                    ))}
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 48 * emptyRows }}>
+                      <TableCell colSpan={6} />
                     </TableRow>
-                  </TableFooter>
-                </Table>
-              </div>
-            </Paper>
+                  )}
+                </TableBody>
+                <TableFooter>
+                  <TableRow>
+                    <TablePagination
+                      rowsPerPageOptions={[5, 10, 25]}
+                      colSpan={6}
+                      count={sortedData.length}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      SelectProps={{
+                        native: true,
+                      }}
+                      onChangePage={this.handleChangePage}
+                      onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                      ActionsComponent={TablePaginationActionsWrapped}
+                    />
+                  </TableRow>
+                </TableFooter>
+              </Table>
+            </div>
+            {/* </Paper> */}
           </Grid>
         </Grid>
       );
@@ -423,7 +469,7 @@ ProjectTable.propTypes = {
   classes: PropTypes.object.isRequired,
   updateProjectDropdowns: PropTypes.func.isRequired,
   createLogDetails: PropTypes.func.isRequired,
-  removeLogDetails: PropTypes.func.isRequired,
+  updateLogDetails: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -432,4 +478,4 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps,
-  { updateProjectDropdowns, createLogDetails, removeLogDetails }) (withStyles(styles)(ProjectTable));
+  { updateProjectDropdowns, createLogDetails, updateLogDetails })(withStyles(styles)(ProjectTable));

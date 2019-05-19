@@ -67,6 +67,7 @@ class TextFields1 extends React.Component {
         };
         console.log(clientData);
         this.props.updateClientDetails(clientData);
+        window.location.href = '/clients'
 
     };
 
@@ -142,10 +143,10 @@ class TextFields1 extends React.Component {
                                 container
                                 spacing={24}
                             >
-                                <Grid item>
-                                    <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Client Settings</strong></h5>
+                                <Grid >
+                                    <h4><strong>Client Settings</strong></h4>
                                 </Grid>
-                                <Grid item style={{ margin: '3rem 6rem 2rem auto' }}>
+                                <Grid style={{ margin: '3rem 6rem 2rem auto' }}>
                                     <Link to="/clients" style={{ color: "#037F8C" }}>
                                         < KeyboardBackspaceIcon style={{ paddingTop: "13px", color: "gray" }} /> Back to All Clients
                                 </Link>
@@ -314,7 +315,7 @@ class TextFields1 extends React.Component {
                                         margin="normal"
                                     />
                                 </Grid>
-
+                                {/* 
                                 <Grid item xs={12}>
                                     <TextField
                                         id="notes"
@@ -326,17 +327,15 @@ class TextFields1 extends React.Component {
                                         className={classes.textField}
                                         margin="dense"
                                     />
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "3rem", "marginLeft": 8 }}>
 
-                                    <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
+                                    <Button variant="contained" type="submit" size="large" color="primary" style={{ "marginTop": 15 }} className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
+
+                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, "marginLeft": 15 }} onClick={this.archiveClient}>ARCHIVE</Button>
 
                                 </Grid>
-                                {/* 
-                                <Grid item xs={6} sm={3} style={{ "marginTop": "30px" }}>
-                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, align: "right" }} onClick={this.archiveClient}>ARCHIVE</Button>
-                                </Grid> */}
 
                             </form>
                             {/* </Paper> */}

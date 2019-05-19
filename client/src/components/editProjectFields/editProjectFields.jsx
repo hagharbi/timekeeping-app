@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
-
 import { updateProjectDetails } from "../../actions/projects/updateProjectActions";
 import { removeProjectDetails } from "../../actions/projects/removeProjectActions";
+import { removeLogDetails } from "../../actions/logs/removeLogActions";
+import Moment from 'react-moment';
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -16,9 +17,126 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
+import Tooltip from '@material-ui/core/Tooltip';
 
+//Tabs
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+
+//Table
+import Table from '@material-ui/core/Table';
+import TableHead from '@material-ui/core/TableHead';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableFooter from '@material-ui/core/TableFooter';
+import TablePagination from '@material-ui/core/TablePagination';
+import TableRow from '@material-ui/core/TableRow';
+import IconButton from '@material-ui/core/IconButton';
+import FirstPageIcon from '@material-ui/icons/FirstPage';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import LastPageIcon from '@material-ui/icons/LastPage';
+import RemoveCircleOutline from '@material-ui/icons/RemoveCircleOutline';
+
+const actionsStyles = theme => ({
+    root: {
+      flexShrink: 0,
+      color: theme.palette.text.secondary,
+      marginLeft: theme.spacing.unit * 2.5,
+    },
+  });
+
+class TablePaginationActions extends React.Component {
+    handleFirstPageButtonClick = event => {
+      this.props.onChangePage(event, 0);
+    };
+  
+    handleBackButtonClick = event => {
+      this.props.onChangePage(event, this.props.page - 1);
+    };
+  
+    handleNextButtonClick = event => {
+      this.props.onChangePage(event, this.props.page + 1);
+    };
+  
+    handleLastPageButtonClick = event => {
+      this.props.onChangePage(
+        event,
+        Math.max(0, Math.ceil(this.props.count / this.props.rowsPerPage) - 1),
+      );
+    };
+  
+    render() {
+      const { classes, count, page, rowsPerPage, theme } = this.props;
+  
+      return (
+        <div className={classes.root}>
+          <IconButton
+            onClick={this.handleFirstPageButtonClick}
+            disabled={page === 0}
+            aria-label="First Page"
+          >
+            {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
+          </IconButton>
+          <IconButton
+            onClick={this.handleBackButtonClick}
+            disabled={page === 0}
+            aria-label="Previous Page"
+          >
+            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+          </IconButton>
+          <IconButton
+            onClick={this.handleNextButtonClick}
+            disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+            aria-label="Next Page"
+          >
+            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+          </IconButton>
+          <IconButton
+            onClick={this.handleLastPageButtonClick}
+            disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+            aria-label="Last Page"
+          >
+            {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
+          </IconButton>
+        </div>
+      );
+    }
+  }
+  
+  TablePaginationActions.propTypes = {
+    classes: PropTypes.object.isRequired,
+    count: PropTypes.number.isRequired,
+    onChangePage: PropTypes.func.isRequired,
+    page: PropTypes.number.isRequired,
+    rowsPerPage: PropTypes.number.isRequired,
+    theme: PropTypes.object.isRequired,
+  };
+  
+  const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: true })(
+    TablePaginationActions,
+  );
+  
+
+function TabContainer(props) {
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 const styles = theme => ({
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
+    },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -54,7 +172,13 @@ const styles = theme => ({
     },
     h6: {
         marginBottom: "1rem",
-    }
+    },
+    table: {
+        minWidth: 500,
+    },
+    tableWrapper: {
+    overflowX: 'auto',
+    },
 });
 
 class TextFields2 extends React.Component {
@@ -62,7 +186,10 @@ class TextFields2 extends React.Component {
     constructor() {
         super();
         this.state = {
-            errors: {}
+            errors: {},
+            value: 1,
+            page: 0,
+            rowsPerPage: 5,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.archiveClient = this.archiveClient.bind(this);
@@ -84,7 +211,7 @@ class TextFields2 extends React.Component {
         };
 
         this.props.updateProjectDetails(projectData);
-        window.location.href = '/projects'
+        window.location.href = '/projects';
     };
 
     archiveClient(event) {
@@ -95,8 +222,14 @@ class TextFields2 extends React.Component {
         };
         console.log(projectData)
         this.props.removeProjectDetails(projectData);
-        window.location.href = '/projects'
+        window.location.href = '/projects';
     };
+
+    archiveLog = (id) => {
+        console.log(id);
+        this.props.removeLogDetails({id: id});
+        document.location.reload();
+    }
 
     beginningState(objectFound, event) {
         this.setState({ project: objectFound });
@@ -110,7 +243,7 @@ class TextFields2 extends React.Component {
                 this.state.project,
                 { [e.target.id]: e.target.value }
             ),
-        })
+        });
         console.log(e.target.id)
         console.log(e.target.name)
         console.log(e.target.value)
@@ -128,9 +261,23 @@ class TextFields2 extends React.Component {
         console.log(this.state.project)
     };
 
+    handleChangeTabs = (event, value) => {
+        this.setState({ value });
+    };
+
+    handleChangePage = (event, page) => {
+        this.setState({ page });
+    };
+
+    handleChangeRowsPerPage = event => {
+        this.setState({ page: 0, rowsPerPage: event.target.value });
+    };
+
     render() {
         const { classes } = this.props;
+        const { value } = this.state;
         const { data } = this.props.projects;
+        const { page, rowsPerPage } = this.props;
 
         if (!data) {
             console.log(null)
@@ -151,8 +298,8 @@ class TextFields2 extends React.Component {
 
             const id = path.replace("/projects/", "");
 
-            var elementPos = data.projects.map(function (x) { return x._id; }).indexOf(id);
-            var objectFound = data.projects[elementPos];
+            var elementPos = data.map(function (x) { return x._id; }).indexOf(id);
+            var objectFound = data[elementPos];
 
             if (!this.state.project) {
                 this.beginningState(objectFound);
@@ -160,7 +307,24 @@ class TextFields2 extends React.Component {
             }
             else {
 
+                console.log(this.state.project.logs
+                    .filter(log => { return log.active === true  && log.counting === false}).length)
+
+                const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.state.project.logs
+                    .filter(log => { return log.active === true  && log.counting === false}).length - page * rowsPerPage);
+
                 return (
+
+                    <div className={classes.root}>
+                    <AppBar position="static">
+                    <Tabs value={value} onChange={this.handleChangeTabs}>
+                        <Tab label="Item One" />
+                        <Tab label="View Logs" />
+                        <Tab label="Edit" />
+                    </Tabs>
+                    </AppBar>
+                    {value === 0 && <TabContainer></TabContainer>}
+                    {value === 2 && <TabContainer>
                     <Grid container spacing={24}>
                         <Grid item xs={1} sm={5} md={3}>
                             <Paper className={classes.paper}></Paper>
@@ -189,6 +353,7 @@ class TextFields2 extends React.Component {
                                             value={this.state.project.status}
                                             onChange={this.handleChangeDropdown}
                                             name="status"
+                                            style={{"marginTop": "26px"}}
                                             input={
                                                 <Input
                                                     labelWidth={this.state.labelWidth}
@@ -199,7 +364,7 @@ class TextFields2 extends React.Component {
                                         >
                                             <MenuItem value="inactive">
                                                 inactive
-                                </MenuItem>
+                                            </MenuItem>
                                             <MenuItem value="pending">pending</MenuItem>
                                             <MenuItem value={"in progress"}>in progress</MenuItem>
                                             <MenuItem value={"completed"}>completed</MenuItem>
@@ -212,6 +377,7 @@ class TextFields2 extends React.Component {
                                         <Select
                                             value={this.state.project.priority}
                                             onChange={this.handleChangeDropdown}
+                                            style={{"marginTop": "26px"}}
                                             name="priority"
                                             input={
                                                 <Input
@@ -235,7 +401,7 @@ class TextFields2 extends React.Component {
                                     <h6>Time + Rate</h6>
                                 </Grid>
 
-                                <Grid item xs={12} sm={6} md={6} lg={3}>
+{/*                                 <Grid item xs={12} sm={6} md={6} lg={3}>
                                     <TextField
                                         id="dueDate"
                                         label="Due Date"
@@ -245,11 +411,11 @@ class TextFields2 extends React.Component {
                                         InputProps={{ disableUnderline: true, }}
                                         margin="normal"
                                     />
-                                </Grid>
+                                </Grid> */}
                                 <Grid item xs={12} sm={3} md={2} lg={2}>
                                     <TextField
                                         id="timeEst"
-                                        label="Time Estimate"
+                                        label="Estimated Hours"
                                         className={classes.textFieldSmall}
                                         value={this.state.project.timeEst}
                                         onChange={this.handleChange}
@@ -259,25 +425,26 @@ class TextFields2 extends React.Component {
                                 </Grid>
 
                                 <Grid item xs={12} sm={3} md={2} lg={2}>
+                                <Tooltip title="For fixed-rate projects, leave 0." aria-label="For fixed-rate projects, leave 0.">
                                     <TextField
                                         id="rate"
-                                        label="Rate"
+                                        label="Hourly Rate"
                                         className={classes.textFieldSmall}
                                         value={this.state.project.rate}
                                         onChange={this.handleChange}
                                         InputProps={{ disableUnderline: true, }}
                                         margin="normal"
                                     />
+                                </Tooltip>
                                 </Grid>
 
-                                <Grid item xs={12} style={{ "marginTop": "40px" }}>
+{/*                                 <Grid item xs={12} style={{ "marginTop": "40px" }}>
                                     <h6>Notes</h6>
                                 </Grid>
 
                                 <Grid item xs={12}>
                                     <TextField
                                         id="notes"
-                                        label="Notes"
                                         multiline
                                         rows="8"
                                         value={this.state.project.notes}
@@ -285,23 +452,85 @@ class TextFields2 extends React.Component {
                                         className={classes.textFieldLarge}
                                         margin="dense"
                                     />
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "30px" }}>
 
                                     <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15 }} onClick={this.handleSubmit}>SAVE</Button>
 
-                                </Grid>
-
-                                <Grid item xs={6} sm={3} style={{ "marginTop": "30px" }}>
-
-                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, align: "right" }} onClick={this.archiveClient}>ARCHIVE</Button>
+                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, "marginLeft": 15 }} onClick={this.archiveClient}>ARCHIVE</Button>
 
                                 </Grid>
 
                             </form>
                         </Grid>
                     </Grid>
+                    </TabContainer>}
+                    {value === 1 && <TabContainer>
+                        <Grid container spacing={24}>
+                        <Grid item xs={1} sm={5} md={3}>
+                            <Paper className={classes.paper}></Paper>
+                        </Grid>
+                        <Grid item sm={7} lg={9}>
+                                <Table className={classes.table}>
+                                    <TableHead id="th">
+                                    <TableRow>
+                                        <TableCell variant="h5" component="th" scope="row">
+                                        Client Note
+                                        </TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Start Date</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Start Time</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Stop Date</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Stop Time</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Remove</TableCell>
+                                    </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                    {this.state.project.logs
+                                        .filter(log => { return log.active === true && log.counting === false})
+                                        .slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage)
+                                        .map(log => (
+                                        <TableRow key={log._id}>
+                                            <TableCell id="td" component="th" scope="row">
+                                            {log.title}
+                                            </TableCell>
+                                            <TableCell id="td" component="th" scope="row"><Moment format="MM/DD/YYYY">{log.createdAt}</Moment></TableCell>
+                                            <TableCell id="td" component="th" scope="row"><Moment format="HH:mm">{log.createdAt}</Moment></TableCell>
+                                            <TableCell id="td" component="th" scope="row"><Moment format="MM/DD/YYYY">{log.updatedAt}</Moment></TableCell>
+                                            <TableCell id="td" component="th" scope="row"><Moment format="HH:mm">{log.updatedAt}</Moment></TableCell>
+                                            <TableCell id="td" component="th" scope="row"><Button variant="outlined" type="submit" color="primary" className={classes.margin} onClick={() => this.archiveLog(log._id)}><RemoveCircleOutline /></Button></TableCell>
+                                        </TableRow> 
+                                        ))}
+                                    {emptyRows > 0 && (
+                                        <TableRow style={{ height: 48 * emptyRows }}>
+                                        <TableCell colSpan={6} />
+                                        </TableRow>
+                                    )}
+                                    </TableBody>
+                                    <TableFooter>
+                                    <TableRow >
+                                        <TablePagination
+                                        rowsPerPageOptions={[5, 10, 25]}
+                                        colSpan={6}
+                                        count={this.state.project.logs
+                                            .filter(log => { return log.active === true  && log.counting === false}).length}
+                                        rowsPerPage={this.state.rowsPerPage}
+                                        page={this.state.page}
+                                        SelectProps={{
+                                            native: true,
+                                        }}
+                                        onChangePage={this.handleChangePage}
+                                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                        ActionsComponent={TablePaginationActionsWrapped}
+                                        />
+                                    </TableRow>
+                                    </TableFooter>
+                                </Table>
+                                {/* </Paper> */}
+                            </Grid>
+                            </Grid>
+                    </TabContainer>}
+                </div>
                 )
             }
         }
@@ -312,6 +541,7 @@ TextFields2.propTypes = {
     classes: PropTypes.object.isRequired,
     removeProjectDetails: PropTypes.func.isRequired,
     updateProjectDetails: PropTypes.func.isRequired,
+    removeLogDetails: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -322,5 +552,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { updateProjectDetails, removeProjectDetails }
+    { updateProjectDetails, removeProjectDetails, removeLogDetails }
 )(withStyles(styles)(TextFields2))

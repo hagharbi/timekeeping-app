@@ -161,81 +161,81 @@ class CustomPaginationActionsTable extends React.Component {
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item xs={10} sm={8} md={9} lg={9}>
-            <Paper className={classes.root}>
-              <Grid
-                justify="space-between"
-                container
-                spacing={24}
-              >
-                <Grid item>
-                  <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Clients</strong></h5>
-                </Grid>
-                <Grid item>
-                  <Link
-                    to="/newclient">
-                    <Button
-                      // onClick={}
-                      variant="contained" color="secondary" className={classes.button}
-                      style={{ marginTop: "3rem" }}
-                    >
-                      + New Client
-                      </Button>
-                  </Link>
-                </Grid>
+            {/* <Paper className={classes.root}> */}
+            <Grid
+              justify="space-between"
+              container
+              spacing={24}
+            >
+              <Grid item>
+                <h4><strong>Clients</strong></h4>
               </Grid>
-              <div className={classes.tableWrapper}>
-                <Table className={classes.table}>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell variant="h5" component="th" scope="row">
-                        Company
+              <Grid item>
+                <Link
+                  to="/newclient">
+                  <Button
+                    // onClick={}
+                    variant="contained" color="primary" className={classes.button}
+                    style={{ marginTop: "3rem" }}
+                  >
+                    + New Client
+                      </Button>
+                </Link>
+              </Grid>
+            </Grid>
+            <div className={classes.tableWrapper}>
+              <Table className={classes.table}>
+                <TableHead id="th">
+                  <TableRow>
+                    <TableCell variant="headline" component="th" scope="row">
+                      Company
                       </TableCell>
-                      <TableCell variant="h5" component="th" scope="row">Email</TableCell>
-                      <TableCell variant="h5" component="th" scope="row">Phone</TableCell>
-                      <TableCell variant="h5" component="th" align="right">Projects</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {data.clients
-                      .filter(client => { return client.active === true })
-                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                      .map(client => (
-                        <TableRow hover style={{ cursor: 'pointer' }} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
-                          <TableCell variant="h5" component="th" scope="row">
-                            {client.company}
-                          </TableCell>
-                          <TableCell variant="h5" component="th" scope="row">{client.email}</TableCell>
-                          <TableCell variant="h5" component="th" scope="row"> {client.phone}</TableCell>
-                          <TableCell align="right">{client.projects.length}</TableCell>
-                        </TableRow>
-                      ))}
-                    {emptyRows > 0 && (
-                      <TableRow style={{ height: 48 * emptyRows }}>
-                        <TableCell colSpan={6} />
+                    <TableCell variant="headline" component="th" scope="row">Email</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Phone</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Projects</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {data.clients
+                    .filter(client => { return client.active === true })
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map(client => (
+                      <TableRow hover style={{ cursor: 'pointer' }} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
+                        <TableCell variant="body1" scope="row">
+                          {client.company}
+                        </TableCell>
+                        <TableCell variant="body1" scope="row">{client.email}</TableCell>
+                        <TableCell variant="body1" scope="row"> {client.phone}</TableCell>
+                        <TableCell variant="body1" scope="row">{client.projects.length}</TableCell>
                       </TableRow>
-                    )}
-                  </TableBody>
-                  <TableFooter>
-                    <TableRow>
-                      <TablePagination
-                        rowsPerPageOptions={[5, 10, 25]}
-                        colSpan={6}
-                        count={data.clients
-                          .filter(client => { return client.active === true }).length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        SelectProps={{
-                          native: true,
-                        }}
-                        onChangePage={this.handleChangePage}
-                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                        ActionsComponent={TablePaginationActionsWrapped}
-                      />
+                    ))}
+                  {emptyRows > 0 && (
+                    <TableRow style={{ height: 48 * emptyRows }}>
+                      <TableCell colSpan={6} />
                     </TableRow>
-                  </TableFooter>
-                </Table>
-              </div>
-            </Paper>
+                  )}
+                </TableBody>
+                <TableFooter>
+                  <TableRow >
+                    <TablePagination
+                      rowsPerPageOptions={[5, 10, 25]}
+                      colSpan={6}
+                      count={data.clients
+                        .filter(client => { return client.active === true }).length}
+                      rowsPerPage={rowsPerPage}
+                      page={page}
+                      SelectProps={{
+                        native: true,
+                      }}
+                      onChangePage={this.handleChangePage}
+                      onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                      ActionsComponent={TablePaginationActionsWrapped}
+                    />
+                  </TableRow>
+                </TableFooter>
+              </Table>
+            </div>
+            {/* </Paper> */}
           </Grid>
         </Grid>
       );
