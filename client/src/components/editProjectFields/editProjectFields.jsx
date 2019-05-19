@@ -554,55 +554,60 @@ class TextFields2 extends React.Component {
                     </TabContainer>}
                     {value === 1 && <TabContainer>
                         <Grid container spacing={24}>
-                        <Grid item xs={1} sm={5} md={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        
-                        <Grid item>
-                            <h4><strong>Logs</strong></h4>
-                        </Grid>
-                        <Grid item>
-                            {this.state.project.activeLog ? "" :
-                            <Button
-                                onClick={() => this.handleClickOpen(this.state.project._id)}
-                                variant="contained" color="primary" className={classes.button}
-                                style={{ marginTop: "3rem" }}
-                            >
-                                + New Log
-                            </Button>
-                            }
+                            <Grid item xs={2} sm={4} md={3} lg={2}>
+                                <Paper className={classes.paper}></Paper>
+                            </Grid>
+                            <Grid item xs={10} sm={8} md={9} lg={9}>
+                                <Grid
+                                    justify="space-between"
+                                    container
+                                    spacing={24}
+                                >
+                                    <Grid item >
+                                        <h4><strong>Logs</strong></h4>
+                                    </Grid>
+                                    <Grid item>
+                                        {this.state.project.activeLog ? "" :
+                                        <Button
+                                            onClick={() => this.handleClickOpen(this.state.project._id)}
+                                            variant="contained" color="primary" className={classes.button}
+                                            style={{ marginTop: "3rem" }}
+                                        >
+                                            + New Log
+                                        </Button>
+                                        }
 
-                            <Dialog
-                                open={this.state.open === this.state.project._id}
-                                onClose={this.handleClose}
-                                aria-labelledby="form-dialog-title"
-                            >
-                                <DialogTitle id="form-dialog-title">Before you start</DialogTitle>
-                                <DialogContent>
-                                <TextField
-                                    required
-                                    name="title"
-                                    label="Add a Task"
-                                    value={this.state.log.title}
-                                    className={classes.textField}
-                                    onChange={this.handleChangeLog}
-                                    InputProps={{ disableUnderline: true, }}
-                                    margin="normal"
-                                />
-                                </DialogContent>
-                                <DialogActions>
-                                <Button onClick={this.handleClose} color="primary">
-                                    Cancel
-                                    </Button>
-                                <Button variant="contained" onClick={this.startLog} color="primary">
-                                    Go!
-                                    </Button>
-                                </DialogActions>
-                            </Dialog>
+                                            <Dialog
+                                                open={this.state.open === this.state.project._id}
+                                                onClose={this.handleClose}
+                                                aria-labelledby="form-dialog-title"
+                                            >
+                                                <DialogTitle id="form-dialog-title">Before you start</DialogTitle>
+                                                <DialogContent>
+                                                <TextField
+                                                    required
+                                                    name="title"
+                                                    label="Add a Task"
+                                                    value={this.state.log.title}
+                                                    className={classes.textField}
+                                                    onChange={this.handleChangeLog}
+                                                    InputProps={{ disableUnderline: true, }}
+                                                    margin="normal"
+                                                />
+                                                </DialogContent>
+                                                <DialogActions>
+                                                <Button onClick={this.handleClose} color="primary">
+                                                    Cancel
+                                                    </Button>
+                                                <Button variant="contained" onClick={this.startLog} color="primary">
+                                                    Go!
+                                                    </Button>
+                                                </DialogActions>
+                                            </Dialog>
+                                    </Grid>
+                                </Grid>
 
-                        </Grid>
-
-                        <Grid item sm={7} lg={9}>
+                                <div className={classes.tableWrapper}>
                                 <Table className={classes.table}>
                                     <TableHead id="th">
                                     <TableRow>
@@ -638,7 +643,7 @@ class TextFields2 extends React.Component {
                                             <TableCell id="td" component="th" scope="row">
                                                 { log.counting ? 
                                                 <Button variant="contained" color="primary" className={classes.button} key={"here"} onClick={() => this.handleStop(this.state.project)}><TimerOffIcon /> STOP</Button>
-                                                 :
+                                                :
                                                 <Button variant="outlined" type="submit" color="primary" className={classes.margin} onClick={() => this.archiveLog(log._id)}><RemoveCircleOutline />
                                                 </Button>}
                                             </TableCell>
@@ -669,9 +674,10 @@ class TextFields2 extends React.Component {
                                     </TableRow>
                                     </TableFooter>
                                 </Table>
+                                </div>
                                 {/* </Paper> */}
                             </Grid>
-                            </Grid>
+                        </Grid>
                     </TabContainer>}
                 </div>
                 )
