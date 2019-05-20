@@ -1,7 +1,7 @@
 import React from "react";
 
-const CalendarParalax = props => (
-    <svg id='SchutzParalax'
+const CalendarParallax = props => (
+    <svg id='SchutzParallax'
     viewBox='0 0 1920 1000'>
         <path
         fill="#fff8dc"
@@ -57,4 +57,4 @@ const CalendarParalax = props => (
     </svg>
 );
 
-export default CalendarParalax;
+export default CalendarParallax;

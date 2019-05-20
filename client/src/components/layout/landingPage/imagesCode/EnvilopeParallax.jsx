@@ -1,7 +1,7 @@
 import React from "react";
 
-const EnvilopeParalax = props => (
-    <svg id='SchutzParalax'
+const EnvilopeParallax = props => (
+    <svg id='SchutzParallax'
     viewBox='0 0 1920 1000'>
         <defs />
         <path 
@@ -20,4 +20,4 @@ const EnvilopeParalax = props => (
     </svg>
     );
 
-export default EnvilopeParalax;
+export default EnvilopeParallax;

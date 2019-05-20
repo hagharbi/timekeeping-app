@@ -1,7 +1,7 @@
 import React from "react";
 
-const CommentsParalax = props => (
-    <svg id='SchutzParalax' 
+const CommentsParallax = props => (
+    <svg id='SchutzParallax' 
     viewBox='0 0 1920 1000'>
         <defs />
         <polygon
@@ -21,4 +21,4 @@ const CommentsParalax = props => (
     </svg>
     );
 
-export default CommentsParalax;
+export default CommentsParallax;

@@ -3,7 +3,7 @@ import React from "react";
 import ReactToPrint from "react-to-print";
 import "./style.css"
 import Row from "./Row";
-
+import PrintIcon from "../layout/landingPage/imagesCode/PrintIcon.jsx";
 
 
 class Invoices extends React.Component {
@@ -158,25 +158,33 @@ class Invoices extends React.Component {
               trigger={() => (
                 <a
                   href="#top"
+                  id="printbtn"
                   onClick={ReactToPrint}
                   alt="print button"
-                  // className="print-btn"
-                  // id="print-btn"
                   style={{
                     backgroundColor: "#555555",
                     color: "white",
                     padding: "20px 10px 8px 10px",
                     position: "fixed",
                     top: "0px",
-                    right: "-40px",
-                    margin: "100px 0 0 0",
+                    margin: "0 0 0 0",
                     borderRadius: "0 0 15px 5px",
                     transform: "rotate(90deg)",
                     width: "auto"
                   }}
                 >
-                  Print Invoice!
-                </a>
+                <svg id='PrintIcon'
+                     width='40'
+                     height='40'
+                     viewBox='0 0 24 24'
+                >
+                <path d='M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z'
+                />  
+                <path d='M0 0h24v24H0z' 
+                      fill='none' 
+                />
+</svg>  <p style={{textAlign: "center",}}>I N V O I C E</p>
+                </a>        
               )}
               content={() => this.componentRef}
             />
