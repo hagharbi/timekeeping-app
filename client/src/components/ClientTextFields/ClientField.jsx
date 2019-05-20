@@ -28,9 +28,7 @@ const styles = theme => ({
     menu: {
         width: 300,
     },
-    h6: {
-        margintop: "1rem",
-    }
+
 });
 
 class TextFields1 extends React.Component {
@@ -133,10 +131,10 @@ class TextFields1 extends React.Component {
                                 container
                                 spacing={24}
                             >
-                                <Grid >
+                                <Grid item>
                                     <h4><strong>Client Details</strong></h4>
                                 </Grid>
-                                <Grid style={{ margin: '3rem 6rem 2rem auto' }}>
+                                <Grid item style={{ margin: '3rem 6rem 0 auto' }}>
                                     <Link to="/clients" style={{ color: "#037F8C" }}>
                                         < KeyboardBackspaceIcon style={{ paddingTop: "13px", color: "gray" }} /> Back to All Clients
                                 </Link>
@@ -144,7 +142,7 @@ class TextFields1 extends React.Component {
                             </Grid>
                             <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
-                                <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
+                                <Grid item xs={12}>
                                     <h6>Basic Info</h6>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -321,9 +319,9 @@ class TextFields1 extends React.Component {
 
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "3rem", "marginLeft": 8 }}>
 
-                                    <Button variant="contained" type="submit" size="large" color="primary" style={{ "marginTop": 15 }} className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
+                                    <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
 
-                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, "marginLeft": 15 }} onClick={this.archiveClient}>ARCHIVE</Button>
+                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginLeft": 15 }} onClick={this.archiveClient}>ARCHIVE</Button>
 
                                 </Grid>
 

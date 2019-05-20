@@ -264,11 +264,11 @@ class ProjectTable extends React.Component {
   formatDuration(logs) {
     var activeLogs = logs.filter(log => { return log.active === true && log.counting === false })
 
-    if(activeLogs.length === 0) {
+    if (activeLogs.length === 0) {
       return "None"
     }
-    else if(activeLogs.length > 1) {
-      var total = moment.duration(0);                
+    else if (activeLogs.length >= 1) {
+      var total = moment.duration(0);
 
       for (var i = 0; i < activeLogs.length; i++) {
         var on = (activeLogs[i].createdAt).toString();
@@ -278,7 +278,7 @@ class ProjectTable extends React.Component {
       }
 
       var formattedTotal = total.format("hh:mm:ss");
-    
+
       return formattedTotal;
     }
   };
@@ -311,7 +311,7 @@ class ProjectTable extends React.Component {
 
       return (
         <Grid container spacing={24}>
-          <Grid item xs={2} sm={4} md={3} lg={2}>
+          <Grid item xs={1} sm={4} md={3} lg={2}>
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item xs={10} sm={8} md={9} lg={9}>
@@ -352,10 +352,10 @@ class ProjectTable extends React.Component {
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map(projects => (
                       <TableRow key={projects._id}>
-                        <TableCell variant="body1" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClick(projects._id, e)}>
+                        <TableCell className="td" variant="body1" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClick(projects._id, e)}>
                           {projects.title}
                         </TableCell>
-                        <TableCell variant="body1" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClickClient(projects.client._id, e)}>
+                        <TableCell className="td" variant="body1" scope="row" style={{ cursor: 'pointer' }} onClick={(e) => this.handleClickClient(projects.client._id, e)}>
                           {projects.client.company}
                         </TableCell>
                         <TableCell variant="body1" scope="row">
@@ -397,12 +397,12 @@ class ProjectTable extends React.Component {
                         </TableCell>
                         <TableCell variant="body1" scope="row">
                           {projects.logs.filter(log => { return log.counting === false }).length === 0 ? "None" :
-                        <div>{this.formatDuration(projects.logs)}</div>}
+                            <div>{this.formatDuration(projects.logs)}</div>}
                         </TableCell>
                         <TableCell variant="p" component="th" scope="row">
                           {
                             projects.activeLog ?
-                              <Button variant="contained" color="action" className={classes.button} key={projects._id} onClick={() => this.handleStop(projects)}><TimerOffIcon/> STOP </Button> :
+                              <Button variant="contained" color="action" className={classes.button} key={projects._id} onClick={() => this.handleStop(projects)}><TimerOffIcon /> STOP </Button> :
                               <Button variant="contained" color="secondary" className={classes.button} key={projects._id} onClick={() => this.handleClickOpen(projects._id)}><TimerIcon /> Start</Button>
 
                           }
@@ -424,7 +424,8 @@ class ProjectTable extends React.Component {
                                 margin="normal"
                               />
                             </DialogContent>
-                            <DialogActions>
+
+                            <DialogActions style={{ padding: '1rem' }}>
                               <Button onClick={this.handleClose} color="primary">
                                 Cancel
                                 </Button>
