@@ -394,7 +394,7 @@ class TextFields2 extends React.Component {
                     <Tabs value={value} onChange={this.handleChangeTabs}>
                         <Tab label="Item One" />
                         <Tab label="View Logs" />
-                        <Tab label="Edit" />
+                        <Tab label="Edit Project" />
                     </Tabs>
                     </AppBar>
                     {value === 0 && <TabContainer></TabContainer>}
@@ -615,9 +615,10 @@ class TextFields2 extends React.Component {
                                         Client Note
                                         </TableCell>
                                         <TableCell variant="h5" component="th" scope="row">Start Date</TableCell>
-                                        <TableCell variant="h5" component="th" scope="row">Start Time</TableCell>
+                                        {/* <TableCell variant="h5" component="th" scope="row">Start Time</TableCell> */}
                                         <TableCell variant="h5" component="th" scope="row">Stop Date</TableCell>
-                                        <TableCell variant="h5" component="th" scope="row">Stop Time</TableCell>
+                                        {/* <TableCell variant="h5" component="th" scope="row">Stop Time</TableCell> */}
+                                        <TableCell variant="h5" component="th" scope="row">Duration</TableCell>
                                         <TableCell variant="h5" component="th" scope="row"></TableCell>
                                     </TableRow>
                                     </TableHead>
@@ -631,21 +632,21 @@ class TextFields2 extends React.Component {
                                             {log.title}
                                             </TableCell>
                                             <TableCell id="td" component="th" scope="row"><Moment format="MM/DD/YYYY">{log.createdAt}</Moment></TableCell>
-                                            <TableCell id="td" component="th" scope="row">
+                                            {/* <TableCell id="td" component="th" scope="row">
                                                 <Moment format="HH:mm">{log.createdAt}</Moment>
-                                            </TableCell>
+                                            </TableCell> */}
                                             <TableCell id="td" component="th" scope="row">
                                                 {log.counting ? "" : <Moment format="MM/DD/YYYY">{log.updatedAt}</Moment>}
                                             </TableCell>
                                             <TableCell id="td" component="th" scope="row">
-                                                {log.counting ? "" : <Moment format="HH:mm">{log.updatedAt}</Moment>}
+                                                {log.counting ? "" && log.updatedAt != null : <Moment duration={log.createdAt} date={log.updatedAt} ></Moment>}
                                             </TableCell>
                                             <TableCell id="td" component="th" scope="row">
-                                                { log.counting ? 
-                                                <Button variant="contained" color="primary" className={classes.button} key={"here"} onClick={() => this.handleStop(this.state.project)}><TimerOffIcon /> STOP</Button>
-                                                :
-                                                <Button variant="outlined" type="submit" color="primary" className={classes.margin} onClick={() => this.archiveLog(log._id)}><RemoveCircleOutline />
-                                                </Button>}
+                                                {log.counting ?
+                                                    <Button variant="contained" color="primary" className={classes.button} key={"here"} onClick={() => this.handleStop(this.state.project)}><TimerOffIcon /> STOP</Button>
+                                                    :
+                                                    <Button variant="outlined" type="submit" color="primary" className={classes.margin} onClick={() => this.archiveLog(log._id)}><RemoveCircleOutline />
+                                                    </Button>}
                                             </TableCell>
                                         </TableRow> 
                                         ))}
