@@ -639,7 +639,7 @@ class TextFields2 extends React.Component {
                                                 {log.counting ? "" : <Moment format="MM/DD/YYYY">{log.updatedAt}</Moment>}
                                             </TableCell>
                                             <TableCell id="td" component="th" scope="row">
-                                                {log.counting ? "" : <Moment duration={log.createdAt} date={log.updateAt} ></Moment>}
+                                                {log.counting ? "" && log.updatedAt != null : <Moment duration={log.createdAt} date={log.updatedAt} ></Moment>}
                                             </TableCell>
                                             <TableCell id="td" component="th" scope="row">
                                                 {log.counting ?
