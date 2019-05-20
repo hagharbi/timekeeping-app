@@ -251,7 +251,7 @@ class NewProjectFields extends React.Component {
 
                                 <Grid item xs={12} sm={12} md={3} lg={3}>
                                     <Button variant="contained" color="primary" id="newProjects_newClient-btn" onClick={this.handleClickOpen}>
-                                        + New Client 
+                                        + New Client
                                     </Button>
 
                                     <Dialog
@@ -365,7 +365,7 @@ class NewProjectFields extends React.Component {
                                     <h6>Time + Rate</h6>
                                 </Grid>
 
-                            {/* <Grid item xs ={12} sm={4} md={3} lg={3}>
+                                {/* <Grid item xs ={12} sm={4} md={3} lg={3}>
                                 <TextField
                                     id="dueDate"
                                     label="Due Date"
@@ -433,27 +433,27 @@ class NewProjectFields extends React.Component {
 
                             </form>
                         </Grid>
-                        
+
                     </Grid>
                 )
             }
         }
     }
 }
-                    
+
 NewProjectFields.propTypes = {
     classes: PropTypes.object.isRequired,
     createProjectDetails: PropTypes.func.isRequired,
     createClientDetails: PropTypes.func.isRequired
 };
-                                
+
 const mapStateToProps = state => ({
     auth: state.auth,
     userDetails: state.findUser.userDetails
 });
-                                
-                                
+
+
 export default connect(
     mapStateToProps,
-    {createProjectDetails, createClientDetails }
+    { createProjectDetails, createClientDetails }
 )(withStyles(styles)(NewProjectFields))

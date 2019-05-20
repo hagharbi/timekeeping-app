@@ -51,94 +51,94 @@ import TimerOffIcon from '@material-ui/icons/TimerOff';
 
 const actionsStyles = theme => ({
     root: {
-      flexShrink: 0,
-      color: theme.palette.text.secondary,
-      marginLeft: theme.spacing.unit * 2.5,
+        flexShrink: 0,
+        color: theme.palette.text.secondary,
+        marginLeft: theme.spacing.unit * 2.5,
     },
-  });
+});
 
 class TablePaginationActions extends React.Component {
     handleFirstPageButtonClick = event => {
-      this.props.onChangePage(event, 0);
+        this.props.onChangePage(event, 0);
     };
-  
+
     handleBackButtonClick = event => {
-      this.props.onChangePage(event, this.props.page - 1);
+        this.props.onChangePage(event, this.props.page - 1);
     };
-  
+
     handleNextButtonClick = event => {
-      this.props.onChangePage(event, this.props.page + 1);
+        this.props.onChangePage(event, this.props.page + 1);
     };
-  
+
     handleLastPageButtonClick = event => {
-      this.props.onChangePage(
-        event,
-        Math.max(0, Math.ceil(this.props.count / this.props.rowsPerPage) - 1),
-      );
+        this.props.onChangePage(
+            event,
+            Math.max(0, Math.ceil(this.props.count / this.props.rowsPerPage) - 1),
+        );
     };
-  
+
     render() {
-      const { classes, count, page, rowsPerPage, theme } = this.props;
-  
-      return (
-        <div className={classes.root}>
-          <IconButton
-            onClick={this.handleFirstPageButtonClick}
-            disabled={page === 0}
-            aria-label="First Page"
-          >
-            {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
-          </IconButton>
-          <IconButton
-            onClick={this.handleBackButtonClick}
-            disabled={page === 0}
-            aria-label="Previous Page"
-          >
-            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-          </IconButton>
-          <IconButton
-            onClick={this.handleNextButtonClick}
-            disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-            aria-label="Next Page"
-          >
-            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-          </IconButton>
-          <IconButton
-            onClick={this.handleLastPageButtonClick}
-            disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-            aria-label="Last Page"
-          >
-            {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
-          </IconButton>
-        </div>
-      );
+        const { classes, count, page, rowsPerPage, theme } = this.props;
+
+        return (
+            <div className={classes.root}>
+                <IconButton
+                    onClick={this.handleFirstPageButtonClick}
+                    disabled={page === 0}
+                    aria-label="First Page"
+                >
+                    {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
+                </IconButton>
+                <IconButton
+                    onClick={this.handleBackButtonClick}
+                    disabled={page === 0}
+                    aria-label="Previous Page"
+                >
+                    {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                </IconButton>
+                <IconButton
+                    onClick={this.handleNextButtonClick}
+                    disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+                    aria-label="Next Page"
+                >
+                    {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                </IconButton>
+                <IconButton
+                    onClick={this.handleLastPageButtonClick}
+                    disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+                    aria-label="Last Page"
+                >
+                    {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
+                </IconButton>
+            </div>
+        );
     }
-  }
-  
-  TablePaginationActions.propTypes = {
+}
+
+TablePaginationActions.propTypes = {
     classes: PropTypes.object.isRequired,
     count: PropTypes.number.isRequired,
     onChangePage: PropTypes.func.isRequired,
     page: PropTypes.number.isRequired,
     rowsPerPage: PropTypes.number.isRequired,
     theme: PropTypes.object.isRequired,
-  };
-  
-  const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: true })(
+};
+
+const TablePaginationActionsWrapped = withStyles(actionsStyles, { withTheme: true })(
     TablePaginationActions,
-  );
-  
+);
+
 
 function TabContainer(props) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {props.children}
-    </Typography>
-  );
+    return (
+        <Typography component="div" style={{ padding: 8 * 3 }}>
+            {props.children}
+        </Typography>
+    );
 }
 
 TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 const styles = theme => ({
@@ -186,7 +186,7 @@ const styles = theme => ({
         minWidth: 500,
     },
     tableWrapper: {
-    overflowX: 'auto',
+        overflowX: 'auto',
     },
 });
 
@@ -211,7 +211,7 @@ class TextFields2 extends React.Component {
     handleClickOpen = (id) => {
         this.setState({ open: id });
     };
-    
+
     handleClose = () => {
         this.setState({ open: null });
     };
@@ -244,22 +244,22 @@ class TextFields2 extends React.Component {
     };
 
     archiveLog = (id) => {
-        this.props.removeLogDetails({id: id});
+        this.props.removeLogDetails({ id: id });
         document.location.reload();
     };
 
     startLog = (event) => {
         event.preventDefault();
-    
+
         const logData = {
-          title: this.state.log.title,
-          id: this.state.project._id,
+            title: this.state.log.title,
+            id: this.state.project._id,
         };
-    
+
         this.props.createLogDetails(logData)
         this.setState({ open: false });
         window.location.reload();
-      };
+    };
 
     handleStop = (project) => {
         if (project.activeLog === false) {
@@ -267,16 +267,16 @@ class TextFields2 extends React.Component {
         }
         else {
             var log = project.logs.filter(log => { return log.counting === true })
-    
+
             const logData = {
                 projectId: project._id,
                 id: log[0]._id
             };
-        
+
             this.props.updateLogDetails(logData);
             window.location.reload();
         };
-    
+
     };
 
     beginningState(objectFound, event) {
@@ -362,92 +362,92 @@ class TextFields2 extends React.Component {
                 return (
 
                     <div className={classes.root}>
-                    <AppBar position="static">
-                    <Tabs value={value} onChange={this.handleChangeTabs}>
-                        <Tab label="Item One" />
-                        <Tab label="View Logs" />
-                        <Tab label="Edit Project" />
-                    </Tabs>
-                    </AppBar>
-                    {value === 0 && <TabContainer></TabContainer>}
-                    {value === 2 && <TabContainer>
-                    <Grid container spacing={24}>
-                        <Grid item xs={1} sm={5} md={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item sm={7} lg={9}>
-                            <h4>Edit Project</h4>
-                            <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
-
-                                <Grid item xs={12} sm={12} md={4} lg={3}>
-                                    <TextField
-                                        required
-                                        id="title"
-                                        label="Title"
-                                        value={this.state.project.title}
-                                        className={classes.textField}
-                                        onChange={this.handleChange}
-                                        InputProps={{ disableUnderline: true, }}
-                                        margin="normal"
-                                    />
+                        <AppBar position="static">
+                            <Tabs value={value} onChange={this.handleChangeTabs}>
+                                <Tab label="Item One" />
+                                <Tab label="View Logs" />
+                                <Tab label="Edit Project" />
+                            </Tabs>
+                        </AppBar>
+                        {value === 0 && <TabContainer></TabContainer>}
+                        {value === 2 && <TabContainer>
+                            <Grid container spacing={24}>
+                                <Grid item xs={1} sm={5} md={3}>
+                                    <Paper className={classes.paper}></Paper>
                                 </Grid>
+                                <Grid item sm={7} lg={9}>
+                                    <h4>Edit Project</h4>
+                                    <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
-                                <Grid item xs={6} sm={6} md={3} lg={2}>
+                                        <Grid item xs={12} sm={12} md={4} lg={3}>
+                                            <TextField
+                                                required
+                                                id="title"
+                                                label="Title"
+                                                value={this.state.project.title}
+                                                className={classes.textField}
+                                                onChange={this.handleChange}
+                                                InputProps={{ disableUnderline: true, }}
+                                                margin="normal"
+                                            />
+                                        </Grid>
 
-                                    <FormControl className={classes.formControl}>
-                                        <Select
-                                            value={this.state.project.status}
-                                            onChange={this.handleChangeDropdown}
-                                            name="status"
-                                            style={{"marginTop": "26px"}}
-                                            input={
-                                                <Input
-                                                    labelWidth={this.state.labelWidth}
+                                        <Grid item xs={6} sm={6} md={3} lg={2}>
+
+                                            <FormControl className={classes.formControl}>
+                                                <Select
+                                                    value={this.state.project.status}
+                                                    onChange={this.handleChangeDropdown}
                                                     name="status"
-                                                //id="outlined-age-simple"
-                                                />
-                                            }
-                                        >
-                                            <MenuItem value="inactive">
-                                                inactive
+                                                    style={{ "marginTop": "26px" }}
+                                                    input={
+                                                        <Input
+                                                            labelWidth={this.state.labelWidth}
+                                                            name="status"
+                                                        //id="outlined-age-simple"
+                                                        />
+                                                    }
+                                                >
+                                                    <MenuItem value="inactive">
+                                                        inactive
                                             </MenuItem>
-                                            <MenuItem value="pending">pending</MenuItem>
-                                            <MenuItem value={"in progress"}>in progress</MenuItem>
-                                            <MenuItem value={"completed"}>completed</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
+                                                    <MenuItem value="pending">pending</MenuItem>
+                                                    <MenuItem value={"in progress"}>in progress</MenuItem>
+                                                    <MenuItem value={"completed"}>completed</MenuItem>
+                                                </Select>
+                                            </FormControl>
+                                        </Grid>
 
-                                <Grid item xs={6} sm={6} md={3} lg={2}>
-                                    <FormControl className={classes.formControl}>
-                                        <Select
-                                            value={this.state.project.priority}
-                                            onChange={this.handleChangeDropdown}
-                                            style={{"marginTop": "26px"}}
-                                            name="priority"
-                                            input={
-                                                <Input
-                                                    labelWidth={this.state.labelWidth}
+                                        <Grid item xs={6} sm={6} md={3} lg={2}>
+                                            <FormControl className={classes.formControl}>
+                                                <Select
+                                                    value={this.state.project.priority}
+                                                    onChange={this.handleChangeDropdown}
+                                                    style={{ "marginTop": "26px" }}
                                                     name="priority"
-                                                //id="outlined-age-simple"
-                                                />
-                                            }
-                                        >
-                                            <MenuItem value="">
-                                                <em>None</em>
-                                            </MenuItem>
-                                            <MenuItem value={"low"}>low</MenuItem>
-                                            <MenuItem value={"medium"}>medium</MenuItem>
-                                            <MenuItem value={"high"}>high</MenuItem>
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
+                                                    input={
+                                                        <Input
+                                                            labelWidth={this.state.labelWidth}
+                                                            name="priority"
+                                                        //id="outlined-age-simple"
+                                                        />
+                                                    }
+                                                >
+                                                    <MenuItem value="">
+                                                        <em>None</em>
+                                                    </MenuItem>
+                                                    <MenuItem value={"low"}>low</MenuItem>
+                                                    <MenuItem value={"medium"}>medium</MenuItem>
+                                                    <MenuItem value={"high"}>high</MenuItem>
+                                                </Select>
+                                            </FormControl>
+                                        </Grid>
 
-                                <Grid item xs={12} style={{ "marginTop": "40px" }}>
-                                
-                                </Grid>
+                                        <Grid item xs={12} style={{ "marginTop": "40px" }}>
 
-{/*                                 <Grid item xs={12} sm={6} md={6} lg={3}>
+                                        </Grid>
+
+                                        {/*                                 <Grid item xs={12} sm={6} md={6} lg={3}>
                                     <TextField
                                         id="dueDate"
                                         label="Due Date"
@@ -458,46 +458,46 @@ class TextFields2 extends React.Component {
                                         margin="normal"
                                     />
                                 </Grid> */}
-                                
-                                <Grid item xs={6} sm={3} md={2} lg={2}>
-                                    <TextField
-                                        id="timeEst"
-                                        label="Estimated Hours"
-                                        className={classes.textFieldSmall}
-                                        value={this.state.project.timeEst}
-                                        onChange={this.handleChange}
-                                        InputProps={{ disableUnderline: true, }}
-                                        margin="normal"
-                                    />
-                                </Grid>
 
-                                <Grid item xs={6} sm={3} md={2} lg={2}>
-                                <Tooltip title="For fixed-rate projects, leave 0." aria-label="For fixed-rate projects, leave 0.">
-                                    <TextField
-                                        id="rate"
-                                        label="Hourly Rate"
-                                        className={classes.textFieldSmall}
-                                        value={this.state.project.rate}
-                                        onChange={this.handleChange}
-                                        InputProps={{ disableUnderline: true, }}
-                                        margin="normal"
-                                    />
-                                </Tooltip>
-                                </Grid>
+                                        <Grid item xs={6} sm={3} md={2} lg={2}>
+                                            <TextField
+                                                id="timeEst"
+                                                label="Estimated Hours"
+                                                className={classes.textFieldSmall}
+                                                value={this.state.project.timeEst}
+                                                onChange={this.handleChange}
+                                                InputProps={{ disableUnderline: true, }}
+                                                margin="normal"
+                                            />
+                                        </Grid>
 
-                                <Grid item xs={12} sm={6} md={4} lg={3}>
-                                    <TextField
-                                        id="category"
-                                        label="Category"
-                                        value={this.state.project.category}
-                                        className={classes.textField}
-                                        onChange={this.handleChange}
-                                        InputProps={{ disableUnderline: true, }}
-                                        margin="normal"
-                                    />
-                                </Grid>
+                                        <Grid item xs={6} sm={3} md={2} lg={2}>
+                                            <Tooltip title="For fixed-rate projects, leave 0." aria-label="For fixed-rate projects, leave 0.">
+                                                <TextField
+                                                    id="rate"
+                                                    label="Hourly Rate"
+                                                    className={classes.textFieldSmall}
+                                                    value={this.state.project.rate}
+                                                    onChange={this.handleChange}
+                                                    InputProps={{ disableUnderline: true, }}
+                                                    margin="normal"
+                                                />
+                                            </Tooltip>
+                                        </Grid>
 
-{/*                                 <Grid item xs={12} style={{ "marginTop": "40px" }}>
+                                        <Grid item xs={12} sm={6} md={4} lg={3}>
+                                            <TextField
+                                                id="category"
+                                                label="Category"
+                                                value={this.state.project.category}
+                                                className={classes.textField}
+                                                onChange={this.handleChange}
+                                                InputProps={{ disableUnderline: true, }}
+                                                margin="normal"
+                                            />
+                                        </Grid>
+
+                                        {/*                                 <Grid item xs={12} style={{ "marginTop": "40px" }}>
                                     <h6>Notes</h6>
                                 </Grid>
 
@@ -513,42 +513,42 @@ class TextFields2 extends React.Component {
                                     />
                                 </Grid> */}
 
-                                <Grid item xs={6} sm={9} style={{ "marginTop": "30px" }}>
+                                        <Grid item xs={6} sm={9} style={{ "marginTop": "30px" }}>
 
-                                    <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15 }} onClick={this.handleSubmit}>SAVE</Button>
+                                            <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15 }} onClick={this.handleSubmit}>SAVE</Button>
 
-                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, "marginLeft": 15 }} onClick={this.archiveClient}>ARCHIVE</Button>
+                                            <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, "marginLeft": 15 }} onClick={this.archiveClient}>ARCHIVE</Button>
 
+                                        </Grid>
+
+                                    </form>
                                 </Grid>
-
-                            </form>
-                        </Grid>
-                    </Grid>
-                    </TabContainer>}
-                    {value === 1 && <TabContainer>
-                        <Grid container spacing={24}>
-                            <Grid item xs={2} sm={4} md={3} lg={2}>
-                                <Paper className={classes.paper}></Paper>
                             </Grid>
-                            <Grid item xs={10} sm={8} md={9} lg={9}>
-                                <Grid
-                                    justify="space-between"
-                                    container
-                                    spacing={24}
-                                >
-                                    <Grid item >
-                                        <h4><strong>Logs</strong></h4>
-                                    </Grid>
-                                    <Grid item>
-                                        {this.state.project.activeLog ? "" :
-                                        <Button
-                                            onClick={() => this.handleClickOpen(this.state.project._id)}
-                                            variant="contained" color="primary" className={classes.button}
-                                            style={{ marginTop: "3rem" }}
-                                        >
-                                            + New Log
+                        </TabContainer>}
+                        {value === 1 && <TabContainer>
+                            <Grid container spacing={24}>
+                                <Grid item xs={2} sm={4} md={3} lg={2}>
+                                    <Paper className={classes.paper}></Paper>
+                                </Grid>
+                                <Grid item xs={10} sm={8} md={9} lg={9}>
+                                    <Grid
+                                        justify="space-between"
+                                        container
+                                        spacing={24}
+                                    >
+                                        <Grid item >
+                                            <h4><strong>Logs</strong></h4>
+                                        </Grid>
+                                        <Grid item>
+                                            {this.state.project.activeLog ? "" :
+                                                <Button
+                                                    onClick={() => this.handleClickOpen(this.state.project._id)}
+                                                    variant="contained" color="primary" className={classes.button}
+                                                    style={{ marginTop: "3rem" }}
+                                                >
+                                                    + New Log
                                         </Button>
-                                        }
+                                            }
 
                                             <Dialog
                                                 open={this.state.open === this.state.project._id}
@@ -557,97 +557,97 @@ class TextFields2 extends React.Component {
                                             >
                                                 <DialogTitle id="form-dialog-title">Before you start</DialogTitle>
                                                 <DialogContent>
-                                                <TextField
-                                                    required
-                                                    name="title"
-                                                    label="Add a Task"
-                                                    value={this.state.log.title}
-                                                    className={classes.textField}
-                                                    onChange={this.handleChangeLog}
-                                                    InputProps={{ disableUnderline: true, }}
-                                                    margin="normal"
-                                                />
+                                                    <TextField
+                                                        required
+                                                        name="title"
+                                                        label="Add a Task"
+                                                        value={this.state.log.title}
+                                                        className={classes.textField}
+                                                        onChange={this.handleChangeLog}
+                                                        InputProps={{ disableUnderline: true, }}
+                                                        margin="normal"
+                                                    />
                                                 </DialogContent>
                                                 <DialogActions>
-                                                <Button onClick={this.handleClose} color="primary">
-                                                    Cancel
+                                                    <Button onClick={this.handleClose} color="primary">
+                                                        Cancel
                                                     </Button>
-                                                <Button variant="contained" onClick={this.startLog} color="primary">
-                                                    Go!
+                                                    <Button variant="contained" onClick={this.startLog} color="primary">
+                                                        Go!
                                                     </Button>
                                                 </DialogActions>
                                             </Dialog>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
 
-                                <div className={classes.tableWrapper}>
-                                <Table className={classes.table}>
-                                    <TableHead id="th">
-                                    <TableRow>
-                                        <TableCell variant="h5" component="th" scope="row">
-                                        Client Note
+                                    <div className={classes.tableWrapper}>
+                                        <Table className={classes.table}>
+                                            <TableHead id="th">
+                                                <TableRow>
+                                                    <TableCell variant="headline" component="th" scope="row">
+                                                        Task
                                         </TableCell>
-                                        <TableCell variant="h5" component="th" scope="row">Start Date</TableCell>
-                                        <TableCell variant="h5" component="th" scope="row">Stop Date</TableCell>
-                                        <TableCell variant="h5" component="th" scope="row">Duration</TableCell>
-                                        <TableCell variant="h5" component="th" scope="row"></TableCell>
-                                    </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                    {this.state.project.logs
-                                        .filter(log => { return log.active === true })
-                                        .slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage)
-                                        .map(log => (
-                                        <TableRow key={log._id}>
-                                            <TableCell id="td" component="th" scope="row">
-                                            {log.title}
-                                            </TableCell>
-                                            <TableCell id="td" component="th" scope="row"><Moment format="MM/DD/YYYY">{log.createdAt}</Moment></TableCell>
-                                            <TableCell id="td" component="th" scope="row">
-                                                {log.counting ? "" : <Moment format="MM/DD/YYYY">{log.updatedAt}</Moment>}
-                                            </TableCell>
-                                            <TableCell id="td" component="th" scope="row">
-                                                {log.counting ? "" && log.updatedAt != null : <Moment duration={log.createdAt} date={log.updatedAt} ></Moment>}
-                                            </TableCell>
-                                            <TableCell id="td" component="th" scope="row">
-                                                {log.counting ?
-                                                    <Button variant="contained" color="primary" className={classes.button} key={"here"} onClick={() => this.handleStop(this.state.project)}><TimerOffIcon /> STOP</Button>
-                                                    :
-                                                    <Button variant="outlined" type="submit" color="primary" className={classes.margin} onClick={() => this.archiveLog(log._id)}><RemoveCircleOutline />
-                                                    </Button>}
-                                            </TableCell>
-                                        </TableRow> 
-                                        ))}
-                                    {emptyRows > 0 && (
-                                        <TableRow style={{ height: 48 * emptyRows }}>
-                                        <TableCell colSpan={6} />
-                                        </TableRow>
-                                    )}
-                                    </TableBody>
-                                    <TableFooter>
-                                    <TableRow >
-                                        <TablePagination
-                                        rowsPerPageOptions={[5, 10, 25]}
-                                        colSpan={6}
-                                        count={this.state.project.logs
-                                            .filter(log => { return log.active === true }).length}
-                                        rowsPerPage={this.state.rowsPerPage}
-                                        page={this.state.page}
-                                        SelectProps={{
-                                            native: true,
-                                        }}
-                                        onChangePage={this.handleChangePage}
-                                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                                        ActionsComponent={TablePaginationActionsWrapped}
-                                        />
-                                    </TableRow>
-                                    </TableFooter>
-                                </Table>
-                                </div>
+                                                    <TableCell variant="headline" component="th" scope="row">Start Date</TableCell>
+                                                    <TableCell variant="headline" component="th" scope="row">Stop Date</TableCell>
+                                                    <TableCell variant="headline" component="th" scope="row">Duration</TableCell>
+                                                    <TableCell variant="headline" component="th" scope="row"></TableCell>
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody>
+                                                {this.state.project.logs
+                                                    .filter(log => { return log.active === true })
+                                                    .slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage)
+                                                    .map(log => (
+                                                        <TableRow key={log._id}>
+                                                            <TableCell className="td" component="th" scope="row">
+                                                                {log.title}
+                                                            </TableCell>
+                                                            <TableCell className="td" component="th" scope="row"><Moment format="MM/DD/YYYY">{log.createdAt}</Moment></TableCell>
+                                                            <TableCell className="td" component="th" scope="row">
+                                                                {log.counting ? "" : <Moment format="MM/DD/YYYY">{log.updatedAt}</Moment>}
+                                                            </TableCell>
+                                                            <TableCell className="td" component="th" scope="row">
+                                                                {log.counting ? "" && log.updatedAt != null : <Moment duration={log.createdAt} date={log.updatedAt} ></Moment>}
+                                                            </TableCell>
+                                                            <TableCell component="th" scope="row">
+                                                                {log.counting ?
+                                                                    <Button variant="contained" color="secondary" className={classes.button} key={"here"} onClick={() => this.handleStop(this.state.project)}><TimerOffIcon /> STOP</Button>
+                                                                    :
+                                                                    <Button variant="outlined" type="submit" color="primary" className={classes.margin} onClick={() => this.archiveLog(log._id)}><RemoveCircleOutline />
+                                                                    </Button>}
+                                                            </TableCell>
+                                                        </TableRow>
+                                                    ))}
+                                                {emptyRows > 0 && (
+                                                    <TableRow style={{ height: 48 * emptyRows }}>
+                                                        <TableCell colSpan={6} />
+                                                    </TableRow>
+                                                )}
+                                            </TableBody>
+                                            <TableFooter>
+                                                <TableRow >
+                                                    <TablePagination
+                                                        rowsPerPageOptions={[5, 10, 25]}
+                                                        colSpan={6}
+                                                        count={this.state.project.logs
+                                                            .filter(log => { return log.active === true }).length}
+                                                        rowsPerPage={this.state.rowsPerPage}
+                                                        page={this.state.page}
+                                                        SelectProps={{
+                                                            native: true,
+                                                        }}
+                                                        onChangePage={this.handleChangePage}
+                                                        onChangeRowsPerPage={this.handleChangeRowsPerPage}
+                                                        ActionsComponent={TablePaginationActionsWrapped}
+                                                    />
+                                                </TableRow>
+                                            </TableFooter>
+                                        </Table>
+                                    </div>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </TabContainer>}
-                </div>
+                        </TabContainer>}
+                    </div>
                 )
             }
         }
