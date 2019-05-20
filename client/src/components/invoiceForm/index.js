@@ -183,7 +183,7 @@ class Invoices extends React.Component {
                 <path d='M0 0h24v24H0z' 
                       fill='none' 
                 />
-</svg>  <p style={{textAlign: "center",}}>I N V O I C E</p>
+</svg>  
                 </a>        
               )}
               content={() => this.componentRef}

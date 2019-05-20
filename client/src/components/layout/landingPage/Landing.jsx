@@ -93,7 +93,7 @@ class Landing extends Component {
               <Link
                 to="/register"
                   style={{
-                          width: "14vw",
+                          minWidth: "220px",
                           letterSpacing: "4px",
                           fontWeight: "600",
                           position: "absolute",
@@ -113,7 +113,7 @@ class Landing extends Component {
                 to="/login"
                 style={{
                         marginLeft: "2rem",
-                        width: "14vw",
+                        minWidth: "220px",
                         letterSpacing: "4px",
                         fontWeight: "600",
                         position: "absolute",
