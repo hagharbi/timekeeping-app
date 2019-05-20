@@ -330,6 +330,8 @@ class Invoices extends React.Component {
                   </div>
                 </div>
               </div>
+
+              <div style={{height: "50px"}}></div>
               {/* Right Starts here*/}
               <div className="text right" id="text-right" style={{ position: "absolute", margin: "117px 0 0 240px", padding: "0 0 0 0" }}>
 

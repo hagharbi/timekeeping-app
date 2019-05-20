@@ -52,7 +52,7 @@ class Dashboard extends Component {
         <div>
           <ResponsiveDrawer id="projects_container" />
           <div className="col s6">
-            <DashboardComp user={{ data }} />
+            <DashboardComp users={{ data }} />
           </div>
         </div >
       );
