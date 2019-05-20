@@ -57,7 +57,7 @@ render() {
 
 return (
       <div className="container">
-        <div className="row">
+        <div className="row" style={{ marginTop: "4rem" }}>
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
               < KeyboardBackspaceIcon style= {{paddingTop: "10px"}} / > Back to
@@ -148,10 +148,12 @@ return (
                     width: "150px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
-                    marginTop: "1rem"
+                    marginTop: "1rem",
+                    backgroundColor: "#2c327d",
                   }}
+                  
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-large waves-effect hoverable"
                 >
                   Sign up
                 </button>
