@@ -18,15 +18,15 @@ class Register extends Component {
       errors: {}
     };
   }
-  
-componentDidMount() {
-  // If logged in and user navigates to Register page, should redirect them to dashboard
-  if (this.props.auth.isAuthenticated) {
-    this.props.history.push("/dashboard");
-  }
-}
 
-componentWillReceiveProps(nextProps) {
+  componentDidMount() {
+    // If logged in and user navigates to Register page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
         errors: nextProps.errors
@@ -34,14 +34,14 @@ componentWillReceiveProps(nextProps) {
     }
   }
 
-onChange = e => {
+  onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
 
-onSubmit = e => {
+  onSubmit = e => {
     e.preventDefault();
 
-const newUser = {
+    const newUser = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
@@ -49,18 +49,18 @@ const newUser = {
       password2: this.state.password2
     };
 
-this.props.registerUser(newUser, this.props.history); 
+    this.props.registerUser(newUser, this.props.history);
   };
 
-render() {
+  render() {
     const { errors } = this.state;
 
-return (
+    return (
       <div className="container">
-        <div className="row">
+        <div className="row" style={{ marginTop: "4rem" }}>
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
-              < KeyboardBackspaceIcon style= {{paddingTop: "10px"}} / > Back to
+              < KeyboardBackspaceIcon style={{ paddingTop: "10px" }} /> Back to
               home
             </Link>
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
@@ -148,10 +148,11 @@ return (
                     width: "150px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
-                    marginTop: "1rem"
+                    marginTop: "1rem",
+                    backgroundColor: "#2c327d",
                   }}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                  className="btn btn-large waves-effect hoverable"
                 >
                   Sign up
                 </button>
