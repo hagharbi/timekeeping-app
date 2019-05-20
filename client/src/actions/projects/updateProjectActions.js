@@ -10,7 +10,6 @@ export const updateProjectDetails = (projectData) => dispatch => {
     axios
         .post("/api/projects/update", projectData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: UPDATE_PROJECT_DETAILS,
                 payload: res

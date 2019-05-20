@@ -20,7 +20,6 @@ class Dashboard extends Component {
     const userData = {
       id: this.props.auth.user.id
     };
-    console.log('componentdid', this.props.auth.user.id)
     this.props.findUserDetails(userData);
   }
 
@@ -38,27 +37,23 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { user } = this.props.auth;
-
     if (!this.props.userDetails) {
       return null
     }
     else {
-
       const { data } = this.props.userDetails;
-      console.log(user);
-      console.log(data)
+
       return (
         <div>
           <ResponsiveDrawer id="projects_container" />
           <div className="col s6">
-            <DashboardComp user={{ data }} />
+            <DashboardComp users={{ data }} />
           </div>
         </div >
       );
     }
   }
-}
+};
 
 Dashboard.propTypes = {
   findUserDetails: PropTypes.func.isRequired,

@@ -7,70 +7,66 @@ import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import NewProjectFields from "../components/newProjectFields/newProjectFields";
 
 class NewProjects extends Component {
-    constructor() {
-        super();
-        this.state = {
-          errors: {}
-        };
-      };
-    
-      componentDidMount() {
-        const userData = {
-          id: this.props.auth.user.id
-        };
-        //console.log('componentdid', this.props.auth.user.id)
-        this.props.findUserDetails(userData);
-      }
-    
-      componentWillReceiveProps(nextProps) {
-        if (nextProps.errors) {
-          this.setState({
-            errors: nextProps.errors
-          });
-        }
-      };
-  
-      onLogoutClick = e => {
-          e.preventDefault();
-          this.props.logoutUser();
-        };
-  
-      render() {
-        const { user } = this.props.auth;
-        
-        
-        if(!this.props.userDetails) {
-          return null
-        }
-        else {
+constructor() {
+    super();
+    this.state = {
+      errors: {}
+    };
+  };
 
-          const { data } = this.props.userDetails;
-        console.log(user);
-        console.log(data)
-          return (
-            <div >
-                <ResponsiveDrawer />
-                <div>
-                  <NewProjectFields projects={{ data }}/>
-                </div> 
-            </div>
-            
-          );
-        }
-      }
+  componentDidMount() {
+    const userData = {
+      id: this.props.auth.user.id
+    };
+    this.props.findUserDetails(userData);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
     }
+  };
+
+  onLogoutClick = e => {
+      e.preventDefault();
+      this.props.logoutUser();
+    };
+
+  render() {
+
+    if(!this.props.userDetails) {
+      return null
+    }
+    else {
+
+      const { data } = this.props.userDetails;
+
+      return (
+        <div >
+            <ResponsiveDrawer />
+            <div>
+              <NewProjectFields projects={{ data }}/>
+            </div> 
+        </div>
+        
+      );
+    }
+  }
+};
 
 
 NewProjects.propTypes = {
-    findUserDetails: PropTypes.func.isRequired,
-    logoutUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    userDetails: PropTypes.object.isRequired
-    };
+  findUserDetails: PropTypes.func.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  userDetails: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
-    auth: state.auth,
-    userDetails: state.findUser.userDetails
+  auth: state.auth,
+  userDetails: state.findUser.userDetails
 });
 
 export default connect(

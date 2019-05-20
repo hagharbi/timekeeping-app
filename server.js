@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const routes = require("./routes");
 const passport = require("passport");
 const users = require("./routes/api/users");
 const projects = require("./routes/api/projects");
@@ -14,8 +13,6 @@ const PORT = process.env.PORT || 4000;
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(express.static("public"));
-// app.use(express.static(path.join(__dirname, "public")));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -26,8 +23,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-// Add routes
-app.use(routes);
 
 // API Routes
 app.use("/api/users", users);

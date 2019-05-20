@@ -6,7 +6,6 @@ import { findAllProjectDetails } from "../actions/projects/findAllProjectActions
 import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import ProjectTable from "../components/ProjectTable/ProjectTable";
 import Grid from '@material-ui/core/Grid';
-// import Divider from '@material-ui/core/Divider';  <--- defined but never used,  again! Leave commented out until it is needed
 
 class Projects extends Component {
 
@@ -21,7 +20,6 @@ class Projects extends Component {
         const userData = {
             id: this.props.auth.user.id
         };
-        console.log('componentdid', this.props.auth.user.id)
         this.props.findAllProjectDetails(userData)
     };
 
@@ -39,7 +37,6 @@ class Projects extends Component {
     };
 
     render() {
-        console.log(this.props)
         const { user } = this.props.auth;
 
         if(!this.props.allProjectDetails) {
@@ -47,23 +44,21 @@ class Projects extends Component {
 
         }
         else {
-        const { data } = this.props.allProjectDetails;
-        console.log(user);
-        // console.log(data)
+            const { data } = this.props.allProjectDetails;
 
-        if(!data) {
-            return null
+            if(!data) {
+                return null
+            }
+            else {
+            return (
+                <div>
+                    <ResponsiveDrawer />
+                    <Grid>
+                        <ProjectTable projects={{ data }} user ={{ user }}/>
+                    </Grid>
+                </div >
+            )};
         }
-        else {
-        return (
-            <div>
-                <ResponsiveDrawer />
-                <Grid>
-                    <ProjectTable projects={{ data }} user ={{ user }}/>
-                </Grid>
-            </div >
-        );
-        }}
     }
 }
 

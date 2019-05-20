@@ -10,7 +10,6 @@ export const updateProjectDropdowns = (projectData) => dispatch => {
     axios
         .post("/api/projects/updatedropdowns", projectData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: UPDATE_PROJECTDROPS_DETAILS,
                 payload: res

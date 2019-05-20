@@ -7,58 +7,53 @@ import ResponsiveDrawer from "../components/ResponsiveDrawer/ResponsiveDrawer";
 import TextFields1 from "../components/ClientTextFields/ClientField";
 
 class EditClient extends Component {
-    constructor() {
-        super();
-        this.state = {
-          errors: {}
-        };
-      };
-    
-      componentDidMount() {
-        const userData = {
-          id: this.props.auth.user.id
-        };
-        //console.log('componentdid', this.props.auth.user.id)
-        this.props.findUserDetails(userData);
-      }
-    
-      componentWillReceiveProps(nextProps) {
-        if (nextProps.errors) {
-          this.setState({
-            errors: nextProps.errors
-          });
-        }
-      };
-  
-      onLogoutClick = e => {
-          e.preventDefault();
-          this.props.logoutUser();
-        };
-  
-      render() {
-        const { user } = this.props.auth;
-        
-        
-        if(!this.props.userDetails) {
-          return null
-        }
-        else {
+  constructor() {
+    super();
+    this.state = {
+      errors: {}
+    };
+  };
 
-          const { data } = this.props.userDetails;
-        console.log(user);
-        console.log(data)
-          return (
-            <div >
-                <ResponsiveDrawer />
-                <div>
-                  <TextFields1 clients={{ data }}/>
-                </div> 
-            </div>
-            
-          );
-        }
-      }
+  componentDidMount() {
+    const userData = {
+      id: this.props.auth.user.id
+    };
+    this.props.findUserDetails(userData);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
     }
+  };
+
+  onLogoutClick = e => {
+      e.preventDefault();
+      this.props.logoutUser();
+    };
+
+  render() {
+    
+    if(!this.props.userDetails) {
+      return null
+    }
+    else {
+      const { data } = this.props.userDetails;
+
+      return (
+        <div >
+            <ResponsiveDrawer />
+            <div>
+              <TextFields1 clients={{ data }}/>
+            </div> 
+        </div>
+        
+      );
+    }
+  }
+};
 
 
 EditClient.propTypes = {

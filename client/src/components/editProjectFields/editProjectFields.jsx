@@ -2,9 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
 import { withStyles } from '@material-ui/core/styles';
-
 import { updateProjectDetails } from "../../actions/projects/updateProjectActions";
 import { removeProjectDetails } from "../../actions/projects/removeProjectActions";
+import { createLogDetails } from "../../actions/logs/createLogActions";
+import { removeLogDetails } from "../../actions/logs/removeLogActions";
+import { updateLogDetails } from "../../actions/logs/updateLogActions";
+import Moment from 'react-moment';
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -17,6 +20,12 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Tooltip from '@material-ui/core/Tooltip';
+
+//Dialog
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 //Tabs
 import AppBar from '@material-ui/core/AppBar';
@@ -37,6 +46,8 @@ import FirstPageIcon from '@material-ui/icons/FirstPage';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
+import RemoveCircleOutline from '@material-ui/icons/RemoveCircleOutline';
+import TimerOffIcon from '@material-ui/icons/TimerOff';
 
 const actionsStyles = theme => ({
     root: {
@@ -188,14 +199,25 @@ class TextFields2 extends React.Component {
             value: 1,
             page: 0,
             rowsPerPage: 5,
+            open: null,
+            log: {
+                title: ""
+            }
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.archiveClient = this.archiveClient.bind(this);
     };
 
+    handleClickOpen = (id) => {
+        this.setState({ open: id });
+    };
+    
+    handleClose = () => {
+        this.setState({ open: null });
+    };
+
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state.project);
         const projectData = {
             id: this.state.project._id,
             title: this.state.project.title,
@@ -209,24 +231,56 @@ class TextFields2 extends React.Component {
         };
 
         this.props.updateProjectDetails(projectData);
-        window.location.href = '/projects'
+        window.location.href = '/projects';
     };
 
     archiveClient(event) {
-        event.preventDefault()
-        console.log(this.state)
+        event.preventDefault();
         const projectData = {
             id: this.state.project._id
         };
-        console.log(projectData)
         this.props.removeProjectDetails(projectData);
-        window.location.href = '/projects'
+        window.location.href = '/projects';
+    };
+
+    archiveLog = (id) => {
+        this.props.removeLogDetails({id: id});
+        document.location.reload();
+    };
+
+    startLog = (event) => {
+        event.preventDefault();
+    
+        const logData = {
+          title: this.state.log.title,
+          id: this.state.project._id,
+        };
+    
+        this.props.createLogDetails(logData)
+        this.setState({ open: false });
+        window.location.reload();
+      };
+
+    handleStop = (project) => {
+        if (project.activeLog === false) {
+            return
+        }
+        else {
+            var log = project.logs.filter(log => { return log.counting === true })
+    
+            const logData = {
+                projectId: project._id,
+                id: log[0]._id
+            };
+        
+            this.props.updateLogDetails(logData);
+            window.location.reload();
+        };
+    
     };
 
     beginningState(objectFound, event) {
-        objectFound.value = objectFound.timeEst * objectFound.rate
         this.setState({ project: objectFound });
-        console.log(this.state);
     };
 
     handleChange = e => {
@@ -237,10 +291,17 @@ class TextFields2 extends React.Component {
                 { [e.target.id]: e.target.value }
             ),
         });
-        console.log(e.target.id)
-        console.log(e.target.name)
-        console.log(e.target.value)
-        console.log(this.state.project)
+    };
+
+
+    handleChangeLog = e => {
+        this.setState({
+            log: Object.assign(
+                {},
+                this.state.log,
+                { [e.target.name]: e.target.value }
+            ),
+        });
     };
 
     handleChangeDropdown = e => {
@@ -251,7 +312,6 @@ class TextFields2 extends React.Component {
                 { [e.target.name]: e.target.value }
             ),
         })
-        console.log(this.state.project)
     };
 
     handleChangeTabs = (event, value) => {
@@ -273,7 +333,6 @@ class TextFields2 extends React.Component {
         const { page, rowsPerPage } = this.props;
 
         if (!data) {
-            console.log(null)
             return null
         }
 
@@ -283,24 +342,22 @@ class TextFields2 extends React.Component {
 
             var path;
             ['pathname'].forEach(function (k) {
-                console.log(k + ':', a[k]);
-                console.log(a[k])
                 path = a[k]
                 return path
             });
 
             const id = path.replace("/projects/", "");
 
-            var elementPos = data.projects.map(function (x) { return x._id; }).indexOf(id);
-            var objectFound = data.projects[elementPos];
+            var elementPos = data.map(function (x) { return x._id; }).indexOf(id);
+            var objectFound = data[elementPos];
 
             if (!this.state.project) {
                 this.beginningState(objectFound);
                 return null
             }
             else {
-
-                const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.clients.length - page * rowsPerPage);
+                const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.state.project.logs
+                    .filter(log => { return log.active === true }).length - page * rowsPerPage);
 
                 return (
 
@@ -308,12 +365,12 @@ class TextFields2 extends React.Component {
                     <AppBar position="static">
                     <Tabs value={value} onChange={this.handleChangeTabs}>
                         <Tab label="Item One" />
-                        <Tab label="Edit Project" />
                         <Tab label="View Logs" />
+                        <Tab label="Edit Project" />
                     </Tabs>
                     </AppBar>
                     {value === 0 && <TabContainer></TabContainer>}
-                    {value === 1 && <TabContainer>
+                    {value === 2 && <TabContainer>
                     <Grid container spacing={24}>
                         <Grid item xs={1} sm={5} md={3}>
                             <Paper className={classes.paper}></Paper>
@@ -387,7 +444,7 @@ class TextFields2 extends React.Component {
                                 </Grid>
 
                                 <Grid item xs={12} style={{ "marginTop": "40px" }}>
-                                    <h6>Time + Rate</h6>
+                                
                                 </Grid>
 
 {/*                                 <Grid item xs={12} sm={6} md={6} lg={3}>
@@ -401,7 +458,8 @@ class TextFields2 extends React.Component {
                                         margin="normal"
                                     />
                                 </Grid> */}
-                                <Grid item xs={12} sm={3} md={2} lg={2}>
+                                
+                                <Grid item xs={6} sm={3} md={2} lg={2}>
                                     <TextField
                                         id="timeEst"
                                         label="Estimated Hours"
@@ -413,7 +471,7 @@ class TextFields2 extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} sm={3} md={2} lg={2}>
+                                <Grid item xs={6} sm={3} md={2} lg={2}>
                                 <Tooltip title="For fixed-rate projects, leave 0." aria-label="For fixed-rate projects, leave 0.">
                                     <TextField
                                         id="rate"
@@ -427,7 +485,19 @@ class TextFields2 extends React.Component {
                                 </Tooltip>
                                 </Grid>
 
-                                <Grid item xs={12} style={{ "marginTop": "40px" }}>
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
+                                    <TextField
+                                        id="category"
+                                        label="Category"
+                                        value={this.state.project.category}
+                                        className={classes.textField}
+                                        onChange={this.handleChange}
+                                        InputProps={{ disableUnderline: true, }}
+                                        margin="normal"
+                                    />
+                                </Grid>
+
+{/*                                 <Grid item xs={12} style={{ "marginTop": "40px" }}>
                                     <h6>Notes</h6>
                                 </Grid>
 
@@ -441,17 +511,13 @@ class TextFields2 extends React.Component {
                                         className={classes.textFieldLarge}
                                         margin="dense"
                                     />
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "30px" }}>
 
                                     <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15 }} onClick={this.handleSubmit}>SAVE</Button>
 
-                                </Grid>
-
-                                <Grid item xs={6} sm={3} style={{ "marginTop": "30px" }}>
-
-                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, align: "right" }} onClick={this.archiveClient}>ARCHIVE</Button>
+                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, "marginLeft": 15 }} onClick={this.archiveClient}>ARCHIVE</Button>
 
                                 </Grid>
 
@@ -459,34 +525,98 @@ class TextFields2 extends React.Component {
                         </Grid>
                     </Grid>
                     </TabContainer>}
-                    {value === 2 && <TabContainer>
+                    {value === 1 && <TabContainer>
                         <Grid container spacing={24}>
-                        <Grid item xs={1} sm={5} md={3}>
-                            <Paper className={classes.paper}></Paper>
-                        </Grid>
-                        <Grid item sm={7} lg={9}>
+                            <Grid item xs={2} sm={4} md={3} lg={2}>
+                                <Paper className={classes.paper}></Paper>
+                            </Grid>
+                            <Grid item xs={10} sm={8} md={9} lg={9}>
+                                <Grid
+                                    justify="space-between"
+                                    container
+                                    spacing={24}
+                                >
+                                    <Grid item >
+                                        <h4><strong>Logs</strong></h4>
+                                    </Grid>
+                                    <Grid item>
+                                        {this.state.project.activeLog ? "" :
+                                        <Button
+                                            onClick={() => this.handleClickOpen(this.state.project._id)}
+                                            variant="contained" color="primary" className={classes.button}
+                                            style={{ marginTop: "3rem" }}
+                                        >
+                                            + New Log
+                                        </Button>
+                                        }
+
+                                            <Dialog
+                                                open={this.state.open === this.state.project._id}
+                                                onClose={this.handleClose}
+                                                aria-labelledby="form-dialog-title"
+                                            >
+                                                <DialogTitle id="form-dialog-title">Before you start</DialogTitle>
+                                                <DialogContent>
+                                                <TextField
+                                                    required
+                                                    name="title"
+                                                    label="Add a Task"
+                                                    value={this.state.log.title}
+                                                    className={classes.textField}
+                                                    onChange={this.handleChangeLog}
+                                                    InputProps={{ disableUnderline: true, }}
+                                                    margin="normal"
+                                                />
+                                                </DialogContent>
+                                                <DialogActions>
+                                                <Button onClick={this.handleClose} color="primary">
+                                                    Cancel
+                                                    </Button>
+                                                <Button variant="contained" onClick={this.startLog} color="primary">
+                                                    Go!
+                                                    </Button>
+                                                </DialogActions>
+                                            </Dialog>
+                                    </Grid>
+                                </Grid>
+
+                                <div className={classes.tableWrapper}>
                                 <Table className={classes.table}>
                                     <TableHead id="th">
                                     <TableRow>
                                         <TableCell variant="h5" component="th" scope="row">
-                                        Note
+                                        Client Note
                                         </TableCell>
-                                        <TableCell variant="h5" component="th" scope="row">Start</TableCell>
-                                        <TableCell variant="h5" component="th" scope="row">Stop</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Start Date</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Stop Date</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row">Duration</TableCell>
+                                        <TableCell variant="h5" component="th" scope="row"></TableCell>
                                     </TableRow>
                                     </TableHead>
                                     <TableBody>
                                     {this.state.project.logs
                                         .filter(log => { return log.active === true })
-                                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                        .slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage)
                                         .map(log => (
-                                        <TableRow hover style={{ cursor: 'pointer' }} key={log._id}>
+                                        <TableRow key={log._id}>
                                             <TableCell id="td" component="th" scope="row">
                                             {log.title}
                                             </TableCell>
-                                            <TableCell id="td" component="th" scope="row">{log.createdAt}</TableCell>
-                                            <TableCell id="td" component="th" scope="row"> {log.updatedAt}</TableCell>
-                                        </TableRow>
+                                            <TableCell id="td" component="th" scope="row"><Moment format="MM/DD/YYYY">{log.createdAt}</Moment></TableCell>
+                                            <TableCell id="td" component="th" scope="row">
+                                                {log.counting ? "" : <Moment format="MM/DD/YYYY">{log.updatedAt}</Moment>}
+                                            </TableCell>
+                                            <TableCell id="td" component="th" scope="row">
+                                                {log.counting ? "" && log.updatedAt != null : <Moment duration={log.createdAt} date={log.updatedAt} ></Moment>}
+                                            </TableCell>
+                                            <TableCell id="td" component="th" scope="row">
+                                                {log.counting ?
+                                                    <Button variant="contained" color="primary" className={classes.button} key={"here"} onClick={() => this.handleStop(this.state.project)}><TimerOffIcon /> STOP</Button>
+                                                    :
+                                                    <Button variant="outlined" type="submit" color="primary" className={classes.margin} onClick={() => this.archiveLog(log._id)}><RemoveCircleOutline />
+                                                    </Button>}
+                                            </TableCell>
+                                        </TableRow> 
                                         ))}
                                     {emptyRows > 0 && (
                                         <TableRow style={{ height: 48 * emptyRows }}>
@@ -501,8 +631,8 @@ class TextFields2 extends React.Component {
                                         colSpan={6}
                                         count={this.state.project.logs
                                             .filter(log => { return log.active === true }).length}
-                                        rowsPerPage={rowsPerPage}
-                                        page={page}
+                                        rowsPerPage={this.state.rowsPerPage}
+                                        page={this.state.page}
                                         SelectProps={{
                                             native: true,
                                         }}
@@ -513,21 +643,24 @@ class TextFields2 extends React.Component {
                                     </TableRow>
                                     </TableFooter>
                                 </Table>
-                                {/* </Paper> */}
+                                </div>
                             </Grid>
-                            </Grid>
+                        </Grid>
                     </TabContainer>}
                 </div>
                 )
             }
         }
     }
-}
+};
 
 TextFields2.propTypes = {
     classes: PropTypes.object.isRequired,
     removeProjectDetails: PropTypes.func.isRequired,
     updateProjectDetails: PropTypes.func.isRequired,
+    createLogDetails: PropTypes.func.isRequired,
+    removeLogDetails: PropTypes.func.isRequired,
+    updateLogDetails: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -538,5 +671,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { updateProjectDetails, removeProjectDetails }
+    { updateProjectDetails, removeProjectDetails, createLogDetails, removeLogDetails, updateLogDetails }
 )(withStyles(styles)(TextFields2))

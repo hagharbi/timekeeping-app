@@ -10,7 +10,6 @@ export const removeLogDetails = (logData) => dispatch => {
     axios
         .post("/api/logs/remove", logData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: REMOVE_LOG_DETAILS,
                 payload: res

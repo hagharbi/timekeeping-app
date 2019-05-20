@@ -46,7 +46,6 @@ class TextFields1 extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state.client);
         const clientData = {
             id: this.state.client._id,
             firstName: this.state.client.firstName,
@@ -65,25 +64,23 @@ class TextFields1 extends React.Component {
                 zip: this.state.client.address.zip,
             }
         };
-        console.log(clientData);
         this.props.updateClientDetails(clientData);
+        window.location.href = '/clients';
 
     };
 
     archiveClient(event) {
-        event.preventDefault()
-        console.log(this.state)
+        event.preventDefault();
         const clientData = {
             id: this.state.client._id
         };
         this.props.removeClientDetails(clientData);
-        window.location.href = '/clients'
-    }
+        window.location.href = '/clients';
+    };
 
     beginningState(objectFound, event) {
         this.setState({ client: objectFound });
-        console.log(this.state);
-    }
+    };
 
     handleChange = e => {
         this.setState({
@@ -92,16 +89,14 @@ class TextFields1 extends React.Component {
                 this.state.client,
                 { [e.target.id]: e.target.value }
             ),
-        })
-        console.log(this.state.client)
-    }
+        });
+    };
 
     render() {
         const { classes } = this.props;
         const { data } = this.props.clients;
 
         if (!data) {
-            console.log(null)
             return null
         }
 
@@ -111,8 +106,6 @@ class TextFields1 extends React.Component {
 
             var path;
             ['pathname'].forEach(function (k) {
-                console.log(k + ':', a[k]);
-                console.log(a[k])
                 path = a[k]
                 return path
             });
@@ -121,8 +114,6 @@ class TextFields1 extends React.Component {
 
             var elementPos = data.clients.map(function (x) { return x._id; }).indexOf(id);
             var objectFound = data.clients[elementPos];
-            console.log(this.state.client)
-            console.log(objectFound)
 
             if (!this.state.client) {
                 this.beginningState(objectFound);
@@ -142,10 +133,10 @@ class TextFields1 extends React.Component {
                                 container
                                 spacing={24}
                             >
-                                <Grid item>
-                                    <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>Client Settings</strong></h5>
+                                <Grid >
+                                    <h4><strong>Client Details</strong></h4>
                                 </Grid>
-                                <Grid item style={{ margin: '3rem 6rem 2rem auto' }}>
+                                <Grid style={{ margin: '3rem 6rem 2rem auto' }}>
                                     <Link to="/clients" style={{ color: "#037F8C" }}>
                                         < KeyboardBackspaceIcon style={{ paddingTop: "13px", color: "gray" }} /> Back to All Clients
                                 </Link>
@@ -314,7 +305,7 @@ class TextFields1 extends React.Component {
                                         margin="normal"
                                     />
                                 </Grid>
-
+                                {/* 
                                 <Grid item xs={12}>
                                     <TextField
                                         id="notes"
@@ -326,16 +317,14 @@ class TextFields1 extends React.Component {
                                         className={classes.textField}
                                         margin="dense"
                                     />
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "3rem", "marginLeft": 8 }}>
 
-                                    <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
+                                    <Button variant="contained" type="submit" size="large" color="primary" style={{ "marginTop": 15 }} className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
 
-                                </Grid>
-                                
-                                <Grid item xs={6} sm={3} style={{ "marginTop": "30px" }}>
-                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, align: "right" }} onClick={this.archiveClient}>ARCHIVE</Button>
+                                    <Button variant="outlined" type="submit" size="large" color="primary" className={classes.margin} style={{ "marginTop": 15, "marginLeft": 15 }} onClick={this.archiveClient}>ARCHIVE</Button>
+
                                 </Grid>
 
                             </form>

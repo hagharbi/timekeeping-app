@@ -65,7 +65,6 @@ class NewClientFields extends React.Component {
                 zip: this.state.client.address.zip,
             }
         };
-        console.log(clientData);
         this.props.createClientDetails(clientData);
         window.location.href = '/clients'
     };
@@ -79,7 +78,6 @@ class NewClientFields extends React.Component {
     beginningState(id) {
         this.setState({
             client:
-
             {
                 userId: id,
                 firstName: "",
@@ -98,8 +96,7 @@ class NewClientFields extends React.Component {
                 }
             }
         });
-        console.log(this.state);
-    }
+    };
 
     handleChange = e => {
         this.setState({
@@ -108,21 +105,18 @@ class NewClientFields extends React.Component {
                 this.state.client,
                 { [e.target.id]: e.target.value }
             ),
-        })
-        console.log(this.state.client)
-    }
+        });
+    };
 
     render() {
         const { classes } = this.props;
         const { data } = this.props.user;
 
         if (!data) {
-            console.log(null)
             return null
         }
 
         else {
-            console.log(data)
             if (!this.state.client) {
                 this.beginningState(data._id);
                 return null
@@ -131,14 +125,17 @@ class NewClientFields extends React.Component {
 
                 return (
                     <Grid container spacing={24}>
-                        <Grid item xs={2} sm={4} md={3} lg={2}>
+                        <Grid item xs={1} sm={4} md={3} lg={2}>
                             <Paper className={classes.paper}></Paper>
                         </Grid>
+
                         <Grid item xs={10} sm={8} md={9} lg={10}>
-                            <h5 style={{ margin: '3rem auto 2rem -2rem' }}><strong>New Client</strong></h5>
+
+                            <h5 style={{ margin: '3rem auto 2rem 0rem' }}><strong>New Client</strong></h5>
+
                             <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
-                                <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
+                                <Grid item xs={12}>
                                     <h6>Basic Info</h6>
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={4} lg={3}>
@@ -300,7 +297,7 @@ class NewClientFields extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} sm={6} md={4} lg={12}>
+                                {/*                                 <Grid item xs={12} sm={6} md={4} lg={12}>
                                     <TextField
                                         id="notes"
                                         label="Notes"
@@ -311,12 +308,13 @@ class NewClientFields extends React.Component {
                                         className={classes.textField}
                                         margin="dense"
                                     />
-                                </Grid>
+                                </Grid> */}
+
                                 <Grid item xs={6} sm={9} style={{ "marginTop": "3rem", "marginLeft": 8 }}>
 
-                                    <Button variant="contained" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
+                                    <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} onClick={this.handleSubmit}>SAVE</Button>
 
-                                    <Button style={{ "marginLeft": 15 }} variant="outlined" type="submit" size="medium" color="secondary" className={classes.margin} onClick={this.handleCancel}>CANCEL</Button>
+                                    <Button style={{ "marginLeft": 15 }} variant="outlined" type="submit" size="large" color="primary" className={classes.margin} onClick={this.handleCancel}>CANCEL</Button>
 
                                 </Grid>
 
@@ -327,7 +325,7 @@ class NewClientFields extends React.Component {
             }
         }
     }
-}
+};
 
 NewClientFields.propTypes = {
     classes: PropTypes.object.isRequired,

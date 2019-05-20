@@ -126,7 +126,7 @@ class CustomPaginationActionsTable extends React.Component {
   handleClick = (id, e) => {
     e.preventDefault();
     window.location = "/clients/" + id
-  }
+  };
 
   handleChangePage = (event, page) => {
     this.setState({ page });
@@ -139,18 +139,13 @@ class CustomPaginationActionsTable extends React.Component {
   render() {
     const { classes } = this.props;
     const { rowsPerPage, page } = this.state;
-
-
     const { data } = this.props.clients;
 
     if (!data) {
-      console.log(null)
       return null
     }
 
     else {
-      console.log(data.clients)
-
       const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.clients.length - page * rowsPerPage);
 
       data.clients.sort((a, b) => (a.projects.length > b.projects.length ? -1 : 1));
@@ -161,21 +156,20 @@ class CustomPaginationActionsTable extends React.Component {
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item xs={10} sm={8} md={9} lg={9}>
-            {/* <Paper className={classes.root}> */}
             <Grid
               justify="space-between"
               container
               spacing={24}
             >
               <Grid item>
-                <h5><strong>Clients</strong></h5>
+                <h4><strong>Clients</strong></h4>
               </Grid>
               <Grid item>
                 <Link
                   to="/newclient">
                   <Button
                     // onClick={}
-                    variant="contained" color="secondary" className={classes.button}
+                    variant="contained" color="primary" className={classes.button}
                     style={{ marginTop: "3rem" }}
                   >
                     + New Client
@@ -187,12 +181,12 @@ class CustomPaginationActionsTable extends React.Component {
               <Table className={classes.table}>
                 <TableHead id="th">
                   <TableRow>
-                    <TableCell variant="h5" component="th" scope="row">
+                    <TableCell variant="headline" component="th" scope="row">
                       Company
                       </TableCell>
-                    <TableCell variant="h5" component="th" scope="row">Email</TableCell>
-                    <TableCell variant="h5" component="th" scope="row">Phone</TableCell>
-                    <TableCell variant="h5" component="th" align="right">Projects</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Email</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Phone</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Projects</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -201,12 +195,12 @@ class CustomPaginationActionsTable extends React.Component {
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map(client => (
                       <TableRow hover style={{ cursor: 'pointer' }} key={client._id} onClick={(e) => this.handleClick(client._id, e)}>
-                        <TableCell id="td" component="th" scope="row">
+                        <TableCell variant="body1" scope="row">
                           {client.company}
                         </TableCell>
-                        <TableCell id="td" component="th" scope="row">{client.email}</TableCell>
-                        <TableCell id="td" component="th" scope="row"> {client.phone}</TableCell>
-                        <TableCell id="td" align="right">{client.projects.length}</TableCell>
+                        <TableCell variant="body1" scope="row">{client.email}</TableCell>
+                        <TableCell variant="body1" scope="row"> {client.phone}</TableCell>
+                        <TableCell variant="body1" scope="row">{client.projects.length}</TableCell>
                       </TableRow>
                     ))}
                   {emptyRows > 0 && (
@@ -235,13 +229,12 @@ class CustomPaginationActionsTable extends React.Component {
                 </TableFooter>
               </Table>
             </div>
-            {/* </Paper> */}
           </Grid>
         </Grid>
       );
     }
   }
-}
+};
 
 CustomPaginationActionsTable.propTypes = {
   classes: PropTypes.object.isRequired,
