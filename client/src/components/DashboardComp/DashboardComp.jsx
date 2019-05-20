@@ -50,7 +50,6 @@ class Dash extends React.Component {
 
     beginningState(data) {
         this.setState({ projects: data });
-        console.log(this.state);
     };
 
     highChartsReady() {
@@ -58,23 +57,23 @@ class Dash extends React.Component {
             
         Highcharts.chart('atmospheric-composition', {
             chart: {
-              type: 'pie',
+                type: 'pie',
             },
             title: {
-              verticalAlign: 'middle',
-              floating: true,
-              text: 'Projects',
-              style: {
-                  fontSize: '20px',
-              }
+                verticalAlign: 'middle',
+                floating: true,
+                text: 'Projects',
+                style: {
+                    fontSize: '20px',
+                }
             },
             plotOptions: {
-              pie: {
-                  dataLabels: {
-                      format: '{point.name}: {point.percentage:.1f} %'
-                  },
-                innerSize: '60%'
-              }
+                pie: {
+                    dataLabels: {
+                        format: '{point.name}: {point.percentage:.1f} %'
+                    },
+                    innerSize: '60%',
+                }
             },
             series: this.state.series
         });
@@ -83,16 +82,18 @@ class Dash extends React.Component {
     };
 
     projectData() {
+        //needs timer to render in correct order
         setTimeout(() => {
+
         const projects = this.state.projects;
-        console.log(projects);
         const count = projects.projects.length;
-        console.log(count);
+
+        //percentages for each category
         const inactive = Math.round((projects.projects.filter(project => project.status === "inactive").length)/count * 100);
         const pending =  Math.round((projects.projects.filter(project => project.status === "pending").length)/count * 100);
         const inprogress = Math.round((projects.projects.filter(project => project.status === "in progress").length)/count * 100);
         const completed = Math.round((projects.projects.filter(project => project.status === "completed").length)/count * 100);
-        console.log(inactive + " " + pending + " " + inprogress + " " + completed);
+
         this.setState({
             series: [{
                 name: 'Projects',
@@ -120,24 +121,17 @@ class Dash extends React.Component {
                 ]
             }],
         });
-
-        console.log(this.state)
         }, 500);
     }
 
     render(){
-        //const { classes } = this.props;
-
         const { data } = this.props.users;
 
         if (!data) {
-            console.log(null)
             return null
         }
 
         else {
-            console.log(data);
-
             if (!this.state.projects) {
                 this.beginningState(data);
                 this.projectData();
@@ -158,24 +152,21 @@ class Dash extends React.Component {
                             </Grid>
                         </Grid>
                     </Grid> 
-                    
                 )
             }
         }
     }
-    
-}
+};
 
 Dash.propTypes = {
     classes: PropTypes.object.isRequired,
-    logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({
     auth: state.auth,
     userDetails: state.findUser.userDetails
-  });
+});
 
 export default connect(
     mapStateToProps

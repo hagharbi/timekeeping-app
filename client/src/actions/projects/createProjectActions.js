@@ -10,7 +10,6 @@ export const createProjectDetails = (projectData) => dispatch => {
     axios
         .post("/api/projects/create", projectData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: CREATE_PROJECT_DETAILS,
                 payload: res

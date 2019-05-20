@@ -126,7 +126,7 @@ class CustomPaginationActionsTable extends React.Component {
   handleClick = (id, e) => {
     e.preventDefault();
     window.location = "/clients/" + id
-  }
+  };
 
   handleChangePage = (event, page) => {
     this.setState({ page });
@@ -139,18 +139,13 @@ class CustomPaginationActionsTable extends React.Component {
   render() {
     const { classes } = this.props;
     const { rowsPerPage, page } = this.state;
-
-
     const { data } = this.props.clients;
 
     if (!data) {
-      console.log(null)
       return null
     }
 
     else {
-      console.log(data.clients)
-
       const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.clients.length - page * rowsPerPage);
 
       data.clients.sort((a, b) => (a.projects.length > b.projects.length ? -1 : 1));
@@ -161,7 +156,6 @@ class CustomPaginationActionsTable extends React.Component {
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item xs={10} sm={8} md={9} lg={9}>
-            {/* <Paper className={classes.root}> */}
             <Grid
               justify="space-between"
               container
@@ -235,13 +229,12 @@ class CustomPaginationActionsTable extends React.Component {
                 </TableFooter>
               </Table>
             </div>
-            {/* </Paper> */}
           </Grid>
         </Grid>
       );
     }
   }
-}
+};
 
 CustomPaginationActionsTable.propTypes = {
   classes: PropTypes.object.isRequired,

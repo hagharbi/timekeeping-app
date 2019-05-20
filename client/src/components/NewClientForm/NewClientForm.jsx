@@ -65,7 +65,6 @@ class NewClientFields extends React.Component {
                 zip: this.state.client.address.zip,
             }
         };
-        console.log(clientData);
         this.props.createClientDetails(clientData);
         window.location.href = '/clients'
     };
@@ -79,7 +78,6 @@ class NewClientFields extends React.Component {
     beginningState(id) {
         this.setState({
             client:
-
             {
                 userId: id,
                 firstName: "",
@@ -98,8 +96,7 @@ class NewClientFields extends React.Component {
                 }
             }
         });
-        console.log(this.state);
-    }
+    };
 
     handleChange = e => {
         this.setState({
@@ -108,21 +105,18 @@ class NewClientFields extends React.Component {
                 this.state.client,
                 { [e.target.id]: e.target.value }
             ),
-        })
-        console.log(this.state.client)
-    }
+        });
+    };
 
     render() {
         const { classes } = this.props;
         const { data } = this.props.user;
 
         if (!data) {
-            console.log(null)
             return null
         }
 
         else {
-            console.log(data)
             if (!this.state.client) {
                 this.beginningState(data._id);
                 return null
@@ -331,7 +325,7 @@ class NewClientFields extends React.Component {
             }
         }
     }
-}
+};
 
 NewClientFields.propTypes = {
     classes: PropTypes.object.isRequired,

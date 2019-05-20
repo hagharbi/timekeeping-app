@@ -10,7 +10,6 @@ export const removeClientDetails = (clientData) => dispatch => {
     axios
         .post("/api/clients/removeclient", clientData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: REMOVE_CLIENT_DETAILS,
                 payload: res

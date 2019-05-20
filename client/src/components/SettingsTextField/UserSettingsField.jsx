@@ -7,18 +7,9 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
 import '../layout/landingPage/imagesCode/global.css';
-const styles = theme => ({
 
-    root: {
-        // backgroundColor: "#f2f2f2",
-    },
+const styles = theme => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
@@ -53,7 +44,7 @@ class TextFields extends React.Component {
             errors: {}
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    };
 
     handleSubmit(event) {
         event.preventDefault()
@@ -64,16 +55,20 @@ class TextFields extends React.Component {
             lastName: this.state.userData.lastName,
             email: this.state.userData.email,
             phone: this.state.userData.phone,
-            // address: this.state.userData.address
+            description: this.state.userData.description,
+            address: {
+                street: this.state.userData.address.street,
+                city: this.state.userData.address.city,
+                state: this.state.userData.address.state,
+                zip: this.state.userData.address.zip,
+            }
         };
-        console.log(userData)
-        this.props.updateUserDetails(userData)
+        this.props.updateUserDetails(userData);
     };
 
     beginningState(objectFound, event) {
         this.setState({ userData: objectFound });
-        console.log(this.state);
-    }
+    };
 
     handleChange = e => {
         this.setState({
@@ -83,14 +78,13 @@ class TextFields extends React.Component {
                 { [e.target.id]: e.target.value }
             ),
         })
-    }
+    };
 
     render() {
         const { classes } = this.props;
         const { data } = this.props.user;
 
         if (!data) {
-            console.log(null)
             return null
         }
 
@@ -220,7 +214,7 @@ class TextFields extends React.Component {
                                         />
                                     </Grid>
 
-                                    <Grid item xs={12} sm={6} md={4} lg={3} style={{ "marginTop": "-1px" }}>
+                                    {/* <Grid item xs={12} sm={6} md={4} lg={3} style={{ "marginTop": "-1px" }}>
                                         <FormControl className={classes.formControl}>
                                             <InputLabel htmlFor="timezone">Timezone</InputLabel>
                                             <Select
@@ -246,13 +240,13 @@ class TextFields extends React.Component {
                                             <FormHelperText>Please select your timezone</FormHelperText>
                                         </FormControl>
 
-                                    </Grid>
+                                    </Grid> */}
 
                                     <Grid item xs={12}>
                                         <h6>Additional Info</h6>
                                     </Grid>
 
-                                    {/* <Grid item xs={12} sm={6} md={4} lg={3}>
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
                                     <TextField
                                         id="category"
                                         label="Category"
@@ -262,9 +256,9 @@ class TextFields extends React.Component {
                                         InputProps={{ disableUnderline: true, }}
                                         margin="normal"
                                     />
-                                </Grid> */}
+                                </Grid>
 
-                                    {/* <Grid item xs={12} sm={6} md={4} lg={3}>
+                                <Grid item xs={12} sm={6} md={4} lg={3}>
                                     <TextField
                                         id="title"
                                         label="Title"
@@ -274,7 +268,7 @@ class TextFields extends React.Component {
                                         InputProps={{ disableUnderline: true, }}
                                         margin="normal"
                                     />
-                                </Grid> */}
+                                </Grid>
 
                                     {/* <Grid item xs={12} sm={6} md={4} lg={3}>
                                     <FormControl className={classes.formControl}>
@@ -310,7 +304,7 @@ class TextFields extends React.Component {
                                             label="Description"
                                             multiline
                                             rows="8"
-                                            value={this.state.userData.descriptionn}
+                                            value={this.state.userData.description}
                                             onChange={this.handleChange}
                                             className={classes.textField}
                                             margin="dense"
@@ -329,8 +323,7 @@ class TextFields extends React.Component {
             }
         }
     }
-
-}
+};
 
 TextFields.propTypes = {
     classes: PropTypes.object.isRequired,

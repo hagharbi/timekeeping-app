@@ -10,7 +10,6 @@ export const findProjectDetails = (projectData) => dispatch => {
     axios
         .post("/api/projects/findone", projectData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: FIND_PROJECT_DETAILS,
                 payload: res

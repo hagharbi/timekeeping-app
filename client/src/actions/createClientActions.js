@@ -10,7 +10,6 @@ export const createClientDetails = (clientData) => dispatch => {
     axios
         .post("/api/clients/create", clientData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: CREATE_CLIENT_DETAILS,
                 payload: res

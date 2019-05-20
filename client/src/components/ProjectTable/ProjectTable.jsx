@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
-import Moment from 'react-moment';
+import moment from 'moment'
 
 //Table
 import Table from '@material-ui/core/Table';
@@ -31,7 +31,6 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 //Icons
@@ -48,8 +47,13 @@ const actionsStyles = theme => ({
     flexShrink: 0,
     color: theme.palette.text.secondary,
     marginLeft: theme.spacing.unit * 2.5,
+    typography: {
+      useNextVariants: true,
+    }
   },
 });
+
+window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
 
 class TablePaginationActions extends React.Component {
   handleFirstPageButtonClick = event => {
@@ -169,8 +173,6 @@ class ProjectTable extends React.Component {
   };
 
   changePriority = e => {
-    console.log(e.target)
-
     const projectData = {
       type: "priority",
       priority: e.target.value,
@@ -182,8 +184,6 @@ class ProjectTable extends React.Component {
   };
 
   changeStatus = e => {
-    console.log(e.target)
-
     const projectData = {
       type: "status",
       status: e.target.value,
@@ -195,8 +195,6 @@ class ProjectTable extends React.Component {
   };
 
   changeDueDate = e => {
-    console.log(e.target)
-
     const projectData = {
       type: "dueDate",
       dueDate: e.target.value,
@@ -230,9 +228,6 @@ class ProjectTable extends React.Component {
         }
       ),
     })
-    console.log(e.target.name)
-    console.log(e.target.value)
-    console.log(this.state.log)
   };
 
   startLog = (event) => {
@@ -242,7 +237,6 @@ class ProjectTable extends React.Component {
       title: this.state.log.title,
       id: this.state.log.id,
     };
-    console.log(logData);
 
     this.props.createLogDetails(logData)
     this.setState({ open: false });
@@ -250,16 +244,11 @@ class ProjectTable extends React.Component {
   };
 
   handleStop = (project) => {
-    console.log(project._id)
-
     if (project.activeLog === false) {
       return
     }
     else {
-      var log = project.logs.filter(log => { return log.counting === true })
-      console.log(log)
-      console.log(log[0]._id)
-
+      var log = project.logs.filter(log => { return log.counting === true });
 
       const logData = {
         projectId: project._id,
@@ -272,11 +261,26 @@ class ProjectTable extends React.Component {
     window.location = "/projects"
   };
 
-  formatCounter(logs) {
+  formatDuration(logs) {
+    var activeLogs = logs.filter(log => { return log.active === true && log.counting === false })
 
-    console.log(logs);
-    var activeLog = logs.filter(log => { return log.counting === true })
-    return activeLog.dateCreated
+    if(activeLogs.length === 0) {
+      return "None"
+    }
+    else if(activeLogs.length > 1) {
+      var total = moment.duration(0);                
+
+      for (var i = 0; i < activeLogs.length; i++) {
+        var on = (activeLogs[i].createdAt).toString();
+        var off = (activeLogs[i].updatedAt).toString();
+        var ms = moment(off).diff(moment(on));
+        total.add(ms, 'ms');
+      }
+
+      var formattedTotal = total.format("hh:mm:ss");
+    
+      return formattedTotal;
+    }
   };
 
   handleChangePage = (event, page) => {
@@ -295,13 +299,10 @@ class ProjectTable extends React.Component {
     const { user } = this.props.user;
 
     if (!data) {
-      console.log(null)
       return null
     }
 
     else {
-      console.log(data)
-      console.log(user.id);
       const sortedData = data
         .sort((a, b) => (a.title < b.title ? -1 : 1))
         .filter(project => { return project.active === true && project.user === user.id })
@@ -314,7 +315,6 @@ class ProjectTable extends React.Component {
             <Paper className={classes.paper}></Paper>
           </Grid>
           <Grid item xs={10} sm={8} md={9} lg={9}>
-            {/* <Paper className={classes.root}> */}
             <Grid
               justify="space-between"
               container
@@ -327,7 +327,6 @@ class ProjectTable extends React.Component {
                 <Link
                   to="/newproject">
                   <Button
-                    // onClick={}
                     variant="contained" color="primary" className={classes.button}
                     style={{ marginTop: "3rem" }}
                   >
@@ -344,6 +343,7 @@ class ProjectTable extends React.Component {
                     <TableCell variant="headline" component="th" scope="row">Client</TableCell>
                     <TableCell variant="headline" component="th" scope="row">Status</TableCell>
                     <TableCell variant="headline" component="th" scope="row">Priority</TableCell>
+                    <TableCell variant="headline" component="th" scope="row">Time Worked</TableCell>
                     <TableCell variant="headline" component="th" scope="row">Timer</TableCell>
                   </TableRow>
                 </TableHead>
@@ -395,7 +395,10 @@ class ProjectTable extends React.Component {
                             </Select>
                           </FormControl>
                         </TableCell>
-
+                        <TableCell variant="body1" scope="row">
+                          {projects.logs.filter(log => { return log.counting === false }).length === 0 ? "None" :
+                        <div>{this.formatDuration(projects.logs)}</div>}
+                        </TableCell>
                         <TableCell variant="p" component="th" scope="row">
                           {
                             projects.activeLog ?
@@ -404,7 +407,7 @@ class ProjectTable extends React.Component {
 
                           }
                           <Dialog
-                            open={this.state.open == projects._id}
+                            open={this.state.open === projects._id}
                             onClose={this.handleClose}
                             aria-labelledby="form-dialog-title"
                           >
@@ -458,7 +461,6 @@ class ProjectTable extends React.Component {
                 </TableFooter>
               </Table>
             </div>
-            {/* </Paper> */}
           </Grid>
         </Grid>
       );

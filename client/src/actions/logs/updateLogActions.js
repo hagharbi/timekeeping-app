@@ -10,7 +10,6 @@ export const updateLogDetails = (logData) => dispatch => {
     axios
         .post("/api/logs/update", logData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: UPDATE_LOG_DETAILS,
                 payload: res

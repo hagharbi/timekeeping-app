@@ -20,9 +20,8 @@ class NewClient extends Component {
         const userData = {
             id: this.props.auth.user.id
         };
-        //console.log('componentdid', this.props.auth.user.id)
         this.props.findUserDetails(userData);
-    }
+    };
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
@@ -38,17 +37,11 @@ class NewClient extends Component {
     };
 
     render() {
-        const { user } = this.props.auth;
-
-
         if (!this.props.userDetails) {
             return null
         }
         else {
-
             const { data } = this.props.userDetails;
-            console.log(user);
-            console.log(data)
 
             if (!data) {
                 return null
@@ -66,7 +59,7 @@ class NewClient extends Component {
             }
         }
     }
-}
+};
 
 
 NewClient.propTypes = {

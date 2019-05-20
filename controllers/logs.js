@@ -13,7 +13,6 @@ module.exports = {
 
         return Log.findById(req.body.id)
         .then(function(dbLog) {
-            console.log(dbLog)
             res.json(dbLog)
         })
         .catch(function(err) {
@@ -31,8 +30,6 @@ module.exports = {
             title: req.body.title,
         });
 
-        console.log(newLog);
-
         newLog
         .save()
         .then(function(dbLog) {
@@ -45,7 +42,6 @@ module.exports = {
             })
             
         })
-        .then(result => console.log(result))
         .catch(err => res.status(422).json(err));
     },
 
@@ -54,25 +50,16 @@ module.exports = {
     updateLog: function(req, res) {
         const query = { _id: req.body.id };
 
-        console.log(query);
-
         Log.findOneAndUpdate(query, { $set: {counting: false} }, { new: true })
         .then(function(dbLog) {
             return Project.findOneAndUpdate({ _id: req.body.projectId }, { $set: {activeLog: false}}, { new: true })
         })
-        .then(function(dbLog1) {
-            console.log(dbLog1)
-        })
         .catch(err => res.status(422).json(err));
-
-        console.log("Does this work?");
     },
 
     //update to add notes (add completion ???)
     updateNotes: function(req, res) {
         const query = { _id: req.body.id };
-
-        console.log(query)
 
         Log.findOneAndUpdate(query, {$push: {notes: req.body.note}})
         .catch(err => res.status(422).json(err));
@@ -81,8 +68,6 @@ module.exports = {
     //update to soft delete
     removeLog: function(req, res) {
         const query = { _id: req.body.id };
-
-        console.log(query)
 
         Log.findOneAndUpdate(query, { $set: {active: false} })
         .catch(err => res.status(422).json(err));

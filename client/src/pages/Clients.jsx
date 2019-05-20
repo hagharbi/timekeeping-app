@@ -20,9 +20,8 @@ class Client extends Component {
     const userData = {
       id: this.props.auth.user.id
     };
-    //console.log('componentdid', this.props.auth.user.id)
     this.props.findUserDetails(userData);
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
@@ -38,10 +37,8 @@ class Client extends Component {
   };
 
   render() {
-    const { user } = this.props.auth;
     const { data } = this.props.userDetails;
-    console.log(user);
-    console.log(data)
+
     return (
       <div >
         <ResponsiveDrawer />
@@ -52,7 +49,7 @@ class Client extends Component {
 
     );
   }
-}
+};
 
 Client.propTypes = {
   findUserDetails: PropTypes.func.isRequired,

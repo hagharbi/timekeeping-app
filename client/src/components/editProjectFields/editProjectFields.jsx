@@ -25,7 +25,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 //Tabs
@@ -219,7 +218,6 @@ class TextFields2 extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state.project);
         const projectData = {
             id: this.state.project._id,
             title: this.state.project.title,
@@ -237,18 +235,15 @@ class TextFields2 extends React.Component {
     };
 
     archiveClient(event) {
-        event.preventDefault()
-        console.log(this.state)
+        event.preventDefault();
         const projectData = {
             id: this.state.project._id
         };
-        console.log(projectData)
         this.props.removeProjectDetails(projectData);
         window.location.href = '/projects';
     };
 
     archiveLog = (id) => {
-        console.log(id);
         this.props.removeLogDetails({id: id});
         document.location.reload();
     };
@@ -260,7 +255,6 @@ class TextFields2 extends React.Component {
           title: this.state.log.title,
           id: this.state.project._id,
         };
-        console.log(logData);
     
         this.props.createLogDetails(logData)
         this.setState({ open: false });
@@ -268,16 +262,11 @@ class TextFields2 extends React.Component {
       };
 
     handleStop = (project) => {
-        console.log(project._id);
-    
         if (project.activeLog === false) {
             return
         }
         else {
             var log = project.logs.filter(log => { return log.counting === true })
-            console.log(log)
-            console.log(log[0]._id)
-    
     
             const logData = {
                 projectId: project._id,
@@ -292,7 +281,6 @@ class TextFields2 extends React.Component {
 
     beginningState(objectFound, event) {
         this.setState({ project: objectFound });
-        console.log(this.state);
     };
 
     handleChange = e => {
@@ -303,10 +291,6 @@ class TextFields2 extends React.Component {
                 { [e.target.id]: e.target.value }
             ),
         });
-        console.log(e.target.id)
-        console.log(e.target.name)
-        console.log(e.target.value)
-        console.log(this.state.project)
     };
 
 
@@ -318,10 +302,6 @@ class TextFields2 extends React.Component {
                 { [e.target.name]: e.target.value }
             ),
         });
-        console.log(e.target.id)
-        console.log(e.target.name)
-        console.log(e.target.value)
-        console.log(this.state.log)
     };
 
     handleChangeDropdown = e => {
@@ -332,7 +312,6 @@ class TextFields2 extends React.Component {
                 { [e.target.name]: e.target.value }
             ),
         })
-        console.log(this.state.project)
     };
 
     handleChangeTabs = (event, value) => {
@@ -354,7 +333,6 @@ class TextFields2 extends React.Component {
         const { page, rowsPerPage } = this.props;
 
         if (!data) {
-            console.log(null)
             return null
         }
 
@@ -364,8 +342,6 @@ class TextFields2 extends React.Component {
 
             var path;
             ['pathname'].forEach(function (k) {
-                console.log(k + ':', a[k]);
-                console.log(a[k])
                 path = a[k]
                 return path
             });
@@ -380,10 +356,6 @@ class TextFields2 extends React.Component {
                 return null
             }
             else {
-
-                console.log(this.state.project.logs
-                    .filter(log => { return log.active === true }).length)
-
                 const emptyRows = rowsPerPage - Math.min(rowsPerPage, this.state.project.logs
                     .filter(log => { return log.active === true }).length - page * rowsPerPage);
 
@@ -486,6 +458,7 @@ class TextFields2 extends React.Component {
                                         margin="normal"
                                     />
                                 </Grid> */}
+                                
                                 <Grid item xs={6} sm={3} md={2} lg={2}>
                                     <TextField
                                         id="timeEst"
@@ -615,9 +588,7 @@ class TextFields2 extends React.Component {
                                         Client Note
                                         </TableCell>
                                         <TableCell variant="h5" component="th" scope="row">Start Date</TableCell>
-                                        {/* <TableCell variant="h5" component="th" scope="row">Start Time</TableCell> */}
                                         <TableCell variant="h5" component="th" scope="row">Stop Date</TableCell>
-                                        {/* <TableCell variant="h5" component="th" scope="row">Stop Time</TableCell> */}
                                         <TableCell variant="h5" component="th" scope="row">Duration</TableCell>
                                         <TableCell variant="h5" component="th" scope="row"></TableCell>
                                     </TableRow>
@@ -632,9 +603,6 @@ class TextFields2 extends React.Component {
                                             {log.title}
                                             </TableCell>
                                             <TableCell id="td" component="th" scope="row"><Moment format="MM/DD/YYYY">{log.createdAt}</Moment></TableCell>
-                                            {/* <TableCell id="td" component="th" scope="row">
-                                                <Moment format="HH:mm">{log.createdAt}</Moment>
-                                            </TableCell> */}
                                             <TableCell id="td" component="th" scope="row">
                                                 {log.counting ? "" : <Moment format="MM/DD/YYYY">{log.updatedAt}</Moment>}
                                             </TableCell>
@@ -676,7 +644,6 @@ class TextFields2 extends React.Component {
                                     </TableFooter>
                                 </Table>
                                 </div>
-                                {/* </Paper> */}
                             </Grid>
                         </Grid>
                     </TabContainer>}
@@ -685,7 +652,7 @@ class TextFields2 extends React.Component {
             }
         }
     }
-}
+};
 
 TextFields2.propTypes = {
     classes: PropTypes.object.isRequired,
