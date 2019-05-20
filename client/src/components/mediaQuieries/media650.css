@@ -157,10 +157,17 @@
              }
            }
 
+           @media only screen and (max-width: 650px) {
+            #clientPage {
+                   width: 95vw!important;
+                   overflow-x: scroll!important;
+                 }
+               }
+
 
 /* 
       @media only screen and (max-width: 650px) {
-    #hillZ {
+    #clientPage {
            border-radius: 50vw;
          }
        } */

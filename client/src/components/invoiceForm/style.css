@@ -84,8 +84,8 @@ input {
 #text-right {
   margin: 0px 0 0 0vw;
   position: absolute;
-  top: 510px;
-  left: 40vw;
+  top: 500px;
+  left: 32vw;
   Width: 30vw;
 }
 
@@ -94,7 +94,7 @@ input {
   position: absolute;
   top: 1220px;
   left: 17.5vw;
-  Width: 70vw;
+  Width: 62vw;
   min-width: 30vw;
 }
 
