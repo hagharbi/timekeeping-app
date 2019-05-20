@@ -246,29 +246,29 @@ class TextFields extends React.Component {
                                         <h6>Additional Info</h6>
                                     </Grid>
 
-                                <Grid item xs={12} sm={6} md={4} lg={3}>
-                                    <TextField
-                                        id="category"
-                                        label="Category"
-                                        value={this.state.userData.category}
-                                        className={classes.textField}
-                                        onChange={this.handleChange}
-                                        InputProps={{ disableUnderline: true, }}
-                                        margin="normal"
-                                    />
-                                </Grid>
+                                    <Grid item xs={12} sm={6} md={4} lg={3}>
+                                        <TextField
+                                            id="category"
+                                            label="Category"
+                                            value={this.state.userData.category}
+                                            className={classes.textField}
+                                            onChange={this.handleChange}
+                                            InputProps={{ disableUnderline: true, }}
+                                            margin="normal"
+                                        />
+                                    </Grid>
 
-                                <Grid item xs={12} sm={6} md={4} lg={3}>
-                                    <TextField
-                                        id="title"
-                                        label="Title"
-                                        value={this.state.userData.title}
-                                        className={classes.textField}
-                                        onChange={this.handleChange}
-                                        InputProps={{ disableUnderline: true, }}
-                                        margin="normal"
-                                    />
-                                </Grid>
+                                    <Grid item xs={12} sm={6} md={4} lg={3}>
+                                        <TextField
+                                            id="title"
+                                            label="Title"
+                                            value={this.state.userData.title}
+                                            className={classes.textField}
+                                            onChange={this.handleChange}
+                                            InputProps={{ disableUnderline: true, }}
+                                            margin="normal"
+                                        />
+                                    </Grid>
 
                                     {/* <Grid item xs={12} sm={6} md={4} lg={3}>
                                     <FormControl className={classes.formControl}>

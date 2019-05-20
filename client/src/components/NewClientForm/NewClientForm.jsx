@@ -131,8 +131,18 @@ class NewClientFields extends React.Component {
 
                         <Grid item xs={10} sm={8} md={9} lg={10}>
 
-                            <h5 style={{ margin: '3rem auto 2rem 0rem' }}><strong>New Client</strong></h5>
+                            <Grid
+                                justify="space-between"
+                                container
+                                spacing={24}
+                            >
+                                <Grid item>
+                                    <h4><strong>New Client</strong></h4>
+                                </Grid>
+                                <Grid item>
 
+                                </Grid>
+                            </Grid>
                             <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
                                 <Grid item xs={12}>
@@ -178,7 +188,7 @@ class NewClientFields extends React.Component {
                                 </Grid>
 
                                 <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
-                                    <h6>Point of Contact</h6>
+                                    <h6>POC Info</h6>
                                 </Grid>
 
                                 <Grid item xs={12} sm={6} md={4} lg={3}>

@@ -19,17 +19,7 @@ const styles = theme => ({
     menu: {
         width: 300,
     },
-    // Card Styles
-    card: {
-        display: 'flex',
-        minWidth: 275,
-        backgroundColor: '#F5f5f5',
-    },
-    // bullet: {
-    //     display: 'inline-block',
-    //     margin: '0 2px',
-    //     transform: 'scale(0.8)',
-    // },
+
 
     title: {
         fontSize: 14,
@@ -54,77 +44,77 @@ class Dash extends React.Component {
 
     highChartsReady() {
         setTimeout(() => {
-            
-        Highcharts.chart('atmospheric-composition', {
-            chart: {
-                type: 'pie',
-            },
-            title: {
-                verticalAlign: 'middle',
-                floating: true,
-                text: 'Projects',
-                style: {
-                    fontSize: '20px',
-                }
-            },
-            plotOptions: {
-                pie: {
-                    dataLabels: {
-                        format: '{point.name}: {point.percentage:.1f} %'
-                    },
-                    innerSize: '60%',
-                }
-            },
-            series: this.state.series
-        });
 
-        },1);
+            Highcharts.chart('atmospheric-composition', {
+                chart: {
+                    type: 'pie',
+                },
+                title: {
+                    verticalAlign: 'middle',
+                    floating: true,
+                    text: 'Projects',
+                    style: {
+                        fontSize: '30px',
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        dataLabels: {
+                            format: '{point.name}: {point.percentage:.1f} %'
+                        },
+                        innerSize: '50%',
+                    },
+                },
+                series: this.state.series
+            });
+
+        }, 1);
     };
 
     projectData() {
         //needs timer to render in correct order
         setTimeout(() => {
 
-        const projects = this.state.projects;
-        const count = projects.projects.length;
+            const projects = this.state.projects;
+            const count = projects.projects.length;
 
-        //percentages for each category
-        const inactive = Math.round((projects.projects.filter(project => project.status === "inactive").length)/count * 100);
-        const pending =  Math.round((projects.projects.filter(project => project.status === "pending").length)/count * 100);
-        const inprogress = Math.round((projects.projects.filter(project => project.status === "in progress").length)/count * 100);
-        const completed = Math.round((projects.projects.filter(project => project.status === "completed").length)/count * 100);
+            //percentages for each category
+            const inactive = Math.round((projects.projects.filter(project => project.status === "inactive").length) / count * 100);
+            const pending = Math.round((projects.projects.filter(project => project.status === "pending").length) / count * 100);
+            const inprogress = Math.round((projects.projects.filter(project => project.status === "in progress").length) / count * 100);
+            const completed = Math.round((projects.projects.filter(project => project.status === "completed").length) / count * 100);
 
-        this.setState({
-            series: [{
-                name: 'Projects',
-                data: [
-                    {
-                    name: 'Inactive',
-                    y: inactive,
-                    color: '#3498db'
-                    },
-                    {
-                    name: 'Pending',
-                    y: pending,
-                    color: '#9b59b6'
-                    },
-                    {
-                    name: 'In Progress',
-                    y: inprogress,
-                    color: '#2ecc71'
-                    },
-                    {
-                    name: 'Completed',
-                    y: completed,
-                    color: '#f1c40f'
-                    }
-                ]
-            }],
-        });
+            this.setState({
+                series: [{
+                    name: 'Projects',
+                    data: [
+                        {
+                            name: 'Inactive',
+                            y: inactive,
+                            color: '#AC1E23'
+                        },
+                        {
+                            name: 'Pending',
+                            y: pending,
+                            color: '#ECC41C'
+                        },
+                        {
+                            name: 'In Progress',
+                            y: inprogress,
+                            color: '#2B317E',
+                        },
+                        {
+                            name: 'Completed',
+                            y: completed,
+                            color: '#46AC58'
+                        }
+                    ]
+                }],
+            });
         }, 500);
     }
 
-    render(){
+    render() {
         const { data } = this.props.users;
 
         if (!data) {
@@ -146,12 +136,12 @@ class Dash extends React.Component {
                         </Grid>
                         <Grid item xs={9} sm={7} md={8} lg={9}>
                             <h4><strong>Dashboard</strong></h4>
-                            <Grid item sm={7} lg={10}>
+                            <Grid item xs={10} sm={7} lg={10}>
                                 <div id='atmospheric-composition'></div>
                                 {this.highChartsReady()}
                             </Grid>
                         </Grid>
-                    </Grid> 
+                    </Grid>
                 )
             }
         }
