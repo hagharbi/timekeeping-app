@@ -395,10 +395,11 @@ class ProjectTable extends React.Component {
                             </Select>
                           </FormControl>
                         </TableCell>
+
                         <TableCell variant="p" component="th" scope="row">
                           {
                             projects.activeLog ?
-                              <Button variant="contained" color="secondary" className={classes.button} key={projects._id} onClick={() => this.handleStop(projects)}><TimerOffIcon /> Started: <Moment date={this.formatCounter(projects.logs)} format="HH:mm"></Moment></Button> :
+                              <Button variant="contained" color="action" className={classes.button} key={projects._id} onClick={() => this.handleStop(projects)}><TimerOffIcon/> STOP </Button> :
                               <Button variant="contained" color="secondary" className={classes.button} key={projects._id} onClick={() => this.handleClickOpen(projects._id)}><TimerIcon /> Start</Button>
 
                           }
