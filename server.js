@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const routes = require("./routes");
 const passport = require("passport");
 const users = require("./routes/api/users");
 const projects = require("./routes/api/projects");
@@ -19,8 +18,6 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 }
-// Add routes
-app.use(routes);
 
 // API Routes
 app.use("/api/users", users);
