@@ -9,7 +9,6 @@ module.exports = {
 
     //findById for a specific User
     findOneUser: function(req, res) {
-        console.log(req.body);
         return User.findById(req.body.id)
         .populate({
             path: 'clients',
@@ -25,7 +24,6 @@ module.exports = {
 
     //findById for a specific Client
     findOneClient: function(req, res) {
-        console.log(req.body);
         return Client.findById(req.body.id)
         .populate({
             path: 'projects',
@@ -73,7 +71,6 @@ module.exports = {
             $push: {notes: req.body.notes},
             $push: {user: req.body.userId}
         });
-        console.log(newClient);
 
         newClient
         .save()
@@ -111,12 +108,8 @@ module.exports = {
             },
             $push: {notes: req.body.notes}
         };
-        
-        console.log(updatedClient)
 
         const query = { _id: req.body.id };
-
-        console.log(query)
 
         Client.findOneAndUpdate(query, { $set: updatedClient})
         .catch(err => res.status(422).json(err));
@@ -126,8 +119,6 @@ module.exports = {
     addNotes: function(req, res) {
         const query = { _id: req.body.id };
 
-        console.log(query)
-
         Client.findOneAndUpdate(query, {$push: {notes: req.body.notes}})
         .catch(err => res.status(422).json(err));
     },
@@ -135,8 +126,6 @@ module.exports = {
     //update to make Client inactive (soft delete)
     removeClient: function(req, res) {
         const query = { _id: req.body.id };
-
-        console.log(query)
 
         Client.findOneAndUpdate(query, { $set: {active: false} })
         .catch(err => res.status(422).json(err));
@@ -155,7 +144,7 @@ module.exports = {
             category: req.body.category,
             photo: req.body.photo,
             title: req.body.title,
-            desciption: req.body.desciption,
+            description: req.body.description,
             timeZone: req.body.timeZone,
             address: {
                 street: req.body.street,
@@ -164,12 +153,8 @@ module.exports = {
                 zip: req.body.zip
             }
         };
-        
-        console.log(updatedUser)
 
         const query = { _id: req.body.userId };
-
-        console.log(query)
 
         User.findOneAndUpdate(query, { $set: updatedUser})
         .catch(err => res.status(422).json(err));
@@ -178,8 +163,6 @@ module.exports = {
     //update to make User inactive (soft delete)
     removeUser: function(req, res) {
         const query = { _id: req.body.userId };
-
-        console.log(query)
 
         User.findOneAndUpdate(query, { $set: {active: false} })
         .catch(err => res.status(422).json(err));

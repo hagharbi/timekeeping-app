@@ -9,12 +9,10 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-// import InboxIcon from '@material-ui/icons/MoveToInbox'; <----- defined but never used. commented out for now
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import MailIcon from '@material-ui/icons/Mail';  <----- defined but never used. commented out for now
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -27,8 +25,6 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import "../layout/landingPage/imagesCode/global.css";
-// import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';  <----- Called but never used [[___JRS___]]
-// import ChevronRightIcon from '@material-ui/icons/ChevronRight';   <----- Called but never used [[___JRS___]]
 
 const drawerWidth = 180;
 
@@ -37,7 +33,7 @@ const styles = theme => ({
     display: 'flex',
   },
   darkColor: {
-    color: theme.palette.primary.dark // or theme.palette.primary.main
+    color: theme.palette.primary.dark
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -96,12 +92,6 @@ class ResponsiveDrawer extends React.Component {
   state = {
     mobileOpen: false,
   };
-
-  // connect = (store => {
-  //   return {
-  //     menu: store.menu
-  //   };
-  // })
 
   handleDrawerToggle = () => {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
@@ -263,8 +253,6 @@ class ResponsiveDrawer extends React.Component {
 
 ResponsiveDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
-  // Injected by the documentation to work in an iframe.
-  // You won't need it on your project.
   container: PropTypes.object,
   theme: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,

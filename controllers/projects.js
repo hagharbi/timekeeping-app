@@ -52,21 +52,14 @@ module.exports = {
             client: req.body.clientID,
             $push: {notes: req.body.notes}
         });
-        console.log(newProject);
 
         newProject
         .save()
         .then(function(dbProject) {
-
-            console.log(dbProject);
-            console.log(req.body.userId);
             
              Client.findOneAndUpdate({ _id: req.body.clientID }, { $push: {projects: dbProject._id }}, { new: true })
-       
 
-            // console.log(dbProject._id);
-
-            // // User association
+            // User association
             return User.findByIdAndUpdate(req.body.userId, { $push: {projects: dbProject._id }})
         })
         .then(dbModel => console.log(dbModel))
@@ -86,12 +79,8 @@ module.exports = {
             dueDate: req.body.dueDate,
             $push: {notes: req.body.note}
         };
-        
-        console.log(updatedProject)
 
         const query = { _id: req.body.id };
-
-        console.log(query)
 
         Project.findOneAndUpdate(query, { $set: updatedProject})
         .catch(err => res.status(422).json(err));
@@ -115,12 +104,8 @@ module.exports = {
                 dueDate: req.body.dueDate,
             };
         }
-        
-        console.log(updatedProject)
 
         const query = { _id: req.body.id };
-
-        console.log(query)
 
         Project.findOneAndUpdate(query, { $set: updatedProject})
         .catch(err => res.status(422).json(err));
@@ -130,8 +115,6 @@ module.exports = {
     updateNotes: function(req, res) {
         const query = { _id: req.body.id };
 
-        console.log(query)
-
         Project.findOneAndUpdate(query, {$push: {notes: req.body.note}})
         .catch(err => res.status(422).json(err));
     },
@@ -139,8 +122,6 @@ module.exports = {
     //update to make project inactive (soft delete)
     removeProject: function(req, res) {
         const query = { _id: req.body.id };
-
-        console.log(query)
 
         Project.findOneAndUpdate(query, { $set: {active: false} })
         .catch(err => res.status(422).json(err));

@@ -10,7 +10,6 @@ export const findAllProjectDetails = (projectData) => dispatch => {
     axios
         .post("/api/projects/findbyuser", projectData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: FINDALL_PROJECT_DETAILS,
                 payload: res

@@ -19,7 +19,6 @@ class Invoice extends Component {
     const userData = {
       id: this.props.auth.user.id
     };
-    //console.log('componentdid', this.props.auth.user.id)
     this.props.findUserDetails(userData);
   }
 
@@ -37,10 +36,8 @@ class Invoice extends Component {
   };
 
   render() {
-    const { user } = this.props.auth;
     const { data } = this.props.userDetails;
-    console.log(user);
-    console.log(data)
+
     return (
       <div >
         <ResponsiveDrawer />
@@ -51,7 +48,7 @@ class Invoice extends Component {
 
     );
   }
-}
+};
 
 Invoice.propTypes = {
   findUserDetails: PropTypes.func.isRequired,

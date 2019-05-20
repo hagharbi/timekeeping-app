@@ -10,7 +10,6 @@ export const updateUserDetails = (userData) => dispatch => {
     axios
         .post("/api/clients/updateuser", userData)
         .then(function (res) {
-            console.log(res)
             dispatch({
                 type: UPDATE_USER_DETAILS,
                 payload: res

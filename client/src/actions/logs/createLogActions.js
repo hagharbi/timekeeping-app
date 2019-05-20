@@ -10,7 +10,6 @@ export const createLogDetails = (logData) => dispatch => {
     axios
         .post("/api/logs/create", logData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: CREATE_LOG_DETAILS,
                 payload: res

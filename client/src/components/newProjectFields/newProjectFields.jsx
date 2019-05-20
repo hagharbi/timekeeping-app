@@ -94,10 +94,8 @@ class NewProjectFields extends React.Component {
         this.setState({ open: false });
     };
 
-
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state.project);
         const projectData = {
             title: this.state.project.title,
             status: this.state.project.status,
@@ -112,7 +110,6 @@ class NewProjectFields extends React.Component {
         };
 
         this.props.createProjectDetails(projectData);
-        console.log(projectData);
         window.location.href = '/projects'
     };
 
@@ -124,7 +121,6 @@ class NewProjectFields extends React.Component {
             email: this.state.client.email,
             company: this.state.client.company,
         };
-        console.log(clientData);
 
         this.props.createClientDetails(clientData);
         this.setState({ open: false });
@@ -162,7 +158,6 @@ class NewProjectFields extends React.Component {
                 email: ""
             }
         });
-        console.log(this.state);
     };
 
     handleChange = e => {
@@ -173,10 +168,6 @@ class NewProjectFields extends React.Component {
                 { [e.target.id]: e.target.value }
             ),
         })
-        console.log(e.target.id)
-        console.log(e.target.name)
-        console.log(e.target.value)
-        console.log(this.state.project)
     };
 
     handleClientChange = e => {
@@ -187,10 +178,6 @@ class NewProjectFields extends React.Component {
                 { [e.target.id]: e.target.value }
             ),
         })
-        console.log(e.target.id)
-        console.log(e.target.name)
-        console.log(e.target.value)
-        console.log(this.state.client)
     };
 
     handleChangeDropdown = e => {
@@ -201,7 +188,6 @@ class NewProjectFields extends React.Component {
                 { [e.target.name]: e.target.value }
             ),
         })
-        console.log(this.state.project)
     };
 
     render() {
@@ -209,14 +195,12 @@ class NewProjectFields extends React.Component {
         const { data } = this.props.projects;
 
         if (!data) {
-            console.log(null)
             return null
         }
 
         else {
 
             if (!this.state.project) {
-                console.log(data.clients);
                 this.beginningState(data._id);
                 return null
             }

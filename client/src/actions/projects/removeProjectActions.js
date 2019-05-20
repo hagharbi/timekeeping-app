@@ -10,7 +10,6 @@ export const removeProjectDetails = (projectData) => dispatch => {
     axios
         .post("/api/projects/remove", projectData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: REMOVE_PROJECT_DETAILS,
                 payload: res

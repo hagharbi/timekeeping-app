@@ -10,7 +10,6 @@ export const findUserDetails = (userData) => dispatch => {
     axios
         .post("/api/clients/finduser", userData)
         .then(function (res) {
-            console.log(res)
             dispatch( {
                 type: SET_USER_DETAILS,
                 payload: res
@@ -23,7 +22,6 @@ export const findUserDetails = (userData) => dispatch => {
             })
         );
 };
-
 
 // User loading
 export const setUserLoading = () => {
