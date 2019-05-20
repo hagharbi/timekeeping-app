@@ -25,6 +25,29 @@ input {
     overflow: visible;
 }
 
+#printbtn {
+  transform: rotate(0deg)!important;
+  width: 300px!important;
+  margin: 0px 0 0 0!important;
+  left: 175px!important;
+  top: 150px!important;
+  height: 100px!important;
+  background-color: #3f3d3d!important;
+  box-shadow: inset 3px 3px 35px rgba(145, 143, 143, 0.24), 3px 3px 10px rgba(63, 63, 63, 0.335)!important;
+
+}
+
+/* backgroundColor: "#555555",
+color: "white",
+padding: "20px 10px 8px 10px",
+position: "fixed",
+top: "0px",
+right: "-40px",
+margin: "100px 0 0 0",
+borderRadius: "0 0 15px 5px",
+transform: "rotate(90deg)",
+width: "auto" */
+
 
 
 .add-more-btn {
@@ -58,16 +81,17 @@ input {
   position: absolute;
   top: 0;
   left: 0;
-  Width: 60vw;
+  Width: 30vw;
+  min-width: 30vw;
 }
 
 
 #text-right {
-  margin: 00px 0 0 0vw;
+  margin: 0px 0 0 0vw;
   position: absolute;
-  top: 760px;
-  left: -3vw;
-  Width: 60vw;
+  top: 510px;
+  left: 40vw;
+  Width: 30vw;
 }
 
 .table-container {
@@ -76,6 +100,7 @@ input {
   top: 1220px;
   left: 17.5vw;
   Width: 60vw;
+  min-width: 30vw;
 }
 
 /* ------------    E N D     ------------ */

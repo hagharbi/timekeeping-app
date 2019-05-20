@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import Parallax from "./Parallax";
 import "./imagesCode/global.css";
 import "./promo.css";
+import "../../mediaQuieries/media650.css";
+import "../../mediaQuieries/media750.css";
+import "../../mediaQuieries/media1050.css";
+
 class Landing extends Component {
   render() {
     return (
@@ -22,7 +26,7 @@ class Landing extends Component {
                          position: "absolute", 
                          zIndex: "9", 
                          height: "100vh", 
-                         width: "100%", 
+                         width: "100vw", 
                          margin: "0 0 0 0"
                         }}
       >
@@ -30,7 +34,7 @@ class Landing extends Component {
                         margin: "1vw 0 0 1vw"
                       }}
       >
-        <span     style={{
+        <span  id="homeTitle"   style={{
                         fontSize: "35px",
                         margin: "-10px 0 0 0",
                         color:"white",
@@ -90,9 +94,8 @@ class Landing extends Component {
                 to="/register"
                   style={{
                           width: "14vw",
-                          letterSpacing: "1.5px",
+                          letterSpacing: "4px",
                           fontWeight: "600",
-                          color: "#000",
                           position: "absolute",
                           margin: "56vh 0 0 90px",
                           left: "0",
@@ -111,13 +114,12 @@ class Landing extends Component {
                 style={{
                         marginLeft: "2rem",
                         width: "14vw",
-                        letterSpacing: "1.5px",
+                        letterSpacing: "4px",
                         fontWeight: "600",
                         position: "absolute",
                         margin: "50vh 0 0 90px",
                         left: "0",
                         top: "0",
-                        backgroundColor: "#33aeae"
                       }}
                 className="btn btn-med waves-effect waves-light  hoverable teal black-text"
                 id="liBtn"
@@ -159,11 +161,11 @@ class Landing extends Component {
 
 
         </div>
-        <div style={{margin: "70vw 0 0 10vw", 
+        <div id="promoCopy" style={{margin: "70vw 0 0 10vw", 
                      position: "absolute", 
                      zIndex: "99", 
                      width: "86vw", 
-                     color: "#555555", 
+                    //  color: ", 
                      letterSpacing: "1px", 
                      backgroundColor: "#fff"
                   }}>
@@ -174,13 +176,14 @@ class Landing extends Component {
             doing the things you dont.   sumit professional client management 
             systems is...
             <div id="promo_display-container">
-    
+            <div id="promo_desktop2-MediaOne"    alt="desktop monitor representation of site page" ></div>
+            <div id="promo_desktop2-MediaTwo"    alt="desktop monitor representation of site page" ></div>
       <div id="promo_desktop"    alt="desktop monitor representation of site page" ></div>
       <div id="promo_laptop"     alt="laptop-refference"                           ></div>
       <img id="promo_tablet"     alt="tablet screen representation of site page"      src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
       <img id="promo_smartPhone" alt="smart phone screen representation of site page" src={ require('./imagesCode/mobile-view-gif.gif') } />
       <br/>
-      <p style={{textAlign: "center", position: "fixed", bottom: "0", left: "0", transform: "rotate(90deg)", margin: " 0 0 60px -50px", color: "silver"}}>© 2019 | sumit</p>
+      <p id="cprt" style={{textAlign: "center", position: "fixed", bottom: "0", left: "0", transform: "rotate(90deg)", margin: " 0 0 60px -50px", color: "silver"}}>© 2019 | sumit</p>
     </div>
         </div>
 

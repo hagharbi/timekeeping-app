@@ -1,7 +1,7 @@
 import React from "react";
 
-const StarsParalax = props => (
-    <svg id='SchutzParalax'
+const StarsParallax = props => (
+    <svg id='SchutzParallax'
     viewBox='0 0 1920 1000'>
         <polygon 
         fill="#fbe887"
@@ -23,4 +23,4 @@ const StarsParalax = props => (
     </svg>
 );
 
-export default StarsParalax;
+export default StarsParallax;
