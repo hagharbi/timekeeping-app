@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Card from '@material-ui/core/Card';
 import '../layout/landingPage/imagesCode/global.css';
 import Highcharts from "highcharts/highstock";
 
@@ -91,22 +92,22 @@ class Dash extends React.Component {
                         {
                             name: 'Inactive',
                             y: inactive,
-                            color: '#AC1E23'
+                            color: '#FF737F'
                         },
                         {
                             name: 'Pending',
                             y: pending,
-                            color: '#ECC41C'
+                            color: '#FFE45C'
                         },
                         {
                             name: 'In Progress',
                             y: inprogress,
-                            color: '#2B317E',
+                            color: '#7685C2',
                         },
                         {
                             name: 'Completed',
                             y: completed,
-                            color: '#46AC58'
+                            color: '#8FCA70'
                         }
                     ]
                 }],
@@ -137,11 +138,14 @@ class Dash extends React.Component {
                         <Grid item xs={9} sm={7} md={8} lg={9}>
                             <h4><strong>Dashboard</strong></h4>
                             <Grid item xs={10} sm={7} lg={10}>
-                                <div id='atmospheric-composition'></div>
-                                {this.highChartsReady()}
+                                <Card item xs={10} style={{ padding: '2rem' }}>
+                                    <h5 ><strong>Recent Activities</strong></h5>
+                                    <div id='atmospheric-composition'></div>
+                                    {this.highChartsReady()}
+                                </Card>
                             </Grid>
                         </Grid>
-                    </Grid>
+                    </Grid >
                 )
             }
         }

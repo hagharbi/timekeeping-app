@@ -18,7 +18,7 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         width: 300,
-        marginTop: "1rem",
+        // marginTop: "1rem",
     },
     dense: {
         marginTop: 19,
@@ -242,10 +242,10 @@ class TextFields extends React.Component {
 
                                     </Grid> */}
 
-                                    <Grid item xs={12}>
+                                    {/* <Grid item xs={12}>
                                         <h6>Additional Info</h6>
-                                    </Grid>
-
+                                    </Grid> */}
+                                    {/* 
                                     <Grid item xs={12} sm={6} md={4} lg={3}>
                                         <TextField
                                             id="category"
@@ -268,7 +268,7 @@ class TextFields extends React.Component {
                                             InputProps={{ disableUnderline: true, }}
                                             margin="normal"
                                         />
-                                    </Grid>
+                                    </Grid> */}
 
                                     {/* <Grid item xs={12} sm={6} md={4} lg={3}>
                                     <FormControl className={classes.formControl}>
@@ -298,7 +298,7 @@ class TextFields extends React.Component {
 
                                 </Grid> */}
 
-                                    <Grid item xs={12} sm={6} md={4} lg={12}>
+                                    {/* <Grid item xs={12} sm={6} md={4} lg={12}>
                                         <TextField
                                             id="description"
                                             label="Description"
@@ -309,7 +309,7 @@ class TextFields extends React.Component {
                                             className={classes.textField}
                                             margin="dense"
                                         />
-                                    </Grid>
+                                    </Grid> */}
 
                                     <Grid item xs={12} style={{ marginTop: "3rem", "marginLeft": 8 }}>
                                         <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} onClick={this.handleSubmit}>Update</Button>
