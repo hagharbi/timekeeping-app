@@ -62,12 +62,10 @@ module.exports = {
             phone: req.body.phone,
             altPhone: req.body.altPhone,
             category: req.body.category,
-            address: {
-                street: req.body.street,
-                city: req.body.city,
-                state: req.body.state,
-                zip: req.body.zip
-            },
+            street: req.body.street,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip,
             $push: {notes: req.body.notes},
             $push: {user: req.body.userId}
         });
@@ -100,12 +98,10 @@ module.exports = {
             altPhone: req.body.altPhone,
             category: req.body.category,
             company: req.body.company,
-            address: {
-                street: req.body.street,
-                city: req.body.city,
-                state: req.body.state,
-                zip: req.body.zip
-            },
+            street: req.body.street,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip,
             $push: {notes: req.body.notes}
         };
 
@@ -146,12 +142,10 @@ module.exports = {
             title: req.body.title,
             description: req.body.description,
             timeZone: req.body.timeZone,
-            // address: {
-            //     street: req.body.address.street,
-            //     city: req.body.address.city,
-            //     state: req.body.address.state,
-            //     zip: req.body.address.zip
-            // }
+            street: req.body.street,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip
         };
 
         const query = { _id: req.body.userId };

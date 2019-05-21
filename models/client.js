@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-const statesArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
@@ -33,28 +32,26 @@ var ClientSchema = new Schema({
         type: String,
         trim: true,
     },
-    address: {
-        street: {
-            type: String,
-            trim: true,
-            default: "",
-        },
-        city: {
-            type: String,
-            trim: true,
-            default: "",
-        },
-        state: {
-            type: String,
-            trim: true,
-            uppercase: true,
-            default: ""
-        },
-        zip: {
-            type: Number,
-            trim: true,
-            default: undefined,
-        }
+    street: {
+        type: String,
+        trim: true,
+        default: "",
+    },
+    city: {
+        type: String,
+        trim: true,
+        default: "",
+    },
+    state: {
+        type: String,
+        trim: true,
+        uppercase: true,
+        default: ""
+    },
+    zip: {
+        type: Number,
+        trim: true,
+        default: undefined,
     },
     category: {
         type: String,

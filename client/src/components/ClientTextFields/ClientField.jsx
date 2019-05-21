@@ -55,12 +55,10 @@ class TextFields1 extends React.Component {
             category: this.state.client.category,
             company: this.state.client.company,
             notes: this.state.client.notes,
-            address: {
-                street: this.state.client.address.street,
-                city: this.state.client.address.city,
-                state: this.state.client.address.state,
-                zip: this.state.client.address.zip,
-            }
+            street: this.state.client.street,
+            city: this.state.client.city,
+            state: this.state.client.state,
+            zip: this.state.client.zip,
         };
         this.props.updateClientDetails(clientData);
         window.location.href = '/clients';
@@ -211,15 +209,15 @@ class TextFields1 extends React.Component {
                                     />
                                 </Grid>
 
-{/*                                 <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
+                                <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
                                     <h6>Address</h6>
                                 </Grid>
 
                                 <Grid item xs={12} sm={6} md={4} lg={3}>
                                     <TextField
-                                        id="address.street"
+                                        id="street"
                                         label="Street Address"
-                                        value={this.state.client.address.street}
+                                        value={this.state.client.street}
                                         className={classes.textField}
                                         onChange={this.handleChange}
                                         InputProps={{ disableUnderline: true, }}
@@ -229,9 +227,9 @@ class TextFields1 extends React.Component {
 
                                 <Grid item xs={12} sm={6} md={4} lg={3}>
                                     <TextField
-                                        id="address.city"
+                                        id="city"
                                         label="City"
-                                        value={this.state.client.address.city}
+                                        value={this.state.client.city}
                                         className={classes.textField}
                                         onChange={this.handleChange}
                                         InputProps={{ disableUnderline: true, }}
@@ -241,9 +239,9 @@ class TextFields1 extends React.Component {
 
                                 <Grid item xs={12} sm={6} md={3} lg={3}>
                                     <TextField
-                                        id="address.state"
+                                        id="state"
                                         label="State"
-                                        value={this.state.client.address.state}
+                                        value={this.state.client.state}
                                         className={classes.textField}
                                         onChange={this.handleChange}
                                         InputProps={{ disableUnderline: true, }}
@@ -253,15 +251,15 @@ class TextFields1 extends React.Component {
 
                                 <Grid item xs={12} sm={6} md={2} lg={3}>
                                     <TextField
-                                        id="address.zip"
+                                        id="zip"
                                         label="Zip Code"
-                                        value={this.state.client.address.zip}
+                                        value={this.state.client.zip}
                                         className={classes.textField}
                                         onChange={this.handleChange}
                                         InputProps={{ disableUnderline: true, }}
                                         margin="normal"
                                     />
-                                </Grid> */}
+                                </Grid>
 
                                 <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
                                     <h6>Additional Info</h6>
