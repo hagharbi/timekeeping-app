@@ -178,8 +178,8 @@ class Landing extends Component {
             <div id="promo_display-container">
             <div id="promo_desktop2-MediaOne"    alt="desktop monitor representation of site page" ></div>
             <div id="promo_desktop2-MediaTwo"    alt="desktop monitor representation of site page" ></div>
-      <div id="promo_desktop"    alt="desktop monitor representation of site page" ></div>
-      <div id="promo_laptop"     alt="laptop-refference"                           ></div>
+      <img id="promo_desktop"    alt="desktop monitor representation of site page" src={ require('./imagesCode/invoiceForm.png') } />
+      <img id="promo_laptop"     alt="laptop-refference"   src={ require('./imagesCode/newProject.png') } />
       <img id="promo_tablet"     alt="tablet screen representation of site page"      src={ require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif') } />
       <img id="promo_smartPhone" alt="smart phone screen representation of site page" src={ require('./imagesCode/mobile-view-gif.gif') } />
       <br/>
