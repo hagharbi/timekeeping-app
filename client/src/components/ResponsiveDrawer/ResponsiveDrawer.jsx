@@ -15,7 +15,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import AvTimerIcon from '@material-ui/icons/AvTimer'
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -191,7 +190,7 @@ class ResponsiveDrawer extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <img
+            <img alt="logo"
               src={require('../layout/landingPage/imagesCode/sumit-logo.svg')}
               style={{
                 width: "8vw",

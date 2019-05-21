@@ -8,7 +8,7 @@ import Snowhill0 from "./imagesCode/SnowhillLayer0";
 import Snowhill1 from "./imagesCode/SnowhillLayer1";
 import Snowhill2 from "./imagesCode/SnowhillLayer2";
 import Snowhill3 from "./imagesCode/SnowhillLayer3";
-import Snowhill4 from "./imagesCode/SnowhillLayer4";
+// import Snowhill4 from "./imagesCode/SnowhillLayer4";
 import CommentsParallax from "./imagesCode/CommentsParallax";
 import EnvilopeParallax from "./imagesCode/EnvilopeParallax";
 import GearsParallax from "./imagesCode/GearsParallax";
