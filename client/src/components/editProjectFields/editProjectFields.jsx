@@ -15,11 +15,13 @@ import Button from '@material-ui/core/Button';
 
 //Form
 import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Tooltip from '@material-ui/core/Tooltip';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 //Dialog
 import Dialog from '@material-ui/core/Dialog';
@@ -474,13 +476,13 @@ class TextFields2 extends React.Component {
                                         <Grid item xs={6} sm={3} md={2} lg={2}>
                                             <Tooltip title="For fixed-rate projects, leave 0." aria-label="For fixed-rate projects, leave 0.">
                                                 <TextField
-                                                    id="rate"
+                                                    id="adornment-amount"
                                                     label="Hourly Rate"
                                                     className={classes.textFieldSmall}
                                                     value={this.state.project.rate}
                                                     onChange={this.handleChange}
-                                                    InputProps={{ disableUnderline: true, }}
-                                                    margin="normal"
+                                                    InputProps={{ startAdornment: <InputAdornment position="start">$</InputAdornment>, disableUnderline: true, }}
+                                                    margin="normal"                                        
                                                 />
                                             </Tooltip>
                                         </Grid>
