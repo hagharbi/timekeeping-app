@@ -48,7 +48,7 @@ class NewClient extends Component {
             }
             else {
                 return (
-                    <div >
+                    <div  style={{margin: "0 0 0 5px"}}>
                         <ResponsiveDrawer />
                         <Grid>
                             <NewClientFields user={{ data }} />

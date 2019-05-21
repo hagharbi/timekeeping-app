@@ -79,16 +79,18 @@
 
 @media only screen and (max-width: 650px) {
     #focus-on {
-        margin: 45vh 0 0 10vw !important;
+        top: 280px!important;
+        margin: 0 0 0 10vw !important;
         width: 90vw !important;
-        color: #666 !important;
+        color: grey !important;
 
     }
 }
 
 @media only screen and (max-width: 650px) {
     #we-deliver {
-        margin: 50vh 0 0 10vw !important;
+        top: 290px!important;
+        margin: 00vh 0 0 10vw !important;
         width: 90vw !important;
         color: #666 !important;
     }
@@ -98,7 +100,7 @@
 @media only screen and (max-width: 650px) {
     #sumit-is {
         margin: 500px 5vw 0 10vw !important;
-        opacity: 0;
+        opacity: 0!important;
         width: 80vw !important;
         text-align: justify !important;
         color: #000 !important;
@@ -110,20 +112,26 @@
 @media only screen and (max-width: 650px) {
 
     #promo-copy {
+        
         margin: 50vh 0 0 7vw !important;
+        text-align: justify!important;
+        font-size: 10px!important;
     }
 }
 
 @media only screen and (max-width: 650px) {
     #ReBtn {
+        top: 30px!important;
         margin: 66vh 0 0 5vw !important;
-        width: 90vw !important;
+        width: 240px!important;
+
         border-radius: 2px 2px 2px 2px !important;
     }
 }
 
 @media only screen and (max-width: 650px) {
     #liBtn {
+        top: 15px!important;
         margin: 57vh 0 0 5vw !important;
         width: 90vw !important;
         border-radius: 2px 2px 2px 2px !important;
@@ -136,11 +144,30 @@
     }
 }
 
-/* landing-page end */
+@media only screen and (max-width: 650px) {
+    #printbtn {
+           left: 403px!important;
+           border-radius: 5px 1px 1px 15px!important;
+         }
+       }
+
+       @media only screen and (max-width: 650px) {
+        #hillZ {
+            top: 2px!important;
+             }
+           }
+
+           @media only screen and (max-width: 650px) {
+            #clientPage {
+                   width: 95vw!important;
+                   overflow-x: scroll!important;
+                 }
+               }
+
 
 /* 
       @media only screen and (max-width: 650px) {
-    #cprt {
+    #clientPage {
            border-radius: 50vw;
          }
        } */
