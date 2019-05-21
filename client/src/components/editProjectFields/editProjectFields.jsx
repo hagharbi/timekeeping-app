@@ -372,7 +372,7 @@ class TextFields2 extends React.Component {
                         {value === 0 && <TabContainer></TabContainer>}
                         {value === 2 && <TabContainer>
                             <Grid container spacing={24}>
-                                <Grid item xs={1} sm={5} md={3}>
+                                <Grid item xs={2} sm={4} md={3} lg={2}>
                                     <Paper className={classes.paper}></Paper>
                                 </Grid>
                                 <Grid item sm={7} lg={9}>
