@@ -137,7 +137,7 @@ class CustomPaginationActionsTable extends React.Component {
   };
 
   numOfProjects(clientID, projects) {
-    var count = projects.filter(project => {return project.client === clientID}).length;
+    var count = projects.filter(project => {return project.client === clientID && project.active === true}).length;
     return count
   }
 

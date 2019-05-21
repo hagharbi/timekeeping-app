@@ -376,7 +376,7 @@ class TextFields2 extends React.Component {
                                     <Paper className={classes.paper}></Paper>
                                 </Grid>
                                 <Grid item sm={7} lg={9}>
-                                    <h4>Edit Project</h4>
+                                    <h4><strong>Edit Project</strong></h4>
                                     <form className={classes.container} onSubmit={this.handleSubmit} noValidate autoComplete="off">
 
                                         <Grid item xs={12} sm={12} md={4} lg={3}>

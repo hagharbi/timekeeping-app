@@ -211,7 +211,7 @@ class TextFields1 extends React.Component {
                                     />
                                 </Grid>
 
-                                <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
+{/*                                 <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
                                     <h6>Address</h6>
                                 </Grid>
 
@@ -261,7 +261,7 @@ class TextFields1 extends React.Component {
                                         InputProps={{ disableUnderline: true, }}
                                         margin="normal"
                                     />
-                                </Grid>
+                                </Grid> */}
 
                                 <Grid item xs={12} style={{ "marginTop": "1.2rem" }}>
                                     <h6>Additional Info</h6>
