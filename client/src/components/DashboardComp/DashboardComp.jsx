@@ -59,7 +59,7 @@ class Dash extends React.Component {
                 plotOptions: {
                     pie: {
                         dataLabels: {
-                            format: '{point.name}: {point.percentage:.1f} %'
+                            format: '{point.name}: {point.percentage} %'
                         },
                         innerSize: '50%',
                     },
@@ -75,7 +75,7 @@ class Dash extends React.Component {
         setTimeout(() => {
 
             const projects = this.state.projects;
-            const count = projects.projects.length;
+            const count = projects.projects.filter(project => project.active === true).length;
 
             console.log(projects)
 
