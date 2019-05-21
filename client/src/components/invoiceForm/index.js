@@ -3,8 +3,6 @@ import React from "react";
 import ReactToPrint from "react-to-print";
 import "./style.css"
 import Row from "./Row";
-import PrintIcon from "../layout/landingPage/imagesCode/PrintIcon.jsx";
-
 
 class Invoices extends React.Component {
   constructor(props) {

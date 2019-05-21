@@ -20,8 +20,6 @@ const styles = theme => ({
     menu: {
         width: 300,
     },
-
-
     title: {
         fontSize: 14,
     },
@@ -79,11 +77,15 @@ class Dash extends React.Component {
             const projects = this.state.projects;
             const count = projects.projects.length;
 
+            console.log(projects)
+
             //percentages for each category
-            const inactive = Math.round((projects.projects.filter(project => project.status === "inactive").length) / count * 100);
-            const pending = Math.round((projects.projects.filter(project => project.status === "pending").length) / count * 100);
-            const inprogress = Math.round((projects.projects.filter(project => project.status === "in progress").length) / count * 100);
-            const completed = Math.round((projects.projects.filter(project => project.status === "completed").length) / count * 100);
+            const inactive = Math.round((projects.projects.filter(project => project.status === "inactive" && project.active === true).length) / count * 100);
+            const pending = Math.round((projects.projects.filter(project => project.status === "pending" && project.active === true).length) / count * 100);
+            const inprogress = Math.round((projects.projects.filter(project => project.status === "in progress" &&  project.active === true).length) / count * 100);
+            const completed = Math.round((projects.projects.filter(project => project.status === "completed" && project.active === true).length) / count * 100);
+
+            console.log(inprogress)
 
             this.setState({
                 series: [{
