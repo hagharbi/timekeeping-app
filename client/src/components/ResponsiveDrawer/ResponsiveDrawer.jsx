@@ -24,6 +24,7 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import "../layout/landingPage/imagesCode/global.css";
 
 const drawerWidth = 180;
@@ -97,9 +98,9 @@ class ResponsiveDrawer extends React.Component {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
-  handleDrawerClose = () => {
-    this.setState({ mobileOpen: false });
-  };
+  // handleDrawerClose = () => {
+  //   this.setState({ mobileOpen: false });
+  // };
 
   onLogoutClick = e => {
     e.preventDefault();
@@ -113,9 +114,6 @@ class ResponsiveDrawer extends React.Component {
       <div>
         <div className={classes.toolbar} />
         <div className={classes.drawerHeader}>
-          {/* <IconButton onClick={this.handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton> */}
         </div>
         <Divider />
         <Link
@@ -185,6 +183,7 @@ class ResponsiveDrawer extends React.Component {
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
           <Toolbar className={classes.toolBar}>
+
             <IconButton color="inherit"
               aria-label="Open drawer"
               onClick={this.handleDrawerToggle}
@@ -192,19 +191,23 @@ class ResponsiveDrawer extends React.Component {
             >
               <MenuIcon />
             </IconButton>
+            <img
+              src={require('../layout/landingPage/imagesCode/sumit-logo.svg')}
+              style={{
+                width: "8vw",
+                opacity: .4,
+              }}
+            />
             <Grid
               justify="space-between"
               container
               spacing={24}
             >
               <Grid item>
-                <Typography variant="h5" color="inherit" className={classes.grow}>
-                  <strong>SUMIT</strong>
-                </Typography>
+                <Paper className={classes.paper}></Paper>
               </Grid>
               <Grid item>
-                <Button style={{ padding: "5px 5px 5px 5px", boxShadow: "0 0 0 0 " }}
-                  // style={{ backgroundColor: '#fff' }}
+                <Button style={{ padding: "5px", boxShadow: '0 0 0 0', opacity: .6 }}
                   onClick={this.onLogoutClick}
                   variant="contained" color="primary" className={classes.button}
                 >&nbsp;
