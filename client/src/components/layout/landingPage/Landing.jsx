@@ -150,12 +150,13 @@ class Landing extends Component {
             </div>
           </div>
           <div id="promoCopy">
-            <img src={require('./imagesCode/perspective.png')}
+            <img alt="perspective" src={require('./imagesCode/perspective.png')}
               style={{
                 margin: "46vw 0 0 4vw",
                 position: "absolute",
                 zIndex: "99",
                 width: "50vw",
+                
                 // backgroundColor: "white"
               }}
             />
