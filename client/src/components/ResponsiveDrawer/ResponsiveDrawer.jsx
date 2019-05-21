@@ -194,7 +194,7 @@ class ResponsiveDrawer extends React.Component {
               src={require('../layout/landingPage/imagesCode/sumit-logo.svg')}
               style={{
                 width: "8vw",
-                opacity: .4,
+                // opacity: .4,
               }}
             />
             <Grid
@@ -206,7 +206,7 @@ class ResponsiveDrawer extends React.Component {
                 <Paper className={classes.paper}></Paper>
               </Grid>
               <Grid item>
-                <Button style={{ padding: "5px", boxShadow: '0 0 0 0', opacity: .6 }}
+                <Button style={{ padding: "5px", boxShadow: '0 0 0 0' }}
                   onClick={this.onLogoutClick}
                   variant="contained" color="primary" className={classes.button}
                 >&nbsp;
