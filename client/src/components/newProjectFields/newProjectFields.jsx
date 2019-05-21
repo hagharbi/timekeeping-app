@@ -207,7 +207,7 @@ class NewProjectFields extends React.Component {
             else {
 
                 return (
-                    <Grid container spacing={24}>
+                    <Grid container spacing={24} md={12}>
                         <Grid item xs={1} sm={4} md={3} lg={2}>
                             <Paper className={classes.paper}></Paper>
                         </Grid>

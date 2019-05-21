@@ -57,7 +57,7 @@ module.exports = {
         .save()
         .then(function(dbProject) {
             
-             Client.findOneAndUpdate({ _id: req.body.clientID }, { $push: {projects: dbProject._id }}, { new: true })
+            //Client.findOneAndUpdate({ _id: req.body.clientID }, { $push: {projects: dbProject._id }}, { new: true })
 
             // User association
             return User.findByIdAndUpdate(req.body.userId, { $push: {projects: dbProject._id }})

@@ -146,12 +146,12 @@ module.exports = {
             title: req.body.title,
             description: req.body.description,
             timeZone: req.body.timeZone,
-            address: {
-                street: req.body.street,
-                city: req.body.city,
-                state: req.body.state,
-                zip: req.body.zip
-            }
+            // address: {
+            //     street: req.body.address.street,
+            //     city: req.body.address.city,
+            //     state: req.body.address.state,
+            //     zip: req.body.address.zip
+            // }
         };
 
         const query = { _id: req.body.userId };

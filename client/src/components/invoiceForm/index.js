@@ -21,7 +21,6 @@ class Invoices extends React.Component {
       ],
       items: [],
       client: {
-        companyLogo: null,
         company: "",
         fullName: "",
         website: "",
@@ -42,29 +41,8 @@ class Invoices extends React.Component {
     };
   }
 
-  // handle file upload (logo)
-  handleFileUpload = e => {
-    const file = e.target.files[0];
-    this.setState(prevState => ({
-      text: {
-        ...prevState.text,
-        companyLogo: URL.createObjectURL(file)
-      }
-    }));
-    //Or this
-    // e.persist();
-    // this.setState(prevState => ({
-    //   text: {
-    //     ...prevState.text,
-    //     companyLogo: URL.createObjectURL(e.target.files[0])
-    //   }
-    // }));
-  };
 
-  //Add default Image
-  addDefaultSrc = ev => {
-    ev.target.src = "http://schutz/uploads/default-logo.png";
-  };
+
 
   // Handle Invoice Date
   handleDayChange = day => {
@@ -162,28 +140,20 @@ class Invoices extends React.Component {
                   onClick={ReactToPrint}
                   alt="print button"
                   style={{
-                    backgroundColor: "#555555",
-                    color: "white",
                     padding: "20px 10px 8px 10px",
                     position: "fixed",
                     top: "0px",
-                    margin: "0 0 0 0",
                     borderRadius: "0 0 15px 5px",
-                    transform: "rotate(90deg)",
-                    width: "auto"
                   }}
                 >
                 <svg id='PrintIcon'
                      width='40'
                      height='40'
-                     viewBox='0 0 24 24'
-                >
-                <path d='M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z'
-                />  
+                     viewBox='0 0 24 24' >
+                <path d='M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z'/>  
                 <path d='M0 0h24v24H0z' 
-                      fill='none' 
-                />
-</svg>  <p style={{textAlign: "center",}}>I N V O I C E</p>
+                      fill='none'/>
+</svg>  
                 </a>        
               )}
               content={() => this.componentRef}
@@ -212,20 +182,16 @@ class Invoices extends React.Component {
                       name="fullName"
                       width="100%"
                       placeholder="Your First and Last Name*"
-                      value={this.state.client.firstName}
 
-
-                      onChange={this.handleOnChangeClientData}
                     />
                   </div>
                   <div className="company-input-container">
                     <input
-                      type="text"
+                      type="email"
                       name="email"
                       width="100%"
                       placeholder="your@email.com*"
-                      value={this.state.client.email}
-                      onChange={this.handleOnChangeClientData}
+
                     />
                   </div>
 
@@ -235,8 +201,6 @@ class Invoices extends React.Component {
                       name="companyAddress"
                       width="100%"
                       placeholder="1234 the Addr."
-                      value={this.state.client.companyAddress}
-                      onChange={this.handleOnChangeClientData}
                     />
                   </div>
                   <div className="company-input-container">
@@ -245,8 +209,7 @@ class Invoices extends React.Component {
                       name="city"
                       width="100%"
                       placeholder="City, State ZIP"
-                      value={this.state.client.city}
-                      onChange={this.handleOnChangeClientData}
+
                     />
                   </div>
                   <div className="company-input-container">
@@ -255,8 +218,7 @@ class Invoices extends React.Component {
                       name="country"
                       width="100%"
                       placeholder="Country"
-                      value={this.state.client.country}
-                      onChange={this.handleOnChangeClientData}
+
                     />
                   </div>
                   <div className="company-input-container">
@@ -265,18 +227,16 @@ class Invoices extends React.Component {
                       name="phone"
                       width="100%"
                       placeholder="555 867 5309"
-                      value={this.state.client.phone}
-                      onChange={this.handleOnChangeClientData}
+
                     />
                   </div>
                   <div className="company-input-container">
                     <input
-                      type="text"
+                      type="email"
                       name="email"
                       width="100%"
                       placeholder="Email Address*"
-                      value={this.state.client.email}
-                      onChange={this.handleOnChangeClientData}
+   
                     />
                   </div>
                 </div>
@@ -291,8 +251,6 @@ class Invoices extends React.Component {
                       width="100%"
                       name="clientCompany"
                       placeholder="Client's Company"
-                      value={this.state.client.clientCompany}
-                      onChange={this.handleOnChangeUserXData}
                       className="company-name"
                     />
                   </div>
@@ -302,8 +260,6 @@ class Invoices extends React.Component {
                       width="100%"
                       name="clientName"
                       placeholder="Client's Name"
-                      value={this.state.client.clientName}
-                      onChange={this.handleOnChangeUserXData}
                     />
                   </div>
                   <div className="company-input-container">
@@ -312,8 +268,6 @@ class Invoices extends React.Component {
                       width="100%"
                       name="cleintAddress"
                       placeholder="Client's Address"
-                      value={this.state.client.clientAddress}
-                      onChange={this.handleOnChangeUserXData}
                     />
                   </div>
                   <div className="company-input-container">
@@ -322,8 +276,6 @@ class Invoices extends React.Component {
                       width="100%"
                       name="clientCity"
                       placeholder="City, State ZIP"
-                      value={this.state.client.clientCity}
-                      onChange={this.handleOnChangeUserXData}
                     />
                   </div>
                   <div className="company-input-container">
@@ -332,8 +284,6 @@ class Invoices extends React.Component {
                       width="100%"
                       name="clientCountry"
                       placeholder="Country"
-                      value={this.state.client.clientCountry}
-                      onChange={this.handleOnChangeUserXData}
                     />
                   </div>
                 </div>
@@ -344,17 +294,20 @@ class Invoices extends React.Component {
               <div className="text right" id="text-right" style={{ position: "absolute", margin: "117px 0 0 240px", padding: "0 0 0 0" }}>
 
                 <div className="invoice-container">
-                  <div className="invoice-num">
+                  <div className="invoice-num"  >
                     <input
+                    
                       className=""
                       type="text"
                       width="30%"
                       value="Invoice No:"
+                      readonly
                     />
                     <input
                       type="text"
                       className=""
                       value={this.state.client.invoiceNum}
+                      
                     />
                   </div>
                   <div className="invoice-date">
