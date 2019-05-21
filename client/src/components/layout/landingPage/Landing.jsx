@@ -14,7 +14,7 @@ class Landing extends Component {
 
       <div id="mainHomeCont"
         style={{
-          height: "120vh",
+          height: "100vh",
           width: "100vw",
           backgroundColor: "#fff"
         }} >
@@ -33,8 +33,8 @@ class Landing extends Component {
         >
           <img src={require('./imagesCode/sumit-logo.svg')} style={{
             fontSize: "35px",
-            width: "10vw",
-            margin: "2.4rem auto 0 4.4rem",
+            width: "9vw",
+            margin: "2.4rem auto 0 3rem",
             float: "left"
           }}
             alt="CardOne"
@@ -95,10 +95,10 @@ class Landing extends Component {
                 position: "absolute",
                 top: "0",
                 left: "0",
-                width:
-                  "430px",
-                margin: "34vh 0 0 220px",
-                lineHeight: 1.2,
+                fontWeight: "300",
+                width: "440px",
+                margin: "35vh 0 0 220px",
+                lineHeight: 1.5,
               }}
                 className="flow-text grey-text white-text"
               >
@@ -110,14 +110,14 @@ class Landing extends Component {
                   to="/login"
                   style={{
                     marginLeft: "2rem",
-                    minWidth: "140px",
+                    minWidth: "120px",
                     // letterSpacing: "4px",
-                    fontWeight: "600",
+                    fontWeight: "500",
                     position: "absolute",
-                    margin: "47vh 0 0 380px",
+                    margin: "50vh 0 0 360px",
                     left: "0",
                     top: "0",
-                    backgroundColor: "white",
+                    backgroundColor: "#fbe887",
                     color: "#2c327d"
                   }}
                   className="btn btn-medium waves-effect hoverable"
@@ -131,11 +131,11 @@ class Landing extends Component {
                 <Link
                   to="/register"
                   style={{
-                    minWidth: "140px",
+                    minWidth: "120px",
                     // letterSpacing: "4px",
-                    fontWeight: "600",
+                    fontWeight: "500",
                     position: "absolute",
-                    margin: "47vh 0 0 220px",
+                    margin: "50vh 0 0 220px",
                     left: "0",
                     top: "0",
                     backgroundColor: "#2c327d"
@@ -149,46 +149,138 @@ class Landing extends Component {
 
             </div>
           </div>
-          <img src={require('./imagesCode/cardOne.png')} style={{
-            margin: "50vw 0 0 10vw",
-            position: "absolute",
-            zIndex: "99",
-            width: "16vw"
-          }}
-            alt="CardOne"
-            id="ctaElements"
-          />
-          <img src={require('./imagesCode/cardTwo.png')} style={{
-            margin: "50vw 0 0 40vw",
-            position: "absolute",
-            zIndex: "99",
-            width: "17vw"
-          }}
-            alt="CardTwo"
-            id="ctaElements"
-          />
+          <div id="promoCopy">
+            <img src={require('./imagesCode/perspective.png')}
+              style={{
+                margin: "46vw 0 0 4vw",
+                position: "absolute",
+                zIndex: "99",
+                width: "50vw",
+                // backgroundColor: "white"
+              }}
+            />
+            <h4
+              style={{
+                margin: "54vw 0 0 51vw",
+                position: "absolute",
+                zIndex: "99",
+                width: "28vw",
+                lineHeight: 1.2,
 
-          <img src={require('./imagesCode/CardThree.png')} style={{
-            margin: "50vw 0 0 70vw",
-            position: "absolute",
-            zIndex: "99",
-            width: "15vw"
-          }}
-            alt="CardThree"
-            id="ctaElements"
-          />
-
-
+              }}
+            >
+              Keep track of your projects, tasks and time.
+            </h4>
+            <h5
+              style={{
+                margin: "60vw 0 0 51vw",
+                position: "absolute",
+                zIndex: "99",
+                width: "32vw",
+                fontWeight: 500,
+                lineHeight: 1.5,
+                color: '#adadad'
+              }}
+            >
+              Spend your time wisely and focus on what matter the most. Make your clients happy!
+            </h5>
+            <h4
+              style={{
+                margin: "65vw 0 0 51vw",
+                position: "absolute",
+                zIndex: "99",
+                width: "32vw",
+                fontWeight: 500,
+                lineHeight: 1.5,
+                color: "#037F8C"
+              }}
+            >
+              Register now!
+            </h4>
+            <Link
+              to="/register"
+              style={{
+                minWidth: "120px",
+                // letterSpacing: "4px",
+                fontWeight: "500",
+                position: "absolute",
+                margin: "75vw 0 0 51vw",
+                left: "0",
+                top: "0",
+                backgroundColor: "#2c327d"
+              }}
+              className="btn btn-med waves-effect waves-dark hoverable"
+              id="ReBtn"
+            >
+              Here
+            </Link>
+          </div>
+          <div
+            style={{
+              backgroundColor: "white",
+              height: "300px",
+              margin: "90vw 0 0 13vw",
+              zIndex: "999",
+              position: "absolute",
+            }}>
+            <img src={require('./imagesCode/cardTwo.png')} style={{
+              margin: "0 0 0 4vw",
+              position: "absolute",
+              zIndex: "99",
+              width: "17vw"
+            }}
+              alt="CardTwo"
+              id="ctaElements"
+            />
+            <img src={require('./imagesCode/CardThree.png')} style={{
+              margin: "0 0 0 30vw",
+              position: "absolute",
+              zIndex: "99",
+              width: "15vw"
+            }}
+              alt="CardThree"
+              id="ctaElements"
+            />
+            <img src={require('./imagesCode/cardOne.png')} style={{
+              margin: "0 0 0 54vw",
+              position: "absolute",
+              zIndex: "99",
+              width: "16vw"
+            }}
+              alt="CardOne"
+              id="ctaElements"
+            />
+          </div>
         </div>
-        <div id="promoCopy" style={{
-          margin: "70vw 0 0 10vw",
-          position: "absolute",
-          zIndex: "99",
-          width: "86vw",
-          //  color: ", 
-          letterSpacing: "1px",
-          backgroundColor: "#fff"
-        }}>
+        {/* <div
+          style={{
+            textAlign: "center",
+            position: "fixed",
+            bottom: "0",
+            margin: "0 0 0 0",
+            backgroundColor: "#037F8C",
+            width: "100vw",
+          }}
+        >
+          <p
+            style={{
+              color: "white",
+              fontWeight: 300,
+            }}
+          >
+            © 2019 | SUMIT</p>
+        </div> */}
+
+        {/* <div id="promoCopy"
+          style={{
+            margin: "70vw 0 0 10vw",
+            position: "absolute",
+            zIndex: "99",
+            width: "40vw",
+            letterSpacing: "1px",
+            backgroundColor: "#fff"
+          }}
+        >
           intuitive invoice management,  tracking, producing, reporting and
           client management matrix designed;  to gtive, you; the user,  the
           tools you need to get the job done in time and   on budget so you
@@ -202,14 +294,11 @@ class Landing extends Component {
             <div id="promo_laptop" alt="laptop-refference"                           ></div>
             <img id="promo_tablet" alt="tablet screen representation of site page" src={require('./imagesCode/publish-sample-demo-sumit-cta-hero-home.gif')} />
             <img id="promo_smartPhone" alt="smart phone screen representation of site page" src={require('./imagesCode/mobile-view-gif.gif')} />
-            <br />
-            {/* <p id="cprt" style={{ textAlign: "center", position: "fixed", bottom: "0", left: "0", transform: "rotate(90deg)", margin: " 0 0 60px -50px", color: "silver" }}>© 2019 | sumit</p> */}
-          </div>
-        </div>
-
-
+            <br /> */}
+        {/* <p id="cprt" style={{ textAlign: "center", position: "fixed", bottom: "0", left: "0", transform: "rotate(90deg)", margin: " 0 0 60px -50px", color: "silver" }}>© 2019 | sumit</p> */}
+        {/* </div>
+        </div> */}
       </div>
-
     );
   }
 }
