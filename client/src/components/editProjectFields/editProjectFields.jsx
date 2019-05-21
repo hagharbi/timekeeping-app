@@ -20,6 +20,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import Tooltip from '@material-ui/core/Tooltip';
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 //Dialog
 import Dialog from '@material-ui/core/Dialog';
@@ -372,7 +373,7 @@ class TextFields2 extends React.Component {
                         {value === 0 && <TabContainer></TabContainer>}
                         {value === 2 && <TabContainer>
                             <Grid container spacing={24}>
-                                <Grid item xs={1} sm={5} md={3}>
+                                <Grid item xs={2} sm={4} md={3} lg={2}>
                                     <Paper className={classes.paper}></Paper>
                                 </Grid>
                                 <Grid item sm={7} lg={9}>
@@ -474,13 +475,13 @@ class TextFields2 extends React.Component {
                                         <Grid item xs={6} sm={3} md={2} lg={2}>
                                             <Tooltip title="For fixed-rate projects, leave 0." aria-label="For fixed-rate projects, leave 0.">
                                                 <TextField
-                                                    id="rate"
+                                                    id="adornment-amount"
                                                     label="Hourly Rate"
                                                     className={classes.textFieldSmall}
                                                     value={this.state.project.rate}
                                                     onChange={this.handleChange}
-                                                    InputProps={{ disableUnderline: true, }}
-                                                    margin="normal"
+                                                    InputProps={{ startAdornment: <InputAdornment position="start">$</InputAdornment>, disableUnderline: true, }}
+                                                    margin="normal"                                        
                                                 />
                                             </Tooltip>
                                         </Grid>
