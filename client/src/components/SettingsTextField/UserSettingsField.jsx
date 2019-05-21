@@ -58,12 +58,10 @@ class TextFields extends React.Component {
             description: this.state.userData.description,
             category: this.state.userData.category,
             title: this.state.userData.title,
-            // address: {
-            //     street: this.state.userData.address.street,
-            //     city: this.state.userData.address.city,
-            //     state: this.state.userData.address.state,
-            //     zip: this.state.userData.address.zip,
-            // }
+            street: this.state.userData.street,
+            city: this.state.userData.city,
+            state: this.state.userData.state,
+            zip: this.state.userData.zip,
         };
         this.props.updateUserDetails(userData);
     };
@@ -164,15 +162,15 @@ class TextFields extends React.Component {
                                         />
                                     </Grid>
 
-{/*                                     <Grid item xs={12}>
+                                    <Grid item xs={12}>
                                         <h6>Address</h6>
                                     </Grid>
 
                                     <Grid item xs={12} sm={6} md={4} lg={3}>
                                         <TextField
-                                            id="address.street"
+                                            id="street"
                                             label="Street Address"
-                                            value={this.state.userData.address.street}
+                                            value={this.state.userData.street}
                                             className={classes.textField}
                                             onChange={this.handleChange}
                                             InputProps={{ disableUnderline: true, }}
@@ -182,9 +180,9 @@ class TextFields extends React.Component {
 
                                     <Grid item xs={12} sm={6} md={4} lg={3}>
                                         <TextField
-                                            id="address.city"
+                                            id="city"
                                             label="City"
-                                            value={this.state.userData.address.city}
+                                            value={this.state.userData.city}
                                             className={classes.textField}
                                             onChange={this.handleChange}
                                             InputProps={{ disableUnderline: true, }}
@@ -194,9 +192,9 @@ class TextFields extends React.Component {
 
                                     <Grid item xs={12} sm={6} md={3} lg={3}>
                                         <TextField
-                                            id="address.state"
+                                            id="state"
                                             label="State"
-                                            value={this.state.userData.address.state}
+                                            value={this.state.userData.state}
                                             className={classes.textField}
                                             onChange={this.handleChange}
                                             InputProps={{ disableUnderline: true, }}
@@ -206,15 +204,15 @@ class TextFields extends React.Component {
 
                                     <Grid item xs={12} sm={6} md={2} lg={3}>
                                         <TextField
-                                            id="address.zip"
+                                            id="zip"
                                             label="Zip Code"
-                                            value={this.state.userData.address.zip}
+                                            value={this.state.userData.zip}
                                             className={classes.textField}
                                             onChange={this.handleChange}
                                             InputProps={{ disableUnderline: true, }}
                                             margin="normal"
                                         />
-                                    </Grid> */}
+                                    </Grid>
 
                                     {/* <Grid item xs={12} sm={6} md={4} lg={3} style={{ "marginTop": "-1px" }}>
                                         <FormControl className={classes.formControl}>
@@ -244,21 +242,9 @@ class TextFields extends React.Component {
 
                                     </Grid> */}
 
-                                    {/* <Grid item xs={12}>
-                                        <h6>Additional Info</h6>
-                                    </Grid> */}
-                                    {/* 
-                                    <Grid item xs={12} sm={6} md={4} lg={3}>
-                                        <TextField
-                                            id="category"
-                                            label="Category"
-                                            value={this.state.userData.category}
-                                            className={classes.textField}
-                                            onChange={this.handleChange}
-                                            InputProps={{ disableUnderline: true, }}
-                                            margin="normal"
-                                        />
-                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <h6>Professional Details</h6>
+                                    </Grid> 
 
                                     <Grid item xs={12} sm={6} md={4} lg={3}>
                                         <TextField
@@ -270,7 +256,19 @@ class TextFields extends React.Component {
                                             InputProps={{ disableUnderline: true, }}
                                             margin="normal"
                                         />
-                                    </Grid> */}
+                                    </Grid>
+
+                                    <Grid item xs={12} sm={6} md={4} lg={3}>
+                                        <TextField
+                                            id="category"
+                                            label="Category"
+                                            value={this.state.userData.category}
+                                            className={classes.textField}
+                                            onChange={this.handleChange}
+                                            InputProps={{ disableUnderline: true, }}
+                                            margin="normal"
+                                        />
+                                    </Grid>
 
                                     {/* <Grid item xs={12} sm={6} md={4} lg={3}>
                                     <FormControl className={classes.formControl}>
@@ -300,7 +298,7 @@ class TextFields extends React.Component {
 
                                 </Grid> */}
 
-                                    {/* <Grid item xs={12} sm={6} md={4} lg={12}>
+                                    <Grid item xs={12} sm={6} md={4} lg={6}>
                                         <TextField
                                             id="description"
                                             label="Description"
@@ -311,7 +309,7 @@ class TextFields extends React.Component {
                                             className={classes.textField}
                                             margin="dense"
                                         />
-                                    </Grid> */}
+                                    </Grid>
 
                                     <Grid item xs={12} style={{ marginTop: "3rem", "marginLeft": 8 }}>
                                         <Button variant="contained" type="submit" size="large" color="primary" className={classes.margin} onClick={this.handleSubmit}>Update</Button>

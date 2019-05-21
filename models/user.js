@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-const statesArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 
 // delete mongoose.connection.models['User'];
 // delete mongoose.connection.models['users'];
@@ -49,18 +48,16 @@ var UserSchema = new Schema({
         type: String,
         trim: true,
     },
-    address: {
-        street: String,
-        city: String,
-        state: {
-            type: String,
-            uppercase: true,
-            required: false,
-            default: ""
-        },
-        zip: {
-            type: Number,
-        }
+    street: String,
+    city: String,
+    state: {
+        type: String,
+        uppercase: true,
+        required: false,
+        default: ""
+    },
+    zip: {
+        type: Number,
     },
     category: {
         type: String,
