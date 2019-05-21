@@ -57,7 +57,7 @@ class Landing extends Component {
 
 
           <div className="row">
-            <div style={{ width: "1000vw", position: "absolute", zIndex: "100" }}>
+            <div style={{ top:"6rem", width: "1000vw", position: "absolute", zIndex: "100" }}>
               {/* -------- container for intro text ------- */}
 
               <h2 style={{
