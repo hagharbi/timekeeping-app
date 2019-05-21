@@ -52,19 +52,19 @@
 
 <p align="center"><a href="https://media.giphy.com/media/ibjElD6wvhx6WG5nfQ/giphy.gif"></a></p>
 
-<details align="justify"><summary align="center">Description</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
+<details align="justify"><summary align="center">What is it</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
 <br>
 <hr>
 <br>
-<details align="justify"><summary align="center">Running The App Locally</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
+<details align="justify"><summary align="center">why we made it</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
 <br>
 <hr>
 <br>
-<details align="justify"><summary align="center">Languages Used</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
+<details align="justify"><summary align="center">System Overview</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
 <br>
 <hr>
 <br>
-<details align="justify"><summary align="center">Purpose</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
+<details align="justify"><summary align="center">fork &amp; Deploy</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
 <br>
 <hr>
 <br>
@@ -72,19 +72,19 @@
 <br>
 <hr>
 <br>
-<details align="justify"><summary align="center">Notable Code</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
+<details align="justify"><summary align="center">React</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
 <br>
 <hr>
 <br>
-<details align="justify"><summary align="center">Title</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
+<details align="justify"><summary align="center">Redux</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
 <br>
 <hr>
 <br>
-<details align="justify"><summary align="center">Title</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
+<details align="justify"><summary align="center">Authentication</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
 <br>
 <hr>
 <br>
-<details align="justify"><summary align="center">Title</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
+<details align="justify"><summary align="center">Parallax</summary>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, vero ipsum expedita maiores qui alias vel dicta harum, aperiam ex laboriosam fugit cum odio veniam quae. Quasi, repudiandae veritatis? Cum!</details>
 <br>
 <hr>
 <br>
