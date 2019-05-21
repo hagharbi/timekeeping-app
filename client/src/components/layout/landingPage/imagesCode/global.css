@@ -12,22 +12,27 @@ nav {
   width: 100vw;
 }
 
+h2 {
+  font-size: 46px;
+}
+
+#ReBtn {
+  background: "white"!important;
+}
 
 #clouds {
   margin: 0 0 0 0;
   filter: blur(6px);
-  opacity: 0.5;
+  opacity: 0.2;
   overflow-x: hidden!important;
   scale: 2;
   animation: drift 25s 1s linear infinite backwards;
 }
 
-
-
 #CloudsUp {
 filter: blur(4px);
-  opacity: 1;
-  animation: driftTwo 40s 1s linear infinite forwards;
+  opacity: 0;
+  /* animation: driftTwo 40s 1s linear infinite forwards; */
   overflow-x: hidden!important;
 }
 
@@ -43,23 +48,23 @@ to {transform: translateX(1350px);}
 
 #SchutzParallax {
   width: 100vw!important;
-  margin: 10vw 0 1px 50vw;
+  margin: 12vw 0 1px 50vw;
   overflow: hidden!important;
-  filter: drop-shadow(1px 1px 10px rgba(255, 255, 255, 0.06));
+  /* filter: drop-shadow(1px 1px 10px rgba(255, 255, 255, 0.06)); */
 }
 
 #GearsParallax {
   width: 100vw!important;
-  margin: 11vw 0 1px 46vw;
+  margin: 2vw 0 1px 72vw;
   overflow: hidden!important;
-  filter: drop-shadow(1px 1px 10px rgba(255, 255, 255, 0.06));
+  /* filter: drop-shadow(1px 1px 10px rgba(255, 255, 255, 0.06)); */
 }
 
 #ClockParallax {
   width: 120%!important;
-  margin: 10vw 0 0 49vw;
+  margin: 15vw 0 0 49vw;
   overflow-x: hidden!important;
-  filter: drop-shadow(1px 1px 20px rgba(255, 255, 255, 0.3));
+  /* filter: drop-shadow(1px 1px 20px rgba(255, 255, 255, 0.3)); */
 }
 
 #ClockhaloRingParallax {
@@ -69,9 +74,9 @@ to {transform: translateX(1350px);}
   max-height: 23vw;
   height: auto;
   padding-top: 100%;
-  margin: 13.5vw 0 0 52.6vw;
+  margin: 18.5vw 0 0 52.6vw;
 
-  background: radial-gradient(circle at top left, #128caa 40%, rgba(0, 89, 255, 0.418), rgb(1, 35, 54) 70%);
+  background: linear-gradient( #3699af, #2c327d );
 }
 
 * {
@@ -100,7 +105,7 @@ a{
 }
 
 #mainHomeCont {
-    background: linear-gradient(#55cccc, #55aeae, black);
+    background: linear-gradient(#2c327d, #55b6cc);
     overflow-x: hidden!important;
 }
 
@@ -131,6 +136,6 @@ opacity: 0!important;
   opacity: 1!important;
   }
 
-  .the-gradient-cool {
+  /* .the-gradient-cool {
     color:#00ff00!important;
-  }
+  } */

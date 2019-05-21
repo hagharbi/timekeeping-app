@@ -79,8 +79,8 @@ const createParallaxDown = (image, yOffset, multiplicator) => (
 const createParallaxRight = (image, xOffset) => (
   <ParallaxLayer
     style={{
-      'transform': 'translate('+ Math.abs(xOffset) +'px, '+ Math.abs(xOffset * 0.10) +'px)'
-  }}
+      'transform': 'translate(' + Math.abs(xOffset) + 'px, ' + Math.abs(xOffset * 0.10) + 'px)'
+    }}
   >
     {image()}
   </ParallaxLayer>
@@ -91,34 +91,35 @@ const createParallaxRight = (image, xOffset) => (
 const LandingParallaxHero = ({ yOffset }) => (
   <Container >
 
-      { createParallaxUp    (     CommentsParallax,      yOffset,  9  )}
-      { createParallaxUp    (     Snowhill0,             yOffset,  13 )}
-      { createParallaxDown  (     CloudsUp,              yOffset,  0  )}
-      { createParallaxDown  (     Clouds,                yOffset,  0  )}
-      { createParallaxUp    (     Snowhill4,             yOffset, 12  )}
-      { createParallaxDown  (     GearsParallax,         yOffset,  0  )}
+    {createParallaxUp(CommentsParallax, yOffset, 1)}
+    {/* {createParallaxUp(Snowhill0, yOffset, 13)} */}
+    {createParallaxDown(CloudsUp, yOffset, 0)}
+    {createParallaxDown(Clouds, yOffset, 0)}
+    {createParallaxRight(EnvilopeParallax, yOffset, 6)}
 
-      { createParallaxUp    (     StarsParallax,         yOffset,  6  )}
-      { createParallaxUp    (     Snowhill3,             yOffset, 11  )}
-      { createParallaxUp    (     ClockhaloRingParallax, yOffset,  3.6)}
-      { createParallaxUp    (     ClockParallax,         yOffset,  3.6)}
+    {/* {createParallaxUp(Snowhill4, yOffset, 12)} */}
+    {createParallaxDown(GearsParallax, yOffset, 0)}
 
-      { createParallaxRight (     EnvilopeParallax,      yOffset,  6  )}
-      { createParallaxUp    (     Snowhill2,             yOffset, 10  )}
-      { createParallaxUp    (     Snowhill2,             yOffset,  8  )}
-      { createParallaxUp    (     CalendarParallax,      yOffset,  7  )}
-      { createParallaxUp    (     Snowhill1,             yOffset,  7  )}
-      
+    {createParallaxUp(StarsParallax, yOffset, 6)}
+    {createParallaxUp(Snowhill3, yOffset, 11)}
+    {createParallaxUp(ClockhaloRingParallax, yOffset, 3.6)}
+    {createParallaxUp(ClockParallax, yOffset, 3.6)}
+
+    {createParallaxUp(Snowhill2, yOffset, 10)}
+    {createParallaxUp(Snowhill2, yOffset, 8)}
+    {createParallaxUp(CalendarParallax, yOffset, 7)}
+    {createParallaxUp(Snowhill1, yOffset, 7)}
+
 
 
     <ParallaxFrontLayer>
-    <TransitionParallaxImage
+      <TransitionParallaxImage
       />
-    <Content />
-      </ParallaxFrontLayer>
+      <Content />
+    </ParallaxFrontLayer>
   </Container>
 
-  
+
 
 );
 
