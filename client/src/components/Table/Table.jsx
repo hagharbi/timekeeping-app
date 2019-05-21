@@ -136,6 +136,11 @@ class CustomPaginationActionsTable extends React.Component {
     this.setState({ page: 0, rowsPerPage: event.target.value });
   };
 
+  numOfProjects(clientID, projects) {
+    var count = projects.filter(project => {return project.client === clientID}).length;
+    return count
+  }
+
   render() {
     const { classes } = this.props;
     const { rowsPerPage, page } = this.state;
@@ -200,7 +205,7 @@ class CustomPaginationActionsTable extends React.Component {
                         </TableCell>
                         <TableCell variant="body1" scope="row">{client.email}</TableCell>
                         <TableCell variant="body1" scope="row"> {client.phone}</TableCell>
-                        <TableCell variant="body1" scope="row">{client.projects.length}</TableCell>
+                        <TableCell variant="body1" scope="row">{this.numOfProjects(client._id, data.projects)}</TableCell>
                       </TableRow>
                     ))}
                   {emptyRows > 0 && (
