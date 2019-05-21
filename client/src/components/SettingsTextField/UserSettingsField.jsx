@@ -56,12 +56,14 @@ class TextFields extends React.Component {
             email: this.state.userData.email,
             phone: this.state.userData.phone,
             description: this.state.userData.description,
-            address: {
-                street: this.state.userData.address.street,
-                city: this.state.userData.address.city,
-                state: this.state.userData.address.state,
-                zip: this.state.userData.address.zip,
-            }
+            category: this.state.userData.category,
+            title: this.state.userData.title,
+            // address: {
+            //     street: this.state.userData.address.street,
+            //     city: this.state.userData.address.city,
+            //     state: this.state.userData.address.state,
+            //     zip: this.state.userData.address.zip,
+            // }
         };
         this.props.updateUserDetails(userData);
     };
@@ -162,7 +164,7 @@ class TextFields extends React.Component {
                                         />
                                     </Grid>
 
-                                    <Grid item xs={12}>
+{/*                                     <Grid item xs={12}>
                                         <h6>Address</h6>
                                     </Grid>
 
@@ -212,7 +214,7 @@ class TextFields extends React.Component {
                                             InputProps={{ disableUnderline: true, }}
                                             margin="normal"
                                         />
-                                    </Grid>
+                                    </Grid> */}
 
                                     {/* <Grid item xs={12} sm={6} md={4} lg={3} style={{ "marginTop": "-1px" }}>
                                         <FormControl className={classes.formControl}>
