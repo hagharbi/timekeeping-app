@@ -255,7 +255,7 @@ class Landing extends Component {
               id="ctaElements"
             />
           </div>
-          <div>
+          {/* <div>
             <p
               style={{
                 fontWeight: 300,
@@ -273,7 +273,7 @@ class Landing extends Component {
               }}
             >
               © 2019 | SUMIT</p>
-          </div>
+          </div> */}
 
         </div>
        
