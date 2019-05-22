@@ -149,10 +149,10 @@ class Landing extends Component {
 
             </div>
           </div>
-          <div id="promoCopy">
+          <div id="promoCopy" style={{margin:"5vw 0 0 0"}}>
             <img alt="perspective" src={require('./imagesCode/perspective.png')}
               style={{
-                margin: "46vw 0 0 4vw",
+                margin: "55vw 0 0 4vw",
                 position: "absolute",
                 zIndex: "99",
                 width: "50vw",
@@ -162,7 +162,7 @@ class Landing extends Component {
             />
             <h4
               style={{
-                margin: "54vw 0 0 51vw",
+                margin: "64vw 0 0 51vw",
                 position: "absolute",
                 zIndex: "99",
                 width: "28vw",
@@ -174,7 +174,7 @@ class Landing extends Component {
             </h4>
             <h5
               style={{
-                margin: "60vw 0 0 51vw",
+                margin: "70vw 0 0 51vw",
                 position: "absolute",
                 zIndex: "99",
                 width: "32vw",
@@ -187,7 +187,7 @@ class Landing extends Component {
             </h5>
             <h4
               style={{
-                margin: "65vw 0 0 51vw",
+                margin: "75vw 0 0 51vw",
                 position: "absolute",
                 zIndex: "99",
                 width: "32vw",
@@ -205,7 +205,7 @@ class Landing extends Component {
                 // letterSpacing: "4px",
                 fontWeight: "500",
                 position: "absolute",
-                margin: "75vw 0 0 51vw",
+                margin: "88.5vw 0 0 51vw",
                 left: "0",
                 top: "0",
                 backgroundColor: "#2c327d"
@@ -213,7 +213,7 @@ class Landing extends Component {
               className="btn btn-med waves-effect waves-dark hoverable"
               id="ReBtn"
             >
-              Here
+              Get Started
             </Link>
           </div>
           <div
@@ -227,6 +227,7 @@ class Landing extends Component {
             <img src={require('./imagesCode/cardTwo.png')} style={{
               margin: "0 0 0 4vw",
               position: "absolute",
+              bottom: "1000px",
               zIndex: "99",
               width: "17vw"
             }}
@@ -236,6 +237,7 @@ class Landing extends Component {
             <img src={require('./imagesCode/CardThree.png')} style={{
               margin: "0 0 0 30vw",
               position: "absolute",
+              bottom: "1000px",
               zIndex: "99",
               width: "15vw"
             }}
@@ -245,6 +247,7 @@ class Landing extends Component {
             <img src={require('./imagesCode/cardOne.png')} style={{
               margin: "0 0 0 54vw",
               position: "absolute",
+              bottom: "1000px",
               zIndex: "99",
               width: "16vw"
             }}
@@ -252,26 +255,28 @@ class Landing extends Component {
               id="ctaElements"
             />
           </div>
-        </div>
-        {/* <div
-          style={{
-            textAlign: "center",
-            position: "fixed",
-            bottom: "0",
-            margin: "0 0 0 0",
-            backgroundColor: "#037F8C",
-            width: "100vw",
-          }}
-        >
-          <p
-            style={{
-              color: "white",
-              fontWeight: 300,
-            }}
-          >
-            © 2019 | SUMIT</p>
-        </div> */}
+          <div>
+            <p
+              style={{
+                fontWeight: 300,
+                textAlign: "center",
+                position: "static",
+                zIndex: "99999999999999999999999",
+                backgroundColor: "rgba(0, 0, 0, 0)",
+                color: "green",
+                left: "0",
+                right: "0",
+                bottom: "0!important",
+                margin: "70vh 0 0 0",
+                // backgroundColor: "#037F8C",
+                width: "100vw",
+              }}
+            >
+              © 2019 | SUMIT</p>
+          </div>
 
+        </div>
+       
         {/* <div id="promoCopy"
           style={{
             margin: "70vw 0 0 10vw",
