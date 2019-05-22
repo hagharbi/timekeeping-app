@@ -475,7 +475,7 @@ class TextFields2 extends React.Component {
                                         <Grid item xs={6} sm={3} md={2} lg={2}>
                                             <Tooltip title="For fixed-rate projects, leave 0." aria-label="For fixed-rate projects, leave 0.">
                                                 <TextField
-                                                    id="adornment-amount"
+                                                    id="rate"
                                                     label="Hourly Rate"
                                                     className={classes.textFieldSmall}
                                                     value={this.state.project.rate}
@@ -538,7 +538,7 @@ class TextFields2 extends React.Component {
                                         spacing={24}
                                     >
                                         <Grid item >
-                                            <h4><strong>Logs</strong></h4>
+                                            <h4><strong>{this.state.project.title}</strong></h4>
                                         </Grid>
                                         <Grid item>
                                             {this.state.project.activeLog ? "" :
