@@ -102,6 +102,10 @@ const LandingParallaxHero = ({ yOffset }) => (
 
     {createParallaxUp(StarsParallax, yOffset, 6)}
     {createParallaxUp(Snowhill3, yOffset, 11)}
+    {createParallaxUp(Snowhill3, yOffset, 10)}
+    {createParallaxUp(Snowhill3, yOffset, 9)}
+    {createParallaxUp(Snowhill3, yOffset, 4)}
+    {createParallaxUp(Snowhill3, yOffset, 1)}
     {createParallaxUp(ClockhaloRingParallax, yOffset, 3.6)}
     {createParallaxUp(ClockParallax, yOffset, 3.6)}
 
