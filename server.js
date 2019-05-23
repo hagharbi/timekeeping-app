@@ -34,17 +34,17 @@ app.use("/api/logs", logs);
 
 // Database Setup for Prod Env
 // DB Config
-const db = process.env.mongoURI;
+// const db = process.env.mongoURI;
 
-// // Connect to MongoDB
-mongoose
-  .connect(
-    db || "mongodb://localhost/timekeeperapp", {
-      useNewUrlParser: true
-    }
-  )
-  .then(() => console.log("MongoDB successfully connected"))
-  .catch(err => console.log(err));
+// // // Connect to MongoDB
+// mongoose
+//   .connect(
+//     db || "mongodb://localhost/timekeeperapp", {
+//       useNewUrlParser: true
+//     }
+//   )
+//   .then(() => console.log("MongoDB successfully connected"))
+//   .catch(err => console.log(err));
 
 
 // Passport middleware
