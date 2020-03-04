@@ -127,7 +127,7 @@
     "moment": "^2.24.0",
     "mongodb": "^3.2.2",
     "mongodb-core": "^3.2.2",
-    "mongoose": "^5.5.4",
+    "mongoose": "^5.7.5",
     "mongoose-legacy-pluralize": "^1.0.2",
     "mpath": "^0.5.2",
     "mquery": "^3.2.0",
