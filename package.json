@@ -27,7 +27,7 @@
     "cors": "^2.8.5",
     "debug": "^3.2.6",
     "define-property": "^2.0.2",
-    "dot-prop": "^4.2.0",
+    "dot-prop": "^5.1.1",
     "dotenv": "^7.0.0",
     "duplexer3": "^0.1.4",
     "ee-first": "^1.1.1",
