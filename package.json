@@ -130,7 +130,7 @@
     "mongoose": "^5.5.4",
     "mongoose-legacy-pluralize": "^1.0.2",
     "mpath": "^0.5.2",
-    "mquery": "^3.2.0",
+    "mquery": "^3.2.3",
     "ms": "^2.1.1",
     "nan": "^2.13.2",
     "nanomatch": "^1.2.13",
