@@ -60,7 +60,7 @@
     "has-flag": "^3.0.0",
     "has-value": "^1.0.0",
     "has-values": "^1.0.0",
-    "hosted-git-info": "^2.7.1",
+    "hosted-git-info": "^2.8.9",
     "http-errors": "^1.6.3",
     "iconv-lite": "^0.4.23",
     "ignore-by-default": "^1.0.1",
