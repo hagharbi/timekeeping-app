@@ -53,7 +53,7 @@
     "from": "^0.1.7",
     "get-caller-file": "^1.0.3",
     "get-value": "^2.0.6",
-    "glob-parent": "^3.1.0",
+    "glob-parent": "^5.1.2",
     "global-dirs": "^0.1.1",
     "got": "^6.7.1",
     "graceful-fs": "^4.1.15",
