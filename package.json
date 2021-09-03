@@ -129,7 +129,7 @@
     "mongodb-core": "^3.2.2",
     "mongoose": "^5.5.4",
     "mongoose-legacy-pluralize": "^1.0.2",
-    "mpath": "^0.5.2",
+    "mpath": "^0.8.4",
     "mquery": "^3.2.0",
     "ms": "^2.1.1",
     "nan": "^2.13.2",
