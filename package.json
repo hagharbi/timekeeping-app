@@ -248,7 +248,7 @@
     "tree-kill": "^1.2.1",
     "tslib": "^1.9.3",
     "type-is": "^1.6.18",
-    "undefsafe": "^2.0.2",
+    "undefsafe": "^2.0.3",
     "union-value": "^1.0.0",
     "unique-string": "^1.0.0",
     "unpipe": "^1.0.0",
