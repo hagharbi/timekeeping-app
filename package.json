@@ -45,7 +45,7 @@
     "fill-range": "^4.0.0",
     "finalhandler": "^1.1.1",
     "find-up": "^3.0.0",
-    "follow-redirects": "^1.7.0",
+    "follow-redirects": "^1.14.8",
     "for-in": "^1.0.2",
     "forwarded": "^0.1.2",
     "fragment-cache": "^0.2.1",
