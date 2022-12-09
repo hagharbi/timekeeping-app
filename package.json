@@ -38,7 +38,7 @@
     "etag": "^1.8.1",
     "event-stream": "^3.3.4",
     "expand-brackets": "^2.1.4",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-jwt": "^5.3.1",
     "extend-shallow": "^3.0.2",
     "extglob": "^2.0.4",
