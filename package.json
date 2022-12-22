@@ -97,7 +97,7 @@
     "isobject": "^3.0.1",
     "json-parse-better-errors": "^1.0.2",
     "jsonify": "^0.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "kareem": "^2.3.0",
     "kind-of": "^6.0.2",
     "latest-version": "^3.1.0",
