@@ -266,7 +266,7 @@
     "fsevents": "^1.2.8"
   },
   "devDependencies": {
-    "css-loader": "^2.1.1"
+    "css-loader": "^6.7.3"
   },
   "scripts": {
     "client-install": "npm install --prefix client",
